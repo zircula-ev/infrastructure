@@ -19,3 +19,16 @@ Bereitstellung von Datenbanken für Anwendungen.
 - PostgreSQL veröffentlicht keine Ports nach außen.
 - Anwendungen kommunizieren ausschließlich über das Docker-Netzwerk.
 - Jede Anwendung erhält einen eigenen Datenbankbenutzer.
+
+
+## Backup
+
+Die PostgreSQL-Daten befinden sich unter:
+
+/srv/zircula/postgres
+
+Logische Backups erfolgen später mit:
+
+pg_dump
+
+Dateibasierte Backups erfolgen ausschließlich bei gestopptem Container oder über Snapshots des Hosts.
