@@ -1,0 +1,8 @@
+{
+	email timo.hecken@zircula.org
+}
+
+:80 {
+	respond "Caddy läuft!"
+}
+#

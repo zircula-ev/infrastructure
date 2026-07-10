@@ -1,0 +1,27 @@
+services:
+  caddy:
+    image: caddy:2.10
+
+    container_name: caddy
+
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    env_file:
+      - .env
+
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /srv/zircula/caddy/data:/data
+      - /srv/zircula/caddy/config:/config
+
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
