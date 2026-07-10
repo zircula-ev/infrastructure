@@ -1,8 +1,7 @@
 {
-	email timo.hecken@zircula.org
+    email timo.hecken@zircula.org
 }
 
-:80 {
-	respond "Caddy läuft!"
+vps.zircula.org {
+    respond "Caddy läuft über HTTPS!"
 }
-#
