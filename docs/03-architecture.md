@@ -14,5 +14,4 @@ Nextcloud --> Redis
 
 Talk --> Redis
 
-Minecraft --> Internet
 ```
