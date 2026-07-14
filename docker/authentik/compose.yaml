@@ -1,0 +1,73 @@
+services:
+  server:
+    container_name: authentik-server
+
+    image: ${AUTHENTIK_IMAGE}:${AUTHENTIK_TAG}
+
+    command: server
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      AUTHENTIK_POSTGRESQL__HOST: ${PG_HOST}
+      AUTHENTIK_POSTGRESQL__PORT: ${PG_PORT}
+      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB}
+      AUTHENTIK_POSTGRESQL__USER: ${PG_USER}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+
+    shm_size: 512mb
+
+    volumes:
+      - /srv/zircula/authentik/data:/data
+      - /srv/zircula/authentik/templates:/templates
+
+    networks:
+      - frontend
+      - backend
+
+  worker:
+    container_name: authentik-worker
+
+    image: ${AUTHENTIK_IMAGE}:${AUTHENTIK_TAG}
+
+    command: worker
+
+    restart: unless-stopped
+
+    user: root
+
+    env_file:
+      - .env
+
+    environment:
+      AUTHENTIK_POSTGRESQL__HOST: ${PG_HOST}
+      AUTHENTIK_POSTGRESQL__PORT: ${PG_PORT}
+      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB}
+      AUTHENTIK_POSTGRESQL__USER: ${PG_USER}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+
+    shm_size: 512mb
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/zircula/authentik/data:/data
+      - /srv/zircula/authentik/certs:/certs
+      - /srv/zircula/authentik/templates:/templates
+
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
+
+  backend:
+    external: true
+    name: zircula_backend
