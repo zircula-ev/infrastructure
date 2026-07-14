@@ -25,6 +25,7 @@ services:
     volumes:
       - /srv/zircula/nextcloud/html:/var/www/html
       - /srv/zircula/nextcloud/data:/var/www/html/data
+      - ./php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
 
     networks:
       - frontend
