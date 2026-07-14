@@ -1,0 +1,32 @@
+services:
+  collabora:
+    image: collabora/code:${COLLABORA_VERSION}
+
+    container_name: collabora
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      TZ: ${TZ}
+
+      server_name: ${COLLABORA_DOMAIN}
+
+      aliasgroup1: ${COLLABORA_ALIASGROUP1}
+
+      extra_params: >-
+        --o:ssl.enable=false
+        --o:ssl.termination=true
+
+    cap_add:
+      - MKNOD
+
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
