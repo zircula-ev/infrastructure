@@ -1,30 +1,36 @@
-# Docker Networks
+# Docker-Netzwerke
 
-Die Docker-Netzwerke werden einmalig auf dem Host erstellt und anschließend von allen Docker-Compose-Stacks als externe Netzwerke verwendet.
+Die gemeinsamen Docker-Netzwerke werden einmalig auf dem Host erstellt und von
+den getrennten Compose-Stacks als externe Netzwerke verwendet.
 
-## Netzwerke
+## `zircula_frontend`
 
-### zircula_frontend
-
-Für öffentlich erreichbare Dienste.
-
-Beispiele:
+Für Verbindungen zwischen Caddy und den öffentlich angebundenen Anwendungen:
 
 - Caddy
-- Website
 - Nextcloud
-- Nextcloud Talk
+- Collabora
+- Authentik-Server
+- Talk HPB
 
-### zircula_backend
+Ein Container im Frontend ist nicht automatisch öffentlich erreichbar. Dafür ist
+zusätzlich eine Caddy-Route oder eine explizite Hostport-Freigabe erforderlich.
 
-Für interne Kommunikation.
+## `zircula_backend`
 
-Beispiele:
+Für interne Daten- und Anwendungszugriffe:
 
 - PostgreSQL
 - Redis
 - Nextcloud
-- Nextcloud Talk
+- Authentik
+
+Das Backend ist ein gemeinsames Vertrauensnetz und keine vollständige
+Sicherheitsgrenze. Dienste benötigen weiterhin eigene Zugangsdaten und
+Least-Privilege-Benutzer. Deshalb verwendet Redis zusätzlich ein Passwort und jede
+Anwendung einen eigenen PostgreSQL-Benutzer.
+
+Talk HPB benötigt in der aktuellen Architektur keine Verbindung zum Backend.
 
 ## Erstellung
 
@@ -33,4 +39,19 @@ docker network create zircula_frontend
 docker network create zircula_backend
 ```
 
-Alle Compose-Dateien referenzieren diese Netzwerke anschließend als `external: true`.
+Vor dem Erstellen prüfen:
+
+```bash
+docker network ls
+```
+
+## Kontrolle
+
+```bash
+docker network inspect zircula_frontend
+docker network inspect zircula_backend
+```
+
+Netzwerk-CIDRs werden nicht ungeprüft fest in Anwendungsdokumentationen übernommen,
+da Docker sie bei einer Neuerstellung anders vergeben kann.
+
