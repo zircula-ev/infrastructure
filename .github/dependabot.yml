@@ -1,0 +1,18 @@
+version: 2
+
+updates:
+  - package-ecosystem: docker-compose
+    directories:
+      - /docker/authentik
+      - /docker/caddy
+      - /docker/collabora
+      - /docker/nextcloud
+      - /docker/postgres
+      - /docker/redis
+      - /docker/talk-hpb
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Berlin
+    open-pull-requests-limit: 8
