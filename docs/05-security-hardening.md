@@ -25,19 +25,32 @@ Firewallregeln werden nicht pauschal deaktiviert.
 
 ## 2. SSH
 
-Sollzustand nach erfolgreichem Test in einer zweiten offenen SSH-Sitzung und nach
-Prüfung der Manitu-Konsole:
+Umgesetzter Stand vom 15.07.2026:
 
 - ausschließlich Public-Key-Authentifizierung
 - `PasswordAuthentication no`
 - `KbdInteractiveAuthentication no`
 - `PermitRootLogin no`
+- `PubkeyAuthentication yes`
+- `MaxAuthTries 3`
 - persönliche Konten; keine gemeinsam genutzten Administratorzugänge
 - `AllowUsers` nur, wenn die Liste organisatorisch gepflegt wird
 - wenige Mitglieder in `sudo` und `docker`
 
-Die effektive Konfiguration wird mit `sshd -T` geprüft. Dateien unter
-`sshd_config.d` können frühere Einstellungen überschreiben.
+Die Einstellungen liegen in
+`/etc/ssh/sshd_config.d/00-zircula-hardening.conf`. OpenSSH verwendet für viele
+Direktiven den zuerst gelesenen Wert, deshalb wird die Datei bewusst früh geladen.
+Syntax und effektive Konfiguration werden vor jedem Reload geprüft:
+
+```bash
+sudo sshd -t
+sudo sshd -T | \
+  grep -E '^(permitrootlogin|passwordauthentication|kbdinteractiveauthentication|pubkeyauthentication|maxauthtries) '
+```
+
+Der Reload erfolgt nur bei erfolgreicher Prüfung und mit mindestens einer offenen
+Rückfallsitzung. Anschließend wird eine vollständig neue Public-Key-Sitzung als
+persönlicher Administrator einschließlich `sudo` getestet.
 
 ## 3. Docker-Administration
 
@@ -98,3 +111,22 @@ Monatlich:
 - Nextcloud-Administrationswarnungen und Security Scan
 - Authentik-Systemaufgaben und Warnungen
 - Backupalter und letzter erfolgreicher Restore-Test
+
+## Umsetzungsstand vom 15.07.2026
+
+Abgeschlossen:
+
+- alle produktiven `.env` auf Modus 600
+- SSH-Hardening einschließlich neuem Public-Key-Login-Test
+- Redis-Passwortauthentifizierung über Compose-Secret
+- Redis- und Nextcloud-Funktionstest nach dem Rollout
+- `vm.overcommit_memory=1` dauerhaft gesetzt
+- Dependabot-Benachrichtigungen für aktive Compose-Stacks
+
+Noch offen:
+
+- externes verschlüsseltes Backup und dokumentierter Restore-Test
+- regelmäßiges Image- und Secret-Scanning
+- Docker-Logrotation verbindlich begrenzen
+- Authentik-Docker-Socket nach Festlegung der Outpost-Nutzung minimieren
+- Fail2ban anhand realer Logs gezielt bewerten

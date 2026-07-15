@@ -51,8 +51,8 @@ da veröffentlichte Docker-Ports UFW-Regeln umgehen können.
 - ausschließlich SSH-Schlüssel, keine Passwortanmeldung
 - nur notwendige Mitglieder in `sudo` und `docker`
 - produktive `.env` besitzen Modus 600
-- Root-SSH wird deaktiviert, sobald der Zugang über `timo` und die Manitu-Konsole
-  als Rückfallebene abschließend getestet sind
+- Root-SSH ist deaktiviert; der administrative Zugang erfolgt ausschließlich über
+  persönliche Konten mit Public Key und `sudo`
 - Break-Glass-Zugänge werden offline und verschlüsselt dokumentiert
 
 ## Aktueller Prüfstand vom 15.07.2026
@@ -62,8 +62,14 @@ da veröffentlichte Docker-Ports UFW-Regeln umgehen können.
 - AppArmor aktiv; `docker-default` im Enforce-Modus
 - erwartete Ports 22, 80, 443 und 3478 auf IPv4 und IPv6
 - `PasswordAuthentication no`
-- noch offen: `PermitRootLogin yes` und `MaxAuthTries 6`
-- noch offen: produktive `.env` von 664 auf 600 setzen
+- `KbdInteractiveAuthentication no`
+- `PubkeyAuthentication yes`
+- `PermitRootLogin no`
+- `MaxAuthTries 3`
+- produktive `.env` auf Modus 600 gesetzt
+- Redis-Hostvoraussetzung `vm.overcommit_memory=1` dauerhaft gesetzt
 
-Die offenen Hostmaßnahmen werden nach einem kontrollierten Zugangstest umgesetzt.
-
+Das SSH-Hardening liegt in
+`/etc/ssh/sshd_config.d/00-zircula-hardening.conf`. Syntax und effektive Werte
+wurden mit `sshd -t` und `sshd -T` geprüft. Nach dem Reload wurde eine neue
+Public-Key-Sitzung als `timo` einschließlich `sudo` erfolgreich getestet.

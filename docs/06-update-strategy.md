@@ -35,14 +35,54 @@ werden für diesen produktiven Einzelserver nicht eingesetzt.
 
 ## Benachrichtigung über Updates
 
-GitHub Dependabot kann Docker-Compose-Abhängigkeiten überwachen. Vorgeschlagen wird
-eine wöchentliche Konfiguration für alle Stack-Verzeichnisse, die ausschließlich
-Pull Requests erstellt. Automatisches Mergen bleibt deaktiviert.
+GitHub Dependabot überwacht die Docker-Compose-Abhängigkeiten der aktiven Stacks
+wöchentlich montags um 06:00 Uhr in der Zeitzone `Europe/Berlin`. Die Konfiguration
+liegt unter `.github/dependabot.yml` und erstellt ausschließlich Pull Requests.
+Automatisches Mergen und ein automatisches Deployment auf den VPS bleiben
+deaktiviert.
+
+Überwacht werden:
+
+- Authentik
+- Caddy
+- Collabora
+- Nextcloud
+- PostgreSQL
+- Redis
+- Talk HPB
 
 Für Images, deren Tag über Variablen zusammengesetzt wird, muss geprüft werden, ob
 Dependabot sie erkennt. Falls nicht, wird Renovate oder eine reine
 Benachrichtigungslösung wie Diun eingesetzt. Das Tool darf niemals direkt den
 Produktivserver aktualisieren.
+
+Dependabot bewertet keine anwendungsspezifische Datenmigration. Insbesondere
+werden Major-Updates von Datenbanken niemals allein aufgrund eines grünen oder
+konfliktfreien Pull Requests gemergt.
+
+## Abhängigkeitentscheidungen vom 15.07.2026
+
+### Caddy 2.10 auf 2.11
+
+Der vorgeschlagene Wechsel bleibt für ein separates Wartungsfenster offen. Vor
+dem Merge werden die neue Caddy-Version und das bestehende Caddyfile validiert.
+Nach dem Rollout werden alle vier öffentlichen Domains und ihre Upstreams geprüft.
+
+### PostgreSQL 17 auf 18
+
+Der automatisch erzeugte Pull Request wurde geschlossen und die Major-Version 18
+für automatische Vorschläge ignoriert. PostgreSQL-Major-Versionen sind nicht
+datenverzeichniskompatibel und benötigen `pg_upgrade` oder logischen
+Dump/Restore. Zusätzlich ändert das offizielle PostgreSQL-18-Image den empfohlenen
+Volume-/PGDATA-Aufbau. Ein Wechsel erfolgt deshalb ausschließlich als eigenes
+Migrationsprojekt mit:
+
+1. aktuellem logischem Dump,
+2. getesteter Wiederherstellung in einer isolierten PostgreSQL-18-Instanz,
+3. separatem Datenverzeichnis,
+4. angekündigtem Wartungsfenster,
+5. Anwendungs- und Integritätsprüfung,
+6. dokumentiertem Rückfallplan.
 
 ## Wartungsfenster
 

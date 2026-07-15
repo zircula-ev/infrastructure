@@ -112,6 +112,11 @@ Bei einem abweichenden Passwort bleibt Redis gesund, aber Nextcloud protokollier
 Authentifizierungsfehler. In diesem Fall beide lokalen `.env` vergleichen, ohne
 die Werte weiterzugeben, und nur Nextcloud erneut erstellen.
 
+Die gemeinsame Redis-Authentifizierung wurde am 15.07.2026 produktiv aktiviert.
+Geprüft wurden Nextcloud-Status, Dateibrowser, Dateioperationen, Talk sowie das
+Erstellen und Bearbeiten eines Dokuments über Collabora. In den Nextcloud-Logs
+traten keine Redis-Authentifizierungs- oder Verbindungsfehler auf.
+
 ## OCC und Hintergrundjobs
 
 ```bash
@@ -161,4 +166,3 @@ Nachtests:
 - Office-Dokument öffnen und speichern
 - Talk-Testanruf aus zwei getrennten Netzen
 - Cron und Administrationseinstellungen ohne neue Warnungen
-

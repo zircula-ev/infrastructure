@@ -102,6 +102,11 @@ vollständige Reihenfolge ist in `docker/nextcloud/README.md` dokumentiert.
 Zwischen dem Redis-Neustart und dem Nextcloud-Neustart kann Nextcloud kurzzeitig
 keine Sitzungen oder Sperren über Redis verarbeiten.
 
+Die Einführung wurde am 15.07.2026 produktiv abgeschlossen. Vor und nach dem
+Rollout wurden Schreibrechte als UID/GID 999, Secret-Verarbeitung, Passwortpflicht,
+Healthcheck und AOF-Persistenz über einen Neustart geprüft. Nextcloud, Dateizugriff,
+Talk und Collabora funktionierten anschließend ohne Redis-Authentifizierungsfehler.
+
 ## Backup
 
 Redis ist nicht die alleinige Quelle produktiver Nextcloud-Daten. Maßgeblich sind
