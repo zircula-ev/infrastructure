@@ -2,7 +2,7 @@
     email timo.hecken@zircula.org
 }
 
-vps.zircula.org {
+cloud.zircula.org {
 
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -18,4 +18,13 @@ office.zircula.org {
     }
 
     reverse_proxy collabora:9980
+}
+
+auth.zircula.org {
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    }
+
+    reverse_proxy authentik-server:9000
 }
