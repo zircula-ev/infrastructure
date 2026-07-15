@@ -17,7 +17,7 @@ Recording-Stack ist dafür nicht erforderlich.
 ```text
 Browser
   │
-  ├── HTTPS / WSS :443 ──► talk.zircula.org ──► Caddy ──► talk-hpb:8081
+  ├── HTTPS / WSS :443 ──► talk.cloud.zircula.org ──► Caddy ──► talk-hpb:8081
   │
   └── TURN / STUN :3478 TCP + UDP ───────────────────────► talk-hpb
 
@@ -39,7 +39,7 @@ Der Container ist ausschließlich mit `zircula_frontend` verbunden:
 
 ## Voraussetzungen
 
-1. DNS: `talk.zircula.org` benötigt einen A-Record (und bei verwendeter IPv6
+1. DNS: `talk.cloud.zircula.org` benötigt einen A-Record (und bei verwendeter IPv6
    zusätzlich AAAA) auf den VPS.
 2. Firewall: `3478/TCP` und `3478/UDP` müssen von außen erreichbar sein.
    Ports 80 und 443 sind bereits durch Caddy belegt.
@@ -70,7 +70,7 @@ Tickets oder Chats kopiert werden.
 In `docker/caddy/Caddyfile` folgenden zusätzlichen Site-Block ergänzen:
 
 ```caddyfile
-talk.zircula.org {
+talk.cloud.zircula.org {
     header {
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
     }
@@ -104,7 +104,7 @@ Die Compose-Prüfung muss vor jedem ersten Start erfolgen. Bei fehlerfreichem
 Start antwortet der Signaling-Dienst nach der Caddy-Ergänzung:
 
 ```bash
-curl https://talk.zircula.org/api/v1/welcome
+curl https://talk.cloud.zircula.org/api/v1/welcome
 ```
 
 Erwartet wird eine JSON-Antwort mit
@@ -115,18 +115,18 @@ Erwartet wird eine JSON-Antwort mit
 In Nextcloud unter **Administrationseinstellungen → Talk**:
 
 1. High-Performance-Backend:
-   - URL: `https://talk.zircula.org`
+   - URL: `https://talk.cloud.zircula.org`
    - Shared Secret: der Wert aus `SIGNALING_SECRET`
    - Die Verbindungsprüfung muss erfolgreich sein.
 
 2. TURN:
    - Modus: `turn: only`
-   - Server: `talk.zircula.org:3478`
+   - Server: `talk.cloud.zircula.org:3478`
    - Secret: der Wert aus `TURN_SECRET`
    - Protokolle: UDP und TCP
 
 3. STUN:
-   - Server: `talk.zircula.org:3478`
+   - Server: `talk.cloud.zircula.org:3478`
 
 Der TURN-Dienst stellt auch STUN bereit. Die Konfiguration in Talk sorgt dafür,
 dass Clients bei restriktiven Netzen auf den Relay-Dienst ausweichen können.
