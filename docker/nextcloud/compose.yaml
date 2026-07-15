@@ -18,9 +18,13 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
       REDIS_HOST: redis
+      REDIS_HOST_PASSWORD_FILE: /run/secrets/redis_password
 
       PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT}
       PHP_UPLOAD_LIMIT: ${PHP_UPLOAD_LIMIT}
+
+    secrets:
+      - redis_password
 
     volumes:
       - /srv/zircula/nextcloud/html:/var/www/html
@@ -39,3 +43,8 @@ networks:
   backend:
     external: true
     name: zircula_backend
+
+secrets:
+  redis_password:
+    environment: REDIS_PASSWORD
+
