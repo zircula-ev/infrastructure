@@ -1,0 +1,59 @@
+services:
+  talk-hpb:
+    image: ${TALK_HPB_IMAGE}:${TALK_HPB_TAG}
+
+    container_name: talk-hpb
+
+    init: true
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      TZ: ${TZ}
+      AIO_LOG_LEVEL: ${AIO_LOG_LEVEL}
+
+      NC_DOMAIN: ${NC_DOMAIN}
+      TALK_HOST: ${TALK_HOST}
+      TALK_PORT: ${TALK_PORT}
+
+      TURN_SECRET: ${TURN_SECRET}
+      SIGNALING_SECRET: ${SIGNALING_SECRET}
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+
+    # TURN/STUN needs direct TCP and UDP access from clients.
+    ports:
+      - "${TALK_PORT}:${TALK_PORT}/tcp"
+      - "${TALK_PORT}:${TALK_PORT}/udp"
+
+    # Signaling remains internal; Caddy accesses it through zircula_frontend.
+    expose:
+      - "8081"
+
+    healthcheck:
+      test: /healthcheck.sh
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+    read_only: true
+
+    tmpfs:
+      - /var/log/supervisord
+      - /var/run/supervisord
+      - /opt/eturnal/run
+      - /conf
+      - /tmp
+
+    cap_drop:
+      - NET_RAW
+
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
