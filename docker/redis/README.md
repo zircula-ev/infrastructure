@@ -39,6 +39,23 @@ Dadurch steht das Passwort nicht:
 Die Compose-Secret-Quelle `environment` wird von `docker compose` unterstützt,
 nicht von `docker stack deploy`. Dieser Stack wird mit Docker Compose betrieben.
 
+## Host-Voraussetzung
+
+Redis benötigt auf Linux `vm.overcommit_memory=1`, damit Hintergrundspeicherungen
+und AOF-Rewrites auch bei knappem freien Arbeitsspeicher zuverlässig forken
+können. Der Wert wird einmalig dauerhaft auf dem VPS gesetzt:
+
+```bash
+printf 'vm.overcommit_memory = 1\n' | \
+  sudo tee /etc/sysctl.d/99-redis.conf >/dev/null
+sudo sysctl --system
+sysctl vm.overcommit_memory
+```
+
+Die letzte Ausgabe muss `vm.overcommit_memory = 1` lauten. Dafür ist kein
+Neustart erforderlich. Die Einstellung gilt hostweit und wird deshalb nicht in
+`compose.yaml` gesetzt.
+
 ## Passwort erzeugen
 
 ```bash

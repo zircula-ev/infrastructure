@@ -13,7 +13,6 @@ Mindestens zu sichern sind:
 - logische PostgreSQL-Dumps aller produktiven Datenbanken
 - `/srv/zircula/caddy`
 - `/srv/zircula/authentik`
-- Portainer-Daten nur, falls der Dienst weiterbetrieben wird
 - produktive `.env`- und rclone-Konfiguration getrennt verschlüsselt
 - Repository und eine dokumentierte Liste der verwendeten Image-Versionen/Digests
 
@@ -78,4 +77,3 @@ Ein Backup gilt nur dann als erfolgreich, wenn dieser Restore-Test bestanden wur
 - maximal tolerierbare Wiederherstellungszeit (RTO)
 - verantwortliche Personen und Vertretung
 - Alarmierung bei fehlgeschlagenem oder veraltetem Backup
-

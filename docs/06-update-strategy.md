@@ -15,8 +15,7 @@ werden für diesen produktiven Einzelserver nicht eingesetzt.
 
 ### Container-Images
 
-- Authentik, Collabora, Nextcloud und Portainer auf getestete konkrete Versionen
-  pinnen.
+- Authentik, Collabora und Nextcloud auf getestete konkrete Versionen pinnen.
 - Caddy, PostgreSQL und Redis mindestens auf eine Major-Linie begrenzen; ein Pull
   darf nur im Wartungsfenster erfolgen, weil auch ein Major-Tag neue Patch-Images
   liefert.
@@ -95,5 +94,3 @@ Empfehlung für den kleinen Vereinsbetrieb:
 - Collabora: Dokument öffnen, bearbeiten und speichern
 - Authentik: Login, MFA, Recovery-Mail und angebundene Anwendung
 - Talk HPB: Welcome-Endpunkt und Anruf zwischen zwei getrennten Netzen
-- Portainer: nur über den administrativen Zugang erreichbar
-

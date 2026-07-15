@@ -16,8 +16,8 @@ Von außen erforderlich sind nur:
 | 443 | TCP/UDP | HTTPS und HTTP/3 durch Caddy |
 | 3478 | TCP/UDP | Nextcloud Talk TURN/STUN |
 
-Portainer 9000, PostgreSQL 5432, Redis 6379, Nextcloud 80, Collabora 9980 und Talk
-Signaling 8081 dürfen nicht öffentlich veröffentlicht werden.
+PostgreSQL 5432, Redis 6379, Nextcloud 80, Collabora 9980 und Talk Signaling 8081
+dürfen nicht öffentlich veröffentlicht werden.
 
 Docker-Portfreigaben werden vor UFW verarbeitet. Deshalb werden sowohl IPv4 als
 auch IPv6 mit `ss`, Docker-Portlisten und einem externen Portscan geprüft. Docker-
@@ -53,8 +53,6 @@ Besondere Ausnahmen:
 
 - Collabora benötigt derzeit `MKNOD`; diese Ausnahme bleibt dienstbezogen.
 - Authentik benötigt den Docker-Socket nur für automatisch verwaltete Outposts.
-- Portainer benötigt den Docker-Socket für seine Kernfunktion und wird deshalb
-  nur administrativ erreichbar gemacht oder entfernt.
 
 ## 4. Anwendungsschutz
 
@@ -84,6 +82,8 @@ Besondere Ausnahmen:
 - AppArmor aktiv lassen und Docker-Standardprofile nicht global abschalten
 - unnötige Pakete und Dienste entfernen
 - Zeitabgleich, ausreichend freier Speicher und persistente Logrotation überwachen
+- für Redis dauerhaft `vm.overcommit_memory=1` über `/etc/sysctl.d/99-redis.conf`
+  setzen und nach Host-Neustarts kontrollieren
 - Fail2ban zunächst nur für SSH und später anhand realer Nextcloud-/Authentik-Logs
   gezielt ergänzen; keine ungeprüften Filterregeln übernehmen
 
@@ -98,4 +98,3 @@ Monatlich:
 - Nextcloud-Administrationswarnungen und Security Scan
 - Authentik-Systemaufgaben und Warnungen
 - Backupalter und letzter erfolgreicher Restore-Test
-
