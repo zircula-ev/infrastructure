@@ -67,7 +67,7 @@ ersetzt keine Authentifizierung der darin betriebenen Dienste.
 ## Typische Startreihenfolge
 
 ```text
-Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authenik/Talk HPB → Caddy
+Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB → Caddy
 ```
 
 Bereits laufende, voneinander unabhängige Stacks werden bei normalen Updates nur
@@ -78,6 +78,8 @@ einzeln neu erstellt.
 - Änderungen erfolgen über kurze Feature-Branches und nachvollziehbare Commits.
 - Vor Deployments wird `docker compose config --quiet` ausgeführt.
 - Containerupdates erfolgen kontrolliert in einem Wartungsfenster.
+- Dependabot prüft die aktiven Compose-Stacks wöchentlich und erstellt nur Pull
+  Requests; automatisches Mergen oder Ausrollen ist nicht aktiviert.
 - Ein Snapshot ergänzt das Backup, ersetzt aber keinen getesteten Restore.
 - Server- und Sicherheitsmaßnahmen werden unter `docs/` dokumentiert.
 
