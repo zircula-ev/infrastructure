@@ -2,29 +2,21 @@
 
 ## Zweck
 
-`rclone` ist Bestandteil der Infrastruktur und wird für folgende Aufgaben eingesetzt:
+`rclone` wird derzeit für Migration und kontrollierte Datenübertragungen zwischen
+den bisherigen Nextcloud-Instanzen und der zentralen Nextcloud verwendet.
 
-- Migration bestehender Nextcloud-Instanzen
-- Backups der produktiven Nextcloud
-- Wiederherstellung und Datenübertragungen bei Bedarf
-
-Die eigentliche Konfiguration (`rclone.conf`) ist **nicht** Bestandteil des Git-Repositories und wird lokal auf dem Server gespeichert.
-
----
+Die Konfiguration `rclone.conf` enthält Zugangsdaten, liegt ausschließlich lokal
+auf dem Server und wird nicht versioniert.
 
 ## Konfigurierte Remotes
 
 | Remote | Zweck |
-|--------|-------|
-| `Werkhaus` | Alte WERK-Cloud (`cloud.werk-haus.org`) |
-| `nextcloud.zircula` | Alte Zircula-Cloud |
-| `cloud.zircula` | Produktive Nextcloud |
+|---|---|
+| `Werkhaus` | bisherige WERK-Cloud |
+| `nextcloud.zircula` | bisherige Zircula-Cloud |
+| `cloud.zircula` | zentrale produktive Nextcloud |
 
-Weitere Remotes (z. B. Backup-Ziele) werden ergänzt, sobald sie eingerichtet sind.
-
----
-
-## Test der Verbindung
+## Verbindungstest
 
 ```bash
 rclone lsd Werkhaus:
@@ -32,10 +24,36 @@ rclone lsd nextcloud.zircula:
 rclone lsd cloud.zircula:
 ```
 
----
+Ausgaben können Dateinamen und organisatorische Informationen enthalten und
+werden vor einer Weitergabe geprüft.
 
-## Hinweise
+## Migration
 
-- Zugangsdaten werden ausschließlich in der lokalen `rclone.conf` gespeichert.
-- Die Konfigurationsdatei wird **nicht** versioniert.
-- Vor Änderungen an bestehenden Remotes sollte ein Backup der Konfiguration erstellt werden.
+- zunächst ausschließlich lesende Listen- und Prüfbefehle
+- Kopier- und Synchronisationsrichtung vor jedem Lauf kontrollieren
+- `--dry-run` verwenden, bevor Daten verändert oder gelöscht werden könnten
+- keine Löschoptionen ohne separates Backup und Freigabe
+- nach der Übertragung Nextcloud-Dateien, Eigentümer und Indizes kontrollieren
+
+## Abgrenzung zum Backup
+
+rclone ist ein mögliches Transportwerkzeug, aber die vorhandenen Migrationsremotes
+sind noch kein produktives Backupkonzept. Ein Backup benötigt zusätzlich:
+
+- ein externes, getrenntes Ziel
+- clientseitige Verschlüsselung
+- definierte Aufbewahrung
+- Alarmierung bei Fehlern
+- PostgreSQL-Dumps und Nextcloud-Konfiguration
+- regelmäßige Restore-Tests
+
+Der verbindliche Backup- und Restore-Prozess wird in
+`docs/07-backup-restore.md` dokumentiert.
+
+## Sicherheit
+
+- `rclone.conf` restriktiv berechtigen und verschlüsselt sichern
+- vor Änderungen eine verschlüsselte Kopie der Konfiguration erstellen
+- Zugangsdaten niemals in Kommandozeilen, GitHub, Tickets oder Chats einfügen
+- Backupkonten nur mit den erforderlichen Rechten ausstatten
+

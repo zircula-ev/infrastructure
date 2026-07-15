@@ -6,16 +6,27 @@ services:
 
     restart: unless-stopped
 
-    command: redis-server --appendonly yes
+    user: redis
+
+    secrets:
+      - redis_password
+
+    entrypoint:
+      - /bin/sh
+      - /usr/local/bin/redis-secure-entrypoint.sh
 
     volumes:
       - /srv/zircula/redis:/data
+      - ./redis-secure-entrypoint.sh:/usr/local/bin/redis-secure-entrypoint.sh:ro
+
+    tmpfs:
+      - /tmp
 
     networks:
       - backend
 
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ["CMD-SHELL", "REDISCLI_AUTH=$$(cat /run/secrets/redis_password) redis-cli ping | grep -q PONG"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,3 +35,8 @@ networks:
   backend:
     external: true
     name: zircula_backend
+
+secrets:
+  redis_password:
+    environment: REDIS_PASSWORD
+

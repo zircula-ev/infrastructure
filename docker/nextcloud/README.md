@@ -1,0 +1,164 @@
+# Nextcloud
+
+Dieser Stack stellt die zentrale Nextcloud unter `cloud.zircula.org` bereit. Die
+organisatorische Trennung der Vereine erfolgt innerhalb dieser einen Instanz über
+Gruppen, Team Folders, Talk-Unterhaltungen, Collectives und App-Berechtigungen.
+
+## Architektur
+
+```text
+Browser ──HTTPS──► Caddy ──HTTP/Docker──► Nextcloud
+                                           ├── PostgreSQL
+                                           ├── Redis
+                                           ├── Collabora
+                                           └── Talk HPB
+```
+
+Nextcloud ist mit beiden externen Docker-Netzen verbunden:
+
+- `zircula_frontend`: Verbindung zu Caddy und öffentlich angebundenen Diensten
+- `zircula_backend`: Verbindung zu PostgreSQL und Redis
+
+Am Nextcloud-Container wird kein Hostport veröffentlicht. Der Zugriff erfolgt
+ausschließlich über Caddy.
+
+## Dateien und Daten
+
+- `compose.yaml` – Container, Volumes, Secrets und Netzwerke
+- `.env.example` – Vorlage ohne produktive Geheimnisse
+- `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
+- `php/conf.d/opcache.ini` – zusätzliche PHP-OPcache-Konfiguration
+- `/srv/zircula/nextcloud/html` – Installation, Konfiguration und Apps
+- `/srv/zircula/nextcloud/data` – Nutzdaten
+
+Backup und Restore müssen `html`, `data` und die PostgreSQL-Datenbank gemeinsam
+berücksichtigen.
+
+## Voraussetzungen
+
+1. `zircula_frontend` und `zircula_backend` existieren.
+2. PostgreSQL und Redis laufen und sind im Backend-Netz erreichbar.
+3. Datenbank- und Redis-Zugangsdaten stimmen mit den jeweiligen Stacks überein.
+4. Caddy enthält die Route `cloud.zircula.org` auf `nextcloud:80`.
+5. Die Verzeichnisse unter `/srv/zircula/nextcloud` besitzen die erforderlichen
+   Eigentümer und Rechte.
+
+## Konfiguration
+
+```bash
+cp .env.example .env
+chmod 600 .env
+docker compose config --quiet
+docker compose up -d
+docker compose ps
+docker compose logs --tail=100 nextcloud
+```
+
+`docker compose config` kann ohne `--quiet` interpolierte Geheimnisse ausgeben.
+Diese Ausgabe darf nicht in Tickets, Chats oder das Repository kopiert werden.
+
+## Redis-Authentifizierung einführen
+
+Redis und Nextcloud verwenden dasselbe zufällige Passwort. Docker Compose stellt
+es beiden Containern als Datei unter `/run/secrets/redis_password` bereit. Das
+Passwort wird weder in der Compose-Datei noch als Redis-Prozessargument abgelegt.
+
+Auf dem VPS einmalig erzeugen:
+
+```bash
+openssl rand -hex 32
+```
+
+Den Wert als `REDIS_PASSWORD` in diese beiden lokalen Dateien eintragen:
+
+- `docker/redis/.env`
+- `docker/nextcloud/.env`
+
+Danach beide Dateien absichern:
+
+```bash
+chmod 600 docker/redis/.env docker/nextcloud/.env
+```
+
+Die Umstellung erfolgt in einem kurzen Wartungsfenster. Zuerst beide
+Konfigurationen prüfen, dann Redis und unmittelbar danach Nextcloud neu erstellen:
+
+```bash
+cd /opt/zircula/git/infrastructure/docker/redis
+docker compose config --quiet
+
+cd /opt/zircula/git/infrastructure/docker/nextcloud
+docker compose config --quiet
+
+cd /opt/zircula/git/infrastructure/docker/redis
+docker compose up -d
+
+cd /opt/zircula/git/infrastructure/docker/nextcloud
+docker compose up -d
+```
+
+Prüfung ohne Ausgabe des Passworts:
+
+```bash
+cd /opt/zircula/git/infrastructure/docker/redis
+docker compose ps
+
+cd /opt/zircula/git/infrastructure/docker/nextcloud
+docker compose exec --user www-data nextcloud php occ status
+docker compose logs --tail=100 nextcloud
+```
+
+Bei einem abweichenden Passwort bleibt Redis gesund, aber Nextcloud protokolliert
+Authentifizierungsfehler. In diesem Fall beide lokalen `.env` vergleichen, ohne
+die Werte weiterzugeben, und nur Nextcloud erneut erstellen.
+
+## OCC und Hintergrundjobs
+
+```bash
+docker compose exec --user www-data nextcloud php occ status
+docker compose exec --user www-data nextcloud php occ background:cron
+```
+
+Für den produktiven Betrieb muss in Nextcloud **Cron** als Hintergrundjob-Modus
+aktiv sein. Der tatsächlich verwendete Scheduler – Host-Cron oder separater
+Cron-Container – muss überwacht und dokumentiert werden.
+
+## Sicherheit
+
+- keine Warnungen in **Administrationseinstellungen → Übersicht**
+- MFA für Administratoren und Break-Glass-Konten
+- persönliche Administratorkonten statt geteilter Konten
+- Freigabelinks und App-Berechtigungen regelmäßig überprüfen
+- `allowed_admin_ranges` nach Einführung eines stabilen Admin-VPNs prüfen
+
+## Backup
+
+Ein vollständiges Backup besteht mindestens aus:
+
+1. `/srv/zircula/nextcloud/html`
+2. `/srv/zircula/nextcloud/data`
+3. logischem PostgreSQL-Dump der Nextcloud-Datenbank
+4. produktiven `.env` in einem getrennten, verschlüsselten Secrets-Backup
+
+Der Ablauf ist in `docs/07-backup-restore.md` beschrieben. Ein Backup gilt erst
+nach einem erfolgreichen Restore-Test als betriebsbereit.
+
+## Updates
+
+Nextcloud-Major-Versionen werden nacheinander installiert. Vor jedem Update werden
+Release Notes und App-Kompatibilität geprüft und ein konsistentes Backup erstellt.
+
+```bash
+docker compose pull
+docker compose up -d
+docker compose exec --user www-data nextcloud php occ status
+```
+
+Nachtests:
+
+- Login, Dateizugriff und Synchronisation
+- Team Folders und Collectives
+- Office-Dokument öffnen und speichern
+- Talk-Testanruf aus zwei getrennten Netzen
+- Cron und Administrationseinstellungen ohne neue Warnungen
+

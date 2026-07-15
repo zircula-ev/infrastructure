@@ -1,193 +1,97 @@
-# 04 – Current Status
+# 04 – Aktueller Stand
+
+Stand: 15.07.2026
 
 ## Ziel
 
-Aufbau einer produktiven, selbst gehosteten digitalen Infrastruktur für Zircula e.V., WERK e.V. und die Objekt 218 GmbH.
-
-Die Plattform soll langfristig Dokumentenmanagement, Zusammenarbeit, Wissensmanagement und weitere Dienste zentral unter einer gemeinsamen Infrastruktur vereinen.
-
----
-
-# Infrastruktur
-
-## Basis
-
-- Ubuntu Server
-- SSH-Schlüssel und Benutzerverwaltung
-- Docker CE
-- Docker Compose
-- GitHub Repository
-- Gemeinsame Docker-Netzwerke
-  - `zircula_frontend`
-  - `zircula_backend`
-
----
-
-# Dienste
-
-## Caddy
-
-- Reverse Proxy
-- HTTPS über Let's Encrypt
-- Automatische Zertifikatsverwaltung
-- Produktive Domainstruktur
-
-## PostgreSQL
-
-- Eigener Docker-Stack
-- Persistente Daten unter `/srv/zircula/postgres`
-
-## Redis
-
-- Eigener Docker-Stack
-- Persistente Daten unter `/srv/zircula/redis`
-
----
-
-# Anwendungen
-
-## Nextcloud Hub
-
-- Eigener Docker-Stack
-- PostgreSQL
-- Redis
-- Reverse Proxy über Caddy
-- Produktive Domain vorbereitet (`cloud.zircula.org`)
-
-### Konfiguriert
-
-- Cron
-- SMTP
-- OPcache
-- Team Folders
-- Collectives
-- Deck
-- Office
-- Collabora Online
-- Standard-Apps bereinigt
-
-## Collabora Online
-
-- Eigener Docker-Stack
-- Reverse Proxy über Caddy
-- Eigene Domain (`office.zircula.org`)
-- WOPI vollständig eingerichtet
-
----
-
-# Architektur
+Eine gemeinsame selbst gehostete Kollaborationsplattform für Zircula e.V. und die
+angebundenen Organisationen. Die organisatorische Trennung erfolgt innerhalb
+einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 
 ## Infrastruktur
 
-Jeder Dienst besitzt einen eigenen Docker-Stack.
+- Ubuntu 26.04 LTS
+- Docker Engine und Docker Compose
+- Caddy als zentraler Reverse Proxy
+- gemeinsame externe Netze `zircula_frontend` und `zircula_backend`
+- PostgreSQL und Redis als getrennte Stacks
+- automatische Ubuntu-Sicherheitsupdates
+- UFW für IPv4 und IPv6
+- AppArmor und Docker-Standard-Seccomp aktiv
 
-Produktive Daten liegen unter
+## Anwendungen
 
-```
-/srv/zircula
-```
+### Nextcloud
 
-Die komplette Infrastruktur wird versioniert unter
+- produktiv unter `cloud.zircula.org`
+- PostgreSQL und Redis
+- Team Folders, Collectives, Deck und weitere Vereinsanwendungen
+- Collabora Online unter `office.zircula.org`
+- zentrale Benutzer- und Gruppenstruktur für beide Vereine
 
-```
-/opt/zircula/git/infrastructure
-```
+### Talk High Performance Backend
 
----
+- produktiv unter `talk.cloud.zircula.org`
+- Signaling, SFU sowie integriertes TURN/STUN
+- 3478/TCP und 3478/UDP öffentlich erreichbar
+- erfolgreicher Testanruf zwischen Vereins-WLAN und Mobilfunk
+- alter Stack `docker/nextcloud-talk` entfernt; maßgeblich ist `docker/talk-hpb`
 
-## Domainstrategie
+### Authentik
 
-Produktive Dienste werden unabhängig von ihrer technischen Implementierung benannt.
+- produktiv unter `auth.zircula.org`
+- eigener Datenbankbenutzer und eigene PostgreSQL-Datenbank
+- Break-Glass-Konto vorhanden
+- schrittweise SSO-Integration geplant
+- Docker-Socket des Workers vor produktiver Outpost-Nutzung erneut bewerten
 
-Beispiele:
+### Collabora
 
-- `cloud.zircula.org`
-- `office.zircula.org`
-- `vps.zircula.org`
+- produktiv unter `office.zircula.org`
+- WOPI mit der zentralen Nextcloud
+- keine direkte Hostport-Freigabe
 
-Dadurch bleibt die URL unabhängig von der eingesetzten Software.
+## Migration und Organisation
 
----
-
-## Berechtigungsmodell
-
-Die gemeinsame Datenstruktur basiert auf Team Folders.
-
-- klare organisatorische Trennung
-- gemeinsamer Besitz der Daten
-- ACLs nur dort, wo notwendig
-- keine privaten Administrator-Ordner als Datenbasis
-
----
-
-# Migration
-
-## Vorbereitungen abgeschlossen
-
-- neue Ordnerstruktur erstellt
-- Berechtigungskonzept definiert
+- gemeinsame Ordner- und Berechtigungsstruktur definiert
 - Team Folders eingerichtet
-- rclone eingerichtet
-- Migration der Alt-Clouds vorbereitet
+- rclone für die Migration der bisherigen Clouds vorbereitet
+- Datenmigration und organisatorisches Onboarding werden getrennt vom
+  Infrastrukturaufbau dokumentiert
 
-Die eigentliche Datenmigration wurde aus organisatorischen Gründen verschoben, bis beide bisherigen Clouds eingefroren sind.
+## Sicherheitsstand
 
----
+Positiv geprüft:
 
-# Dokumentation
+- nur erwartete öffentliche Ports
+- keine produktiven Datenbank- oder Cacheports am Host
+- automatische Sicherheitsupdates aktiv
+- SSH-Passwortanmeldung deaktiviert
+- AppArmor und Seccomp aktiv
+- keine fehlgeschlagenen systemd-Dienste
 
-Die Infrastruktur wird fortlaufend dokumentiert.
+Offen:
 
-Bereits dokumentiert sind unter anderem:
+- alle produktiven `.env` auf Modus 600 setzen
+- Root-SSH nach Test der Rückfallebene deaktivieren
+- `MaxAuthTries` reduzieren
+- Redis-Passwort gemeinsam mit Nextcloud einführen
+- Authentik-Docker-Socket anhand der Outpost-Nutzung minimieren
+- externes Backupziel und Restore-Test etablieren
+- Image- und Secret-Scanning automatisieren
 
-- Docker
-- Caddy
-- Nextcloud
-- Collabora
-- rclone
+## Produktionsreife
 
----
+Die Kerndienste sind funktionsfähig. Vollständig belastbare Produktionsreife wird
+erst angenommen, wenn ein externes Backup und ein erfolgreicher Restore-Test
+dokumentiert sind. Ein VPS-Snapshot allein erfüllt diese Anforderung nicht.
 
-# Offene Arbeiten
+## Nächste Schritte
 
-## Migration
+1. Redis-Authentifizierung ausrollen und Nextcloud testen.
+2. Host-Hardening für `.env` und SSH abschließen.
+3. Backupziel, Aufbewahrung und Restore-Test umsetzen.
+4. Dependabot und regelmäßige Image-Scans etablieren.
+5. SSO-Integration in Authentik schrittweise testen.
+6. Migration und Benutzer-Onboarding abschließen.
 
-- WERK-Cloud migrieren
-- Zircula-Cloud migrieren
-- Kalender übernehmen
-- Daten in neue Struktur überführen
-
-## Nextcloud
-
-- Collectives aufbauen
-- Benutzer-Onboarding
-- Arbeitsabläufe dokumentieren
-- App-Auswahl weiter optimieren
-
-## Infrastruktur
-
-- Backupkonzept nach `nctest`
-- Restore-Dokumentation
-- Monitoring
-- Hardening (z. B. Fail2ban)
-
-## Langfristig
-
-- Identity Management (Authentik evaluieren)
-- Single Sign-On
-- Weitere Dienste in die Infrastruktur integrieren
-
----
-
-# Projektstatus
-
-Die technische Infrastruktur kann bereits produktiv betrieben werden.
-
-Der aktuelle Schwerpunkt liegt nicht mehr auf der Serverinstallation, sondern auf
-
-- Migration der bestehenden Daten
-- organisatorischer Einführung
-- Dokumentation
-- Optimierung der Arbeitsabläufe
-
-Der Übergang in den Produktivbetrieb erfolgt nach Abschluss der Datenmigration.

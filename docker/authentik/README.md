@@ -1,165 +1,100 @@
 # Authentik
 
-Authentik ist der zentrale Identity Provider (IdP) der Zircula-Infrastruktur und bildet zukünftig die Grundlage für Single Sign-on (SSO), Benutzerverwaltung und Authentifizierung über verschiedene Dienste hinweg.
-
-## Status
-
-- Status: Testbetrieb (Feature Branch)
-- Domain: https://auth.zircula.org
-- Docker Stack: `docker/authentik`
-- Datenbank: PostgreSQL (eigene Datenbank `authentik`)
-- Reverse Proxy: Caddy
-- TLS: Automatisch über Caddy
-
----
+Authentik ist der zentrale Identity Provider der Zircula-Infrastruktur. Der Dienst
+läuft produktiv unter `https://auth.zircula.org`; die Anbindung weiterer Dienste
+über OIDC oder SAML erfolgt schrittweise.
 
 ## Architektur
 
-Container:
+- `authentik-server` – Weboberfläche, API und Authentifizierung
+- `authentik-worker` – Hintergrundaufgaben und optionales Outpost-Management
+- PostgreSQL – eigene Datenbank und eigener Datenbankbenutzer
+- Caddy – TLS und Reverse Proxy auf `authentik-server:9000`
 
-- authentik-server
-- authentik-worker
+Der Server ist mit Frontend und Backend verbunden. Der Worker benötigt das
+Backend für PostgreSQL. Eine Frontend-Verbindung des Workers und der Docker-Socket
+sind nur erforderlich, wenn die eingesetzte Outpost-Konfiguration sie tatsächlich
+benötigt.
 
-Authentik nutzt die bestehende PostgreSQL-Instanz der Infrastruktur und besitzt eine eigene Datenbank sowie einen eigenen Datenbankbenutzer.
+## Dateien und Daten
 
-Redis wird in der verwendeten Authentik-Version nicht benötigt.
+- `compose.yaml` – Server, Worker, Volumes und Netzwerke
+- `.env.example` – Vorlage ohne produktive Geheimnisse
+- `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
+- `/srv/zircula/authentik/data` – Anwendungsdaten
+- `/srv/zircula/authentik/certs` – durch Authentik verwaltete Zertifikate
+- `/srv/zircula/authentik/templates` – angepasste Templates
 
----
+## Docker-Socket
 
-## Datenverzeichnisse
+Der Worker bindet derzeit `/var/run/docker.sock` ein und läuft dafür als root.
+Authentik verwendet diesen Zugriff ausschließlich für die automatische
+Bereitstellung und Verwaltung von Outposts. Der Socket verleiht dem Container
+praktisch administrative Rechte auf dem gesamten Docker-Host.
 
-```
-/srv/zircula/authentik/
-├── certs/
-├── data/
-└── templates/
-```
+Vor der produktiven Nutzung von Outposts wird entschieden:
 
----
+1. Wird kein automatisch verwalteter Outpost benötigt, werden Socket-Mount und
+   `user: root` entfernt.
+2. Wird die automatische Verwaltung benötigt, wird ein restriktiver Docker-
+   Socket-Proxy geprüft und der Zugriff dokumentiert.
 
-## Netzwerke
-
-- zircula_frontend
-- zircula_backend
-
----
+Diese Änderung erfolgt nicht ohne vorherige Prüfung der tatsächlich konfigurierten
+Outposts.
 
 ## Konfiguration
 
-Konfiguration erfolgt vollständig über die `.env`.
-
-Wichtige Bereiche:
-
-- Docker Image
-- PostgreSQL
-- SMTP
-- Secret Key
-
-Die Beispielkonfiguration befindet sich in:
-
-```
-.env.example
+```bash
+cp .env.example .env
+openssl rand -base64 60
+chmod 600 .env
+docker compose config --quiet
+docker compose up -d
+docker compose ps
 ```
 
-Produktive Zugangsdaten werden ausschließlich in:
+`AUTHENTIK_SECRET_KEY` darf nach der Inbetriebnahme nicht ohne geplante Migration
+geändert werden, da dies Sitzungen und kryptografische Funktionen beeinflusst.
 
-```
-.env
-```
+## Benutzerverwaltung
 
-gespeichert und nicht versioniert.
-
----
+- `akadmin` ausschließlich als Break-Glass-Konto
+- tägliche Administration über persönliche Konten
+- MFA für alle Administratorkonten
+- Break-Glass-Zugangsdaten offline und verschlüsselt verwahren
+- Anwendungsbindungen ausdrücklich konfigurieren; fehlende Bindungen können je
+  nach Anwendung allen Benutzern Zugriff gewähren
 
 ## Mail
 
-SMTP wird über Manitu bereitgestellt.
+SMTP ist für Wiederherstellung, Benachrichtigungen und E-Mail-Stages empfohlen.
+Wenn SMTP produktiv verwendet wird, müssen die tatsächlich benötigten
+`AUTHENTIK_EMAIL__*`-Variablen ohne Geheimwerte in `.env.example` ergänzt werden.
 
-Absender:
-
-```
-noreply@zircula.org
-```
-
-Konfiguration erfolgt über Umgebungsvariablen in der `.env`.
-
-Ein Funktionstest kann ausgeführt werden mit:
+Test:
 
 ```bash
 docker compose exec worker ak test_email <empfaenger@example.org>
 ```
 
----
-
-## Benutzerverwaltung
-
-Der während des Initial Setups erzeugte Benutzer `akadmin` bleibt als Notfallkonto bestehen.
-
-Empfohlenes Vorgehen:
-
-- `akadmin` ausschließlich als Break-Glass-Account verwenden
-- tägliche Administration über persönliche Administrator-Konten
-- MFA für alle Administratoren aktivieren
-
----
-
-## Start
-
-```bash
-docker compose up -d
-```
-
----
-
-## Stop
-
-```bash
-docker compose down
-```
-
----
-
-## Logs
-
-Server
+## Betrieb
 
 ```bash
 docker compose logs -f server
-```
-
-Worker
-
-```bash
 docker compose logs -f worker
 ```
 
----
-
 ## Updates
 
-Image aktualisieren:
+Authentik wird nur auf eine vorher geprüfte konkrete Version aktualisiert.
 
 ```bash
 docker compose pull
 docker compose up -d
+docker compose ps
+docker compose logs --tail=100 server worker
 ```
 
-Vor jedem Versionsupdate:
+Vor jedem Update: Release Notes, PostgreSQL-Backup und VPS-Snapshot prüfen. Danach
+Login, MFA, Recovery-Mail und mindestens eine angebundene Anwendung testen.
 
-- Changelog lesen
-- Datenbanksicherung erstellen
-- Snapshot des VPS erstellen
-
----
-
-## Integration (geplant)
-
-Authentik soll zukünftig unter anderem folgende Dienste zentral authentifizieren:
-
-- Nextcloud
-- Collabora (optional)
-- Pretix
-- Website / CMS
-- weitere zukünftige Dienste (OIDC/SAML)
-
-Die Einführung erfolgt schrittweise nach erfolgreicher Evaluation im Testbetrieb.
