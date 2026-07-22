@@ -18,6 +18,7 @@ services:
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER}
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_OUTPOSTS__DISCOVER: "false"
 
     shm_size: 512mb
 
@@ -38,8 +39,6 @@ services:
 
     restart: unless-stopped
 
-    user: root
-
     env_file:
       - .env
 
@@ -50,17 +49,16 @@ services:
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER}
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY}
+      AUTHENTIK_OUTPOSTS__DISCOVER: "false"
 
     shm_size: 512mb
 
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       - /srv/zircula/authentik/data:/data
       - /srv/zircula/authentik/certs:/certs
       - /srv/zircula/authentik/templates:/templates
 
     networks:
-      - frontend
       - backend
 
 networks:
