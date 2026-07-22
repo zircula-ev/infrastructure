@@ -90,3 +90,4 @@ Wichtige Dokumente:
 - `docs/05-security-hardening.md`
 - `docs/06-update-strategy.md`
 - `docs/07-backup-restore.md`
+- `docs/08-authentik-nextcloud-oidc.md`

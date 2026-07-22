@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 15.07.2026
+Stand: 22.07.2026
 
 ## Ziel
 
@@ -28,7 +28,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - PostgreSQL und Redis
 - Team Folders, Collectives, Deck und weitere Vereinsanwendungen
 - Collabora Online unter `office.zircula.org`
-- zentrale Benutzer- und Gruppenstruktur für beide Vereine
+- zentrale Benutzer- und Gruppenstruktur über Authentik und OIDC
 
 ### Talk High Performance Backend
 
@@ -42,8 +42,10 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 
 - produktiv unter `auth.zircula.org`
 - eigener Datenbankbenutzer und eigene PostgreSQL-Datenbank
-- Break-Glass-Konto vorhanden
-- schrittweise SSO-Integration geplant
+- getrenntes Authentik-Break-Glass-Konto ohne Nextcloud-Entitlements
+- Nextcloud über OIDC mit automatischer Benutzer- und Gruppenprovisionierung
+- anwendungsspezifische Entitlements für Organisations- und Administratorgruppen
+- WebAuthn und MFA-Pflicht für `Nextcloud Admins` erfolgreich getestet
 - Docker-Socket des Workers vor produktiver Outpost-Nutzung erneut bewerten
 
 ### Collabora
@@ -76,6 +78,8 @@ Positiv geprüft:
 - Redis läuft als UID/GID 999 und lehnt anonyme Zugriffe ab
 - `vm.overcommit_memory=1` dauerhaft gesetzt
 - Dependabot für die aktiven Compose-Stacks eingerichtet
+- OIDC-Provisionierung, Gruppenentzug, Adminentzug und Back-Channel-Logout geprüft
+- Authentik-Benutzer ohne freigegebene Entitlements erfolgreich abgewiesen
 
 Offen:
 
@@ -83,6 +87,9 @@ Offen:
 - externes Backupziel und Restore-Test etablieren
 - ergänzendes Image- und Secret-Scanning etablieren
 - ausstehende Ubuntu-Paketupdates im Wartungsfenster installieren
+- MFA und Recovery für beide Break-Glass-Konten abschließen
+- MFA-Governance für weitere Organisationsgruppen festlegen
+- OIDC-Offboarding sowie Desktop-/Mobile-Client und WebDAV testen
 
 ## Validierung vom 15.07.2026
 
@@ -103,6 +110,22 @@ VPS aus. Der Caddy-Wechsel von 2.10 auf 2.11 wird separat getestet. Der automati
 vorgeschlagene PostgreSQL-Wechsel von 17 auf 18 wurde abgelehnt, weil dafür eine
 geplante Major-Migration erforderlich ist.
 
+## Validierung vom 22.07.2026
+
+Für die Authentik- und Nextcloud-Integration wurden erfolgreich geprüft:
+
+- lokaler Nextcloud-Break-Glass-Login über `/login?direct=1`
+- OIDC-Login und automatische Neuanlage von `timohecken`
+- Übernahme von Benutzer-ID, Anzeigename, E-Mail-Adresse und Gruppen
+- Entzug und erneute Vergabe einer Organisationsgruppe
+- Entzug und erneute Vergabe der Nextcloud-Administratorrechte
+- Abweisung eines Authentik-Kontos ohne Nextcloud-Entitlements
+- Back-Channel-Logout von Authentik nach Nextcloud
+- WebAuthn für das persönliche Administratorkonto
+
+Details und Betriebsverfahren stehen in
+`docs/08-authentik-nextcloud-oidc.md`.
+
 ## Produktionsreife
 
 Die Kerndienste sind funktionsfähig. Vollständig belastbare Produktionsreife wird
@@ -116,4 +139,5 @@ dokumentiert sind. Ein VPS-Snapshot allein erfüllt diese Anforderung nicht.
 3. Caddy 2.11 separat validieren und ausrollen.
 4. regelmäßige Image- und Secret-Scans ergänzen.
 5. Authentik-Docker-Socket anhand der Outpost-Nutzung minimieren.
-6. SSO-Integration, Migration und Benutzer-Onboarding fortführen.
+6. offene OIDC-Go-live-Gates und Benutzer-Onboarding abschließen.
+7. Migration der bisherigen Clouds durchführen.
