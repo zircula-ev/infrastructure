@@ -117,6 +117,17 @@ Geprüft wurden Nextcloud-Status, Dateibrowser, Dateioperationen, Talk sowie das
 Erstellen und Bearbeiten eines Dokuments über Collabora. In den Nextcloud-Logs
 traten keine Redis-Authentifizierungs- oder Verbindungsfehler auf.
 
+## Authentik und OIDC
+
+Reguläre Benutzer, Gruppen, Passwörter und MFA werden zentral in Authentik
+verwaltet. Nextcloud erzeugt Benutzer beim ersten OIDC-Login automatisch und
+übernimmt ausschließlich die für diese Anwendung definierten Entitlements.
+
+Der lokale Benutzer `nextcloudadmin` bleibt als getrenntes Break-Glass-Konto
+erhalten. Der direkte lokale Login ist unter `/login?direct=1` erreichbar. Die
+vollständige Konfiguration und die geprüften Rückfallwege sind in
+`docs/08-authentik-nextcloud-oidc.md` dokumentiert.
+
 ## OCC und Hintergrundjobs
 
 ```bash
