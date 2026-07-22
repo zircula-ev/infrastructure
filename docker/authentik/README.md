@@ -1,8 +1,9 @@
 # Authentik
 
 Authentik ist der zentrale Identity Provider der Zircula-Infrastruktur. Der Dienst
-läuft produktiv unter `https://auth.zircula.org`; die Anbindung weiterer Dienste
-über OIDC oder SAML erfolgt schrittweise.
+läuft produktiv unter `https://auth.zircula.org`. Nextcloud ist über OIDC
+angebunden; die Anbindung weiterer Dienste über OIDC oder SAML erfolgt
+schrittweise.
 
 ## Architektur
 
@@ -64,6 +65,17 @@ geändert werden, da dies Sitzungen und kryptografische Funktionen beeinflusst.
 - Break-Glass-Zugangsdaten offline und verschlüsselt verwahren
 - Anwendungsbindungen ausdrücklich konfigurieren; fehlende Bindungen können je
   nach Anwendung allen Benutzern Zugriff gewähren
+
+## Nextcloud OIDC
+
+Authentik ist die zentrale Quelle für reguläre Nextcloud-Benutzer, Gruppen,
+Passwörter und MFA. Benutzer werden beim ersten erfolgreichen OIDC-Login in
+Nextcloud erzeugt. Gruppen und Administratorrechte werden ausschließlich über
+anwendungsspezifische Entitlements übertragen.
+
+Konfiguration, Onboarding, Offboarding, Break-Glass-Verfahren und Testnachweise
+sind in `docs/08-authentik-nextcloud-oidc.md` dokumentiert. Client-Secrets,
+MFA-Schlüssel und Wiederherstellungscodes bleiben außerhalb von Git.
 
 ## Mail
 
