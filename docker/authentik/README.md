@@ -63,13 +63,22 @@ cd /opt/zircula/git/infrastructure/docker/authentik
 docker compose config --quiet
 docker compose run --rm --no-deps --entrypoint id worker
 
+docker compose run --rm --no-deps --entrypoint sh worker -c '
+  set -eu
+  for path in /data /certs /templates; do
+    test -r "$path"
+    test -w "$path"
+  done
+'
+
 sudo find /srv/zircula/authentik \
   -maxdepth 2 \
   -printf '%u:%g %m %p\n'
 ```
 
-Nur wenn Dateien in den drei Authentik-Verzeichnissen nicht für UID/GID 1000
-zugänglich sind, werden die Eigentümer kontrolliert korrigiert:
+Wenn der Lese-/Schreibtest erfolgreich endet, ist kein `chown` erforderlich.
+Nur wenn der Test wegen unpassender Eigentümer fehlschlägt und die Ausgabe von
+`find` dies bestätigt, werden die Eigentümer kontrolliert korrigiert:
 
 ```bash
 sudo chown -R 1000:1000 \
