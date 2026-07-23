@@ -66,8 +66,8 @@ Auf dem VPS aktiv und geprüft:
 - Alertmanager mit erfolgreichem Slack-Testalarm
 - Grafana unter `monitoring.zircula.org`
 - lokaler Grafana-Break-Glass-Login und Authentik-OIDC mit Admin-Mapping
-- versioniertes VPS-Basisdashboard; direkte Anzeige als Startdashboard ist
-  konfiguriert und wird nach dem nächsten Deployment geprüft
+- versioniertes VPS-Basisdashboard wird nach dem Login direkt als
+  Startdashboard angezeigt
 - keine öffentlichen Metrik- oder Administrationsports außer Grafana über Caddy
 
 Noch nicht ausgerollt ist Uptime Kuma auf `nctest`. Bis dahin gibt es keine vom
