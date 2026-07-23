@@ -12,9 +12,8 @@ nur im Netz `zircula_monitoring` erreichbar.
 
 Der Slack-Webhook wird über `slack_api_url_file` gelesen und erscheint dadurch
 nicht als Umgebungsvariable oder Kommandozeilenargument. Der konfigurierte
-Channel `#monitoring` muss vor dem Deployment zum vorhandenen Slack-Webhook
-passen; bei modernen Incoming Webhooks ist häufig der im Webhook hinterlegte
-Channel maßgeblich.
+Channel `#it-support` entspricht dem vorhandenen Slack-Webhook; bei modernen
+Incoming Webhooks ist häufig der im Webhook hinterlegte Channel maßgeblich.
 
 Compose erzeugt die Secret-Datei nicht automatisch und ist mit
 `create_host_path: false` absichtlich so konfiguriert, dass der Start bei einer

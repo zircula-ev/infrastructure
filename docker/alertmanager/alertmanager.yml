@@ -15,7 +15,7 @@ route:
 receivers:
   - name: slack
     slack_configs:
-      - channel: "#monitoring"
+      - channel: "#it-support"
         send_resolved: true
         username: Zircula Monitoring
         title: '{{ if eq .Status "firing" }}ALARM{{ else }}ENTWARNUNG{{ end }}: {{ .CommonLabels.alertname }}'
