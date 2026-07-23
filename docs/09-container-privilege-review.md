@@ -155,29 +155,31 @@ Rollback versehen.
 
 ## Laufzeitprüfung
 
-Nach dem Authentik-Deployment:
+Die Prüfung umfasst alle produktiven Anwendungs- und Monitoringcontainer:
 
 ```bash
-docker inspect --format \
-  '{{.Name}} user={{.Config.User}} privileged={{.HostConfig.Privileged}}' \
-  caddy nextcloud postgres redis collabora authentik-server authentik-worker talk-hpb
+containers=(
+  caddy nextcloud postgres redis collabora
+  authentik-server authentik-worker talk-hpb
+  node-exporter blackbox-exporter alertmanager prometheus grafana
+)
 
 docker inspect --format \
-  '{{.Name}}{{range .Mounts}} {{.Source}}:{{.Destination}}{{end}}' \
-  caddy nextcloud postgres redis collabora authentik-server authentik-worker talk-hpb
-
+  '{{.Name}} user={{.Config.User}} privileged={{.HostConfig.Privileged}} readonly={{.HostConfig.ReadonlyRootfs}} ports={{json .NetworkSettings.Ports}}' \
+  "${containers[@]}"
+docker inspect --format \
+  '{{.Name}}{{range .Mounts}} {{.Source}}:{{.Destination}}:rw={{.RW}}{{end}}' \
+  "${containers[@]}"
 docker inspect --format \
   '{{.Name}}{{range $name, $_ := .NetworkSettings.Networks}} {{$name}}{{end}}' \
-  caddy nextcloud postgres redis collabora authentik-server authentik-worker talk-hpb
+  "${containers[@]}"
 
 sudo ss -lntup
 sudo ufw status verbose
 ```
 
-Die gleiche Prüfung umfasst inzwischen auch `node-exporter`,
-`blackbox-exporter`, `alertmanager`, `prometheus` und `grafana`. Für diese
-Container werden Benutzer, Read-only-Root-Dateisystem, Capabilities, Mounts,
-Netze und fehlende Hostport-Freigaben kontrolliert.
+Dabei werden Benutzer, Read-only-Root-Dateisystem, Capabilities, Mounts, Netze
+und Hostport-Freigaben mit den jeweiligen Stack-READMEs abgeglichen.
 
 Erwartete öffentliche Ports:
 
