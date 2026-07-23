@@ -56,14 +56,22 @@ curl -fsS http://127.0.0.1:3001/ >/dev/null \
   && echo "Uptime Kuma lokal erreichbar"
 
 tailscale serve status
-sudo tailscale serve --bg http://127.0.0.1:3001
+sudo tailscale serve --bg --https=8443 http://127.0.0.1:3001
 tailscale serve status
 ```
 
-Die von Tailscale ausgegebene HTTPS-Adresse bleibt ausschließlich im Tailnet
-erreichbar. Sie wird nicht im öffentlichen DNS veröffentlicht. Der erste
-Statusaufruf stellt sicher, dass keine vorhandene Serve-Konfiguration unbemerkt
-ersetzt wird.
+Uptime Kuma ist danach ausschließlich im Tailnet unter
+`https://nctest.tailf7eaa5.ts.net:8443` erreichbar. Die bestehende
+Tailscale-Serve-Route auf HTTPS-Port 443 bleibt unverändert. Die Adresse wird
+nicht im öffentlichen DNS veröffentlicht. Der erste Statusaufruf stellt sicher,
+dass keine vorhandene Serve-Konfiguration unbemerkt ersetzt wird.
+
+Nur die Kuma-Route wird bei Bedarf wieder entfernt:
+
+```bash
+sudo tailscale serve --https=8443 off
+tailscale serve status
+```
 
 ## Erste Monitore
 
