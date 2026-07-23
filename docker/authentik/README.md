@@ -65,10 +65,13 @@ docker compose run --rm --no-deps --entrypoint id worker
 
 docker compose run --rm --no-deps --entrypoint sh worker -c '
   set -eu
-  for path in /data /certs /templates; do
+  for path in /data /certs; do
     test -r "$path"
     test -w "$path"
+    printf "read/write ok: %s\\n" "$path"
   done
+  test -r /templates
+  printf "read ok: /templates\\n"
 '
 
 sudo find /srv/zircula/authentik \
@@ -76,9 +79,11 @@ sudo find /srv/zircula/authentik \
   -printf '%u:%g %m %p\n'
 ```
 
-Wenn der Lese-/Schreibtest erfolgreich endet, ist kein `chown` erforderlich.
-Nur wenn der Test wegen unpassender Eigentümer fehlschlägt und die Ausgabe von
-`find` dies bestätigt, werden die Eigentümer kontrolliert korrigiert:
+`/data` und `/certs` müssen für UID/GID 1000 les- und schreibbar sein.
+`/templates` muss nur lesbar sein und kann deshalb `root:root 755` bleiben.
+Wenn der Test erfolgreich endet, ist kein `chown` erforderlich. Nur wenn der
+Test wegen unpassender Eigentümer fehlschlägt und die Ausgabe von `find` dies
+bestätigt, werden die Eigentümer kontrolliert korrigiert:
 
 ```bash
 sudo chown -R 1000:1000 \
