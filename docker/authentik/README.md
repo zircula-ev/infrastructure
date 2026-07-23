@@ -189,9 +189,12 @@ verwaltet. Der Worker liest `./blueprints` ausschließlich read-only unter
 versionierten Dateinamen unter `https://auth.zircula.org/branding/` aus.
 
 Der Blueprint identifiziert ausschließlich die vorhandene Brand mit der Domain
-`auth.zircula.org` und verwaltet Titel, Logo, Favicon, Custom CSS sowie das
-zweispaltige Layout der User Library. Default-Status, Flow-Zuweisungen,
-Zertifikate, Default Application und Flow-Hintergrund bleiben unberührt.
+`auth.zircula.org` und verwaltet Titel, Logo, Favicon, Custom CSS, das helle
+Farbschema, Deutsch als bevorzugte Oberflächensprache sowie das zweispaltige
+Layout der User Library. Default-Status, Flow-Zuweisungen, Zertifikate, Default
+Application und Flow-Hintergrund bleiben unberührt. Der native zweistufige
+Authentik-Login sowie MFA- und OIDC-Flows werden durch das Branding nicht
+verändert.
 
 Vor jeder CSS- oder Blueprint-Änderung:
 
@@ -206,6 +209,11 @@ angewendete Datenbankwerte nicht zurück. Der getestete Rückbau beendet zuerst
 die Blueprint-Reconciliation, stellt danach den geschützten Brand-Export wieder
 her und entfernt erst anschließend die Caddy-Assetroute. Die vollständige
 Prüfliste steht unter `branding/docs/integration-checklist.md`.
+
+Das Branding wurde am 23.07.2026 mit Authentik 2026.5.4 erfolgreich geprüft:
+persönlicher Login einschließlich WebAuthn/MFA, Nextcloud- und Grafana-OIDC,
+schmaler Viewport sowie die getrennten lokalen Break-Glass-Zugänge
+funktionieren.
 
 ## Benutzerverwaltung
 
