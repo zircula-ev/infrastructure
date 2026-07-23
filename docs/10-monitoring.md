@@ -39,11 +39,10 @@ Alertmanager, Prometheus und Grafana. Bestätigt wurden:
 - Authentik-OIDC mit erfolgreichem Admin-Rollenmapping
 - öffentliche Erreichbarkeit ausschließlich von Grafana über Caddy
 
-Die direkte Verwendung des VPS-Dashboards als Grafana-Startseite ist im
-Repository konfiguriert, aber auf dem VPS noch nicht ausgerollt. Uptime Kuma auf
-`nctest` ist ebenfalls noch nicht ausgerollt. Die Ablehnung eines
-Grafana-Benutzers ohne Entitlement und der OIDC-Logout werden noch als
-eigenständige Negativtests dokumentiert.
+Das VPS-Dashboard ist als Grafana-Startseite ausgerollt und wird nach dem
+Authentik-Login direkt angezeigt. Uptime Kuma auf `nctest` ist noch nicht
+ausgerollt. Die Ablehnung eines Grafana-Benutzers ohne Entitlement und der
+OIDC-Logout werden noch als eigenständige Negativtests dokumentiert.
 
 ## Getrennte Stacks
 
