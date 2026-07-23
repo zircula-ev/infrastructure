@@ -49,6 +49,8 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - WebAuthn und MFA-Pflicht für `Nextcloud Admins` erfolgreich getestet
 - Worker läuft ohne Root-Rechte, ohne Docker-Socket und nur im Backend-Netz
 - der vorhandene Embedded Outpost benötigt keinen Docker-Socket
+- versioniertes WERK × ZIRCULA Branding mit hellem Farbschema und deutscher
+  Oberfläche erfolgreich ausgerollt und getestet
 
 ### Collabora
 
@@ -164,6 +166,8 @@ Erfolgreich geprüft und auf dem VPS ausgerollt:
   Authentik-OIDC, Admin-Rollenmapping und provisioniertes Dashboard
 - Ablehnung eines Testbenutzers ohne Grafana-Entitlement durch
   `role_attribute_strict`; temporäre Binding und Testkonto anschließend entfernt
+- Authentik-Branding mit persönlichem WebAuthn/MFA-Login, Nextcloud- und
+  Grafana-OIDC, schmalem Viewport sowie getrennten lokalen Break-Glass-Zugängen
 
 ## Produktionsreife
 
