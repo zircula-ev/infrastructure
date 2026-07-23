@@ -43,18 +43,26 @@ deaktiviert.
 
 Überwacht werden:
 
+- Alertmanager
 - Authentik
+- Blackbox Exporter
 - Caddy
 - Collabora
+- Grafana
 - Nextcloud
+- Node Exporter
 - PostgreSQL
+- Prometheus
 - Redis
 - Talk HPB
+- Uptime Kuma auf `nctest`
 
-Für Images, deren Tag über Variablen zusammengesetzt wird, muss geprüft werden, ob
-Dependabot sie erkennt. Falls nicht, wird Renovate oder eine reine
-Benachrichtigungslösung wie Diun eingesetzt. Das Tool darf niemals direkt den
-Produktivserver aktualisieren.
+Die Verzeichnisse sind in `.github/dependabot.yml` ausdrücklich aufgeführt.
+Neue Einträge werden von Dependabot erst berücksichtigt, nachdem diese
+Konfiguration im Default-Branch `main` angekommen ist. Für Images, deren Tag über
+Variablen zusammengesetzt wird, muss zusätzlich geprüft werden, ob Dependabot sie
+erkennt. Falls nicht, wird Renovate oder eine reine Benachrichtigungslösung wie
+Diun eingesetzt. Das Tool darf niemals direkt den Produktivserver aktualisieren.
 
 Dependabot bewertet keine anwendungsspezifische Datenmigration. Insbesondere
 werden Major-Updates von Datenbanken niemals allein aufgrund eines grünen oder
@@ -64,9 +72,11 @@ konfliktfreien Pull Requests gemergt.
 
 ### Caddy 2.10 auf 2.11
 
-Der vorgeschlagene Wechsel bleibt für ein separates Wartungsfenster offen. Vor
-dem Merge werden die neue Caddy-Version und das bestehende Caddyfile validiert.
-Nach dem Rollout werden alle vier öffentlichen Domains und ihre Upstreams geprüft.
+Der Wechsel wurde am 23.07.2026 ausgerollt und mit den öffentlichen Anwendungen,
+Upstreams und TLS geprüft. Wird eine einzeln gebundene Konfigurationsdatei durch
+Git mit einer neuen Inode ersetzt, genügt ein Reload des bestehenden Containers
+nicht immer. In diesem Fall wird Caddy mit `docker compose up -d --force-recreate`
+neu erstellt und die geladene Konfiguration anschließend erneut geprüft.
 
 ### PostgreSQL 17 auf 18
 
@@ -132,5 +142,14 @@ Empfehlung für den kleinen Vereinsbetrieb:
 - PostgreSQL/Redis: Healthchecks und Nextcloud-Zugriff funktionieren
 - Nextcloud: Status, Cron, Administrationseinstellungen, Dateioperationen
 - Collabora: Dokument öffnen, bearbeiten und speichern
-- Authentik: Login, MFA, Recovery-Mail und angebundene Anwendung
+- Authentik: Login, MFA, Recovery-Mail, angebundene Anwendung und Worker-Healthcheck
 - Talk HPB: Welcome-Endpunkt und Anruf zwischen zwei getrennten Netzen
+- Node Exporter: Hostmetriken vorhanden, Mounts nur lesend, kein Hostport
+- Blackbox Exporter: `probe_success 1`, erwarteter HTTP-Status und TLS-Metrik
+- Alertmanager: Readiness und befristeter Testalarm bis zum Empfänger
+- Prometheus: `promtool`, geladene Regeln, alle erwarteten Targets und
+  Alertmanager-Verbindung
+- Grafana: API-Health, Datenquelle, Dashboard, lokaler Break-Glass-Login,
+  Authentik-OIDC und Rollenmapping
+- Uptime Kuma: öffentliche HTTP-/TCP-Prüfungen und Benachrichtigung; kein ICMP,
+  solange `NET_RAW` nicht ausdrücklich freigegeben ist
