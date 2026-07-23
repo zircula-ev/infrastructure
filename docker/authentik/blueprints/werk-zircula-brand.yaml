@@ -1,8 +1,8 @@
 # yaml-language-server: $schema=https://version-2026-5.goauthentik.io/blueprints/schema.json
 metadata:
-  name: WERK x ZIRCULA - Brand
+  name: WERK × ZIRCULA - Brand
   labels:
-    blueprints.goauthentik.io/description: Declarative WERK x ZIRCULA SSO branding
+    blueprints.goauthentik.io/description: Declarative WERK × ZIRCULA SSO branding
 version: 1
 
 entries:
@@ -11,7 +11,7 @@ entries:
     identifiers:
       domain: auth.zircula.org
     attrs:
-      branding_title: WERK x ZIRCULA - Zentrale Anmeldung
+      branding_title: WERK × ZIRCULA - Zentrale Anmeldung
       branding_logo: https://auth.zircula.org/branding/werk-x-zircula.v1.png
       branding_favicon: https://auth.zircula.org/branding/favicon.v1.svg
       branding_custom_css: |
