@@ -72,9 +72,57 @@ docker compose logs --tail=100 alertmanager
 
 ## Alarmtest
 
-Der Alarmtest erfolgt nach dem Prometheus-Deployment durch eine befristete
-Testregel. Nach erfolgreicher Slack-Zustellung wird die Testregel wieder entfernt.
-Ein produktiver Dienst wird dafür nicht gestoppt.
+Der folgende Test sendet einen befristeten Alarm direkt an die interne
+Alertmanager-API. Er prüft Container-Netz, Alertmanager-Konfiguration,
+Secret-Zugriff und die Zustellung nach Slack. Prometheus und dessen Regeln werden
+dabei bewusst nicht geprüft.
+
+Aus dem Alertmanager-Verzeichnis ausführen:
+
+```bash
+cd /opt/zircula/git/infrastructure/docker/alertmanager
+
+STARTS_AT="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+ENDS_AT="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%SZ')"
+
+docker run --rm --network zircula_monitoring \
+  curlimages/curl:8.16.0 \
+  --fail --silent --show-error \
+  --header 'Content-Type: application/json' \
+  --data "[{
+    \"labels\": {
+      \"alertname\": \"MonitoringPipelineTest\",
+      \"severity\": \"warning\",
+      \"instance\": \"manual-test\",
+      \"job\": \"manual-test\"
+    },
+    \"annotations\": {
+      \"summary\": \"Manueller Monitoring-Test\",
+      \"description\": \"Befristeter Test der Alertmanager-Slack-Zustellung\"
+    },
+    \"startsAt\": \"$STARTS_AT\",
+    \"endsAt\": \"$ENDS_AT\"
+  }]" \
+  http://alertmanager:9093/api/v2/alerts
+
+printf '\nTestalarm gültig bis %s\n' "$ENDS_AT"
+```
+
+Die erfolgreiche API-Annahme erzeugt bei `curl` keine Nutzdaten. Anschließend
+prüfen:
+
+```bash
+docker compose logs --since=5m alertmanager
+```
+
+Erwartet werden eine Slack-Nachricht ohne `permission denied` oder
+Zustellungsfehler und nach Ablauf des Zeitfensters eine Auflösung. Der Alarm
+läuft durch `endsAt` automatisch aus; keine Regel und kein produktiver Dienst
+wird verändert.
+
+Für einen vollständigen Test von Prometheus über Alertmanager bis Slack wird
+separat eine befristete Prometheus-Testregel verwendet. Sie wird vor dem Reload
+mit `promtool` geprüft und nach erfolgreicher Zustellung wieder entfernt.
 
 ## Update und Rollback
 
