@@ -24,6 +24,27 @@ Prometheus, Alertmanager und Grafana laufen auf demselben VPS wie die
 Produktivdienste. Sie liefern Ursachenanalyse und historische Werte, können aber
 einen vollständigen VPS-Ausfall nicht selbst nach außen melden.
 
+## Umsetzungsstand vom 23.07.2026
+
+Auf dem VPS ausgerollt und geprüft sind Node Exporter, Blackbox Exporter,
+Alertmanager, Prometheus und Grafana. Bestätigt wurden:
+
+- Hostmetriken und ausschließlich lesende Mounts im Node Exporter
+- erfolgreiche HTTP-, TLS- und Zertifikatsprüfung durch Blackbox Exporter
+- validierte Prometheus-Konfiguration, sechs Regeln und sieben erreichbare Targets
+- vier erfolgreiche öffentliche Probes
+- Alertmanager-Readiness und ein in Slack angekommener manueller Testalarm
+- Grafana-Health, provisionierte Prometheus-Datenquelle und VPS-Dashboard
+- lokaler Grafana-Break-Glass-Login
+- Authentik-OIDC mit erfolgreichem Admin-Rollenmapping
+- öffentliche Erreichbarkeit ausschließlich von Grafana über Caddy
+
+Die direkte Verwendung des VPS-Dashboards als Grafana-Startseite ist im
+Repository konfiguriert, aber auf dem VPS noch nicht ausgerollt. Uptime Kuma auf
+`nctest` ist ebenfalls noch nicht ausgerollt. Die Ablehnung eines
+Grafana-Benutzers ohne Entitlement und der OIDC-Logout werden noch als
+eigenständige Negativtests dokumentiert.
+
 ## Getrennte Stacks
 
 Jedes eigenständige Produkt besitzt einen eigenen Compose-Stack:
@@ -93,7 +114,9 @@ Erfasst werden zunächst:
 - Restlaufzeit der TLS-Zertifikate
 
 Prometheus bewahrt Werte standardmäßig 15 Tage und bis maximal 5 GB auf. Grafana
-provisioniert Datenquelle und Basisdashboard aus Git.
+provisioniert Datenquelle und Basisdashboard aus Git. Das Basisdashboard ist als
+Startdashboard konfiguriert, damit der Einzelserver nach dem Login direkt
+angezeigt wird.
 
 Anwendungsspezifische Metriken für Nextcloud, Authentik, PostgreSQL, Redis und
 Caddy folgen einzeln. Dafür werden keine Datenbankkonten, Docker-Socket-Mounts
