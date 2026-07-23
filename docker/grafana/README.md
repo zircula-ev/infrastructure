@@ -10,6 +10,7 @@ authentik als OpenID-Connect-Provider.
 - Grafana erreicht Prometheus über `zircula_monitoring`.
 - Grafana veröffentlicht keinen Hostport.
 - Die Prometheus-Datenquelle und Basisdashboards werden aus Git provisioniert.
+- Das provisionierte `Zircula VPS Overview` ist das serverweite Home-Dashboard.
 - Normale Benutzer werden ausschließlich über authentik angelegt.
 - Ein getrenntes lokales Grafana-Konto bleibt als Break-Glass-Zugang bestehen.
 
@@ -50,7 +51,8 @@ Gruppen gebunden. Für Administratoren gilt die bestehende MFA-Policy.
 ## Vorbereitung
 
 ```bash
-sudo install -d -o 472 -g 472 -m 750 /srv/zircula/grafana/data
+sudo install -d -m 750 /srv/zircula/grafana/data
+sudo chown 472:472 /srv/zircula/grafana/data
 
 cp .env.example .env
 chmod 600 .env
@@ -59,6 +61,8 @@ chmod 600 .env
 Der Daten-Bind-Mount verwendet `create_host_path: false`. Fehlt das vorbereitete
 Verzeichnis, bricht Compose ab, statt es unbemerkt als `root:root` anzulegen.
 Grafana schreibt im Container als UID/GID 472 nach `/var/lib/grafana`.
+Da diese UID auf dem Host keinen Kontonamen haben muss, kann `stat` den Besitzer
+als `UNKNOWN:UNKNOWN` anzeigen. Maßgeblich ist die numerische Ausgabe `472:472`.
 
 Client ID, Client Secret und Break-Glass-Zugangsdaten werden nur in der lokalen
 `.env` eingetragen. `GRAFANA_SECRET_KEY` wird einmalig mit mindestens 32

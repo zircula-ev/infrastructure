@@ -49,6 +49,21 @@ docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
 docker compose logs --tail=100 caddy
 ```
 
+Die `Caddyfile` ist als einzelne Datei in den Container gebunden. Ersetzt Git die
+Datei beim Branchwechsel oder Pull durch einen neuen Inode, kann ein laufender
+Container noch die vorherige Fassung sehen. Fehlt eine neue Route trotz
+erfolgreichem Reload in der Container-Datei, wird Caddy kontrolliert neu erstellt:
+
+```bash
+docker compose up -d --force-recreate caddy
+docker compose ps
+docker compose logs --since=2m caddy
+```
+
+Das Recreate übernimmt den aktuellen Bind-Mount und verursacht eine kurze
+Unterbrechung am Reverse Proxy. Zertifikatsdaten unter `/data` und die
+Laufzeitkonfiguration unter `/config` bleiben erhalten.
+
 Neue Routen werden erst aktiviert, wenn DNS gesetzt und der Zielcontainer im
 Frontend-Netz intern erreichbar ist. Für Grafana wird vor dem Reload zusätzlich
 `http://grafana:3000/api/health` aus dem Caddy-Container geprüft.
