@@ -91,3 +91,4 @@ Wichtige Dokumente:
 - `docs/06-update-strategy.md`
 - `docs/07-backup-restore.md`
 - `docs/08-authentik-nextcloud-oidc.md`
+- `docs/09-container-privilege-review.md`
