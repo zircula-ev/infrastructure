@@ -20,7 +20,10 @@ groups:
           description: "{{ $labels.instance }} schlägt seit mehr als fünf Minuten beim HTTPS-Test fehl."
 
       - alert: TLSCertificateExpiresSoon
-        expr: probe_ssl_earliest_cert_expiry{job="blackbox-https"} - time() < 14 * 24 * 60 * 60
+        expr: >-
+          (probe_ssl_earliest_cert_expiry{job="blackbox-https"} > 0)
+          and
+          (probe_ssl_earliest_cert_expiry{job="blackbox-https"} - time() < 14 * 24 * 60 * 60)
         for: 30m
         labels:
           severity: warning

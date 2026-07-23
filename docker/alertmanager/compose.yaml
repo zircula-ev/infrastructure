@@ -23,7 +23,12 @@ services:
 
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
-      - ./secrets/slack_webhook_url:/run/secrets/slack_webhook_url:ro
+      - type: bind
+        source: ./secrets/slack_webhook_url
+        target: /run/secrets/slack_webhook_url
+        read_only: true
+        bind:
+          create_host_path: false
       - /srv/zircula/alertmanager/data:/alertmanager
 
     networks:

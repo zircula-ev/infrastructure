@@ -52,7 +52,11 @@ services:
       - ALL
 
     volumes:
-      - /srv/zircula/grafana/data:/var/lib/grafana
+      - type: bind
+        source: /srv/zircula/grafana/data
+        target: /var/lib/grafana
+        bind:
+          create_host_path: false
       - ./provisioning:/etc/grafana/provisioning:ro
       - ./dashboards:/var/lib/grafana/dashboards:ro
 

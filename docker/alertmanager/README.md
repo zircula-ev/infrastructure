@@ -16,6 +16,12 @@ Channel `#monitoring` muss vor dem Deployment zum vorhandenen Slack-Webhook
 passen; bei modernen Incoming Webhooks ist häufig der im Webhook hinterlegte
 Channel maßgeblich.
 
+Compose erzeugt die Secret-Datei nicht automatisch und ist mit
+`create_host_path: false` absichtlich so konfiguriert, dass der Start bei einer
+fehlenden Datei abbricht. Dadurch wird an dieser Stelle kein root-eigenes
+Verzeichnis angelegt und kein leerer beziehungsweise unsicherer Ersatzwert
+verwendet.
+
 ## Vorbereitung
 
 ```bash

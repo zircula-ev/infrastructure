@@ -56,6 +56,10 @@ cp .env.example .env
 chmod 600 .env
 ```
 
+Der Daten-Bind-Mount verwendet `create_host_path: false`. Fehlt das vorbereitete
+Verzeichnis, bricht Compose ab, statt es unbemerkt als `root:root` anzulegen.
+Grafana schreibt im Container als UID/GID 472 nach `/var/lib/grafana`.
+
 Client ID, Client Secret und Break-Glass-Zugangsdaten werden nur in der lokalen
 `.env` eingetragen. `GRAFANA_SECRET_KEY` wird einmalig mit mindestens 32
 zufälligen Bytes erzeugt und danach nicht ohne geplante Migration geändert:

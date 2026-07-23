@@ -13,6 +13,13 @@ und ersetzt keine spätere unabhängige externe Überwachung.
 - Der Docker-Socket wird nicht eingebunden.
 - Die SQLite-Daten liegen lokal auf ZFS und nicht auf NFS.
 - Slack-Webhooks und Uptime-Kuma-Daten werden nicht versioniert.
+- Die erste Ausbaustufe verwendet ausschließlich HTTP(S)- und gegebenenfalls
+  TCP-Monitore. ICMP/Ping ist bewusst nicht aktiviert; deshalb bleiben alle
+  Linux-Capabilities einschließlich `NET_RAW` entfernt.
+
+Falls später ICMP fachlich erforderlich wird, werden zuerst Alternativen und ein
+isolierter Funktionstest geprüft. `NET_RAW` wird nur als einzeln dokumentierte
+Capability ergänzt und nicht vorsorglich freigeschaltet.
 
 ## Vorbereitung
 

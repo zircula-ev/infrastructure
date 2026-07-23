@@ -61,6 +61,27 @@ Ein lokaler, von Authentik getrennter Grafana-Serveradministrator bleibt als
 Break-Glass-Konto bestehen. OAuth-Auto-Login und das Ausblenden des Loginformulars
 werden erst nach dokumentiertem Break-Glass-Test bewertet.
 
+## Secrets und Erstinitialisierung
+
+Secrets werden absichtlich nicht automatisch erzeugt. Automatische Erzeugung bei
+jedem Deployment könnte bestehende Schlüssel ersetzen; fest eingebaute
+Standardwerte wären unsicher. Stattdessen werden sie einmalig lokal angelegt und
+danach außerhalb von Git verwahrt:
+
+| Komponente | Lokale Werte | Ablage |
+|---|---|---|
+| Node Exporter | keine Secrets | nur Versionswert in `.env` |
+| Blackbox Exporter | keine Secrets | nur Versionswert in `.env` |
+| Prometheus | derzeit keine Secrets | Aufbewahrungswerte in `.env` |
+| Alertmanager | Slack-Webhook | `secrets/slack_webhook_url`, Modus 600 |
+| Grafana | Break-Glass-Zugang, Secret Key, OIDC-Client | `.env`, Modus 600 |
+| Uptime Kuma | lokaler Admin und Slack-Webhook | Laufzeitdatenbank auf nctest |
+
+Das Kopieren einer `.env.example` erzeugt nur die dokumentierte lokale
+Konfigurationsdatei. Werte mit `CHANGE_ME` müssen vor dem Start ersetzt werden.
+Compose-Dateien erzeugen fehlende Secret-Dateien und besonders sensible
+Persistenzpfade nicht stillschweigend.
+
 ## Erste Ausbaustufe
 
 Erfasst werden zunächst:
