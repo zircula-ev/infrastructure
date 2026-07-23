@@ -73,7 +73,7 @@ danach außerhalb von Git verwahrt:
 | Node Exporter | keine Secrets | nur Versionswert in `.env` |
 | Blackbox Exporter | keine Secrets | nur Versionswert in `.env` |
 | Prometheus | derzeit keine Secrets | Aufbewahrungswerte in `.env` |
-| Alertmanager | Slack-Webhook | `secrets/slack_webhook_url`, Modus 600 |
+| Alertmanager | Slack-Webhook | `secrets/slack_webhook_url`, UID/GID 65534 und Modus 400 |
 | Grafana | Break-Glass-Zugang, Secret Key, OIDC-Client | `.env`, Modus 600 |
 | Uptime Kuma | lokaler Admin und Slack-Webhook | Laufzeitdatenbank auf nctest |
 
@@ -121,7 +121,7 @@ oder absichtlich nicht existierende Testziele.
 - nur lesende Host-Mounts für Node Exporter
 - keine Dateinamen, Benutzernamen, URLs mit Tokens oder andere hochkardinale
   Nutzdaten als Prometheus-Labels
-- Secrets ausschließlich lokal mit Modus 600
+- Secrets ausschließlich lokal und mit dienstbezogen minimalen Leserechten
 - keine vollständigen Requestpfade oder Inhalte in Dashboards
 - Zugriff auf Grafana nur für ausdrücklich berechtigte Authentik-Entitlements
 - MFA für Grafana-Administratoren

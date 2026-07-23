@@ -32,11 +32,34 @@ chmod 600 .env
 
 install -d -m 700 secrets
 install -m 600 /dev/null secrets/slack_webhook_url
-printf '%s' 'SLACK_WEBHOOK_HIER_EINTRAGEN' > secrets/slack_webhook_url
+
+read -rsp "Slack-Webhook: " SLACK_WEBHOOK
+printf '\n'
+printf '%s' "$SLACK_WEBHOOK" > secrets/slack_webhook_url
+unset SLACK_WEBHOOK
+
+sudo chown 65534:65534 \
+  secrets \
+  secrets/slack_webhook_url
+sudo chmod 750 secrets
+sudo chmod 400 secrets/slack_webhook_url
 ```
 
 Der echte Webhook darf nicht in Terminalausgaben, Git, Tickets oder Chats
-kopiert werden.
+kopiert werden. Alertmanager läuft als UID/GID 65534 und benötigt deshalb das
+Eigentum an der nur lesbaren Secret-Datei. Änderungen erfolgen künftig mit
+`sudo`; der Wert wird nicht zum interaktiven Benutzer zurückgelesen.
+
+Rechte prüfen, ohne den Inhalt auszugeben:
+
+```bash
+sudo stat -c '%U:%G %a %n' \
+  secrets \
+  secrets/slack_webhook_url
+```
+
+Erwartet werden `nobody:nogroup 750` für das Verzeichnis und
+`nobody:nogroup 400` für die Datei.
 
 ## Validierung und Start
 
