@@ -1,6 +1,6 @@
 # 09 – Container- und Privilegien-Review
 
-Stand: 22.07.2026
+Stand: 23.07.2026
 
 ## Ziel und Abgrenzung
 
@@ -24,12 +24,11 @@ Die grundlegende Architektur ist angemessen:
   Capabilities.
 - Redis läuft ausdrücklich als unprivilegierter Benutzer.
 
-Ein kritischer, vermeidbarer Privilegienpfad wurde gefunden: Der
-Authentik-Worker lief als Root und hatte den Docker-Socket eingebunden. Damit
-konnte eine Kompromittierung des Workers faktisch zu Root-Rechten auf dem Host
-führen.
+Ein kritischer, vermeidbarer Privilegienpfad wurde behoben: Der Authentik-Worker
+lief zuvor als Root und hatte den Docker-Socket eingebunden. Damit hätte eine
+Kompromittierung des Workers faktisch zu Root-Rechten auf dem Host führen können.
 
-## Umgesetzte Änderung im Hardening-Branch
+## Umgesetzte und validierte Änderung
 
 Für den aktuellen Funktionsumfang werden keine automatisch bereitgestellten
 Docker-Outposts benötigt. Nextcloud verwendet OIDC und der vorhandene
@@ -50,6 +49,11 @@ Der Worker behält:
 
 Deployment, Eigentümerprüfung, Funktionstest und Rollback stehen in
 `docker/authentik/README.md`.
+
+Die Änderung wurde am 23.07.2026 ausgerollt. Geprüft wurden UID/GID 1000,
+fehlender Docker-Socket, ausschließlich das Backend-Netz, der Worker-Healthcheck,
+die öffentlichen Live- und Ready-Endpunkte sowie ein erfolgreicher
+Authentik-Login.
 
 ## Bewertung der übrigen Stacks
 
@@ -118,9 +122,10 @@ Authentik-Worker-Hardening vermischt.
 
 ### Hohe Priorität
 
-- Authentik-Worker-Hardening deployen und vollständig testen.
-- Nach dem Deployment bestätigen, dass kein Container den Docker-Socket mountet,
-  sofern dies nicht ausdrücklich dokumentiert ist.
+- Der Authentik-Worker ist gehärtet und geprüft. Bei jeder späteren
+  Outpost-Änderung erneut bestätigen, dass kein Docker-Socket erforderlich ist.
+- Bestätigen, dass kein Container den Docker-Socket mountet, sofern dies nicht
+  ausdrücklich dokumentiert und separat abgesichert ist.
 - Öffentliche Ports von einem externen IPv4- und IPv6-System prüfen.
 - Mitglieder der Gruppen `docker` und `sudo` regelmäßig kontrollieren.
 
@@ -168,6 +173,11 @@ docker inspect --format \
 sudo ss -lntup
 sudo ufw status verbose
 ```
+
+Die gleiche Prüfung umfasst inzwischen auch `node-exporter`,
+`blackbox-exporter`, `alertmanager`, `prometheus` und `grafana`. Für diese
+Container werden Benutzer, Read-only-Root-Dateisystem, Capabilities, Mounts,
+Netze und fehlende Hostport-Freigaben kontrolliert.
 
 Erwartete öffentliche Ports:
 
