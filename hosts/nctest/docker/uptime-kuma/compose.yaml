@@ -1,0 +1,19 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:${UPTIME_KUMA_VERSION}
+
+    container_name: uptime-kuma
+
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:${UPTIME_KUMA_PORT}:3001"
+
+    volumes:
+      - ${UPTIME_KUMA_DATA_DIR}:/app/data
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL

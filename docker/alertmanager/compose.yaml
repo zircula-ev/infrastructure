@@ -1,0 +1,35 @@
+services:
+  alertmanager:
+    image: prom/alertmanager:${ALERTMANAGER_VERSION}
+
+    container_name: alertmanager
+
+    restart: unless-stopped
+
+    command:
+      - --config.file=/etc/alertmanager/alertmanager.yml
+      - --storage.path=/alertmanager
+
+    read_only: true
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    tmpfs:
+      - /tmp
+
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - ./secrets/slack_webhook_url:/run/secrets/slack_webhook_url:ro
+      - /srv/zircula/alertmanager/data:/alertmanager
+
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    external: true
+    name: zircula_monitoring

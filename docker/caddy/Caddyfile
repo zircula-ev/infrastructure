@@ -29,6 +29,15 @@ auth.zircula.org {
     reverse_proxy authentik-server:9000
 }
 
+monitoring.zircula.org {
+
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    }
+
+    reverse_proxy grafana:3000
+}
+
 talk.cloud.zircula.org {
 
     header {

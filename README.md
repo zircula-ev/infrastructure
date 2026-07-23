@@ -2,8 +2,8 @@
 
 Dieses private Repository dokumentiert und versioniert die Docker-Infrastruktur
 für die gemeinsame Nextcloud von Zircula e.V. und den angebundenen Organisationen.
-Produktive Daten und Geheimnisse liegen ausschließlich auf dem VPS und sind nicht
-Bestandteil des Repositories.
+Produktive Daten und Geheimnisse liegen ausschließlich auf den jeweiligen Hosts
+und sind nicht Bestandteil des Repositories.
 
 ## Architektur
 
@@ -13,14 +13,18 @@ Internet
   │                 ├── cloud.zircula.org ──────► Nextcloud
   │                 ├── office.zircula.org ─────► Collabora
   │                 ├── auth.zircula.org ───────► Authentik
+  │                 ├── monitoring.zircula.org ─► Grafana
   │                 └── talk.cloud.zircula.org ─► Talk HPB
   └── :3478 TCP/UDP ─────────────────────────────► Talk TURN/STUN
 
 Nextcloud ──► PostgreSQL
 Nextcloud ──► Redis
+Prometheus ─► Alertmanager, Node Exporter und Blackbox Exporter
+Grafana ────► Prometheus
+nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 ```
 
-## Docker-Stacks
+## Docker-Stacks auf dem VPS
 
 | Stack | Aufgabe | Netzwerke | Öffentliche Hostports |
 |---|---|---|---|
@@ -31,6 +35,15 @@ Nextcloud ──► Redis
 | `collabora` | Nextcloud Office | Frontend | keine |
 | `authentik` | Identity Provider | Frontend, Backend | keine |
 | `talk-hpb` | Signaling, SFU und TURN/STUN | Frontend | 3478/TCP+UDP |
+| `node-exporter` | Hostmetriken | Monitoring | keine |
+| `blackbox-exporter` | HTTPS-Prüfungen | Monitoring | keine |
+| `alertmanager` | Alarmrouting | Monitoring | keine |
+| `prometheus` | Metriken und Alarmregeln | Monitoring | keine |
+| `grafana` | Monitoringoberfläche | Frontend, Monitoring | keine |
+
+Hostbezogene Stacks außerhalb des VPS stehen unter `hosts/`. Der derzeit
+dokumentierte Host `nctest` betreibt Uptime Kuma als vorläufige externe
+Verfügbarkeitsprüfung.
 
 Jeder produktive Stack besitzt:
 
@@ -50,16 +63,18 @@ Jeder produktive Stack besitzt:
 
 - `zircula_frontend`: Dienste, die Caddy erreichen muss
 - `zircula_backend`: interne Kommunikation mit PostgreSQL und Redis
+- `zircula_monitoring`: Prometheus, Grafana, Alertmanager und Exporter
 
 Die Netzwerke werden einmalig auf dem Host erstellt und von den Stacks als
-`external: true` referenziert. Das Backend ist ein gemeinsames Vertrauensnetz und
-ersetzt keine Authentifizierung der darin betriebenen Dienste.
+`external: true` referenziert. Gemeinsame Netze sind Vertrauensbereiche und
+ersetzen keine Authentifizierung der darin betriebenen Dienste.
 
 ## Secrets
 
 - Produktive `.env` werden niemals committet.
-- Alle `.env` auf dem VPS besitzen Modus 600.
+- Alle `.env` auf den Hosts besitzen Modus 600.
 - Beispielwerte verwenden ausschließlich Platzhalter wie `CHANGE_ME`.
+- Secret-Dateien unter `secrets/` werden nicht versioniert.
 - Secrets werden getrennt erzeugt und nicht in Tickets, Chats oder Logs kopiert.
 - `docker compose config` wird bevorzugt mit `--quiet` ausgeführt, damit keine
   interpolierten Werte ausgegeben werden.
@@ -67,7 +82,8 @@ ersetzt keine Authentifizierung der darin betriebenen Dienste.
 ## Typische Startreihenfolge
 
 ```text
-Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB → Caddy
+Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB
+          → Monitoring-Exporter → Alertmanager → Prometheus → Grafana → Caddy
 ```
 
 Bereits laufende, voneinander unabhängige Stacks werden bei normalen Updates nur
@@ -92,3 +108,4 @@ Wichtige Dokumente:
 - `docs/07-backup-restore.md`
 - `docs/08-authentik-nextcloud-oidc.md`
 - `docs/09-container-privilege-review.md`
+- `docs/10-monitoring.md`

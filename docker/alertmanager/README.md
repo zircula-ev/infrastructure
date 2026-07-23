@@ -1,0 +1,64 @@
+# Alertmanager
+
+Alertmanager empfängt Prometheus-Alarme, gruppiert und dedupliziert sie und sendet
+sie zunächst an Slack. Der Dienst besitzt keinen öffentlichen Hostport und ist
+nur im Netz `zircula_monitoring` erreichbar.
+
+## Secret und Daten
+
+- `/srv/zircula/alertmanager/data` – Silences und Laufzeitdaten
+- `secrets/slack_webhook_url` – lokaler Slack-Webhook, niemals versionieren
+- `alertmanager.yml` – versionierte Routing- und Gruppierungsregeln
+
+Der Slack-Webhook wird über `slack_api_url_file` gelesen und erscheint dadurch
+nicht als Umgebungsvariable oder Kommandozeilenargument. Der konfigurierte
+Channel `#monitoring` muss vor dem Deployment zum vorhandenen Slack-Webhook
+passen; bei modernen Incoming Webhooks ist häufig der im Webhook hinterlegte
+Channel maßgeblich.
+
+## Vorbereitung
+
+```bash
+sudo install -d -o 65534 -g 65534 -m 750 \
+  /srv/zircula/alertmanager/data
+
+cp .env.example .env
+chmod 600 .env
+
+install -d -m 700 secrets
+install -m 600 /dev/null secrets/slack_webhook_url
+printf '%s' 'SLACK_WEBHOOK_HIER_EINTRAGEN' > secrets/slack_webhook_url
+```
+
+Der echte Webhook darf nicht in Terminalausgaben, Git, Tickets oder Chats
+kopiert werden.
+
+## Validierung und Start
+
+```bash
+docker compose run --rm --no-deps \
+  --entrypoint amtool alertmanager \
+  check-config /etc/alertmanager/alertmanager.yml
+
+docker compose config --quiet
+docker compose up -d
+docker compose ps
+docker compose logs --tail=100 alertmanager
+```
+
+## Alarmtest
+
+Der Alarmtest erfolgt nach dem Prometheus-Deployment durch eine befristete
+Testregel. Nach erfolgreicher Slack-Zustellung wird die Testregel wieder entfernt.
+Ein produktiver Dienst wird dafür nicht gestoppt.
+
+## Update und Rollback
+
+```bash
+docker compose pull
+docker compose up -d
+docker compose ps
+```
+
+Bei Fehlern wird die vorherige Image-Version wiederhergestellt. Silences und
+Laufzeitdaten bleiben dabei erhalten.

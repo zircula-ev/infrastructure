@@ -10,6 +10,7 @@ Zircula-Infrastruktur bereit.
 | `cloud.zircula.org` | `nextcloud:80` |
 | `office.zircula.org` | `collabora:9980` |
 | `auth.zircula.org` | `authentik-server:9000` |
+| `monitoring.zircula.org` | `grafana:3000` |
 | `talk.cloud.zircula.org` | `talk-hpb:8081` |
 
 Caddy ist ausschließlich mit `zircula_frontend` verbunden. Interne Zielports
@@ -48,6 +49,10 @@ docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
 docker compose logs --tail=100 caddy
 ```
 
+Neue Routen werden erst aktiviert, wenn DNS gesetzt und der Zielcontainer im
+Frontend-Netz intern erreichbar ist. Für Grafana wird vor dem Reload zusätzlich
+`http://grafana:3000/api/health` aus dem Caddy-Container geprüft.
+
 ## Sicherheit
 
 - ausschließlich Ports 80 und 443 am Host
@@ -55,6 +60,7 @@ docker compose logs --tail=100 caddy
 - HSTS für alle produktiven Domains
 - `/data` und `/config` persistent, aber nicht im Repository
 - keine Adminoberfläche des Docker-Hosts über Caddy veröffentlichen
+- Prometheus, Alertmanager und Exporter nicht über Caddy veröffentlichen
 
 `includeSubDomains` und `preload` setzen voraus, dass alle betroffenen Subdomains
 dauerhaft über gültiges HTTPS erreichbar sind. Neue Subdomains müssen vor der
@@ -72,5 +78,4 @@ docker compose exec caddy caddy validate --config /etc/caddy/Caddyfile
 docker compose logs --tail=100 caddy
 ```
 
-Nach einem Update werden alle vier öffentlichen Domains geprüft.
-
+Nach einem Update werden alle öffentlichen Domains geprüft.
