@@ -18,7 +18,7 @@ den dokumentierten Caddy- und Authentik-Deployment-Schritt.
 - `assets/werk-x-zircula.v1.png` – versioniertes Wort-/Bildlogo
 - `assets/favicon.v1.svg` – eigenständiges quadratisches Favicon
 - `css/tokens.css` – zentrale Design-Tokens
-- `css/authentik-custom.css` – spätere Quelle für `branding_custom_css`
+- `css/authentik-custom.css` – aktive, versionierte Quelle für `branding_custom_css`
 - `preview/index.html` – lokale Login-Vorschau
 - `preview/dashboard.html` – lokale User-Library-Vorschau
 - `docs/` – Quellen, technische Grenzen, Rollout- und Rollback-Prüfung
@@ -74,6 +74,26 @@ Die Aktivierung erfolgt erst nach:
 - Tastaturnavigation, Fokus, Kontrast und reduzierte Bewegung
 - Browserkonsole, CSP und fehlende Assets
 - Nextcloud- und Grafana-OIDC
+
+## Abnahme vom 23.07.2026
+
+Das Branding wurde auf Authentik 2026.5.4 produktionsnah abgenommen:
+
+- Anmeldung am persönlichen Authentik-Konto einschließlich WebAuthn/MFA
+- Nextcloud-Anmeldung über Authentik
+- Grafana-Anmeldung über Authentik einschließlich Rollenabbildung
+- Darstellung bei schmalem Viewport
+- getrennte lokale Break-Glass-Zugänge
+
+Die Brand erzwingt das helle Farbschema, verwendet Deutsch als bevorzugte
+Oberflächensprache und behält den nativen zweistufigen Authentik-Login bei.
+Authentifizierungs-, MFA- und OIDC-Flows wurden für das Branding nicht verändert.
+
+Die HTML-Dateien unter `preview/` bleiben Designreferenzen. Authentik kapselt
+Teile der Formularfelder in nicht exportiertem Shadow DOM; deshalb bleiben die
+nativen Eingabefelder erhalten. Das produktive CSS nähert Layout, Farben,
+Abstände, Logo und Karte der Referenz an, ohne fragile Eingriffe in die
+Anmeldelogik.
 
 ## Rollback
 
