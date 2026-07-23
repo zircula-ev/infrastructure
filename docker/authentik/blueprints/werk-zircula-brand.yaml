@@ -161,5 +161,7 @@ entries:
         }
       attributes:
         settings:
+          theme:
+            base: light
           layout:
             type: 2-column
