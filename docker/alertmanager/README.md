@@ -38,10 +38,7 @@ printf '\n'
 printf '%s' "$SLACK_WEBHOOK" > secrets/slack_webhook_url
 unset SLACK_WEBHOOK
 
-sudo chown 65534:65534 \
-  secrets \
-  secrets/slack_webhook_url
-sudo chmod 750 secrets
+sudo chown 65534:65534 secrets/slack_webhook_url
 sudo chmod 400 secrets/slack_webhook_url
 ```
 
@@ -58,8 +55,10 @@ sudo stat -c '%U:%G %a %n' \
   secrets/slack_webhook_url
 ```
 
-Erwartet werden `nobody:nogroup 750` für das Verzeichnis und
-`nobody:nogroup 400` für die Datei.
+Erwartet werden `timo:timo 700` für das Verzeichnis und `nobody:nogroup 400`
+für die Datei. Das Verzeichnis bleibt beim Deploymentbenutzer, damit Git und
+Compose den Pfad traversieren können; im Container wird ausschließlich die
+Datei eingebunden.
 
 ## Validierung und Start
 
