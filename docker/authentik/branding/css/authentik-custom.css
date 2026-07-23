@@ -1,0 +1,144 @@
+/* WERK × ZIRCULA branding for authentik 2025.4+.
+ * Source of truth for the Brand's branding_custom_css field.
+ * Prefer authentik variables and exported parts; keep direct selectors shallow.
+ */
+
+:root {
+  --werk-paper: #f7f3e8;
+  --werk-surface: #e5eadd;
+  --werk-surface-soft: #f2f5ef;
+  --werk-ink: #27302a;
+  --werk-ink-strong: #313831;
+  --werk-muted: #6e786b;
+  --werk-rule: rgba(39, 48, 42, 0.18);
+  --werk-action: #ff7477;
+  --werk-action-hover: #c94b42;
+  --werk-focus: #006eb7;
+  --werk-error: #a94b52;
+  --werk-font-display: "Helvetica Now Display", "Helvetica Now", Helvetica, Arial, sans-serif;
+  --werk-font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* authentik theming API */
+  --ak-font-family-sans-serif: var(--werk-font-mono);
+  --ak-global--Color--100: var(--werk-ink);
+  --ak-global--Color--200: var(--werk-muted);
+  --ak-global--BackgroundColor--100: var(--werk-paper);
+  --ak-global--BackgroundColor--200: var(--werk-surface);
+
+  /* PatternFly compatibility variables still consumed by authentik components. */
+  --pf-global--FontFamily--sans-serif: var(--werk-font-mono);
+  --pf-global--Color--100: var(--werk-ink);
+  --pf-global--Color--200: var(--werk-muted);
+  --pf-global--BackgroundColor--100: var(--werk-paper);
+  --pf-global--BackgroundColor--200: var(--werk-surface);
+  --pf-global--primary-color--100: var(--werk-action-hover);
+  --pf-global--primary-color--200: var(--werk-action);
+  --pf-global--link--Color: var(--werk-action-hover);
+  --pf-global--link--Color--hover: var(--werk-ink);
+  --pf-global--BorderColor--100: var(--werk-rule);
+  --pf-global--BorderRadius--sm: 4px;
+}
+
+html[data-theme="light"],
+html:not([data-theme]) {
+  color-scheme: light;
+  --ak-global--Color--100: var(--werk-ink);
+  --ak-global--Color--200: var(--werk-muted);
+  --ak-global--BackgroundColor--100: var(--werk-paper);
+  --ak-global--BackgroundColor--200: var(--werk-surface);
+}
+
+body {
+  background: linear-gradient(90deg, var(--werk-surface) 0 1.5rem, transparent 1.5rem), var(--werk-paper);
+  color: var(--werk-ink);
+  font-family: var(--werk-font-mono);
+}
+
+body::before {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  height: 6px;
+  background: var(--werk-action);
+  content: "";
+  pointer-events: none;
+}
+
+/* Officially exported authentik parts. Keep additional parts version-gated. */
+ak-library::part(card-header-icon) {
+  margin-block-end: var(--pf-global--spacer--md, 1rem);
+  color: var(--werk-action-hover);
+  font-size: 2rem;
+}
+
+/* Typography on light-DOM headings only; Shadow DOM remains variable-driven. */
+h1,
+h2,
+h3,
+.pf-c-title,
+.pf-v5-c-title,
+.pf-v6-c-title {
+  color: var(--werk-ink-strong);
+  font-family: var(--werk-font-display);
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+/* Fallbacks for light-DOM PatternFly controls. */
+.pf-c-button.pf-m-primary,
+.pf-v5-c-button.pf-m-primary,
+.pf-v6-c-button.pf-m-primary {
+  border-radius: 4px;
+  background: var(--werk-action);
+  color: var(--werk-ink);
+  font-family: var(--werk-font-mono);
+  font-weight: 700;
+}
+
+.pf-c-button.pf-m-primary:hover,
+.pf-v5-c-button.pf-m-primary:hover,
+.pf-v6-c-button.pf-m-primary:hover {
+  background: var(--werk-action-hover);
+  color: white;
+}
+
+.pf-c-card,
+.pf-v5-c-card,
+.pf-v6-c-card {
+  border: 1px solid var(--werk-rule);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--werk-paper) 88%, white);
+  box-shadow: 0 12px 34px rgba(39, 48, 42, 0.08);
+}
+
+:focus-visible {
+  outline: 2px solid var(--werk-focus);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  body {
+    background: linear-gradient(90deg, var(--werk-surface) 0 0.75rem, transparent 0.75rem), var(--werk-paper);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --werk-rule: rgba(39, 48, 42, 0.46);
+    --werk-muted: #4f584f;
+  }
+}

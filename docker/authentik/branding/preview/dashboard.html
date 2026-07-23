@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WERK × ZIRCULA – User Dashboard Preview</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ff7477'/%3E%3Cpath d='M16 16l32 32M48 16L16 48' stroke='%2327302a' stroke-width='9'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../css/tokens.css">
+    <style>
+      * { box-sizing: border-box; }
+      html, body { min-height: 100%; }
+      body {
+        margin: 0;
+        background: linear-gradient(90deg, var(--werk-surface) 0 clamp(12px, 2.5vw, 34px), transparent clamp(12px, 2.5vw, 34px)), var(--werk-paper);
+        color: var(--werk-ink); font-family: var(--werk-font-mono);
+      }
+      body::before { position: fixed; inset: 0 0 auto; z-index: 3; height: 6px; background: var(--werk-action); content: ""; }
+      header {
+        display: flex; align-items: center; justify-content: space-between; min-height: 86px;
+        padding: 1.15rem clamp(1.5rem, 6vw, 5rem); border-bottom: 1px solid var(--werk-rule);
+        background: rgba(247,243,232,.94);
+      }
+      .logo { width: min(250px, 48vw); height: auto; }
+      .user { display: flex; align-items: center; gap: .75rem; color: var(--werk-muted); font-size: 11px; }
+      .avatar { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--werk-rule); background: var(--werk-surface); color: var(--werk-ink); font-weight: 700; }
+      main { width: min(1120px, calc(100% - 3rem)); margin: 0 auto; padding: clamp(2.5rem, 7vw, 5rem) 0; }
+      .eyebrow { margin: 0 0 .7rem; color: var(--werk-action-hover); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+      h1 { margin: 0; color: var(--werk-ink-strong); font-family: var(--werk-font-display); font-size: clamp(36px, 6vw, 56px); font-weight: 900; line-height: 1.08; }
+      .intro { max-width: 640px; margin: 1rem 0 2.2rem; color: var(--werk-muted); font-size: 13px; line-height: 20px; }
+      .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+      .toolbar strong { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+      .search { min-height: 40px; width: min(320px, 52vw); padding: .6rem .8rem; border: 1px solid var(--werk-rule); border-radius: 4px; background: #fffdf7; color: var(--werk-ink); font: inherit; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+      .app {
+        display: grid; grid-template-columns: 58px minmax(0, 1fr) auto; align-items: center; gap: 1rem;
+        min-height: 124px; padding: 1.25rem; border: 1px solid var(--werk-rule); background: rgba(247,243,232,.94);
+        color: inherit; text-decoration: none; transition: border-color .15s ease, background .15s ease, transform .15s ease;
+      }
+      .app:hover { border-color: var(--werk-action-hover); background: var(--werk-surface-soft); transform: translateY(-2px); }
+      .icon { display: grid; place-items: center; width: 58px; height: 58px; background: var(--app-color); color: var(--werk-ink); font-family: var(--werk-font-display); font-size: 22px; font-weight: 900; }
+      .app h2 { margin: 0; color: var(--werk-ink-strong); font-family: var(--werk-font-display); font-size: 22px; font-weight: 900; }
+      .app p { margin: .35rem 0 0; color: var(--werk-muted); font-size: 11px; line-height: 17px; }
+      .arrow { color: var(--werk-action-hover); font-size: 20px; }
+      footer { padding: 1.5rem; border-top: 1px solid var(--werk-rule); color: var(--werk-muted); font-size: 10px; text-align: center; }
+      @media (max-width: 700px) {
+        body { background: linear-gradient(90deg, var(--werk-surface) 0 12px, transparent 12px), var(--werk-paper); }
+        header { min-height: 72px; padding: 1rem 1.25rem; }
+        .user span { display: none; }
+        main { width: calc(100% - 2.5rem); padding: 2.5rem 0; }
+        .toolbar { align-items: stretch; flex-direction: column; }
+        .search { width: 100%; }
+        .grid { grid-template-columns: 1fr; }
+        .app { grid-template-columns: 48px minmax(0, 1fr) auto; min-height: 108px; padding: 1rem; }
+        .icon { width: 48px; height: 48px; font-size: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../assets/werk-x-zircula.png" alt="WERK. × ZIRCULA">
+      <div class="user"><span>timo@example.org</span><div class="avatar" aria-label="Benutzermenü">TK</div></div>
+    </header>
+    <main>
+      <p class="eyebrow">Zentrale Anmeldung</p>
+      <h1>Deine Anwendungen.</h1>
+      <p class="intro">Alle Dienste, für die dein Konto freigeschaltet ist. Die echten Anwendungskarten und Berechtigungen werden weiterhin von Authentik verwaltet.</p>
+      <div class="toolbar"><strong>4 Anwendungen</strong><input class="search" type="search" placeholder="Anwendungen durchsuchen" aria-label="Anwendungen durchsuchen"></div>
+      <section class="grid" aria-label="Anwendungen">
+        <a class="app" href="#" style="--app-color:#5ec8c6"><span class="icon">NC</span><div><h2>Nextcloud</h2><p>Dateien, Kalender und Zusammenarbeit</p></div><span class="arrow">↗</span></a>
+        <a class="app" href="#" style="--app-color:#b0bca9"><span class="icon">WK</span><div><h2>WERK</h2><p>Interne Plattform und Werkzeuge</p></div><span class="arrow">↗</span></a>
+        <a class="app" href="#" style="--app-color:#ff7477"><span class="icon">ZI</span><div><h2>ZIRCULA</h2><p>Organisation und gemeinsame Dienste</p></div><span class="arrow">↗</span></a>
+        <a class="app" href="#" style="--app-color:#e5eadd"><span class="icon">+</span><div><h2>Weitere Dienste</h2><p>Platzhalter für zukünftige SSO-Anwendungen</p></div><span class="arrow">↗</span></a>
+      </section>
+    </main>
+    <footer>WERK × ZIRCULA · Zentrale Anmeldung über authentik</footer>
+  </body>
+</html>
