@@ -1,6 +1,6 @@
 services:
   node-exporter:
-    image: prom/node-exporter:${NODE_EXPORTER_VERSION}
+    image: prom/node-exporter:v1.11.1
 
     container_name: node-exporter
 

@@ -145,9 +145,11 @@ docker compose up -d
 docker compose logs --tail=100 talk-hpb
 ```
 
-Vor Updates: Snapshot bzw. Backup prüfen, Release Notes lesen und nach dem
-Update den Welcome-Endpunkt sowie einen Testanruf mit zwei getrennten Netzen
-prüfen.
+Die dokumentierte `latest`-Ausnahme steht direkt in `compose.yaml`. Dependabot
+kann daraus keine neue Versionsnummer ableiten; deshalb werden Release Notes und
+der tatsächlich geladene Digest manuell geprüft. Vor Updates: Snapshot
+beziehungsweise Backup prüfen und danach den Welcome-Endpunkt sowie einen
+Testanruf mit zwei getrennten Netzen prüfen.
 
 ## Nicht enthalten
 

@@ -1,6 +1,6 @@
 services:
   nextcloud:
-    image: nextcloud:${NEXTCLOUD_VERSION}
+    image: nextcloud:34.0.1-apache
 
     container_name: nextcloud
 

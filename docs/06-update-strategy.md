@@ -59,10 +59,12 @@ deaktiviert.
 
 Die Verzeichnisse sind in `.github/dependabot.yml` ausdrücklich aufgeführt.
 Neue Einträge werden von Dependabot erst berücksichtigt, nachdem diese
-Konfiguration im Default-Branch `main` angekommen ist. Für Images, deren Tag über
-Variablen zusammengesetzt wird, muss zusätzlich geprüft werden, ob Dependabot sie
-erkennt. Falls nicht, wird Renovate oder eine reine Benachrichtigungslösung wie
-Diun eingesetzt. Das Tool darf niemals direkt den Produktivserver aktualisieren.
+Konfiguration im Default-Branch `main` angekommen ist. Image und Tag stehen
+direkt in den jeweiligen Compose-Dateien; variable Tags aus lokalen
+`.env`-Dateien werden vermieden, weil Dependabot sie nicht zuverlässig als
+aktualisierbare Abhängigkeit erkennt. Die dokumentierte Ausnahme
+`aio-talk:latest` benötigt weiterhin eine manuelle Digest- und Release-Prüfung.
+Dependabot darf niemals direkt den Produktivserver aktualisieren.
 
 Dependabot bewertet keine anwendungsspezifische Datenmigration. Insbesondere
 werden Major-Updates von Datenbanken niemals allein aufgrund eines grünen oder

@@ -162,8 +162,10 @@ nach einem erfolgreichen Restore-Test als betriebsbereit.
 
 ## Updates
 
-Nextcloud-Major-Versionen werden nacheinander installiert. Vor jedem Update werden
-Release Notes und App-Kompatibilität geprüft und ein konsistentes Backup erstellt.
+Nextcloud-Major-Versionen werden nacheinander installiert. Die Image-Version steht
+direkt in `compose.yaml`, damit Dependabot sie erkennen kann. Vor jedem Update
+werden Release Notes und App-Kompatibilität geprüft und ein konsistentes Backup
+erstellt.
 
 ```bash
 docker compose pull

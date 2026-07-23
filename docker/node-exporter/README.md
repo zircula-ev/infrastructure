@@ -24,9 +24,6 @@ erzeugen.
 sudo install -d -o root -g root -m 755 \
   /srv/zircula/node-exporter/textfile
 
-cp .env.example .env
-chmod 600 .env
-
 docker compose config --quiet
 docker compose up -d
 docker compose ps
@@ -47,8 +44,9 @@ Docker-Socket und `false` für alle Host-Mounts in der Spalte `RW`.
 
 ## Update und Rollback
 
-Die Version wird nur über `.env.example` und die lokale `.env` geändert. Vor dem
-Update werden Release Notes und Prometheus-Kompatibilität geprüft.
+Die Image-Version steht direkt in `compose.yaml`, damit Dependabot sie erkennen
+und als Pull Request aktualisieren kann. Vor dem Update werden Release Notes und
+Prometheus-Kompatibilität geprüft.
 
 ```bash
 docker compose pull

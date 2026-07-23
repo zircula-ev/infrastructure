@@ -27,9 +27,6 @@ verwendet.
 sudo install -d -o 65534 -g 65534 -m 750 \
   /srv/zircula/alertmanager/data
 
-cp .env.example .env
-chmod 600 .env
-
 install -d -m 700 secrets
 install -m 600 /dev/null secrets/slack_webhook_url
 

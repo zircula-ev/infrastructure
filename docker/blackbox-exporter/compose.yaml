@@ -1,6 +1,6 @@
 services:
   blackbox-exporter:
-    image: prom/blackbox-exporter:${BLACKBOX_EXPORTER_VERSION}
+    image: prom/blackbox-exporter:v0.28.0
 
     container_name: blackbox-exporter
 

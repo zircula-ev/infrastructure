@@ -10,9 +10,6 @@ nur im Netz `zircula_monitoring` erreichbar.
 ## Start und Prüfung
 
 ```bash
-cp .env.example .env
-chmod 600 .env
-
 docker compose config --quiet
 docker compose up -d
 docker compose ps
@@ -38,5 +35,5 @@ docker compose up -d
 docker compose ps
 ```
 
-Bei Fehlern wird die vorherige Version in `.env` wiederhergestellt und der Stack
-erneut erstellt.
+Bei Fehlern wird die vorherige Image-Version in `compose.yaml` wiederhergestellt
+und der Stack erneut erstellt.

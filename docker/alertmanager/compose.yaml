@@ -1,6 +1,6 @@
 services:
   alertmanager:
-    image: prom/alertmanager:${ALERTMANAGER_VERSION}
+    image: prom/alertmanager:v0.32.1
 
     container_name: alertmanager
 

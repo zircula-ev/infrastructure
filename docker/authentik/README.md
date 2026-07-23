@@ -221,7 +221,8 @@ docker compose logs -f worker
 
 ## Updates
 
-Authentik wird nur auf eine vorher geprüfte konkrete Version aktualisiert.
+Authentik wird nur auf eine vorher geprüfte konkrete Version aktualisiert. Die
+Image-Version steht direkt in `compose.yaml`, damit Dependabot sie erkennen kann.
 
 ```bash
 docker compose pull
