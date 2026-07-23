@@ -1,8 +1,8 @@
 # WERK × ZIRCULA – Authentik-Branding
 
-Dieses Verzeichnis enthält den versionierten, noch nicht aktivierten
-Branding-Entwurf für Authentik. Die Dateien allein verändern weder die laufende
-Instanz noch Caddy.
+Dieses Verzeichnis enthält das versionierte Branding für Authentik. Die Dateien
+allein verändern die laufende Instanz nicht; Laufzeitwirkung entsteht erst durch
+den dokumentierten Caddy- und Authentik-Deployment-Schritt.
 
 ## Stand und Ziel
 
@@ -26,7 +26,7 @@ Instanz noch Caddy.
 Die Vorschauen simulieren das Design und sind keine exakte Kopie des
 Authentik-DOM. Sie dürfen lokal geöffnet werden und haben keine Laufzeitwirkung.
 
-## Geplante, noch nicht aktive Bereitstellung
+## Bereitstellung
 
 Die Assets sollen ohne zusätzlichen Container und ohne neuen öffentlichen Port
 über den vorhandenen Caddy bereitgestellt werden:
@@ -36,13 +36,11 @@ https://auth.zircula.org/branding/werk-x-zircula.v1.png
 https://auth.zircula.org/branding/favicon.v1.svg
 ```
 
-Ein späterer Aktivierungscommit wird:
-
-1. die Assets read-only in den Caddy-Container mounten,
-2. ausschließlich `/branding/*` statisch ausliefern,
-3. einen file-basierten Blueprint read-only in den Authentik-Worker mounten,
-4. das geprüfte CSS in `branding_custom_css` einbetten und
-5. eine deterministische Prüfung zwischen CSS-Quelle und Blueprint ergänzen.
+Die versionierte Aktivierung mountet die Assets read-only in Caddy, liefert nur
+`/branding/*` statisch aus und mountet den file-basierten Blueprint read-only in
+den Authentik-Worker. Das CSS ist in `branding_custom_css` eingebettet;
+`scripts/check-css-sync.sh` prüft deterministisch, dass Quelle und Blueprint
+übereinstimmen.
 
 Der Blueprint identifiziert die vorhandene Brand über
 `domain: auth.zircula.org` und verwendet `state: present`. Er darf vorhandene

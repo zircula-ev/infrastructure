@@ -15,6 +15,7 @@ services:
 
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ../authentik/branding/assets:/srv/authentik-branding:ro
       - /srv/zircula/caddy/data:/data
       - /srv/zircula/caddy/config:/config
 
