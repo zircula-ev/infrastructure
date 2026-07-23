@@ -112,8 +112,7 @@ Offen:
 - MFA und Recovery für beide Break-Glass-Konten abschließen
 - MFA-Governance für weitere Organisationsgruppen festlegen
 - OIDC-Offboarding sowie Desktop-/Mobile-Client und WebDAV testen
-- Grafana-Ablehnung ohne Entitlement und Logout noch als eigener Negativtest
-  dokumentieren
+- Grafana-OIDC-Logout noch als eigener Nachtest dokumentieren
 
 ## Validierung vom 15.07.2026
 
@@ -163,6 +162,8 @@ Erfolgreich geprüft und auf dem VPS ausgerollt:
   erfolgreiche öffentliche Probes
 - Grafana-Datenbank, öffentliche Health-Route, lokaler Break-Glass-Login,
   Authentik-OIDC, Admin-Rollenmapping und provisioniertes Dashboard
+- Ablehnung eines Testbenutzers ohne Grafana-Entitlement durch
+  `role_attribute_strict`; temporäre Binding und Testkonto anschließend entfernt
 
 ## Produktionsreife
 
