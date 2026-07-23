@@ -18,7 +18,8 @@ hochverfügbarer Produktionsserver.
 ## Rollen
 
 - Shinobi zeichnet Kameras aus dem lokalen Hausnetz für wenige Tage auf.
-- Uptime Kuma überwacht vorläufig die öffentlichen Dienste auf dem Manitu-VPS.
+- Uptime Kuma ist als vorläufige Überwachung der öffentlichen Dienste auf dem
+  Manitu-VPS vorbereitet, aber noch nicht ausgerollt.
 - nctest dient vorläufig als zusätzliches Backupziel, bis Vorstand und Vereine
   das dauerhafte externe beziehungsweise lokale Backupziel beschlossen haben.
 - kleinere Buchungs-, Mail- und Slack-Skripte existieren außerhalb des derzeit
@@ -75,4 +76,6 @@ tailscale serve status
 sudo zpool status -v DATA_Store
 ```
 
-Der Zustand von Shinobi, Uptime Kuma und den Backupjobs wird getrennt geprüft.
+Der Zustand von Shinobi und den Backupjobs wird getrennt geprüft. Nach dem noch
+ausstehenden Uptime-Kuma-Rollout wird dessen Zustand in dieselbe Nachprüfung
+aufgenommen.
