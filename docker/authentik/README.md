@@ -88,8 +88,7 @@ bestätigt, werden die Eigentümer kontrolliert korrigiert:
 ```bash
 sudo chown -R 1000:1000 \
   /srv/zircula/authentik/data \
-  /srv/zircula/authentik/certs \
-  /srv/zircula/authentik/templates
+  /srv/zircula/authentik/certs
 ```
 
 Vor dem rekursiven `chown` wird die Ausgabe von `find` geprüft. Andere
@@ -164,16 +163,21 @@ Anwendungstests:
 
 Rollback bei einem Fehler:
 
+1. Den zuletzt bekannten funktionsfähigen Commit beziehungsweise einen
+   vorbereiteten Revert der Compose-Änderung auschecken.
+2. Konfiguration prüfen und ausschließlich Server und Worker neu erstellen:
+
 ```bash
-git switch main
 docker compose config --quiet
 docker compose up -d --force-recreate server worker
 docker compose ps
 docker compose logs --tail=100 server worker
 ```
 
-Das Rollback stellt die vorherige Compose-Konfiguration wieder her. Es ändert
-keine Authentik-Datenbank und keine Secrets.
+`git switch main` ist ausdrücklich kein Rollback: Das Hardening ist bereits in
+`main` enthalten. Ein Rollback verändert weder Authentik-Datenbank noch Secrets
+und darf den Docker-Socket nur im Rahmen einer separat geprüften
+Outpost-Entscheidung wieder einführen.
 
 ## Benutzerverwaltung
 
