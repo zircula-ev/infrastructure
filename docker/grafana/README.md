@@ -107,6 +107,13 @@ Browserfenstern werden geprüft:
 5. Logout aus Grafana und Authentik
 6. Anzeige des provisionierten VPS-Dashboards
 
+Diese Prüfungen wurden erfolgreich abgeschlossen. Nach dem Entzug des
+Grafana-Entitlements wurde eine erneute Anmeldung durch das strikte Rollenmapping
+abgewiesen. Nach dem Grafana-Logout leitete
+`GF_AUTH_SIGNOUT_REDIRECT_URL` zum Authentik-End-Session-Endpunkt weiter; weder
+Grafana- noch Authentik-Sitzung ermöglichten anschließend eine stille
+Wiederanmeldung. Der lokale Break-Glass-Login blieb unabhängig erreichbar.
+
 ## Update und Rollback
 
 ```bash
