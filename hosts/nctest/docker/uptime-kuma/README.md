@@ -11,6 +11,8 @@ und ersetzt keine spätere unabhängige externe Überwachung.
 - Die Administrationsoberfläche wird nur innerhalb des Tailnets über Tailscale
   Serve erreichbar gemacht.
 - Der Docker-Socket wird nicht eingebunden.
+- Das offizielle Rootless-Image läuft als UID/GID 1000 und erhält keine Linux-
+  Capabilities.
 - Die SQLite-Daten liegen lokal auf ZFS und nicht auf NFS.
 - Slack-Webhooks und Uptime-Kuma-Daten werden nicht versioniert.
 - Die erste Ausbaustufe verwendet ausschließlich HTTP(S)- und gegebenenfalls
@@ -44,6 +46,11 @@ cp .env.example .env
 chmod 600 .env
 ```
 
+Auf `nctest` gehört UID/GID 1000 dem Benutzer `timo`. Das Rootless-Image
+verwendet intern UID/GID 1000 als Benutzer `node`; dadurch kann es ohne
+Root-Rechte in das Dataset schreiben. Vor dem ersten Start wurde dieser Zugriff
+isoliert mit `--network none`, `cap_drop: ALL` und `no-new-privileges` geprüft.
+
 ## Start und Tailscale-Zugriff
 
 ```bash
@@ -54,6 +61,14 @@ docker compose logs --tail=100 uptime-kuma
 
 curl -fsS http://127.0.0.1:3001/ >/dev/null \
   && echo "Uptime Kuma lokal erreichbar"
+
+docker inspect --format \
+  'user={{.Config.User}} privileged={{.HostConfig.Privileged}} ports={{json .NetworkSettings.Ports}}' \
+  uptime-kuma
+
+docker inspect --format \
+  'cap_drop={{json .HostConfig.CapDrop}} security={{json .HostConfig.SecurityOpt}}' \
+  uptime-kuma
 
 tailscale serve status
 sudo tailscale serve --bg --https=8443 http://127.0.0.1:3001
