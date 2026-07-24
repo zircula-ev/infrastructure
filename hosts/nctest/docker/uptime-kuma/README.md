@@ -14,6 +14,10 @@ und ersetzt keine spätere unabhängige externe Überwachung.
 - Das offizielle Rootless-Image läuft als UID/GID 1000 und erhält keine Linux-
   Capabilities.
 - Die SQLite-Daten liegen lokal auf ZFS und nicht auf NFS.
+- Die lokale Anmeldung bleibt aktiviert; das eigenständige Administratorkonto ist
+  mit einem eindeutigen Passwort und TOTP geschützt.
+- Die primäre Basis-URL lautet
+  `https://nctest.tailf7eaa5.ts.net:8443`.
 - Slack-Webhooks und Uptime-Kuma-Daten werden nicht versioniert.
 - Die erste Ausbaustufe verwendet ausschließlich HTTP(S)- und gegebenenfalls
   TCP-Monitore. ICMP/Ping ist bewusst nicht aktiviert; deshalb bleiben alle
@@ -88,21 +92,26 @@ sudo tailscale serve --https=8443 off
 tailscale serve status
 ```
 
-## Erste Monitore
+## Eingerichtete Monitore
 
-| Name | Typ | Ziel | Intervall |
+| Name | Typ | Ziel | Inhaltsprüfung |
 |---|---|---|---|
-| Nextcloud Status | HTTP(s) | `https://cloud.zircula.org/status.php` | 60 s |
-| Authentik Ready | HTTP(s) | `https://auth.zircula.org/-/health/ready/` | 60 s |
-| Collabora Discovery | HTTP(s) | `https://office.zircula.org/hosting/discovery` | 60 s |
-| Talk HPB | HTTP(s) | `https://talk.cloud.zircula.org/api/v1/welcome` | 60 s |
+| Nextcloud | HTTP(s) – Keyword | `https://cloud.zircula.org/status.php` | `"maintenance":false` |
+| Authentik | HTTP(s) | `https://auth.zircula.org/-/health/ready/` | – |
+| Collabora | HTTP(s) – Keyword | `https://office.zircula.org/hosting/discovery` | `wopi-discovery` |
+| Nextcloud Talk HPB | HTTP(s) | `https://talk.cloud.zircula.org/api/v1/welcome` | – |
 
-Für Nextcloud wird zusätzlich geprüft, dass der Antworttext `"maintenance":false`
-enthält. Benachrichtigungen gehen zunächst an einen dedizierten Slack-Webhook.
+Alle vier Monitore verwenden ein Intervall von 60 Sekunden, drei Wiederholungen,
+30 Sekunden Wiederholungsabstand, 20 Sekunden Request-Timeout und akzeptieren
+HTTP-Status 200 bis 299. TLS-Fehler werden nicht ignoriert; die
+Zertifikatsablaufwarnung ist aktiviert. Benachrichtigungen gehen über den
+bestehenden Monitoring-Webhook an Slack.
 
-Nach der Einrichtung wird ein ungefährlicher Negativtest mit einer nicht
-existierenden Test-URL durchgeführt. Produktive Dienste werden für den Alarmtest
-nicht gestoppt.
+Die vollständige Alarmkette wurde mit einem temporären HTTP-Monitor gegen den
+absichtlich geschlossenen lokalen Port `127.0.0.1:9` geprüft. Nach der
+DOWN-Nachricht wurde dessen Ziel auf den erreichbaren Nextcloud-Statusendpunkt
+geändert und die UP-/Entwarnungsnachricht bestätigt. Der Testmonitor wurde
+anschließend gelöscht; kein produktiver Dienst wurde gestoppt.
 
 ## Updates und Datenprüfung
 
