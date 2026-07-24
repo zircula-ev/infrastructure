@@ -79,13 +79,15 @@ Authentik-Anwendung:
 - Name: `Vaultwarden`
 - Slug: `vaultwarden`
 - Provider: OAuth2/OpenID Connect, confidential
-- Grant: Authorization Code
+- Grants: Authorization Code und Refresh Token
 - PKCE: aktiv
 - Redirect URI, strikt:
   `https://vault.zircula.org/identity/connect/oidc-signin`
 - Authority:
   `https://auth.zircula.org/application/o/vaultwarden/`
-- Scopes: `openid email profile`
+- Scopes: `openid profile email offline_access`
+- Access-Code-Laufzeit: eine Minute
+- Access-Token-Laufzeit: mindestens zehn Minuten
 - Zugriff: nur gebundene Organisationsgruppen
 
 `SSO_SIGNUPS_MATCH_EMAIL=true` darf nur zusammen mit verifizierten,

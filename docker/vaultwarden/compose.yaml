@@ -44,7 +44,7 @@ services:
       SSO_CLIENT_ID: ${VAULTWARDEN_SSO_CLIENT_ID}
       SSO_CLIENT_SECRET: ${VAULTWARDEN_SSO_CLIENT_SECRET}
       SSO_AUTHORITY: https://auth.zircula.org/application/o/vaultwarden/
-      SSO_SCOPES: email profile
+      SSO_SCOPES: openid profile email offline_access
       SSO_PKCE: "true"
 
       SMTP_HOST: ${VAULTWARDEN_SMTP_HOST}

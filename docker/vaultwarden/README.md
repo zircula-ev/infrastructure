@@ -51,7 +51,7 @@ chmod 600 .env
 ```
 
 Danach in Authentik eine vertrauliche OAuth2/OIDC-Anwendung mit Authorization
-Code und PKCE erstellen. Die strikte Redirect-URI lautet:
+Code, Refresh Token und PKCE erstellen. Die strikte Redirect-URI lautet:
 
 ```text
 https://vault.zircula.org/identity/connect/oidc-signin
@@ -63,7 +63,9 @@ Issuer/Authority:
 https://auth.zircula.org/application/o/vaultwarden/
 ```
 
-Scopes: `openid email profile` (`openid` ist in Vaultwarden implizit). Zugriff
+Scopes: `openid profile email offline_access`. In den erweiterten
+Provider-Einstellungen wird die Access-Code-Laufzeit bei einer Minute belassen,
+die Access-Token-Laufzeit aber auf mindestens zehn Minuten gesetzt. Zugriff
 nur an ausdrücklich berechtigte Authentik-Gruppen binden. Client-ID und
 Client-Secret kommen ausschließlich in die lokale `.env`.
 
