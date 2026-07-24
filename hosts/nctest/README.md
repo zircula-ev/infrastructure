@@ -49,10 +49,13 @@ Der gewünschte Checkoutpfad lautet:
 /opt/zircula/git/infrastructure
 ```
 
-Für den privaten Repositoryzugriff wird ein schreibgeschützter Deploy-Key nur
-für `zircula-ev/infrastructure` verwendet. Persönliche GitHub-Schlüssel werden
-nicht dauerhaft auf nctest abgelegt. Änderungen entstehen in Feature-Branches
-und werden nicht direkt auf nctest committet.
+Da die Organisation Deploy-Keys nicht zulässt, erfolgt der private
+Repositoryzugriff interaktiv über einen zeitlich begrenzten Fine-grained
+Personal Access Token. Der Token ist ausschließlich für
+`zircula-ev/infrastructure` freigegeben und besitzt nur `Contents: Read-only`.
+Er wird weder in der Remote-URL noch dauerhaft im Git Credential Store
+hinterlegt. Änderungen entstehen in Feature-Branches und werden nicht direkt auf
+nctest committet.
 
 Produktive `.env`, rclone-Konfigurationen, Slack-Webhooks, Kamerazugangsdaten und
 Uptime-Kuma-Laufzeitdaten bleiben ausschließlich lokal.
