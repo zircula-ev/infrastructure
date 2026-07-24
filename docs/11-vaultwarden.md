@@ -181,7 +181,8 @@ Debug-/SSO-Token-Logging bleibt deaktiviert.
 4. Authentik-Provider und Bindings erstellen.
 5. Vaultwarden intern starten und Rootless-/Health-Prüfung durchführen.
 6. Caddy validieren und Vaultwarden veröffentlichen.
-7. ersten PoC-Owner in einem kurzzeitig auf die Admin-IP begrenzten Bootstrap-\n   Fenster anlegen; Registrierung unmittelbar danach wieder schließen.
+7. ersten PoC-Owner in einem kurzzeitig auf die Admin-IP begrenzten Bootstrap-
+   Fenster anlegen; Registrierung unmittelbar danach wieder schließen.
 8. Organisationen erstellen, danach `ORG_CREATION_USERS=none`.
 9. Testbenutzer einladen und Rechte-/Entzugsmatrix prüfen.
 10. Monitoring aktivieren.
