@@ -39,7 +39,11 @@ Vorgesehene Organisationen:
 Collections werden nach Funktion statt nach Personen aufgebaut, beispielsweise
 `Vorstand`, `Angestellte`, `Öffentlichkeitsarbeit`, `Buchhaltung`,
 `Lokale Geräte` und `Recovery`. Vaultwarden-Gruppen tragen möglichst dieselben
-Namen wie die bestehenden Authentik-Gruppen.
+Namen wie die bestehenden Authentik-Gruppen. Die Funktion wird von Vaultwarden
+derzeit weiterhin als Beta mit bekannten Einschränkungen gekennzeichnet. Deshalb
+sind Gruppen-, Collection-, Entzugs- und Client-Tests ein ausdrückliches PoC-Gate;
+bei nicht zuverlässigem Verhalten werden Rechte zunächst direkt pro Mitglied
+zugewiesen und die Gruppenfunktion nicht produktiv verwendet.
 
 Authentik-Gruppen werden durch Vaultwardens natives OIDC nicht automatisch in
 Vaultwarden-Gruppen oder Collections synchronisiert. Das erste Betriebsmodell ist
