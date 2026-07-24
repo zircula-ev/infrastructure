@@ -115,7 +115,6 @@ Offen:
 - MFA und Recovery für beide Break-Glass-Konten abschließen
 - MFA-Governance für weitere Organisationsgruppen festlegen
 - OIDC-Offboarding sowie Desktop-/Mobile-Client und WebDAV testen
-- Grafana-OIDC-Logout noch als eigener Nachtest dokumentieren
 
 ## Validierung vom 15.07.2026
 
@@ -180,6 +179,8 @@ Erfolgreich auf `nctest` ausgerollt und geprüft:
 - lokale Anmeldung mit TOTP für das Administratorkonto
 - vier erfolgreiche öffentliche Dienstprüfungen
 - Slack-Nachrichten für DOWN und anschließende Entwarnung
+- Grafana-Rollenentzug mit erfolgreicher Abweisung bei erneuter Anmeldung
+- vollständiger Grafana-/Authentik-Logout ohne stille Wiederanmeldung
 
 ## Produktionsreife
 
@@ -194,6 +195,5 @@ unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 1. Backupziel, Aufbewahrung und Restore-Test umsetzen.
 2. ausstehende Ubuntu-Paketupdates kontrolliert installieren.
 3. regelmäßige Image- und Secret-Scans ergänzen.
-4. offene Grafana- und OIDC-Negativtests abschließen.
-5. Benutzer-Onboarding und MFA-Governance abschließen.
-6. Migration der bisherigen Clouds durchführen.
+4. Benutzer-Onboarding und MFA-Governance abschließen.
+5. Migration der bisherigen Clouds durchführen.
