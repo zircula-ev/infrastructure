@@ -37,6 +37,7 @@ Alertmanager, Prometheus und Grafana. Bestätigt wurden:
 - Grafana-Health, provisionierte Prometheus-Datenquelle und VPS-Dashboard
 - lokaler Grafana-Break-Glass-Login
 - Authentik-OIDC mit erfolgreichem Admin-Rollenmapping
+- Abweisung nach Entitlement-Entzug sowie vollständiger Grafana-/Authentik-Logout
 - öffentliche Erreichbarkeit ausschließlich von Grafana über Caddy
 - rootless Uptime Kuma auf dem lokalen ZFS-Dataset von `nctest`
 - Zugriff auf Uptime Kuma ausschließlich über Tailscale Serve auf HTTPS-Port 8443
@@ -47,9 +48,11 @@ Das VPS-Dashboard ist als Grafana-Startseite ausgerollt und wird nach dem
 Authentik-Login direkt angezeigt. Ein temporärer Benutzer ohne
 Grafana-Entitlement wurde nach erfolgreicher Authentik-Rückleitung von Grafanas
 `role_attribute_strict` abgewiesen; Binding und Testkonto wurden anschließend
-entfernt. Uptime Kuma auf `nctest` ist mit lokaler SQLite-Datenbank, TOTP für das
-Administratorkonto und direkter Slack-Alarmierung ausgerollt. Der OIDC-Logout von
-Grafana wird noch als eigenständiger Nachtest dokumentiert.
+entfernt. Rollenentzug und anschließende erneute Anmeldung wurden ebenfalls
+abgewiesen. Der Grafana-Logout leitete erfolgreich zum Authentik-End-Session-
+Endpunkt weiter; eine stille Wiederanmeldung war danach nicht möglich. Uptime
+Kuma auf `nctest` ist mit lokaler SQLite-Datenbank, TOTP für das
+Administratorkonto und direkter Slack-Alarmierung ausgerollt.
 
 ## Getrennte Stacks
 
