@@ -24,7 +24,7 @@ Prometheus, Alertmanager und Grafana laufen auf demselben VPS wie die
 Produktivdienste. Sie liefern Ursachenanalyse und historische Werte, können aber
 einen vollständigen VPS-Ausfall nicht selbst nach außen melden.
 
-## Umsetzungsstand vom 23.07.2026
+## Umsetzungsstand vom 24.07.2026
 
 Auf dem VPS ausgerollt und geprüft sind Node Exporter, Blackbox Exporter,
 Alertmanager, Prometheus und Grafana. Bestätigt wurden:
@@ -38,13 +38,18 @@ Alertmanager, Prometheus und Grafana. Bestätigt wurden:
 - lokaler Grafana-Break-Glass-Login
 - Authentik-OIDC mit erfolgreichem Admin-Rollenmapping
 - öffentliche Erreichbarkeit ausschließlich von Grafana über Caddy
+- rootless Uptime Kuma auf dem lokalen ZFS-Dataset von `nctest`
+- Zugriff auf Uptime Kuma ausschließlich über Tailscale Serve auf HTTPS-Port 8443
+- vier erfolgreiche externe Dienstprüfungen sowie getestete Slack-DOWN- und
+  Entwarnungsnachrichten
 
 Das VPS-Dashboard ist als Grafana-Startseite ausgerollt und wird nach dem
 Authentik-Login direkt angezeigt. Ein temporärer Benutzer ohne
 Grafana-Entitlement wurde nach erfolgreicher Authentik-Rückleitung von Grafanas
 `role_attribute_strict` abgewiesen; Binding und Testkonto wurden anschließend
-entfernt. Uptime Kuma auf `nctest` ist noch nicht ausgerollt. Der OIDC-Logout
-wird noch als eigenständiger Nachtest dokumentiert.
+entfernt. Uptime Kuma auf `nctest` ist mit lokaler SQLite-Datenbank, TOTP für das
+Administratorkonto und direkter Slack-Alarmierung ausgerollt. Der OIDC-Logout von
+Grafana wird noch als eigenständiger Nachtest dokumentiert.
 
 ## Getrennte Stacks
 
