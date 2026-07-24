@@ -4,7 +4,7 @@ nctest ist ein aus vorhandener Hardware aufgebauter, intern betriebener Ubuntu-
 Host. Er ist Spielwiese und Standort einiger lokaler Hilfsdienste, aber kein
 hochverfügbarer Produktionsserver.
 
-## Dokumentierter Stand vom 23.07.2026
+## Dokumentierter Stand vom 24.07.2026
 
 - Ubuntu 26.04 LTS
 - Intel Core i5-2400, vier Kerne
@@ -18,8 +18,8 @@ hochverfügbarer Produktionsserver.
 ## Rollen
 
 - Shinobi zeichnet Kameras aus dem lokalen Hausnetz für wenige Tage auf.
-- Uptime Kuma ist als vorläufige Überwachung der öffentlichen Dienste auf dem
-  Manitu-VPS vorbereitet, aber noch nicht ausgerollt.
+- Uptime Kuma überwacht als vorläufige externe Instanz die öffentlichen Dienste
+  auf dem Manitu-VPS und alarmiert unabhängig über Slack.
 - nctest dient vorläufig als zusätzliches Backupziel, bis Vorstand und Vereine
   das dauerhafte externe beziehungsweise lokale Backupziel beschlossen haben.
 - kleinere Buchungs-, Mail- und Slack-Skripte existieren außerhalb des derzeit
@@ -79,6 +79,7 @@ tailscale serve status
 sudo zpool status -v DATA_Store
 ```
 
-Der Zustand von Shinobi und den Backupjobs wird getrennt geprüft. Nach dem noch
-ausstehenden Uptime-Kuma-Rollout wird dessen Zustand in dieselbe Nachprüfung
-aufgenommen.
+Der Zustand von Shinobi und den Backupjobs wird getrennt geprüft. Uptime Kuma
+wird zusätzlich über den Stack unter
+`hosts/nctest/docker/uptime-kuma` sowie die unveränderte Tailscale-Serve-Route
+auf HTTPS-Port 8443 geprüft.
