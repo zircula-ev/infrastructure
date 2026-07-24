@@ -1,0 +1,241 @@
+# yaml-language-server: $schema=https://version-2026-5.goauthentik.io/blueprints/schema.json
+metadata:
+  name: WERK × ZIRCULA - Brand
+  labels:
+    blueprints.goauthentik.io/description: Declarative WERK × ZIRCULA SSO branding
+version: 1
+
+entries:
+  - model: authentik_brands.brand
+    state: present
+    identifiers:
+      domain: auth.zircula.org
+    attrs:
+      branding_title: WERK × ZIRCULA - Zentrale Anmeldung
+      branding_logo: https://auth.zircula.org/branding/werk-x-zircula.v1.png
+      branding_favicon: https://auth.zircula.org/branding/favicon.v1.svg
+      branding_custom_css: |
+        /* WERK × ZIRCULA branding for authentik 2025.4+.
+         * Source of truth for the Brand's branding_custom_css field.
+         * Prefer authentik variables and exported parts; keep direct selectors shallow.
+         */
+        
+        :root {
+          --werk-paper: #f7f3e8;
+          --werk-surface: #e5eadd;
+          --werk-surface-soft: #f2f5ef;
+          --werk-ink: #27302a;
+          --werk-ink-strong: #313831;
+          --werk-muted: #6e786b;
+          --werk-rule: rgba(39, 48, 42, 0.18);
+          --werk-action: #ff7477;
+          --werk-action-hover: #c94b42;
+          --werk-focus: #006eb7;
+          --werk-error: #a94b52;
+          --werk-font-display: "Helvetica Now Display", "Helvetica Now", Helvetica, Arial, sans-serif;
+          --werk-font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+          --werk-radius-control: 4px;
+          --werk-shadow-panel: 0 18px 50px rgba(39, 48, 42, 0.12);
+          --werk-control-height: 44px;
+        
+          /* authentik theming API */
+          --ak-font-family-sans-serif: var(--werk-font-mono);
+          --ak-global--Color--100: var(--werk-ink);
+          --ak-global--Color--200: var(--werk-muted);
+          --ak-global--BackgroundColor--100: var(--werk-paper);
+          --ak-global--BackgroundColor--200: var(--werk-surface);
+        
+          /* PatternFly compatibility variables still consumed by authentik components. */
+          --pf-global--FontFamily--sans-serif: var(--werk-font-mono);
+          --pf-global--Color--100: var(--werk-ink);
+          --pf-global--Color--200: var(--werk-muted);
+          --pf-global--BackgroundColor--100: var(--werk-paper);
+          --pf-global--BackgroundColor--200: var(--werk-surface);
+          --pf-global--primary-color--100: var(--werk-action);
+          --pf-global--primary-color--200: var(--werk-action-hover);
+          --pf-global--link--Color: var(--werk-action-hover);
+          --pf-global--link--Color--hover: var(--werk-ink);
+          --pf-global--BorderColor--100: var(--werk-rule);
+          --pf-global--BorderRadius--sm: 4px;
+        }
+        
+        html[data-theme="light"],
+        html:not([data-theme]) {
+          color-scheme: light;
+          --ak-global--Color--100: var(--werk-ink);
+          --ak-global--Color--200: var(--werk-muted);
+          --ak-global--BackgroundColor--100: var(--werk-paper);
+          --ak-global--BackgroundColor--200: var(--werk-surface);
+        }
+        
+        /* Authentik 2026.5 flow executor. These variables and parts are version-gated. */
+        ak-flow-executor {
+          --ak-c-login--MaxWidth: 30rem;
+          --ak-c-login--spacer: clamp(1.25rem, 5vw, 2rem);
+          --ak-c-login__main--BackgroundColor: rgba(247, 243, 232, 0.94);
+          --ak-c-login__main--Color: var(--werk-ink);
+          --ak-c-login__main--BoxShadow: var(--werk-shadow-panel);
+          --ak-c-login__main-header-PaddingBlock: 2rem;
+          --ak-c-login__main-header-PaddingInline: 2rem;
+          --ak-c-login__footer--Color: var(--werk-muted);
+          --pf-global--FontFamily--heading--sans-serif: var(--werk-font-display);
+          --pf-global--FontFamily--redhat-updated--heading--sans-serif: var(--werk-font-display);
+          --pf-global--FontSize--3xl: 2rem;
+          --pf-global--primary-color--100: var(--werk-action);
+          --pf-global--primary-color--200: var(--werk-action-hover);
+          --pf-c-button--m-primary--BackgroundColor: var(--werk-action);
+          --pf-c-button--m-primary--hover--BackgroundColor: var(--werk-action-hover);
+          --pf-c-button--m-primary--focus--BackgroundColor: var(--werk-action-hover);
+          --pf-c-button--m-primary--Color: var(--werk-ink);
+        }
+        
+        ak-flow-executor::part(main) {
+          overflow: visible;
+          margin-block-start: 8.5rem;
+          border: 1px solid var(--werk-rule);
+          border-radius: 0;
+          background: rgba(247, 243, 232, 0.94);
+          box-shadow: var(--werk-shadow-panel) !important;
+        }
+        
+        ak-flow-executor::part(branding) {
+          position: absolute;
+          inset-block-start: -8rem;
+          inset-inline: 0;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 !important;
+          background: transparent;
+        }
+        
+        ak-flow-executor::part(branding)::after {
+          margin-block-start: 1rem;
+          color: var(--werk-action-hover);
+          content: "ZENTRALE ANMELDUNG";
+          font-family: var(--werk-font-mono);
+          font-size: 0.625rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+        }
+        
+        ak-flow-executor::part(footer),
+        ak-flow-executor::part(locale-select),
+        ak-flow-executor::part(locale-select-label),
+        ak-flow-executor::part(locale-select-select) {
+          color: var(--werk-muted);
+          filter: none;
+          text-shadow: none;
+        }
+        
+        body {
+          background:
+            linear-gradient(
+              90deg,
+              var(--werk-surface) 0 clamp(0.75rem, 2.5vw, 2.125rem),
+              transparent clamp(0.75rem, 2.5vw, 2.125rem)
+            ),
+            var(--werk-paper);
+          color: var(--werk-ink);
+          font-family: var(--werk-font-mono);
+        }
+        
+        body::before {
+          position: fixed;
+          inset: 0 0 auto;
+          z-index: 1000;
+          height: 6px;
+          background: var(--werk-action);
+          content: "";
+          pointer-events: none;
+        }
+        
+        /* Officially exported authentik parts. Keep additional parts version-gated. */
+        ak-library::part(card-header-icon) {
+          margin-block-end: var(--pf-global--spacer--md, 1rem);
+          color: var(--werk-action-hover);
+          font-size: 2rem;
+        }
+        
+        /* Typography on light-DOM headings only; Shadow DOM remains variable-driven. */
+        h1,
+        h2,
+        h3,
+        .pf-c-title,
+        .pf-v5-c-title,
+        .pf-v6-c-title {
+          color: var(--werk-ink-strong);
+          font-family: var(--werk-font-display);
+          font-weight: 900;
+          letter-spacing: 0;
+        }
+        
+        a {
+          text-decoration-thickness: 1px;
+          text-underline-offset: 0.22em;
+        }
+        
+        /* Fallbacks for light-DOM PatternFly controls. */
+        .pf-c-button.pf-m-primary,
+        .pf-v5-c-button.pf-m-primary,
+        .pf-v6-c-button.pf-m-primary {
+          border-radius: 4px;
+          background: var(--werk-action);
+          color: var(--werk-ink);
+          font-family: var(--werk-font-mono);
+          font-weight: 700;
+        }
+        
+        .pf-c-button.pf-m-primary:hover,
+        .pf-v5-c-button.pf-m-primary:hover,
+        .pf-v6-c-button.pf-m-primary:hover {
+          background: var(--werk-action-hover);
+          color: white;
+        }
+        
+        .pf-c-card,
+        .pf-v5-c-card,
+        .pf-v6-c-card {
+          border: 1px solid var(--werk-rule);
+          border-radius: 0;
+          background: color-mix(in srgb, var(--werk-paper) 88%, white);
+          box-shadow: 0 12px 34px rgba(39, 48, 42, 0.08);
+        }
+        
+        :focus-visible {
+          outline: 2px solid var(--werk-focus);
+          outline-offset: 2px;
+        }
+        
+        @media (max-width: 700px) {
+          ak-flow-executor::part(main) {
+            margin-block-start: 7rem;
+            box-shadow: 0 10px 30px rgba(39, 48, 42, 0.09) !important;
+          }
+        
+          ak-flow-executor::part(branding) {
+            inset-block-start: -6.5rem;
+          }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+        
+        @media (prefers-contrast: more) {
+          :root {
+            --werk-rule: rgba(39, 48, 42, 0.46);
+            --werk-muted: #4f584f;
+          }
+        }
+      attributes:
+        settings:
+          locale: de
+          theme:
+            base: light
+          layout:
+            type: 2-column

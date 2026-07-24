@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WERK × ZIRCULA – Authentik Branding Preview</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ff7477'/%3E%3Cpath d='M16 16l32 32M48 16L16 48' stroke='%2327302a' stroke-width='9'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../css/tokens.css">
+    <style>
+      * { box-sizing: border-box; }
+      html, body { min-height: 100%; }
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, var(--werk-surface) 0, var(--werk-surface) clamp(12px, 2.5vw, 34px), transparent clamp(12px, 2.5vw, 34px)),
+          var(--werk-paper);
+        color: var(--werk-ink);
+        font-family: var(--werk-font-mono);
+      }
+      body::before {
+        position: fixed; inset: 0 0 auto; height: 6px;
+        background: var(--werk-action); content: "";
+      }
+      main {
+        display: grid; place-items: center; min-height: 100vh;
+        padding: 3rem 1rem;
+      }
+      .shell { width: min(100%, 480px); }
+      .brand { margin-bottom: 1.5rem; text-align: center; }
+      .brand img { width: min(100%, 340px); height: auto; }
+      .eyebrow {
+        margin: 1rem 0 0; color: var(--werk-action-hover);
+        font-size: 10px; font-weight: 700; letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .card {
+        border: 1px solid var(--werk-rule); background: rgba(247,243,232,.94);
+        box-shadow: var(--werk-shadow-panel); padding: 2rem;
+      }
+      h1 {
+        margin: 0; color: var(--werk-ink-strong);
+        font-family: var(--werk-font-display); font-size: 32px;
+        font-weight: 900; line-height: 1.12;
+      }
+      .intro { margin: .75rem 0 1.75rem; color: var(--werk-muted); font-size: 13px; line-height: 20px; }
+      .field { display: grid; gap: .5rem; margin-top: 1rem; }
+      label { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+      input {
+        width: 100%; min-height: var(--werk-control-height); padding: .7rem .85rem;
+        border: 1px solid var(--werk-rule); border-radius: var(--werk-radius-control);
+        background: #fffdf7; color: var(--werk-ink); font: inherit;
+      }
+      input:focus { border-color: var(--werk-focus); outline: 2px solid rgba(0,110,183,.22); outline-offset: 1px; }
+      .actions { display: grid; gap: .9rem; margin-top: 1.5rem; }
+      button {
+        min-height: var(--werk-control-height); border: 1px solid transparent;
+        border-radius: var(--werk-radius-control); background: var(--werk-action);
+        color: var(--werk-ink); cursor: pointer; font: inherit; font-size: 12px; font-weight: 700;
+      }
+      button:hover { background: var(--werk-action-hover); color: white; }
+      a { color: var(--werk-action-hover); font-size: 11px; text-align: center; text-underline-offset: .22em; }
+      .footer { margin: 1.25rem 0 0; color: var(--werk-muted); font-size: 10px; line-height: 16px; text-align: center; }
+      @media (max-width: 700px) {
+        main { padding: 2rem .5rem; }
+        .brand img { width: min(88%, 310px); }
+        .card { padding: 1.5rem 1.25rem; box-shadow: 0 10px 30px rgba(39,48,42,.09); }
+        h1 { font-size: 28px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="shell">
+        <header class="brand">
+          <img src="../assets/werk-x-zircula.png" alt="WERK. × ZIRCULA">
+          <p class="eyebrow">Zentrale Anmeldung</p>
+        </header>
+        <section class="card" aria-labelledby="login-title">
+          <h1 id="login-title">Willkommen zurück.</h1>
+          <p class="intro">Melde dich mit deinem WERK- oder ZIRCULA-Konto an.</p>
+          <form>
+            <div class="field">
+              <label for="user">E-Mail oder Benutzername</label>
+              <input id="user" name="user" autocomplete="username" placeholder="name@beispiel.de">
+            </div>
+            <div class="field">
+              <label for="password">Passwort</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" value="preview-password">
+            </div>
+            <div class="actions">
+              <button type="submit">Anmelden</button>
+              <a href="#">Passwort vergessen?</a>
+            </div>
+          </form>
+        </section>
+        <p class="footer">Sichere Anmeldung über authentik · Lokale Designvorschau</p>
+      </div>
+    </main>
+  </body>
+</html>

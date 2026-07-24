@@ -24,6 +24,23 @@ werden nicht am Host veröffentlicht.
 - `.env` – lokale Konfiguration; nicht versioniert, Modus 600
 - `/srv/zircula/caddy/data` – Zertifikate und ACME-Daten
 - `/srv/zircula/caddy/config` – Laufzeitkonfiguration
+- `../authentik/branding/assets` – read-only eingebundene Authentik-Branding-Assets
+
+## Authentik-Branding-Assets
+
+Unter `https://auth.zircula.org/branding/` liefert Caddy ausschließlich die
+versionierten Dateien aus `docker/authentik/branding/assets` aus. Der
+`handle_path`-Block entfernt das URL-Präfix, verwendet keinen Verzeichnisindex
+und setzt für die unveränderlichen Dateinamen einen langfristigen
+`Cache-Control: immutable`-Header. Alle anderen Anfragen an
+`auth.zircula.org` gehen weiterhin an `authentik-server:9000`.
+
+Direkte Prüfung nach einem gezielten Caddy-Recreate:
+
+```bash
+curl -fsSI https://auth.zircula.org/branding/werk-x-zircula.v1.png
+curl -fsSI https://auth.zircula.org/branding/favicon.v1.svg
+```
 
 ## Ports
 

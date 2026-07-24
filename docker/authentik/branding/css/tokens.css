@@ -1,0 +1,26 @@
+:root {
+  --werk-paper: #f7f3e8;
+  --werk-surface: #e5eadd;
+  --werk-surface-soft: #f2f5ef;
+  --werk-ink: #27302a;
+  --werk-ink-strong: #313831;
+  --werk-muted: #6e786b;
+  --werk-rule: rgba(39, 48, 42, 0.18);
+  --werk-action: #ff7477;
+  --werk-action-hover: #c94b42;
+  --werk-focus: #006eb7;
+  --werk-error: #a94b52;
+  --werk-font-display: "Helvetica Now Display", "Helvetica Now", Helvetica, Arial, sans-serif;
+  --werk-font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --werk-space-1: 0.25rem;
+  --werk-space-2: 0.5rem;
+  --werk-space-3: 0.75rem;
+  --werk-space-4: 1rem;
+  --werk-space-5: 1.5rem;
+  --werk-space-6: 2rem;
+  --werk-space-7: 3rem;
+  --werk-radius-control: 4px;
+  --werk-radius-panel: 0;
+  --werk-shadow-panel: 0 18px 50px rgba(39, 48, 42, 0.12);
+  --werk-control-height: 44px;
+}

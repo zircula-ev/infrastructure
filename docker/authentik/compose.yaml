@@ -57,6 +57,7 @@ services:
       - /srv/zircula/authentik/data:/data
       - /srv/zircula/authentik/certs:/certs
       - /srv/zircula/authentik/templates:/templates
+      - ./blueprints:/blueprints/custom:ro
 
     networks:
       - backend

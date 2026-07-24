@@ -20,7 +20,15 @@ auth.zircula.org {
 	header {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 	}
-	reverse_proxy authentik-server:9000
+	handle_path /branding/* {
+		root * /srv/authentik-branding
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	handle {
+		reverse_proxy authentik-server:9000
+	}
 }
 
 monitoring.zircula.org {
