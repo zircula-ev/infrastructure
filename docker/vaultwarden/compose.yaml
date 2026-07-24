@@ -56,7 +56,7 @@ services:
       SMTP_PASSWORD: ${VAULTWARDEN_SMTP_PASSWORD}
 
       EXTENDED_LOGGING: "false"
-      LOG_LEVEL: info
+      LOG_LEVEL: warn
 
     read_only: true
 
