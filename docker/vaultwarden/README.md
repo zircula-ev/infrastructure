@@ -69,6 +69,37 @@ die Access-Token-Laufzeit aber auf mindestens zehn Minuten gesetzt. Zugriff
 nur an ausdrücklich berechtigte Authentik-Gruppen binden. Client-ID und
 Client-Secret kommen ausschließlich in die lokale `.env`.
 
+## SMTP
+
+Der getestete Übergangsabsender ist ein eigenständiges Manitu-Postfach:
+
+```text
+Host: mail.manitu.de
+Port: 465
+Sicherheit: force_tls
+Absender/Benutzername: noreply@nextcloud.zircula.org
+Timeout: 15 Sekunden
+```
+
+Port 465 verwendet implizites TLS und darf in Vaultwarden nicht mit
+`starttls` kombiniert werden. Als Benutzername wird die vollständige,
+explizit dem lokalen Postfach zugeordnete E-Mail-Adresse verwendet. Nur das
+Postfachkennwort bleibt geheim in der lokalen `.env`.
+
+Vor der Aktivierung wird TLS und Anmeldung unabhängig von Vaultwarden geprüft.
+Danach werden Anmeldung, neues Gerät, Verifikation und Einladung über
+Vaultwarden getestet. Ein SMTP-Fehler kann Registrierung oder Anmeldung bis zum
+Timeout blockieren.
+
+Der reguläre Betrieb erfolgt ausschließlich mit `docker compose up -d` aus
+diesem Verzeichnis. Dateien unter `/tmp/vaultwarden-*.override.yaml` sind nur
+kurzlebige Diagnosehilfen, gehören nicht ins Repository und dürfen nicht Teil
+des dauerhaften Startbefehls sein. Nach einer Diagnose wird der Container mit
+der regulären Compose-Konfiguration neu erstellt.
+
+Debug-, erweitertes Request- und SSO-Token-Logging bleiben deaktiviert. Voller
+Debug-Level kann OAuth-Access- und Refresh-Tokens ausgeben.
+
 ## Kontrollierter Erst-Owner
 
 Vaultwarden besitzt ohne Admin-Konsole und bei geschlossener Registrierung noch
