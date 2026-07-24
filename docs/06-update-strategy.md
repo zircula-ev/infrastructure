@@ -56,6 +56,7 @@ deaktiviert.
 - Redis
 - Talk HPB
 - Uptime Kuma auf `nctest`
+- Vaultwarden
 
 Die Verzeichnisse sind in `.github/dependabot.yml` ausdrücklich aufgeführt.
 Neue Einträge werden von Dependabot erst berücksichtigt, nachdem diese
@@ -153,5 +154,7 @@ Empfehlung für den kleinen Vereinsbetrieb:
   Alertmanager-Verbindung
 - Grafana: API-Health, Datenquelle, Dashboard, lokaler Break-Glass-Login,
   Authentik-OIDC und Rollenmapping
+- Vaultwarden: Healthcheck, OIDC, Vault-Entsperrung, Synchronisation,
+  Organisationen, Collections, Anhänge, SMTP und öffentliche `/alive`-Probe
 - Uptime Kuma: öffentliche HTTP-/TCP-Prüfungen und Benachrichtigung; kein ICMP,
   solange `NET_RAW` nicht ausdrücklich freigegeben ist

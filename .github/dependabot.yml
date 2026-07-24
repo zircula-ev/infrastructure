@@ -15,6 +15,7 @@ updates:
       - /docker/prometheus
       - /docker/redis
       - /docker/talk-hpb
+      - /docker/vaultwarden
       - /hosts/nctest/docker/uptime-kuma
     schedule:
       interval: weekly

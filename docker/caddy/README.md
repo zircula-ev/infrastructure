@@ -11,6 +11,7 @@ Zircula-Infrastruktur bereit.
 | `office.zircula.org` | `collabora:9980` |
 | `auth.zircula.org` | `authentik-server:9000` |
 | `monitoring.zircula.org` | `grafana:3000` |
+| `vault.zircula.org` | `vaultwarden:8080` |
 | `talk.cloud.zircula.org` | `talk-hpb:8081` |
 
 Caddy ist ausschließlich mit `zircula_frontend` verbunden. Interne Zielports
@@ -83,7 +84,9 @@ Laufzeitkonfiguration unter `/config` bleiben erhalten.
 
 Neue Routen werden erst aktiviert, wenn DNS gesetzt und der Zielcontainer im
 Frontend-Netz intern erreichbar ist. Für Grafana wird vor dem Reload zusätzlich
-`http://grafana:3000/api/health` aus dem Caddy-Container geprüft.
+`http://grafana:3000/api/health` und für Vaultwarden `http://vaultwarden:8080/alive`
+aus dem Frontend-Netz geprüft. Caddys Reverse Proxy unterstützt die von
+Vaultwarden verwendeten WebSocket-Verbindungen ohne zusätzliche öffentliche Ports.
 
 ## Sicherheit
 

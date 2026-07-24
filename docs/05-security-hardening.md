@@ -140,3 +140,24 @@ Noch offen:
 - regelmäßiges Image- und Secret-Scanning
 - Docker-Logrotation verbindlich begrenzen
 - Fail2ban anhand realer Logs gezielt bewerten
+
+
+## Vaultwarden-Zielzustand
+
+Der vorbereitete Vaultwarden-Stack folgt zusätzlich diesen Regeln:
+
+- Prozess als UID/GID 1000, ohne Capabilities, Docker-Socket oder Host-Port
+- read-only Root-Dateisystem; ausschließlich `/data` und begrenztes `/tmp`
+  schreibbar
+- Selbstregistrierung im Normalbetrieb und serverweite Admin-Konsole deaktiviert
+- OIDC nur mit PKCE und verifizierter E-Mail-Zuordnung
+- kein externes Icon-Fetching und keine Bitwarden-Sends in der ersten Stufe
+- kleinster möglicher Owner-Kreis und getrennte Organisations-Collections
+- produktive Secrets erst nach verschlüsseltem externem Backup und Restore-Test
+- MFA für alle Vaultwarden-Berechtigten als Produktionsfreigabe; ohne Smartphone
+  werden WebAuthn-Hardware-Schlüssel vorgesehen
+
+Root und Mitglieder der Docker-Gruppe bleiben in der Lage, lokale
+Konfigurationen und den verschlüsselten Serverdatenbestand zu kopieren. Die
+Ende-zu-Ende-Verschlüsselung ersetzt daher weder Host-Hardening noch
+Zugriffsgovernance und Rotation bei Offboarding.

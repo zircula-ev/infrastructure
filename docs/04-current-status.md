@@ -58,6 +58,15 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - WOPI mit der zentralen Nextcloud
 - keine direkte Hostport-Freigabe
 
+### Vaultwarden (vorbereitet, nicht produktiv)
+
+- gehärteter Stack für `vault.zircula.org` auf eigenem Feature-Branch
+- Rootless-Betrieb, kein Host-Port, read-only Root-Dateisystem
+- SQLite-Persistenz und Authentik-OIDC vorbereitet
+- produktive Secrets erst nach externem Backup und erfolgreichem Restore-Test
+- Organisations-, Collection-, MFA- und Offboarding-Governance in
+  `docs/11-vaultwarden.md` festgelegt
+
 ### Monitoring
 
 Auf dem VPS aktiv und geprüft:
@@ -201,3 +210,4 @@ unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 3. regelmäßige Image- und Secret-Scans ergänzen.
 4. Benutzer-Onboarding und MFA-Governance abschließen.
 5. Migration der bisherigen Clouds durchführen.
+6. Vaultwarden-PoC einschließlich MFA-, Rechte-, Backup- und Restore-Gate prüfen.
