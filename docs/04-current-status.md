@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 23.07.2026
+Stand: 24.07.2026
 
 ## Ziel
 
@@ -70,8 +70,12 @@ Auf dem VPS aktiv und geprüft:
   Startdashboard angezeigt
 - keine öffentlichen Metrik- oder Administrationsports außer Grafana über Caddy
 
-Noch nicht ausgerollt ist Uptime Kuma auf `nctest`. Bis dahin gibt es keine vom
-VPS unabhängige Ausfallmeldung.
+Auf `nctest` überwacht Uptime Kuma die vier öffentlichen Endpunkte für
+Nextcloud, Authentik, Collabora und Talk HPB unabhängig vom VPS. Die Oberfläche
+ist nur im Tailnet über Tailscale Serve auf HTTPS-Port 8443 erreichbar. DOWN- und
+Entwarnungsnachrichten an Slack wurden mit einem ungefährlichen Testmonitor
+bestätigt. Da `nctest` versehentlich ausgeschaltet werden kann, bleibt diese
+Instanz eine Übergangslösung und keine hochverfügbare externe Überwachung.
 
 ## Migration und Organisation
 
@@ -106,7 +110,6 @@ Positiv geprüft:
 Offen:
 
 - externes Backupziel und Restore-Test etablieren
-- Uptime Kuma auf `nctest` ausrollen und von außen testen
 - ergänzendes Image- und Secret-Scanning etablieren
 - ausstehende Ubuntu-Paketupdates im Wartungsfenster installieren
 - MFA und Recovery für beide Break-Glass-Konten abschließen
@@ -165,20 +168,32 @@ Erfolgreich geprüft und auf dem VPS ausgerollt:
 - Ablehnung eines Testbenutzers ohne Grafana-Entitlement durch
   `role_attribute_strict`; temporäre Binding und Testkonto anschließend entfernt
 
+## Validierung vom 24.07.2026
+
+Erfolgreich auf `nctest` ausgerollt und geprüft:
+
+- Uptime Kuma 2.4.0 als Rootless-Image mit UID/GID 1000
+- lokales ZFS-Dataset mit SQLite-Persistenz
+- keine zusätzlichen Linux-Capabilities und kein Docker-Socket
+- Bindung ausschließlich an `127.0.0.1:3001`
+- Zugriff nur über die zusätzliche Tailscale-Serve-Route auf HTTPS-Port 8443
+- lokale Anmeldung mit TOTP für das Administratorkonto
+- vier erfolgreiche öffentliche Dienstprüfungen
+- Slack-Nachrichten für DOWN und anschließende Entwarnung
+
 ## Produktionsreife
 
 Die Kerndienste und das interne Monitoring sind funktionsfähig. Vollständig
 belastbare Produktionsreife wird erst angenommen, wenn ein externes Backup und
 ein erfolgreicher Restore-Test dokumentiert sind. Ein VPS-Snapshot allein erfüllt
-diese Anforderung nicht. Solange Uptime Kuma auf `nctest` noch fehlt, kann das
-Monitoring außerdem keinen vollständigen VPS-Ausfall unabhängig melden.
+diese Anforderung nicht. Uptime Kuma kann einen vollständigen VPS-Ausfall zwar
+unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 
 ## Nächste Schritte
 
 1. Backupziel, Aufbewahrung und Restore-Test umsetzen.
-2. Uptime Kuma auf `nctest` ausrollen und testen.
-3. ausstehende Ubuntu-Paketupdates kontrolliert installieren.
-4. regelmäßige Image- und Secret-Scans ergänzen.
-5. offene Grafana- und OIDC-Negativtests abschließen.
-6. Benutzer-Onboarding und MFA-Governance abschließen.
-7. Migration der bisherigen Clouds durchführen.
+2. ausstehende Ubuntu-Paketupdates kontrolliert installieren.
+3. regelmäßige Image- und Secret-Scans ergänzen.
+4. offene Grafana- und OIDC-Negativtests abschließen.
+5. Benutzer-Onboarding und MFA-Governance abschließen.
+6. Migration der bisherigen Clouds durchführen.
