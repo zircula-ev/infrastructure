@@ -93,7 +93,22 @@ Authentik-Anwendung:
 `SSO_SIGNUPS_MATCH_EMAIL=true` darf nur zusammen mit verifizierten,
 organisatorisch kontrollierten E-Mail-Adressen verwendet werden.
 `SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION=false` bleibt zwingend, um unsichere
-Kontoverknüpfungen zu verhindern.
+Kontoverknüpfungen zu verhindern. Da authentik seit Version 2025.10 den Claim
+\`email_verified\` im Standard-Mapping bewusst auf \`false\` setzt, verwendet nur
+der Vaultwarden-Provider ein eigenes Scope-Mapping \`Vaultwarden verified email\`
+mit Scope-Name \`email\`:
+
+\`\`\`python
+return {
+    "email": request.user.email,
+    "email_verified": request.user.attributes.get("email_verified", False),
+}
+\`\`\`
+
+Das Benutzerattribut \`email_verified: true\` wird erst nach organisatorischer
+Prüfung der Adresse gesetzt. Das Standard-\`email\`-Mapping wird im
+Vaultwarden-Provider durch dieses Mapping ersetzt; andere Anwendungen bleiben
+unverändert.
 
 Der Branch verwendet für den aussperrungssicheren PoC `SSO_ONLY=false`.
 Damit bleibt ein lokaler Login technisch möglich und Authentik-MFA könnte
@@ -124,6 +139,15 @@ Der Notfallweg besteht aus:
   `SSO_ONLY=false` als Produktionsentscheidung bestehen bleibt
 
 Keine gemeinsame Owner-Anmeldung und kein Root-Passwort im Vault selbst.
+
+## SMTP
+
+SMTP wird nur für Einladungen, Verifikation und Sicherheitsmeldungen verwendet.
+Als Übergang nutzt der PoC den bereits vorhandenen technischen Absender
+\`noreply@nextcloud.zircula.org\`; Kennwort und weitere SMTP-Zugangsdaten bleiben
+in der lokalen \`.env\` und werden nie in Git dokumentiert. Vor dem Regelbetrieb
+wird nach Möglichkeit ein eigener Vaultwarden-Absender mit getrennten
+Zugangsdaten eingerichtet.
 
 ## Datenbank und Persistenz
 
@@ -173,7 +197,7 @@ einem ungefährlichen, temporär falschen Ziel; der Produktivcontainer wird daf�
 nicht gestoppt.
 
 Logs dürfen keine Tokens, Master-Passwörter oder Vault-Inhalte enthalten.
-Debug-/SSO-Token-Logging bleibt deaktiviert.
+Debug-/SSO-Token-Logging und erweitertes Request-Logging bleiben deaktiviert.
 
 ## Sichere Deploymentreihenfolge
 
@@ -183,8 +207,8 @@ Debug-/SSO-Token-Logging bleibt deaktiviert.
 4. Authentik-Provider und Bindings erstellen.
 5. Vaultwarden intern starten und Rootless-/Health-Prüfung durchführen.
 6. Caddy validieren und Vaultwarden veröffentlichen.
-7. ersten PoC-Owner in einem kurzzeitig auf die Admin-IP begrenzten Bootstrap-
-   Fenster anlegen; Registrierung unmittelbar danach wieder schließen.
+7. ersten PoC-Owner über den an die Gruppe `Vaultwarden Users` gebundenen
+   Authentik-Provider anlegen; die normale Registrierung bleibt geschlossen.
 8. Organisationen erstellen, danach `ORG_CREATION_USERS=none`.
 9. Testbenutzer einladen und Rechte-/Entzugsmatrix prüfen.
 10. Monitoring aktivieren.
