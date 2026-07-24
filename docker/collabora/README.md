@@ -18,7 +18,8 @@ Caddy, Collabora läuft intern ohne TLS.
 ## Dateien
 
 - `compose.yaml` – Container, Capability und Netzwerk
-- `.env.example` – getestete Version, Domain und erlaubter WOPI-Host
+- `.env.example` – Domain und erlaubter WOPI-Host; die Image-Version steht direkt
+  in `compose.yaml`
 - `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
 
 Collabora ist weitgehend zustandslos. Benutzerdokumente verbleiben in Nextcloud.

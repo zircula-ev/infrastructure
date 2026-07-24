@@ -1,0 +1,29 @@
+services:
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.28.0
+
+    container_name: blackbox-exporter
+
+    restart: unless-stopped
+
+    command:
+      - --config.file=/etc/blackbox_exporter/blackbox.yml
+
+    read_only: true
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    volumes:
+      - ./blackbox.yml:/etc/blackbox_exporter/blackbox.yml:ro
+
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    external: true
+    name: zircula_monitoring

@@ -1,6 +1,6 @@
 # 09 – Container- und Privilegien-Review
 
-Stand: 22.07.2026
+Stand: 23.07.2026
 
 ## Ziel und Abgrenzung
 
@@ -24,12 +24,11 @@ Die grundlegende Architektur ist angemessen:
   Capabilities.
 - Redis läuft ausdrücklich als unprivilegierter Benutzer.
 
-Ein kritischer, vermeidbarer Privilegienpfad wurde gefunden: Der
-Authentik-Worker lief als Root und hatte den Docker-Socket eingebunden. Damit
-konnte eine Kompromittierung des Workers faktisch zu Root-Rechten auf dem Host
-führen.
+Ein kritischer, vermeidbarer Privilegienpfad wurde behoben: Der Authentik-Worker
+lief zuvor als Root und hatte den Docker-Socket eingebunden. Damit hätte eine
+Kompromittierung des Workers faktisch zu Root-Rechten auf dem Host führen können.
 
-## Umgesetzte Änderung im Hardening-Branch
+## Umgesetzte und validierte Änderung
 
 Für den aktuellen Funktionsumfang werden keine automatisch bereitgestellten
 Docker-Outposts benötigt. Nextcloud verwendet OIDC und der vorhandene
@@ -50,6 +49,11 @@ Der Worker behält:
 
 Deployment, Eigentümerprüfung, Funktionstest und Rollback stehen in
 `docker/authentik/README.md`.
+
+Die Änderung wurde am 23.07.2026 ausgerollt. Geprüft wurden UID/GID 1000,
+fehlender Docker-Socket, ausschließlich das Backend-Netz, der Worker-Healthcheck,
+die öffentlichen Live- und Ready-Endpunkte sowie ein erfolgreicher
+Authentik-Login.
 
 ## Bewertung der übrigen Stacks
 
@@ -118,9 +122,10 @@ Authentik-Worker-Hardening vermischt.
 
 ### Hohe Priorität
 
-- Authentik-Worker-Hardening deployen und vollständig testen.
-- Nach dem Deployment bestätigen, dass kein Container den Docker-Socket mountet,
-  sofern dies nicht ausdrücklich dokumentiert ist.
+- Der Authentik-Worker ist gehärtet und geprüft. Bei jeder späteren
+  Outpost-Änderung erneut bestätigen, dass kein Docker-Socket erforderlich ist.
+- Bestätigen, dass kein Container den Docker-Socket mountet, sofern dies nicht
+  ausdrücklich dokumentiert und separat abgesichert ist.
 - Öffentliche Ports von einem externen IPv4- und IPv6-System prüfen.
 - Mitglieder der Gruppen `docker` und `sudo` regelmäßig kontrollieren.
 
@@ -150,24 +155,31 @@ Rollback versehen.
 
 ## Laufzeitprüfung
 
-Nach dem Authentik-Deployment:
+Die Prüfung umfasst alle produktiven Anwendungs- und Monitoringcontainer:
 
 ```bash
-docker inspect --format \
-  '{{.Name}} user={{.Config.User}} privileged={{.HostConfig.Privileged}}' \
-  caddy nextcloud postgres redis collabora authentik-server authentik-worker talk-hpb
+containers=(
+  caddy nextcloud postgres redis collabora
+  authentik-server authentik-worker talk-hpb
+  node-exporter blackbox-exporter alertmanager prometheus grafana
+)
 
 docker inspect --format \
-  '{{.Name}}{{range .Mounts}} {{.Source}}:{{.Destination}}{{end}}' \
-  caddy nextcloud postgres redis collabora authentik-server authentik-worker talk-hpb
-
+  '{{.Name}} user={{.Config.User}} privileged={{.HostConfig.Privileged}} readonly={{.HostConfig.ReadonlyRootfs}} ports={{json .NetworkSettings.Ports}}' \
+  "${containers[@]}"
+docker inspect --format \
+  '{{.Name}}{{range .Mounts}} {{.Source}}:{{.Destination}}:rw={{.RW}}{{end}}' \
+  "${containers[@]}"
 docker inspect --format \
   '{{.Name}}{{range $name, $_ := .NetworkSettings.Networks}} {{$name}}{{end}}' \
-  caddy nextcloud postgres redis collabora authentik-server authentik-worker talk-hpb
+  "${containers[@]}"
 
 sudo ss -lntup
 sudo ufw status verbose
 ```
+
+Dabei werden Benutzer, Read-only-Root-Dateisystem, Capabilities, Mounts, Netze
+und Hostport-Freigaben mit den jeweiligen Stack-READMEs abgeglichen.
 
 Erwartete öffentliche Ports:
 

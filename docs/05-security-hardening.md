@@ -65,11 +65,14 @@ schreibbare Hostpfade und root-Betrieb werden für jeden Stack begründet.
 Besondere Ausnahmen:
 
 - Collabora benötigt derzeit `MKNOD`; diese Ausnahme bleibt dienstbezogen.
-- Authentik benötigt den Docker-Socket nur für automatisch verwaltete Outposts.
+- Der Authentik-Worker läuft ohne Root-Rechte und Docker-Socket. Der derzeit
+  verwendete Embedded Outpost benötigt keinen Socket. Falls später verwaltete
+  Docker-Outposts eingeführt werden, wird dafür eine getrennte, erneut geprüfte
+  Integration benötigt.
 
 ## 4. Anwendungsschutz
 
-- MFA für Nextcloud- und Authentik-Administratoren
+- MFA für Nextcloud-, Authentik- und Grafana-Administratoren
 - getrennte persönliche Administratorkonten und dokumentierte Break-Glass-Konten
 - Break-Glass-Zugangsdaten offline und verschlüsselt verwahren
 - Authentik- und Nextcloud-Adminaktionen nach Einführung eines stabilen VPNs auf
@@ -110,9 +113,10 @@ Monatlich:
 - Container-Image- und Repository-Scan auf hohe/kritische Befunde
 - Nextcloud-Administrationswarnungen und Security Scan
 - Authentik-Systemaufgaben und Warnungen
+- Prometheus-Targets, aktive Alarme, TLS-Restlaufzeiten und Grafana-Zugänge
 - Backupalter und letzter erfolgreicher Restore-Test
 
-## Umsetzungsstand vom 15.07.2026
+## Umsetzungsstand vom 23.07.2026
 
 Abgeschlossen:
 
@@ -121,12 +125,18 @@ Abgeschlossen:
 - Redis-Passwortauthentifizierung über Compose-Secret
 - Redis- und Nextcloud-Funktionstest nach dem Rollout
 - `vm.overcommit_memory=1` dauerhaft gesetzt
-- Dependabot-Benachrichtigungen für aktive Compose-Stacks
+- Dependabot-Benachrichtigungen für alle im Repository geführten Compose-Stacks
+- Authentik-Worker ohne Root-Rechte, Docker-Socket und Frontend-Netz
+- interne Monitoringdienste ohne öffentliche Hostports
+- Node Exporter mit ausschließlich lesenden Host-Mounts
+- Alertmanager-Secret als lokale, schreibgeschützt eingebundene Datei
+- Grafana nur über Caddy veröffentlicht, mit lokalem Break-Glass-Konto und
+  Authentik-OIDC
 
 Noch offen:
 
 - externes verschlüsseltes Backup und dokumentierter Restore-Test
+- Uptime Kuma als vom VPS getrennte Übergangsüberwachung ausrollen
 - regelmäßiges Image- und Secret-Scanning
 - Docker-Logrotation verbindlich begrenzen
-- Authentik-Docker-Socket nach Festlegung der Outpost-Nutzung minimieren
 - Fail2ban anhand realer Logs gezielt bewerten

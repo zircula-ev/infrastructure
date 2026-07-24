@@ -142,7 +142,8 @@ Cron-Container – muss überwacht und dokumentiert werden.
 ## Sicherheit
 
 - keine Warnungen in **Administrationseinstellungen → Übersicht**
-- MFA für Administratoren und Break-Glass-Konten
+- MFA für persönliche Administratorkonten; MFA und Recovery für das lokale
+  Break-Glass-Konto werden vor dem produktiven Rollout abgeschlossen
 - persönliche Administratorkonten statt geteilter Konten
 - Freigabelinks und App-Berechtigungen regelmäßig überprüfen
 - `allowed_admin_ranges` nach Einführung eines stabilen Admin-VPNs prüfen
@@ -161,8 +162,10 @@ nach einem erfolgreichen Restore-Test als betriebsbereit.
 
 ## Updates
 
-Nextcloud-Major-Versionen werden nacheinander installiert. Vor jedem Update werden
-Release Notes und App-Kompatibilität geprüft und ein konsistentes Backup erstellt.
+Nextcloud-Major-Versionen werden nacheinander installiert. Die Image-Version steht
+direkt in `compose.yaml`, damit Dependabot sie erkennen kann. Vor jedem Update
+werden Release Notes und App-Kompatibilität geprüft und ein konsistentes Backup
+erstellt.
 
 ```bash
 docker compose pull

@@ -35,7 +35,7 @@ Der Container ist ausschließlich mit `zircula_frontend` verbunden:
 
 - `compose.yaml` – Container, Netzwerk und veröffentlichte TURN/STUN-Ports
 - `.env.example` – vollständige Vorlage ohne produktive Geheimnisse
-- `.env` – lokale produktive Konfiguration; wird nicht versioniert
+- `.env` – lokale produktive Konfiguration; wird nicht versioniert, Modus 600
 
 ## Voraussetzungen
 
@@ -65,9 +65,9 @@ Die drei erzeugten Werte gehören jeweils in `TURN_SECRET`,
 `SIGNALING_SECRET` und `INTERNAL_SECRET`. Sie dürfen weder committet noch in
 Tickets oder Chats kopiert werden.
 
-## Caddy ergänzen
+## Caddy-Route
 
-In `docker/caddy/Caddyfile` folgenden zusätzlichen Site-Block ergänzen:
+Die produktive Route ist bereits in `docker/caddy/Caddyfile` enthalten:
 
 ```caddyfile
 talk.cloud.zircula.org {
@@ -82,19 +82,25 @@ talk.cloud.zircula.org {
 Caddy unterstützt die für Signaling benötigte WebSocket-Weiterleitung über
 `reverse_proxy`; dafür ist keine zusätzliche Header-Konfiguration nötig.
 
-Danach Caddy-Konfiguration prüfen und neu laden:
+Nach einer Änderung Caddy-Konfiguration prüfen und neu laden. Die Befehle werden
+im Verzeichnis `docker/caddy` ausgeführt:
 
 ```bash
-docker compose config
-docker compose up -d
+docker compose config --quiet
+docker compose exec caddy caddy validate --config /etc/caddy/Caddyfile
+docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
 ```
+
+Falls Git die einzeln gebundene `Caddyfile` ersetzt hat und der laufende
+Container noch die alte Inode sieht, gilt das in `docker/caddy/README.md`
+dokumentierte kontrollierte Recreate.
 
 ## HPB starten
 
 Im Verzeichnis `docker/talk-hpb`:
 
 ```bash
-docker compose config
+docker compose config --quiet
 docker compose up -d
 docker compose ps
 docker compose logs -f talk-hpb
@@ -139,9 +145,11 @@ docker compose up -d
 docker compose logs --tail=100 talk-hpb
 ```
 
-Vor Updates: Snapshot bzw. Backup prüfen, Release Notes lesen und nach dem
-Update den Welcome-Endpunkt sowie einen Testanruf mit zwei getrennten Netzen
-prüfen.
+Die dokumentierte `latest`-Ausnahme steht direkt in `compose.yaml`. Dependabot
+kann daraus keine neue Versionsnummer ableiten; deshalb werden Release Notes und
+der tatsächlich geladene Digest manuell geprüft. Vor Updates: Snapshot
+beziehungsweise Backup prüfen und danach den Welcome-Endpunkt sowie einen
+Testanruf mit zwei getrennten Netzen prüfen.
 
 ## Nicht enthalten
 

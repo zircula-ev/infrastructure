@@ -4,3 +4,7 @@
 
 # ... außer Vorlagen
 !.env.example
+
+# Local secret files; keep empty directory markers only.
+**/secrets/*
+!**/secrets/.gitkeep

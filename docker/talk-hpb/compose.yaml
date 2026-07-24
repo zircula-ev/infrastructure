@@ -1,6 +1,6 @@
 services:
   talk-hpb:
-    image: ${TALK_HPB_IMAGE}:${TALK_HPB_TAG}
+    image: ghcr.io/nextcloud-releases/aio-talk:latest
 
     container_name: talk-hpb
 

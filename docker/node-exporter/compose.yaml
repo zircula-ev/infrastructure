@@ -1,0 +1,36 @@
+services:
+  node-exporter:
+    image: prom/node-exporter:v1.11.1
+
+    container_name: node-exporter
+
+    restart: unless-stopped
+
+    command:
+      - --path.procfs=/host/proc
+      - --path.sysfs=/host/sys
+      - --path.rootfs=/rootfs
+      - --collector.textfile.directory=/var/lib/node_exporter/textfile_collector
+      - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run|var/lib/docker/.+|var/lib/docker/rootfs/.+)($|/)
+
+    read_only: true
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro,rslave
+      - /srv/zircula/node-exporter/textfile:/var/lib/node_exporter/textfile_collector:ro
+
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    external: true
+    name: zircula_monitoring

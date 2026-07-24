@@ -3,16 +3,22 @@ version: 2
 updates:
   - package-ecosystem: docker-compose
     directories:
+      - /docker/alertmanager
       - /docker/authentik
+      - /docker/blackbox-exporter
       - /docker/caddy
       - /docker/collabora
+      - /docker/grafana
       - /docker/nextcloud
+      - /docker/node-exporter
       - /docker/postgres
+      - /docker/prometheus
       - /docker/redis
       - /docker/talk-hpb
+      - /hosts/nctest/docker/uptime-kuma
     schedule:
       interval: weekly
       day: monday
       time: "06:00"
       timezone: Europe/Berlin
-    open-pull-requests-limit: 8
+    open-pull-requests-limit: 12

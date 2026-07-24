@@ -1,0 +1,76 @@
+services:
+  grafana:
+    image: grafana/grafana:13.1.1
+
+    container_name: grafana
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    environment:
+      GF_SERVER_DOMAIN: ${GRAFANA_DOMAIN}
+      GF_SERVER_ROOT_URL: https://${GRAFANA_DOMAIN}
+      GF_SERVER_ENFORCE_DOMAIN: "true"
+
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/vps-overview.json
+
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD}
+      GF_SECURITY_SECRET_KEY: ${GRAFANA_SECRET_KEY}
+      GF_SECURITY_COOKIE_SECURE: "true"
+      GF_SECURITY_COOKIE_SAMESITE: lax
+      GF_SECURITY_DISABLE_GRAVATAR: "true"
+
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_BASIC_ENABLED: "true"
+      GF_AUTH_DISABLE_LOGIN_FORM: "false"
+      GF_AUTH_OAUTH_AUTO_LOGIN: "false"
+
+      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+      GF_AUTH_GENERIC_OAUTH_NAME: authentik
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: ${GRAFANA_OIDC_CLIENT_ID}
+      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: ${GRAFANA_OIDC_CLIENT_SECRET}
+      GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email entitlements
+      GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.zircula.org/application/o/authorize/
+      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.zircula.org/application/o/token/
+      GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.zircula.org/application/o/userinfo/
+      GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+      GF_AUTH_GENERIC_OAUTH_USE_PKCE: "true"
+      GF_AUTH_GENERIC_OAUTH_VALIDATE_ID_TOKEN: "true"
+      GF_AUTH_GENERIC_OAUTH_JWK_SET_URL: https://auth.zircula.org/application/o/grafana/jwks/
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_STRICT: "true"
+      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(entitlements[*], 'Grafana Admins') && 'Admin' || contains(entitlements[*], 'Grafana Editors') && 'Editor' || contains(entitlements[*], 'Grafana Viewers') && 'Viewer' || ''"
+      GF_AUTH_SIGNOUT_REDIRECT_URL: https://auth.zircula.org/application/o/grafana/end-session/
+
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    volumes:
+      - type: bind
+        source: /srv/zircula/grafana/data
+        target: /var/lib/grafana
+        bind:
+          create_host_path: false
+      - ./provisioning:/etc/grafana/provisioning:ro
+      - ./dashboards:/var/lib/grafana/dashboards:ro
+
+    networks:
+      - frontend
+      - monitoring
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
+
+  monitoring:
+    external: true
+    name: zircula_monitoring

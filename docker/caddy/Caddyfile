@@ -1,39 +1,38 @@
 {
-    email timo.hecken@zircula.org
+	email timo.hecken@zircula.org
 }
 
 cloud.zircula.org {
-
-    header {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    }
-
-    reverse_proxy nextcloud:80
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	reverse_proxy nextcloud:80
 }
 
 office.zircula.org {
-
-    header {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    }
-
-    reverse_proxy collabora:9980
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	reverse_proxy collabora:9980
 }
 
 auth.zircula.org {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	reverse_proxy authentik-server:9000
+}
 
-    header {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    }
-
-    reverse_proxy authentik-server:9000
+monitoring.zircula.org {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	reverse_proxy grafana:3000
 }
 
 talk.cloud.zircula.org {
-
-    header {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    }
-
-    reverse_proxy talk-hpb:8081
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	reverse_proxy talk-hpb:8081
 }
