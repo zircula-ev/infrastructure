@@ -109,3 +109,4 @@ Wichtige Dokumente:
 - `docs/08-authentik-nextcloud-oidc.md`
 - `docs/09-container-privilege-review.md`
 - `docs/10-monitoring.md`
+- `docs/11-slack-nextcloud-nutzungsabgrenzung.md`
