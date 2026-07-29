@@ -7,22 +7,24 @@ Nextcloud oder anderen Anwendungen mitbenutzt und ist nur im internen Netz
 ## Sicherheit
 
 - Redis 7.4.10 Alpine
-- Passwort aus einem lokalen Compose-Secret
+- Passwort aus der lokalen Datei `secrets/redis_password`
+- Secret schreibgeschützt unter `/run/secrets/libredesk_redis_password`
 - kein Hostport und kein Frontend-Netz
 - Prozess als Image-Benutzer `redis`
 - read-only Root-Dateisystem
 - alle Capabilities entfernt und `no-new-privileges`
 - AOF-Persistenz unter `/srv/zircula/libredesk-redis`
 
-Das Passwort muss exakt dem Wert in `docker/libredesk/.env` entsprechen. Beide
-lokalen Dateien erhalten Modus 600 und werden nicht committet.
+Das Passwort muss exakt dem Wert `LIBREDESK_REDIS_PASSWORD` in
+`docker/libredesk/.env` entsprechen. Die Secret-Datei wird von Git ignoriert,
+enthält nur das Passwort ohne Variablennamen und erhält Modus 400 sowie die
+numerische Eigentümerschaft des Containerbenutzers.
 
 ## Vorbereitung
 
-```bash
-cp .env.example .env
-chmod 600 .env
+Zuerst Image-Benutzer und Persistenz vorbereiten:
 
+```bash
 docker pull redis:7.4.10-alpine
 
 redis_uid="$(docker run --rm --entrypoint id redis:7.4.10-alpine -u redis)"
@@ -33,10 +35,39 @@ sudo install -d -m 700 \
 
 sudo chown "$redis_uid:$redis_gid" \
   /srv/zircula/libredesk-redis
+
+install -d -m 750 secrets
+
+sed -n 's/^LIBREDESK_REDIS_PASSWORD=//p' \
+  ../libredesk/.env \
+  | sudo tee secrets/redis_password >/dev/null
+
+sudo chown "$redis_uid:$redis_gid" \
+  secrets/redis_password
+
+sudo chmod 400 secrets/redis_password
+
+unset redis_uid redis_gid
 ```
 
-Das Passwort einmal mit `openssl rand -hex 32` erzeugen und in beide
-LibreDesk-`.env`-Dateien eintragen.
+Ohne den Inhalt auszugeben prüfen:
+
+```bash
+test -s secrets/redis_password
+git check-ignore -v secrets/redis_password
+
+app_password="$(
+  sed -n 's/^LIBREDESK_REDIS_PASSWORD=//p' \
+    ../libredesk/.env
+)"
+
+sudo cmp -s \
+  <(printf '%s\n' "$app_password") \
+  secrets/redis_password
+
+echo "Redis-Secrets stimmen überein"
+unset app_password
+```
 
 ## Start und Prüfung
 
