@@ -49,6 +49,8 @@ deaktiviert.
 - Caddy
 - Collabora
 - Grafana
+- LibreDesk
+- LibreDesk Redis
 - Nextcloud
 - Node Exporter
 - PostgreSQL
@@ -170,5 +172,9 @@ Empfehlung für den kleinen Vereinsbetrieb:
   Authentik-OIDC und Rollenmapping
 - Vaultwarden: Healthcheck, OIDC, Vault-Entsperrung, Synchronisation,
   Organisationen, Collections, Anhänge, SMTP und öffentliche `/alive`-Probe
+- LibreDesk: `/health`, lokaler Break-Glass-Login, OIDC mit MFA, Mailabruf,
+  Versand, Threading, Anhänge, Rollen und interner Redis-Zugriff
+- LibreDesk Redis: authentifizierter `PONG`, anonymer Zugriff abgewiesen, AOF
+  beschreibbar und kein Hostport
 - Uptime Kuma: öffentliche HTTP-/TCP-Prüfungen und Benachrichtigung; kein ICMP,
   solange `NET_RAW` nicht ausdrücklich freigegeben ist
