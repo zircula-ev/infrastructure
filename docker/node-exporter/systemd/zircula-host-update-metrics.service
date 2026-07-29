@@ -19,5 +19,3 @@ ProtectControlGroups=true
 LockPersonality=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
-CapabilityBoundingSet=
-
