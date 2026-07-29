@@ -72,7 +72,8 @@ Besondere Ausnahmen:
 
 ## 4. Anwendungsschutz
 
-- MFA für Nextcloud-, Authentik- und Grafana-Administratoren
+- gruppenbasierte MFA über Authentik für Administratoren, Vorstände,
+  `Objekt 218 GmbH` und `Vaultwarden Users`
 - getrennte persönliche Administratorkonten und dokumentierte Break-Glass-Konten
 - Break-Glass-Zugangsdaten offline und verschlüsselt verwahren
 - Authentik- und Nextcloud-Adminaktionen nach Einführung eines stabilen VPNs auf
@@ -116,7 +117,7 @@ Monatlich:
 - Prometheus-Targets, aktive Alarme, TLS-Restlaufzeiten und Grafana-Zugänge
 - Backupalter und letzter erfolgreicher Restore-Test
 
-## Umsetzungsstand vom 23.07.2026
+## Umsetzungsstand vom 29.07.2026
 
 Abgeschlossen:
 
@@ -132,11 +133,13 @@ Abgeschlossen:
 - Alertmanager-Secret als lokale, schreibgeschützt eingebundene Datei
 - Grafana nur über Caddy veröffentlicht, mit lokalem Break-Glass-Konto und
   Authentik-OIDC
+- Uptime Kuma getrennt auf `nctest`, nur über Tailscale administrierbar
+- Vaultwarden als UID/GID 1000 ohne Capabilities, Docker-Socket oder Host-Port
+- Vaultwarden-OIDC, Master-Passwort, SMTP und öffentliche TLS-Route geprüft
 
 Noch offen:
 
 - externes verschlüsseltes Backup und dokumentierter Restore-Test
-- Uptime Kuma als vom VPS getrennte Übergangsüberwachung ausrollen
 - regelmäßiges Image- und Secret-Scanning
 - Docker-Logrotation verbindlich begrenzen
 - Fail2ban anhand realer Logs gezielt bewerten
@@ -144,7 +147,8 @@ Noch offen:
 
 ## Vaultwarden-Zielzustand
 
-Der vorbereitete Vaultwarden-Stack folgt zusätzlich diesen Regeln:
+Der bereitgestellte, noch nicht organisatorisch freigegebene Vaultwarden-Stack
+folgt zusätzlich diesen Regeln:
 
 - Prozess als UID/GID 1000, ohne Capabilities, Docker-Socket oder Host-Port
 - read-only Root-Dateisystem; ausschließlich `/data` und begrenztes `/tmp`
