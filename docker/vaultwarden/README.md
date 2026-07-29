@@ -1,8 +1,10 @@
 # Vaultwarden
 
-Dieser Stack bereitet einen gehärteten, selbst gehosteten Passwortmanager unter
-`vault.zircula.org` vor. Maßgeblich für Governance, Authentik-OIDC, Organisationen,
-Backup und Rollback ist `../../docs/11-vaultwarden.md`.
+Dieser Stack betreibt einen gehärteten, selbst gehosteten Passwortmanager unter
+`vault.zircula.org`. Der technische PoC ist bereitgestellt und funktionsgeprüft;
+der organisatorische Rollout erfolgt bewusst erst in einer zweiten Phase.
+Maßgeblich für Governance, Authentik-OIDC, Organisationen, Backup und Rollback
+ist `../../docs/12-vaultwarden.md`.
 
 Vaultwarden ist eine Bitwarden-kompatible, aber nicht von Bitwarden angebotene
 Serverimplementierung. Vor der produktiven Aufnahme von Geheimnissen sind ein
@@ -27,6 +29,32 @@ verschlüsseltes externes Backup und ein erfolgreicher Restore-Test zwingend.
 Root und Mitglieder der Docker-Gruppe können Container-Umgebung und Datenpfad
 weiterhin lesen. Diese Hostrollen bleiben daher hochprivilegiert.
 
+## Betriebsstand vom 24.07.2026
+
+Bereitgestellt und erfolgreich geprüft:
+
+- persistenter Datenpfad mit restriktiven Rechten
+- Container als UID/GID 1000, ohne Capabilities, Host-Port oder Docker-Socket
+- read-only Root-Dateisystem und erfolgreicher interner Healthcheck
+- öffentliche HTTPS-Route und `/alive` über Caddy
+- Authentik-OIDC mit PKCE, verifizierter E-Mail-Zuordnung und erfolgreichem Login
+- Setzen und erneutes Verwenden des Master-Passworts
+- SMTP über `mail.manitu.de:465` mit implizitem TLS
+- Rückkehr auf die reguläre Compose-Konfiguration mit deaktiviertem Debug- und
+  Token-Logging
+
+Vor dem organisatorischen Rollout in Phase zwei bleiben offen:
+
+- Organisationen, Collections und Gruppen abschließend einrichten und testen
+- zweiten persönlichen Owner sowie Offboarding und Rechteentzug prüfen
+- Web-, Desktop- und Mobil-Clients einschließlich Synchronisation testen
+- verschlüsseltes externes Backup und isolierten Restore-Test abschließen
+- Vaultwarden in Uptime Kuma aufnehmen
+- endgültige Entscheidung zu `SSO_ONLY` und lokaler Vaultwarden-MFA treffen
+
+Bis diese Freigabegates erfüllt sind, werden keine ausschließlich in Vaultwarden
+verwahrten produktiven Geheimnisse aufgenommen.
+
 ## Dateien und Daten
 
 - `compose.yaml` – Container und Hardening
@@ -35,10 +63,10 @@ weiterhin lesen. Diese Hostrollen bleiben daher hochprivilegiert.
 - `scripts/preflight.sh` – ausgabearme Erstprüfung
 - `/srv/zircula/vaultwarden/data` – Datenbank, Schlüssel und Anhänge
 
-## Erstvorbereitung
+## Initialisierung oder Wiederherstellung
 
-Noch nicht starten, solange `.env` Platzhalter enthält oder Authentik nicht
-vorbereitet ist.
+Bei einem Neuaufbau darf der Stack nicht gestartet werden, solange `.env`
+Platzhalter enthält oder Authentik nicht vorbereitet ist.
 
 ```bash
 cd /opt/zircula/git/infrastructure/docker/vaultwarden
@@ -102,9 +130,8 @@ Debug-Level kann OAuth-Access- und Refresh-Tokens ausgeben.
 
 ## Kontrollierter Erst-Owner
 
-Vaultwarden besitzt ohne Admin-Konsole und bei geschlossener Registrierung noch
-kein Konto. Für genau den ersten Owner ist deshalb ein kurzes Bootstrap-Fenster
-nötig:
+Der erste Owner wurde über ein kurzes, kontrolliertes Bootstrap-Fenster angelegt.
+Bei einem vollständigen Neuaufbau wird dafür folgendes Verfahren verwendet:
 
 1. Caddy vorübergehend mit einem `remote_ip`-Matcher auf die aktuelle Admin-IP
    begrenzen; alle anderen Anfragen an `vault.zircula.org` mit 403 beantworten.
@@ -192,4 +219,4 @@ Bei Fehlern zuerst die Caddy-Route wieder entfernen oder auf den zuvor getestete
 Commit wechseln. Ein Image-Downgrade nach einer Datenmigration ist kein sicherer
 Rollback. Datenbank und kompletter Datenpfad werden aus dem vor dem Update
 erstellten Backup wiederhergestellt. Details stehen in
-`../../docs/11-vaultwarden.md`.
+`../../docs/12-vaultwarden.md`.
