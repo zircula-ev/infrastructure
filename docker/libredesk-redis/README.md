@@ -28,7 +28,10 @@ docker pull redis:7.4.10-alpine
 redis_uid="$(docker run --rm --entrypoint id redis:7.4.10-alpine -u redis)"
 redis_gid="$(docker run --rm --entrypoint id redis:7.4.10-alpine -g redis)"
 
-sudo install -d -o "$redis_uid" -g "$redis_gid" -m 700 \
+sudo install -d -m 700 \
+  /srv/zircula/libredesk-redis
+
+sudo chown "$redis_uid:$redis_gid" \
   /srv/zircula/libredesk-redis
 ```
 
