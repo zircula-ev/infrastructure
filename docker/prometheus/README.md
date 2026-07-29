@@ -10,6 +10,7 @@ Die erste Ausbaustufe erfasst:
 - Hostmetriken über Node Exporter
 - öffentliche HTTPS-Endpunkte über Blackbox Exporter
 - TLS-Restlaufzeiten
+- öffentlicher LibreDesk-Healthcheck unter `support.zircula.org/health`
 
 Anwendungsspezifische Nextcloud-, Authentik-, PostgreSQL-, Redis- und
 Caddy-Metriken werden erst nach dem stabilen Baseline-Deployment ergänzt.
