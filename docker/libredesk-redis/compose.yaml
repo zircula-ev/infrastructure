@@ -6,10 +6,6 @@ services:
     restart: unless-stopped
     user: redis
 
-    env_file:
-      - .env
-    secrets:
-      - libredesk_redis_password
     entrypoint:
       - /bin/sh
       - /usr/local/bin/redis-secure-entrypoint.sh
@@ -24,6 +20,12 @@ services:
     pids_limit: 100
 
     volumes:
+      - type: bind
+        source: ./secrets/redis_password
+        target: /run/secrets/libredesk_redis_password
+        read_only: true
+        bind:
+          create_host_path: false
       - type: bind
         source: /srv/zircula/libredesk-redis
         target: /data
@@ -44,7 +46,3 @@ networks:
   backend:
     external: true
     name: zircula_backend
-
-secrets:
-  libredesk_redis_password:
-    environment: LIBREDESK_REDIS_PASSWORD
