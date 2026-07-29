@@ -47,7 +47,7 @@ interaktiven PostgreSQL-Sitzung gesetzt und muss anschließend exakt in
 
 ```bash
 cd /opt/zircula/git/infrastructure/docker/postgres
-docker compose exec postgres psql -U "$POSTGRES_USER"
+docker compose exec postgres sh -c 'psql -U "$POSTGRES_USER"'
 ```
 
 In `psql`:
