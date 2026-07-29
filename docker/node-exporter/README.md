@@ -70,8 +70,9 @@ systemctl list-timers --all zircula-host-update-metrics.timer
 
 cat /srv/zircula/node-exporter/textfile/system_updates.prom
 
-docker compose exec node-exporter wget -qO- \
-  http://127.0.0.1:9100/metrics \
+docker run --rm --network zircula_monitoring \
+  curlimages/curl:8.16.0 \
+  --fail --silent http://node-exporter:9100/metrics \
   | grep '^zircula_host_'
 ```
 
@@ -107,4 +108,3 @@ docker compose ps
 
 Ein Rollback erfolgt durch Wiederherstellen der vorherigen Version und erneutes
 `docker compose up -d`.
-
