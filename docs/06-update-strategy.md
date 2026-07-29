@@ -97,6 +97,20 @@ Migrationsprojekt mit:
 5. Anwendungs- und Integritätsprüfung,
 6. dokumentiertem Rückfallplan.
 
+### Vaultwarden 1.36.0 auf 1.37.0
+
+Das Sicherheitsupdate wurde am 29.07.2026 ausgerollt. Die Veröffentlichung
+schließt acht Kategorien mittlerer Sicherheitsprobleme und verbessert unter
+anderem SSO, Trusted-Proxy-Behandlung und Schutz vor anonymem
+WebSocket-Flooding. Vor dem Update wurden ein Vaultwarden-Datenbanksnapshot und
+ein vollständiges Backup des gestoppten Datenpfads erzeugt.
+
+Wegen der strengeren Prüfung von `DATABASE_URL` verwendet der Stack nun die
+explizite SQLite-URL `sqlite:///data/db.sqlite3`. Nach dem Update wurden
+Datenbankintegrität, Authentik-SSO/MFA, Master-Passwort, Vault-Operationen,
+Synchronisation, erneute Anmeldung, SMTP, öffentliche Erreichbarkeit und das
+Container-Hardening erfolgreich geprüft.
+
 ## Wartungsfenster
 
 Empfehlung für den kleinen Vereinsbetrieb:
