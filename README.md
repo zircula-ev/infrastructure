@@ -15,6 +15,7 @@ Internet
   │                 ├── auth.zircula.org ───────► Authentik
   │                 ├── monitoring.zircula.org ─► Grafana
   │                 ├── vault.zircula.org ──────► Vaultwarden
+  │                 ├── support.zircula.org ────► LibreDesk
   │                 └── talk.cloud.zircula.org ─► Talk HPB
   └── :3478 TCP/UDP ─────────────────────────────► Talk TURN/STUN
 
@@ -23,6 +24,8 @@ Nextcloud ──► Redis
 Prometheus ─► Alertmanager, Node Exporter und Blackbox Exporter
 Grafana ────► Prometheus
 Vaultwarden ─OIDC─► Authentik
+LibreDesk ──► PostgreSQL und eigener Redis
+LibreDesk ─OIDC─► Authentik
 nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 ```
 
@@ -43,6 +46,8 @@ nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 | `prometheus` | Metriken und Alarmregeln | Monitoring | keine |
 | `grafana` | Monitoringoberfläche | Frontend, Monitoring | keine |
 | `vaultwarden` | Passwort- und Secret-Verwaltung | Frontend | keine |
+| `libredesk` | IT-Support-Ticketing (PoC) | Frontend, Backend | keine |
+| `libredesk-redis` | anwendungseigener Cache und Queue | Backend | keine |
 
 Hostbezogene Stacks außerhalb des VPS stehen unter `hosts/`. Der derzeit
 dokumentierte Host `nctest` betreibt Uptime Kuma als vorläufige externe
@@ -86,7 +91,7 @@ ersetzen keine Authentifizierung der darin betriebenen Dienste.
 
 ```text
 Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB
-          → Vaultwarden
+          → Vaultwarden → LibreDesk Redis → LibreDesk
           → Monitoring-Exporter → Alertmanager → Prometheus → Grafana → Caddy
 ```
 
@@ -115,3 +120,4 @@ Wichtige Dokumente:
 - `docs/10-monitoring.md`
 - `docs/11-slack-nextcloud-nutzungsabgrenzung.md`
 - `docs/12-vaultwarden.md`
+- `docs/13-libredesk.md`
