@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the Zircula host update metrics check daily
+
+[Timer]
+OnBootSec=10m
+OnCalendar=*-*-* 07:15:00
+RandomizedDelaySec=30m
+Persistent=true
+Unit=zircula-host-update-metrics.service
+
+[Install]
+WantedBy=timers.target
+
