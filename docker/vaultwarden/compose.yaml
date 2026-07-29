@@ -15,7 +15,7 @@ services:
       DOMAIN: https://${VAULTWARDEN_DOMAIN}
       ROCKET_ADDRESS: 0.0.0.0
       ROCKET_PORT: "8080"
-      DATABASE_URL: /data/db.sqlite3
+      DATABASE_URL: sqlite:///data/db.sqlite3
       ENABLE_DB_WAL: "true"
       UMASK: "0077"
 
