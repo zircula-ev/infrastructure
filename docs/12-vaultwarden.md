@@ -20,8 +20,11 @@ aber noch nicht für den allgemeinen organisatorischen Einsatz freigegeben.
 Erfolgreich geprüft wurden Container-Hardening, persistente SQLite-Daten,
 öffentliche TLS-Erreichbarkeit, Authentik-OIDC mit verifizierter E-Mail,
 Master-Passwort, regulärer Neustart sowie SMTP-Anmeldung über den technischen
-Absender `noreply@nextcloud.zircula.org`. Temporäre Debug-Konfigurationen wurden
-entfernt; erweitertes Logging und SSO-Token-Logging sind deaktiviert.
+Absender `noreply@nextcloud.zircula.org`. Am 29.07.2026 wurde das
+Sicherheitsupdate auf Vaultwarden 1.37.0 mit Vorher-Backup, Datenbankprüfung,
+SSO/MFA, Vault-Operationen, erneuter Anmeldung und SMTP-Nachtest erfolgreich
+ausgerollt. Temporäre Debug-Konfigurationen wurden entfernt; erweitertes Logging
+und SSO-Token-Logging sind deaktiviert.
 
 Der Rollout bleibt Phase zwei nach der Nextcloud-Migration. Bis dahin werden
 Organisationen, Collections, Gruppen, zweiter Owner, Clients, Offboarding,
@@ -170,7 +173,10 @@ Zugangsdaten eingerichtet.
 
 Für die kleine erste Ausbaustufe wird SQLite mit WAL gewählt. Das vermeidet ein
 zusätzliches Datenbankkonto und hält Restore und isolierte Tests übersichtlich.
-Der vollständige Zustand liegt unter `/srv/zircula/vaultwarden/data`.
+Die Datenbank wird mit der expliziten URL `sqlite:///data/db.sqlite3`
+konfiguriert; dadurch führen Neuaufbau und Restore nicht zu einem unbeabsichtigten
+Datenbank-Fallback. Der vollständige Zustand liegt unter
+`/srv/zircula/vaultwarden/data`.
 
 Der Container läuft als UID/GID 1000. Der Datenpfad wird vor dem Start mit Modus
 700 angelegt. Fehlende Pfade werden nicht automatisch durch Compose erzeugt.

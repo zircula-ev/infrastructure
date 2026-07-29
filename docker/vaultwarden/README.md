@@ -12,7 +12,7 @@ verschlüsseltes externes Backup und ein erfolgreicher Restore-Test zwingend.
 
 ## Sicherheitsprofil
 
-- fest gepinntes Image `vaultwarden/server:1.36.0`
+- fest gepinntes Image `vaultwarden/server:1.37.0`
 - Prozess als UID/GID 1000, nicht als root
 - interner unprivilegierter Port 8080
 - kein Host-Port; Veröffentlichung ausschließlich über Caddy
@@ -29,10 +29,15 @@ verschlüsseltes externes Backup und ein erfolgreicher Restore-Test zwingend.
 Root und Mitglieder der Docker-Gruppe können Container-Umgebung und Datenpfad
 weiterhin lesen. Diese Hostrollen bleiben daher hochprivilegiert.
 
-## Betriebsstand vom 24.07.2026
+## Betriebsstand vom 29.07.2026
 
 Bereitgestellt und erfolgreich geprüft:
 
+- Sicherheitsupdate von 1.36.0 auf 1.37.0 mit vollständigem Vorher-Backup
+- explizite SQLite-URL `sqlite:///data/db.sqlite3`, fehlerfreie Migration und
+  erfolgreiche Integritätsprüfung
+- Authentik-SSO, MFA, Master-Passwort, Vault-Operationen, erneute Anmeldung und
+  SMTP nach dem Update erfolgreich getestet
 - persistenter Datenpfad mit restriktiven Rechten
 - Container als UID/GID 1000, ohne Capabilities, Host-Port oder Docker-Socket
 - read-only Root-Dateisystem und erfolgreicher interner Healthcheck
