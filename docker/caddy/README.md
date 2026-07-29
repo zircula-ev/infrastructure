@@ -12,6 +12,7 @@ Zircula-Infrastruktur bereit.
 | `auth.zircula.org` | `authentik-server:9000` |
 | `monitoring.zircula.org` | `grafana:3000` |
 | `vault.zircula.org` | `vaultwarden:8080` |
+| `support.zircula.org` | `libredesk:9000` |
 | `talk.cloud.zircula.org` | `talk-hpb:8081` |
 
 Caddy ist ausschließlich mit `zircula_frontend` verbunden. Interne Zielports
@@ -83,9 +84,11 @@ Unterbrechung am Reverse Proxy. Zertifikatsdaten unter `/data` und die
 Laufzeitkonfiguration unter `/config` bleiben erhalten.
 
 Neue Routen werden erst aktiviert, wenn DNS gesetzt und der Zielcontainer im
-Frontend-Netz intern erreichbar ist. Für Grafana wird vor dem Reload zusätzlich
-`http://grafana:3000/api/health` und für Vaultwarden `http://vaultwarden:8080/alive`
-aus dem Frontend-Netz geprüft. Caddys Reverse Proxy unterstützt die von
+Frontend-Netz intern erreichbar ist. LibreDesk erhält den von der Anwendung für
+Rate-Limits und Auditlogs erwarteten, von Caddy überschriebenen Header
+`X-Client-IP`; ein Client kann diesen Wert nicht direkt vorgeben. Für Grafana wird vor dem Reload zusätzlich
+`http://grafana:3000/api/health`, für Vaultwarden `http://vaultwarden:8080/alive`
+und für LibreDesk `http://libredesk:9000/health` aus dem Frontend-Netz geprüft. Caddys Reverse Proxy unterstützt die von
 Vaultwarden verwendeten WebSocket-Verbindungen ohne zusätzliche öffentliche Ports.
 
 ## Sicherheit
