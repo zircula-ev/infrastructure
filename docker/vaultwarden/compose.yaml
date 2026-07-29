@@ -1,0 +1,90 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.36.0
+
+    container_name: vaultwarden
+
+    restart: unless-stopped
+
+    user: "1000:1000"
+
+    env_file:
+      - .env
+
+    environment:
+      DOMAIN: https://${VAULTWARDEN_DOMAIN}
+      ROCKET_ADDRESS: 0.0.0.0
+      ROCKET_PORT: "8080"
+      DATABASE_URL: /data/db.sqlite3
+      ENABLE_DB_WAL: "true"
+      UMASK: "0077"
+
+      SIGNUPS_ALLOWED: ${VAULTWARDEN_SIGNUPS_ALLOWED}
+      SIGNUPS_VERIFY: "true"
+      INVITATIONS_ALLOWED: "true"
+      INVITATION_EXPIRATION_HOURS: "72"
+      ORG_CREATION_USERS: ${VAULTWARDEN_ORG_CREATION_USERS}
+      ORG_EVENTS_ENABLED: "true"
+      ORG_GROUPS_ENABLED: "true"
+      EVENTS_DAYS_RETAIN: "365"
+      SENDS_ALLOWED: "false"
+      EMERGENCY_ACCESS_ALLOWED: "false"
+      EMAIL_CHANGE_ALLOWED: "false"
+      PASSWORD_HINTS_ALLOWED: "false"
+      SHOW_PASSWORD_HINT: "false"
+      DISABLE_ICON_DOWNLOAD: "true"
+      ICON_CACHE_TTL: "0"
+      HTTP_REQUEST_BLOCK_NON_GLOBAL_IPS: "true"
+      IP_HEADER: X-Forwarded-For
+
+      SSO_ENABLED: ${VAULTWARDEN_SSO_ENABLED}
+      SSO_ONLY: ${VAULTWARDEN_SSO_ONLY}
+      SSO_SIGNUPS_MATCH_EMAIL: "true"
+      SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION: "false"
+      SSO_CLIENT_ID: ${VAULTWARDEN_SSO_CLIENT_ID}
+      SSO_CLIENT_SECRET: ${VAULTWARDEN_SSO_CLIENT_SECRET}
+      SSO_AUTHORITY: https://auth.zircula.org/application/o/vaultwarden/
+      SSO_SCOPES: openid profile email offline_access
+      SSO_PKCE: "true"
+
+      SMTP_HOST: ${VAULTWARDEN_SMTP_HOST}
+      SMTP_FROM: ${VAULTWARDEN_SMTP_FROM}
+      SMTP_FROM_NAME: ${VAULTWARDEN_SMTP_FROM_NAME}
+      SMTP_PORT: ${VAULTWARDEN_SMTP_PORT}
+      SMTP_SECURITY: ${VAULTWARDEN_SMTP_SECURITY}
+      SMTP_USERNAME: ${VAULTWARDEN_SMTP_USERNAME}
+      SMTP_PASSWORD: ${VAULTWARDEN_SMTP_PASSWORD}
+      SMTP_TIMEOUT: ${VAULTWARDEN_SMTP_TIMEOUT}
+      SMTP_DEBUG: "false"
+
+      EXTENDED_LOGGING: "false"
+      LOG_LEVEL: warn
+      SSO_DEBUG_TOKENS: "false"
+
+    read_only: true
+
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    pids_limit: 200
+
+    volumes:
+      - type: bind
+        source: /srv/zircula/vaultwarden/data
+        target: /data
+        bind:
+          create_host_path: false
+
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
