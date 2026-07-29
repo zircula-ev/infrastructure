@@ -62,6 +62,13 @@ Der Timer läuft täglich, zehn Minuten nach einem verpassten Start und mit eine
 zufälligen Verzögerung von bis zu 30 Minuten. Ein Fehler ersetzt die letzte
 erfolgreiche Metrikdatei nicht; Prometheus meldet veraltete Werte nach 36 Stunden.
 
+Die Unit verwendet weiterhin `NoNewPrivileges`, schreibgeschützte
+Systembereiche und weitere systemd-Schutzmechanismen. `RestrictSUIDSGID` wird
+bewusst nicht gesetzt: APT muss seine Downloadprozesse vorübergehend auf den
+Systembenutzer `_apt` absenken; die Einstellung blockiert diesen Wechsel auf dem
+eingesetzten Ubuntu-Host mit `EPERM`. Ein isolierter systemd-Test bestätigte die
+Ursache, während derselbe Lauf ohne diese Einstellung erfolgreich war.
+
 Prüfung:
 
 ```bash
