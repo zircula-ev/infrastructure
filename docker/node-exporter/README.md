@@ -62,12 +62,15 @@ Der Timer läuft täglich, zehn Minuten nach einem verpassten Start und mit eine
 zufälligen Verzögerung von bis zu 30 Minuten. Ein Fehler ersetzt die letzte
 erfolgreiche Metrikdatei nicht; Prometheus meldet veraltete Werte nach 36 Stunden.
 
-Die Unit verwendet weiterhin `NoNewPrivileges`, schreibgeschützte
-Systembereiche und weitere systemd-Schutzmechanismen. `RestrictSUIDSGID` wird
-bewusst nicht gesetzt: APT muss seine Downloadprozesse vorübergehend auf den
-Systembenutzer `_apt` absenken; die Einstellung blockiert diesen Wechsel auf dem
-eingesetzten Ubuntu-Host mit `EPERM`. Ein isolierter systemd-Test bestätigte die
-Ursache, während derselbe Lauf ohne diese Einstellung erfolgreich war.
+Die Unit verwendet weiterhin `NoNewPrivileges`, `PrivateTmp`,
+`ProtectHome`, `ProtectSystem=full` und `ProtectControlGroups`. APT muss
+seine Downloadprozesse vorübergehend auf den Systembenutzer `_apt` (UID 42)
+absenken. Isolierte systemd-Tests auf dem eingesetzten Ubuntu-26.04-Host haben
+bestätigt, dass `RestrictSUIDSGID`, `ProtectKernelTunables`,
+`ProtectKernelModules`, `LockPersonality` und `RestrictRealtime` diesen
+Wechsel dort jeweils mit `EPERM` verhindern. Diese Einstellungen werden deshalb
+bewusst nicht für genau diese rein prüfende Oneshot-Unit gesetzt. Das Skript
+installiert keine Pakete und führt keinen Neustart aus.
 
 Prüfung:
 
