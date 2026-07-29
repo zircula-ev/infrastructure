@@ -74,6 +74,17 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Organisations-, Collection-, Client-, Offboarding-, Backup- und Restore-Gates
   stehen in `docs/12-vaultwarden.md`
 
+### LibreDesk (PoC vorbereitet, noch nicht ausgerollt)
+
+- getrennte Stacks für LibreDesk 2.5.0 und anwendungseigenen Redis 7.4.10
+- vorgesehene Domain `support.zircula.org` ohne direkte Hostports
+- getrennte PostgreSQL-Rolle und Datenbank sowie eigene Redis-Authentifizierung
+- dediziertes Postfach `itsupport@zircula.org` mit IMAP/SMTP über Manitu
+- Authentik-OIDC nur für manuell angelegte Agent:innen; MFA für die vorgesehene
+  Gruppe `LibreDesk Agents`
+- Slack bleibt während PoC und Beobachtungsphase unverändert bestehen
+- Produktivfreigabegates und Rückbau unter `docs/13-libredesk.md`
+
 ### Monitoring
 
 Auf dem VPS aktiv und geprüft:
@@ -125,6 +136,8 @@ Positiv geprüft:
 - Authentik-Worker ohne Root-Rechte und Docker-Socket erfolgreich geprüft
 - Monitoringcontainer ohne unnötige Hostports und Socket-Mounts geprüft
 - Vaultwarden ohne Root-Rechte, Host-Port, Capabilities und Docker-Socket geprüft
+- LibreDesk- und anwendungseigener Redis-Stack mit getrennten Datenpfaden,
+  Secrets und Netzgrenzen im Feature-Branch vorbereitet
 
 Offen:
 
@@ -251,3 +264,4 @@ unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 4. MFA und Recovery der Break-Glass-Konten abschließen.
 5. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
 6. Vaultwarden-Organisationen, Clients, Offboarding und Restore-Gate abschließen.
+7. LibreDesk-PoC intern deployen und Mail-, OIDC-, Rechte- und Restore-Gates testen.
