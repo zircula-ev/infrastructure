@@ -22,6 +22,7 @@ Nextcloud ──► PostgreSQL
 Nextcloud ──► Redis
 Prometheus ─► Alertmanager, Node Exporter und Blackbox Exporter
 Grafana ────► Prometheus
+Vaultwarden ─OIDC─► Authentik
 nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 ```
 
@@ -84,7 +85,8 @@ ersetzen keine Authentifizierung der darin betriebenen Dienste.
 ## Typische Startreihenfolge
 
 ```text
-Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB/Vaultwarden
+Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB
+          → Vaultwarden
           → Monitoring-Exporter → Alertmanager → Prometheus → Grafana → Caddy
 ```
 
@@ -111,4 +113,5 @@ Wichtige Dokumente:
 - `docs/08-authentik-nextcloud-oidc.md`
 - `docs/09-container-privilege-review.md`
 - `docs/10-monitoring.md`
-- `docs/11-vaultwarden.md`
+- `docs/11-slack-nextcloud-nutzungsabgrenzung.md`
+- `docs/12-vaultwarden.md`
