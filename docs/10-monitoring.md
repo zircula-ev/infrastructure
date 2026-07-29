@@ -121,6 +121,8 @@ Erfasst werden zunächst:
 - Erreichbarkeit aller Monitoringkomponenten
 - öffentliche HTTPS-Endpunkte einschließlich Vaultwardens `/alive`-Route
 - Restlaufzeit der TLS-Zertifikate
+- verfügbare APT-Paket- und Sicherheitsupdates
+- Neustartbedarf sowie Alter der letzten erfolgreichen Updateprüfung
 
 Prometheus bewahrt Werte standardmäßig 15 Tage und bis maximal 5 GB auf. Grafana
 provisioniert Datenquelle und Basisdashboard aus Git. Das Basisdashboard ist als
@@ -130,6 +132,23 @@ angezeigt wird.
 Anwendungsspezifische Metriken für Nextcloud, Authentik, Vaultwarden,
 PostgreSQL, Redis und Caddy folgen einzeln. Dafür werden keine Datenbankkonten,
 Docker-Socket-Mounts oder privilegierten Container vorsorglich angelegt.
+
+## Hostupdates und Neustartbedarf
+
+Ein versioniertes Hostskript aktualisiert täglich nur die APT-Paketlisten,
+simuliert ein Upgrade und schreibt vier numerische Metriken atomar in den
+Textfile Collector des Node Exporters. Es installiert keine Pakete und startet
+den VPS nicht neu.
+
+Der systemd-Timer läuft zehn Minuten nach dem Start beziehungsweise täglich um
+07:15 Uhr mit einer zufälligen Verzögerung von bis zu 30 Minuten. Die Service-Unit
+besitzt keinen Zugriff auf Secrets. Schlägt eine Prüfung fehl, bleibt die letzte
+erfolgreiche Metrik erhalten und wird nach 36 Stunden als veraltet gemeldet.
+
+Grafana zeigt normale Updates, Sicherheitsupdates, Neustartbedarf und Alter der
+Prüfung. Slack erhält Warnungen nur für Sicherheitsupdates, Neustartbedarf und
+fehlende beziehungsweise veraltete Prüfungen. Installation und Neustarts bleiben
+bewusste administrative Wartungsschritte.
 
 ## Alarmierung
 
@@ -166,14 +185,15 @@ offenlegen und werden daher wie administrative Daten behandelt.
 1. DNS für `monitoring.zircula.org` setzen.
 2. `zircula_monitoring` erstellen.
 3. Node Exporter starten und prüfen.
-4. Blackbox Exporter starten und prüfen.
-5. Alertmanager inklusive lokalem Slack-Secret starten.
-6. Prometheus-Konfiguration und Regeln mit `promtool` prüfen und starten.
-7. Authentik-Anwendung, Provider und Entitlements vorbereiten.
-8. Grafana zunächst intern starten und Break-Glass-Konto testen.
-9. Caddy-Konfiguration validieren und Grafana veröffentlichen.
-10. OIDC-Rollen, Ablehnung ohne Entitlement, Logout und Dashboards testen.
-11. Uptime Kuma auf nctest installieren und Negativtest durchführen.
+4. Host-Updateprüfskript und systemd-Timer installieren und einmalig ausführen.
+5. Blackbox Exporter starten und prüfen.
+6. Alertmanager inklusive lokalem Slack-Secret starten.
+7. Prometheus-Konfiguration und Regeln mit `promtool` prüfen und starten.
+8. Authentik-Anwendung, Provider und Entitlements vorbereiten.
+9. Grafana zunächst intern starten und Break-Glass-Konto testen.
+10. Caddy-Konfiguration validieren und Grafana veröffentlichen.
+11. OIDC-Rollen, Ablehnung ohne Entitlement, Logout und Dashboards testen.
+12. Uptime Kuma auf nctest installieren und Negativtest durchführen.
 
 Jeder Schritt wird einzeln geprüft. Ein fehlerhafter Stack wird zurückgerollt,
 ohne die übrigen Monitoringkomponenten neu zu erstellen.

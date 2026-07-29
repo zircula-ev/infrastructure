@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+export LC_ALL=C
+
+readonly output_directory="${TEXTFILE_DIRECTORY:-/srv/zircula/node-exporter/textfile}"
+readonly output_file="${output_directory}/system_updates.prom"
+
+simulation_file="$(mktemp)"
+metric_file="$(mktemp "${output_directory}/.system_updates.prom.XXXXXX")"
+
+cleanup() {
+  rm -f "${simulation_file}" "${metric_file}"
+}
+
+trap cleanup EXIT
+
+apt-get \
+  -qq \
+  -o APT::Update::Error-Mode=any \
+  update
+
+apt-get \
+  --simulate \
+  -o Debug::NoLocking=1 \
+  dist-upgrade >"${simulation_file}"
+
+updates_available="$(
+  awk '/^Inst / { count += 1 } END { print count + 0 }' \
+    "${simulation_file}"
+)"
+
+security_updates_available="$(
+  awk '/^Inst / && /-security/ { count += 1 } END { print count + 0 }' \
+    "${simulation_file}"
+)"
+
+reboot_required=0
+if [[ -e /var/run/reboot-required ]]; then
+  reboot_required=1
+fi
+
+checked_at="$(date +%s)"
+
+cat >"${metric_file}" <<EOF
+# HELP zircula_host_apt_updates_available Number of APT package updates currently available.
+# TYPE zircula_host_apt_updates_available gauge
+zircula_host_apt_updates_available ${updates_available}
+# HELP zircula_host_apt_security_updates_available Number of APT security updates currently available.
+# TYPE zircula_host_apt_security_updates_available gauge
+zircula_host_apt_security_updates_available ${security_updates_available}
+# HELP zircula_host_reboot_required Whether the host requires a reboot after package updates.
+# TYPE zircula_host_reboot_required gauge
+zircula_host_reboot_required ${reboot_required}
+# HELP zircula_host_update_check_timestamp_seconds Unix timestamp of the last successful host update check.
+# TYPE zircula_host_update_check_timestamp_seconds gauge
+zircula_host_update_check_timestamp_seconds ${checked_at}
+EOF
+
+chmod 0644 "${metric_file}"
+mv -f "${metric_file}" "${output_file}"
+
