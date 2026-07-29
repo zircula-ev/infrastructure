@@ -65,3 +65,34 @@ groups:
         annotations:
           summary: "Wenig verfügbarer Arbeitsspeicher"
           description: "Auf dem VPS sind seit 15 Minuten weniger als 10 % RAM verfügbar."
+
+      - alert: HostSecurityUpdatesAvailable
+        expr: zircula_host_apt_security_updates_available > 0
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "Sicherheitsupdates verfügbar"
+          description: "Auf dem VPS sind {{ $value | printf \"%.0f\" }} Sicherheitsupdates verfügbar."
+
+      - alert: HostRebootRequired
+        expr: zircula_host_reboot_required == 1
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "Neustart des VPS erforderlich"
+          description: "Ein installiertes Paket verlangt seit mindestens einer Stunde einen kontrollierten Neustart des VPS."
+
+      - alert: HostUpdateMetricsStale
+        expr: >-
+          (time() - zircula_host_update_check_timestamp_seconds > 36 * 60 * 60)
+          or
+          absent(zircula_host_update_check_timestamp_seconds)
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Host-Updateprüfung fehlt oder ist veraltet"
+          description: "Die Updateprüfung des VPS hat seit mehr als 36 Stunden keine aktuellen Metriken geliefert."
+
