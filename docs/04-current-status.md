@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 24.07.2026
+Stand: 29.07.2026
 
 ## Ziel
 
@@ -46,11 +46,15 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - getrenntes Authentik-Break-Glass-Konto ohne Nextcloud-Entitlements
 - Nextcloud über OIDC mit automatischer Benutzer- und Gruppenprovisionierung
 - anwendungsspezifische Entitlements für Organisations- und Administratorgruppen
-- WebAuthn und MFA-Pflicht für `Nextcloud Admins` erfolgreich getestet
+- WebAuthn und gruppenbasierte MFA-Pflicht für `Grafana Admins`,
+  `Nextcloud Admins`, `Objekt 218 GmbH`, beide Vorstandsgruppen und
+  `Vaultwarden Users` erfolgreich getestet
 - Worker läuft ohne Root-Rechte, ohne Docker-Socket und nur im Backend-Netz
 - der vorhandene Embedded Outpost benötigt keinen Docker-Socket
 - versioniertes WERK × ZIRCULA Branding mit hellem Farbschema und deutscher
   Oberfläche erfolgreich ausgerollt und getestet
+- Einladungs- und Recovery-Verfahren für neue Benutzer eingerichtet und beim
+  organisatorischen Onboarding verwendet
 
 ### Collabora
 
@@ -58,14 +62,17 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - WOPI mit der zentralen Nextcloud
 - keine direkte Hostport-Freigabe
 
-### Vaultwarden (vorbereitet, nicht produktiv)
+### Vaultwarden (bereitgestellt, Rollout in Phase zwei)
 
-- gehärteter Stack für `vault.zircula.org` auf eigenem Feature-Branch
-- Rootless-Betrieb, kein Host-Port, read-only Root-Dateisystem
-- SQLite-Persistenz und Authentik-OIDC vorbereitet
-- produktive Secrets erst nach externem Backup und erfolgreichem Restore-Test
-- Organisations-, Collection-, MFA- und Offboarding-Governance in
-  `docs/11-vaultwarden.md` festgelegt
+- gehärteter Stack unter `vault.zircula.org`
+- Container als UID/GID 1000, ohne Host-Port, Capabilities oder Docker-Socket
+- read-only Root-Dateisystem und persistente SQLite-Daten unter
+  `/srv/zircula/vaultwarden/data`
+- Authentik-OIDC mit PKCE und verifizierter E-Mail-Zuordnung erfolgreich getestet
+- Master-Passwort und SMTP über den technischen Manitu-Absender geprüft
+- allgemeiner organisatorischer Rollout bewusst erst nach der Nextcloud-Migration
+- Organisations-, Collection-, Client-, Offboarding-, Backup- und Restore-Gates
+  stehen in `docs/12-vaultwarden.md`
 
 ### Monitoring
 
@@ -117,6 +124,7 @@ Positiv geprüft:
 - Authentik-Benutzer ohne Nextcloud-Entitlements erfolgreich abgewiesen
 - Authentik-Worker ohne Root-Rechte und Docker-Socket erfolgreich geprüft
 - Monitoringcontainer ohne unnötige Hostports und Socket-Mounts geprüft
+- Vaultwarden ohne Root-Rechte, Host-Port, Capabilities und Docker-Socket geprüft
 
 Offen:
 
@@ -195,9 +203,26 @@ Erfolgreich auf `nctest` ausgerollt und geprüft:
 - Grafana-Rollenentzug mit erfolgreicher Abweisung bei erneuter Anmeldung
 - vollständiger Grafana-/Authentik-Logout ohne stille Wiederanmeldung
 
+## Validierung Vaultwarden vom 24.07.2026
+
+Erfolgreich bereitgestellt und geprüft:
+
+- interner und öffentlicher Healthcheck sowie gültiges TLS
+- UID/GID 1000, read-only Root-Dateisystem und ausschließlich ein persistenter
+  schreibbarer Datenpfad
+- keine Hostports, Capabilities oder Docker-Socket-Mounts
+- Authentik-OIDC, verifizierte E-Mail-Zuordnung und Master-Passwort
+- SMTP-Anmeldung über `mail.manitu.de:465` mit `force_tls`
+- reguläre Compose-Konfiguration nach der Diagnose; Debug-, erweitertes Request-
+  und SSO-Token-Logging deaktiviert
+
+Der Dienst bleibt bis zu den in `docs/12-vaultwarden.md` definierten
+Freigabegates eine bereitgestellte zweite Ausbaustufe ohne allgemeinen Rollout.
+
 ## Produktionsreife
 
-Die Kerndienste und das interne Monitoring sind funktionsfähig. Vollständig
+Die Kerndienste und das interne Monitoring sind funktionsfähig. Vaultwarden ist
+technisch bereitgestellt, aber organisatorisch noch nicht freigegeben. Vollständig
 belastbare Produktionsreife wird erst angenommen, wenn ein externes Backup und
 ein erfolgreicher Restore-Test dokumentiert sind. Ein VPS-Snapshot allein erfüllt
 diese Anforderung nicht. Uptime Kuma kann einen vollständigen VPS-Ausfall zwar
@@ -208,6 +233,6 @@ unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 1. Backupziel, Aufbewahrung und Restore-Test umsetzen.
 2. ausstehende Ubuntu-Paketupdates kontrolliert installieren.
 3. regelmäßige Image- und Secret-Scans ergänzen.
-4. Benutzer-Onboarding und MFA-Governance abschließen.
-5. Migration der bisherigen Clouds durchführen.
-6. Vaultwarden-PoC einschließlich MFA-, Rechte-, Backup- und Restore-Gate prüfen.
+4. MFA und Recovery der Break-Glass-Konten abschließen.
+5. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
+6. Vaultwarden-Organisationen, Clients, Offboarding und Restore-Gate abschließen.
