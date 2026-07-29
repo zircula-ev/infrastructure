@@ -40,9 +40,9 @@ services:
       - sh
       - -c
       - |
-        ./libredesk --install --idempotent-install --yes --config "" &&
-        ./libredesk --upgrade --yes --config "" &&
-        exec ./libredesk --config ""
+        ./libredesk --install --idempotent-install --yes --config /libredesk/config.toml &&
+        ./libredesk --upgrade --yes --config /libredesk/config.toml &&
+        exec ./libredesk --config /libredesk/config.toml
 
     read_only: true
     tmpfs:
@@ -54,6 +54,12 @@ services:
     pids_limit: 300
 
     volumes:
+      - type: bind
+        source: ./config.toml
+        target: /libredesk/config.toml
+        read_only: true
+        bind:
+          create_host_path: false
       - type: bind
         source: /srv/zircula/libredesk/uploads
         target: /data/uploads
