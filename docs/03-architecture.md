@@ -31,8 +31,8 @@ flowchart TD
 ## Frontend-Netz
 
 `zircula_frontend` verbindet Caddy mit Nextcloud, Collabora, Authentik, Grafana,
-Vaultwarden und Talk HPB. Nur Caddy veröffentlicht 80/443; Talk veröffentlicht zusätzlich den
-für TURN/STUN benötigten Port 3478 über TCP und UDP.
+Vaultwarden und Talk HPB. Nur Caddy veröffentlicht 80/443; Talk veröffentlicht
+zusätzlich den für TURN/STUN benötigten Port 3478 über TCP und UDP.
 
 ## Backend-Netz
 
@@ -53,9 +53,9 @@ als Übergangslösung dokumentiert.
 
 ## Persistenz
 
-Produktive Daten liegen unter `/srv/zircula`; Vaultwardens SQLite-Datenbank,
-Schlüssel und Anhänge liegen gemeinsam unter `/srv/zircula/vaultwarden/data`. Compose-Dateien, Vorlagen und
-Betriebsdokumentation liegen im Repository unter
+Produktive Daten liegen unter `/srv/zircula`. Vaultwardens SQLite-Datenbank,
+Schlüssel und Anhänge liegen gemeinsam unter `/srv/zircula/vaultwarden/data`.
+Compose-Dateien, Vorlagen und Betriebsdokumentation liegen im Repository unter
 `/opt/zircula/git/infrastructure`.
 
 Hostbezogene Stacks außerhalb des VPS werden unter `hosts/<hostname>`
