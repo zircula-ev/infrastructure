@@ -99,6 +99,20 @@ ist als dienstbezogene Ausnahme dokumentiert. Sie wird nur nach einem
 Collabora-spezifischen Test entfernt; ein pauschales Entfernen könnte die
 Sandboxing-Funktion des Images beeinträchtigen.
 
+### LibreDesk und LibreDesk Redis
+
+Der vorbereitete LibreDesk-PoC veröffentlicht keine Hostports. Die Anwendung
+läuft als UID/GID 1000 mit read-only Root-Dateisystem, `cap_drop: ALL` und
+`no-new-privileges`; ausschließlich der Uploadpfad und ein begrenztes `/tmp`
+sind schreibbar. Der anwendungseigene Redis läuft getrennt als Image-Benutzer
+`redis`, nur im Backend-Netz und mit eigener Passwortauthentifizierung. Auch er
+besitzt ein read-only Root-Dateisystem, keine Capabilities und nur den AOF-Pfad
+als persistente Schreibfläche.
+
+Die tatsächlichen UID/GID-, Mount-, Capability-, Port- und Netzwerkwerte werden
+vor einer Produktivfreigabe auf dem VPS mit `docker inspect` bestätigt. Der PoC
+teilt weder das Nextcloud-Redis-Passwort noch dessen Datenbestand.
+
 ### Talk HPB
 
 Talk HPB benötigt den direkten TURN-Port. Der Container verwendet bereits
@@ -162,6 +176,7 @@ containers=(
   caddy nextcloud postgres redis collabora
   authentik-server authentik-worker talk-hpb
   node-exporter blackbox-exporter alertmanager prometheus grafana
+  vaultwarden libredesk libredesk-redis
 )
 
 docker inspect --format \
