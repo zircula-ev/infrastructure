@@ -9,6 +9,11 @@ if [[ ! -f .env ]]; then
   exit 1
 fi
 
+if [[ ! -r config.toml ]]; then
+  echo >&2 "FEHLER: docker/libredesk/config.toml fehlt oder ist nicht lesbar."
+  exit 1
+fi
+
 set -a
 source .env
 set +a
