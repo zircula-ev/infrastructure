@@ -72,7 +72,8 @@ Besondere Ausnahmen:
 
 ## 4. Anwendungsschutz
 
-- MFA für Nextcloud-, Authentik- und Grafana-Administratoren
+- gruppenbasierte MFA über Authentik für Administratoren, Vorstände,
+  `Objekt 218 GmbH` und `Vaultwarden Users`
 - getrennte persönliche Administratorkonten und dokumentierte Break-Glass-Konten
 - Break-Glass-Zugangsdaten offline und verschlüsselt verwahren
 - Authentik- und Nextcloud-Adminaktionen nach Einführung eines stabilen VPNs auf
@@ -116,7 +117,7 @@ Monatlich:
 - Prometheus-Targets, aktive Alarme, TLS-Restlaufzeiten und Grafana-Zugänge
 - Backupalter und letzter erfolgreicher Restore-Test
 
-## Umsetzungsstand vom 23.07.2026
+## Umsetzungsstand vom 29.07.2026
 
 Abgeschlossen:
 
@@ -132,11 +133,35 @@ Abgeschlossen:
 - Alertmanager-Secret als lokale, schreibgeschützt eingebundene Datei
 - Grafana nur über Caddy veröffentlicht, mit lokalem Break-Glass-Konto und
   Authentik-OIDC
+- Uptime Kuma getrennt auf `nctest`, nur über Tailscale administrierbar
+- Vaultwarden als UID/GID 1000 ohne Capabilities, Docker-Socket oder Host-Port
+- Vaultwarden-OIDC, Master-Passwort, SMTP und öffentliche TLS-Route geprüft
 
 Noch offen:
 
 - externes verschlüsseltes Backup und dokumentierter Restore-Test
-- Uptime Kuma als vom VPS getrennte Übergangsüberwachung ausrollen
 - regelmäßiges Image- und Secret-Scanning
 - Docker-Logrotation verbindlich begrenzen
 - Fail2ban anhand realer Logs gezielt bewerten
+
+
+## Vaultwarden-Zielzustand
+
+Der bereitgestellte, noch nicht organisatorisch freigegebene Vaultwarden-Stack
+folgt zusätzlich diesen Regeln:
+
+- Prozess als UID/GID 1000, ohne Capabilities, Docker-Socket oder Host-Port
+- read-only Root-Dateisystem; ausschließlich `/data` und begrenztes `/tmp`
+  schreibbar
+- Selbstregistrierung im Normalbetrieb und serverweite Admin-Konsole deaktiviert
+- OIDC nur mit PKCE und verifizierter E-Mail-Zuordnung
+- kein externes Icon-Fetching und keine Bitwarden-Sends in der ersten Stufe
+- kleinster möglicher Owner-Kreis und getrennte Organisations-Collections
+- produktive Secrets erst nach verschlüsseltem externem Backup und Restore-Test
+- MFA für alle Vaultwarden-Berechtigten als Produktionsfreigabe; ohne Smartphone
+  werden WebAuthn-Hardware-Schlüssel vorgesehen
+
+Root und Mitglieder der Docker-Gruppe bleiben in der Lage, lokale
+Konfigurationen und den verschlüsselten Serverdatenbestand zu kopieren. Die
+Ende-zu-Ende-Verschlüsselung ersetzt daher weder Host-Hardening noch
+Zugriffsgovernance und Rotation bei Offboarding.

@@ -119,7 +119,7 @@ Erfasst werden zunächst:
 - CPU, RAM, Swap, Load und Netzwerk des VPS
 - Dateisystembelegung
 - Erreichbarkeit aller Monitoringkomponenten
-- öffentliche HTTPS-Endpunkte
+- öffentliche HTTPS-Endpunkte einschließlich Vaultwardens `/alive`-Route
 - Restlaufzeit der TLS-Zertifikate
 
 Prometheus bewahrt Werte standardmäßig 15 Tage und bis maximal 5 GB auf. Grafana
@@ -127,9 +127,9 @@ provisioniert Datenquelle und Basisdashboard aus Git. Das Basisdashboard ist als
 Startdashboard konfiguriert, damit der Einzelserver nach dem Login direkt
 angezeigt wird.
 
-Anwendungsspezifische Metriken für Nextcloud, Authentik, PostgreSQL, Redis und
-Caddy folgen einzeln. Dafür werden keine Datenbankkonten, Docker-Socket-Mounts
-oder privilegierten Container vorsorglich angelegt.
+Anwendungsspezifische Metriken für Nextcloud, Authentik, Vaultwarden,
+PostgreSQL, Redis und Caddy folgen einzeln. Dafür werden keine Datenbankkonten,
+Docker-Socket-Mounts oder privilegierten Container vorsorglich angelegt.
 
 ## Alarmierung
 
@@ -187,3 +187,14 @@ ohne die übrigen Monitoringkomponenten neu zu erstellen.
 - Caddy-Requestmetriken ohne sensible Pfadlabels
 - dokumentierte Alarmverantwortung und Eskalationszeiten
 - regelmäßige Prüfung, ob nctest und Uptime Kuma selbst erreichbar sind
+
+
+## Vaultwarden
+
+Die versionierte Prometheus-Konfiguration prüft
+`https://vault.zircula.org/alive` über den Blackbox Exporter. Nach dem Merge wird
+die geladene Konfiguration einschließlich `probe_success 1` kontrolliert. In der
+zweiten Vaultwarden-Rolloutphase wird derselbe Endpunkt auf `nctest` als fünfter
+HTTPS-Monitor mit Slack-Benachrichtigung ergänzt. Die öffentliche Probe bestätigt Erreichbarkeit und TLS, aber weder Login noch
+Entschlüsselbarkeit oder die Aktualität des Backups. Dafür bleiben regelmäßige
+funktionale Tests und ein separater Backupalter-Alarm erforderlich.

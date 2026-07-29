@@ -36,6 +36,7 @@ scrape_configs:
           - https://auth.zircula.org/-/health/ready/
           - https://office.zircula.org/hosting/discovery
           - https://talk.cloud.zircula.org/api/v1/welcome
+          - https://vault.zircula.org/alive
     relabel_configs:
       - source_labels:
           - __address__
