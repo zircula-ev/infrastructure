@@ -21,8 +21,9 @@ Betrieb über einen vereinbarten Zeitraum stabil war.
 
 ## Secrets
 
-Die lokale `.env` enthält den Anwendungsschlüssel sowie die getrennten
-PostgreSQL- und Redis-Passwörter. Sie wird niemals committet und erhält Modus
+Die versionierte `config.toml` enthält ausschließlich unkritische
+Laufzeitwerte. Die lokale `.env` überschreibt darin den Anwendungsschlüssel
+sowie die getrennten PostgreSQL- und Redis-Passwörter. Sie wird niemals committet und erhält Modus
 600. Der Anwendungsschlüssel verschlüsselt gespeicherte Integrationsdaten. Sein
 Verlust kann gesicherte Mailbox-Zugangsdaten unbrauchbar machen; er gehört in das
 verschlüsselte Secret-Backup.
@@ -106,7 +107,7 @@ Nach dem ersten erfolgreichen Start wird das Passwort des lokalen
 
 ```bash
 docker compose exec -it libredesk \
-  ./libredesk --set-system-user-password --config ""
+  ./libredesk --set-system-user-password --config /libredesk/config.toml
 ```
 
 Das Passwort wird nicht als dauerhafte Umgebungsvariable hinterlegt. Es wird
