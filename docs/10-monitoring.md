@@ -127,8 +127,8 @@ provisioniert Datenquelle und Basisdashboard aus Git. Das Basisdashboard ist als
 Startdashboard konfiguriert, damit der Einzelserver nach dem Login direkt
 angezeigt wird.
 
-Anwendungsspezifische Metriken für Nextcloud, Authentik, Vaultwarden, PostgreSQL, Redis und
-Caddy folgen einzeln. Dafür werden keine Datenbankkonten, Docker-Socket-Mounts
+Anwendungsspezifische Metriken für Nextcloud, Authentik, Vaultwarden,
+PostgreSQL, Redis und Caddy folgen einzeln. Dafür werden keine Datenbankkonten, Docker-Socket-Mounts
 oder privilegierten Container vorsorglich angelegt.
 
 ## Alarmierung
@@ -191,9 +191,11 @@ ohne die übrigen Monitoringkomponenten neu zu erstellen.
 
 ## Vaultwarden
 
-Nach dem kontrollierten Vaultwarden-Deployment prüft Prometheus
-`https://vault.zircula.org/alive` über den Blackbox Exporter. Auf `nctest` wird
-derselbe Endpunkt als fünfter HTTPS-Monitor mit Slack-Benachrichtigung ergänzt.
+Die versionierte Prometheus-Konfiguration prüft
+`https://vault.zircula.org/alive` über den Blackbox Exporter. Nach dem Merge wird
+die geladene Konfiguration einschließlich `probe_success 1` kontrolliert. In der
+zweiten Vaultwarden-Rolloutphase wird derselbe Endpunkt auf `nctest` als fünfter
+HTTPS-Monitor mit Slack-Benachrichtigung ergänzt.
 Die öffentliche Probe bestätigt Erreichbarkeit und TLS, aber weder Login noch
 Entschlüsselbarkeit oder die Aktualität des Backups. Dafür bleiben regelmäßige
 funktionale Tests und ein separater Backupalter-Alarm erforderlich.
