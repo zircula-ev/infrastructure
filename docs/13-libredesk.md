@@ -2,8 +2,8 @@
 
 ## Zweck und Abgrenzung
 
-LibreDesk wird als möglicher Nachfolger des Slack-Kanals `#it-support` erprobt.
-Es ist ein Ticket- und Kommunikationssystem für konkrete Supportanfragen, kein
+LibreDesk ist der produktive, verbindliche Kanal für konkrete interne
+IT-Supportanfragen. Es ist ein Ticket- und Kommunikationssystem, kein
 allgemeiner Chat, Aufgabenplaner oder Dateiarchiv.
 
 - Supportanfragen gehen per E-Mail an `itsupport@zircula.org`.
@@ -12,7 +12,8 @@ allgemeiner Chat, Aufgabenplaner oder Dateiarchiv.
 - Projektaufgaben gehören in Deck oder die vereinbarte Arbeitsstruktur.
 - produktive Dateien und Medien gehören in Nextcloud und werden im Ticket nur
   verlinkt, soweit das sinnvoll ist.
-- Slack bleibt bis zur ausdrücklichen organisatorischen Ablösung bestehen.
+- Slack `#it-support` bleibt nur als befristeter Übergangskanal bis zur
+  Abschaltung von Slack bestehen; neue Fälle gehören in LibreDesk.
 
 ## Technischer Teststand
 
@@ -65,7 +66,7 @@ Anhänge enthalten. Deshalb gelten:
 - sensible Anhänge vermeiden und geschützte Nextcloud-Freigaben verwenden,
 - interne Notizen klar von ausgehenden Antworten unterscheiden,
 - Zugriff nur für tatsächlich zuständige Agent:innen,
-- Aufbewahrungs- und Löschfrist vor dem Produktivstart beschließen,
+- Aufbewahrungs- und Löschfristen festlegen und regelmäßig prüfen,
 - Exporte und Backups wie vertrauliche Vereinsdaten behandeln,
 - Aktivitätsprotokolle regelmäßig stichprobenartig prüfen.
 
@@ -80,31 +81,33 @@ Anhänge enthalten. Deshalb gelten:
 - keine öffentlichen Hostports außer dem vorhandenen Caddy
 - Blackbox-Prüfung des öffentlichen `/health`-Endpunkts
 
-## PoC-Gates
+## Betrieb und regelmäßige Prüfungen
 
-LibreDesk wird erst zum verbindlichen Supportkanal, wenn:
+Der produktive Grundbetrieb ist technisch abgenommen. Wiederkehrend beziehungsweise
+nach relevanten Änderungen werden geprüft:
 
-1. interner und öffentlicher Healthcheck stabil sind,
-2. das lokale Break-Glass-Konto getestet ist,
-3. OIDC mit berechtigtem Agent getestet und die Ablehnung ohne Binding geprüft
-   ist,
-4. MFA für `LibreDesk Agents` aktiv ist,
-5. Mail, Antwort und Threading geprüft sowie Anhänge und Umlaute vollständig
-   getestet sind,
-6. interne Notizen nicht an externe Empfänger gelangen,
-7. Rollen und Teams mit mindestens zwei Testkonten geprüft sind,
-8. Offboarding in Authentik und LibreDesk geprüft ist,
-9. Datenbankdump, Upload-Backup und Anwendungsschlüssel vollständig sind,
-10. ein isolierter Restore einschließlich Login und Testanhang funktioniert,
-11. Datenschutz, Aufbewahrung und Verantwortlichkeit beschlossen sind,
-12. eine vereinbarte Beobachtungsphase parallel zu Slack bestanden ist.
+1. interner und öffentlicher Healthcheck,
+2. lokaler Break-Glass-Zugang,
+3. OIDC, Gruppenbindung und MFA für `LibreDesk Agents`,
+4. IMAP, SMTP, Antwort-Threading, Anhänge und Umlaute,
+5. Trennung interner Notizen von ausgehenden Antworten,
+6. Rollen, Teams und Offboarding,
+7. Datenbankdump, Upload-Backup und Anwendungsschlüssel,
+8. isolierter Restore einschließlich Login und Testanhang,
+9. Aufbewahrungs-, Lösch- und Zugriffsregeln.
+
+Der erfolgreiche Backup-Smoke-Test vom 30.07.2026 prüfte den lesbaren
+PostgreSQL-Dump, das lesbare Uploadarchiv und SHA-256-Prüfsummen. Ein isolierter
+Vollrestore bleibt eine wichtige Betriebsprüfung, blockiert aber nicht die
+Nutzung des bereits getesteten Dienstes.
 
 ## Migration von Slack
 
 Der bisherige Slack-Kanal wird nicht pauschal importiert. Relevante Lösungen
 werden redaktionell in Collectives überführt; offene Fälle können manuell als
-Tickets angelegt werden. Nach der Freigabe wird Slack zunächst mit einem
-angepinnten Übergangshinweis weitergeführt und später archiviert.
+Tickets angelegt werden. Slack wird nur noch mit einem
+angepinnten Übergangshinweis weitergeführt und mit der Abschaltung von Slack
+geschlossen. Es ist kein gleichwertiger paralleler Supportkanal.
 
 ## Backup und Rückbau
 
@@ -113,7 +116,7 @@ verschlüsseltem Secret-Backup einschließlich Anwendungsschlüssel sowie
 Repository-Commit und Image-Version. Redis ist keine primäre
 Wiederherstellungsquelle.
 
-Der PoC kann unabhängig zurückgebaut werden: Caddy- und Monitoringroute
+Der Dienst kann unabhängig wiederhergestellt oder zurückgebaut werden: Caddy- und Monitoringroute
 entfernen, beide LibreDesk-Stacks stoppen, Authentik-Anwendung und DNS entfernen
 und Daten nach beschlossener Frist sichern oder datenschutzgerecht löschen.
 Containerentfernung allein löscht keine produktiven Daten.
