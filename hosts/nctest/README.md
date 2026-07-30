@@ -18,8 +18,11 @@ hochverfügbarer Produktionsserver.
 ## Rollen
 
 - Shinobi zeichnet Kameras aus dem lokalen Hausnetz für wenige Tage auf.
-- Uptime Kuma überwacht als vorläufige externe Instanz die öffentlichen Dienste
-  auf dem Manitu-VPS und alarmiert unabhängig über Slack.
+- Uptime Kuma überwacht als vorläufige externe Instanz acht öffentliche
+  Endpunkte beziehungsweise Ports des Manitu-VPS.
+- Alle Monitore alarmieren während der Übergangsphase über Slack; zentrale
+  Ausfälle gehen zusätzlich per SMTP an `itadmin@zircula.org` und
+  `itsupport@zircula.org`.
 - nctest dient vorläufig als zusätzliches Backupziel, bis Vorstand und Vereine
   das dauerhafte externe beziehungsweise lokale Backupziel beschlossen haben.
 - kleinere Buchungs-, Mail- und Slack-Skripte existieren außerhalb des derzeit
@@ -57,8 +60,8 @@ Er wird weder in der Remote-URL noch dauerhaft im Git Credential Store
 hinterlegt. Änderungen entstehen in Feature-Branches und werden nicht direkt auf
 nctest committet.
 
-Produktive `.env`, rclone-Konfigurationen, Slack-Webhooks, Kamerazugangsdaten und
-Uptime-Kuma-Laufzeitdaten bleiben ausschließlich lokal.
+Produktive `.env`, rclone-Konfigurationen, Slack-Webhooks, SMTP-Zugangsdaten,
+Kamerazugangsdaten und Uptime-Kuma-Laufzeitdaten bleiben ausschließlich lokal.
 
 ## Betrieb
 
