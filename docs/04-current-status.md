@@ -74,7 +74,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Organisations-, Collection-, Client-, Offboarding-, Backup- und Restore-Gates
   stehen in `docs/12-vaultwarden.md`
 
-### LibreDesk (technischer PoC aktiv)
+### LibreDesk (produktiv)
 
 - getrennte Stacks für LibreDesk 2.5.0 und anwendungseigenen Redis 7.4.10
 - öffentlich unter `support.zircula.org` ohne direkte Hostports
@@ -87,9 +87,11 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   zusätzliche Governance-Gruppe für lokal als Admin berechtigte Agent:innen
 - lokale Rollen bleiben in LibreDesk; der unabhängige `System`-Break-Glass-
   Zugang wurde nach dem SSO-Rollout erneut geprüft
-- Slack bleibt während PoC und Beobachtungsphase unverändert bestehen
-- Restore-, Datenschutz- und organisatorische Produktivfreigabegates stehen
-  weiterhin unter `docs/13-libredesk.md`
+- produktiver IT-Supportkanal; Slack `#it-support` bleibt nur bis zur
+  Abschaltung von Slack als befristeter Übergangskanal bestehen
+- Backup-Smoke-Test mit lesbarem PostgreSQL-Dump, Uploadarchiv und
+  SHA-256-Prüfsummen erfolgreich; isolierter Restore und Aufbewahrungsregeln
+  bleiben regelmäßige Betriebsaufgaben gemäß `docs/13-libredesk.md`
 
 ### Monitoring
 
@@ -142,8 +144,8 @@ Positiv geprüft:
 - Authentik-Worker ohne Root-Rechte und Docker-Socket erfolgreich geprüft
 - Monitoringcontainer ohne unnötige Hostports und Socket-Mounts geprüft
 - Vaultwarden ohne Root-Rechte, Host-Port, Capabilities und Docker-Socket geprüft
-- LibreDesk- und anwendungseigener Redis-Stack mit getrennten Datenpfaden,
-  Secrets und Netzgrenzen im Feature-Branch vorbereitet
+- LibreDesk und anwendungseigener Redis mit getrennten Datenpfaden, Secrets und
+  Netzgrenzen produktiv geprüft
 
 Offen:
 
@@ -268,14 +270,17 @@ Erfolgreich auf dem VPS bereitgestellt und geprüft:
 - unabhängiger lokaler `System`-Break-Glass-Zugang
 - öffentliche Blackbox-Probe über Prometheus
 
-Offen bleiben insbesondere der isolierte Restore-Test, die vollständigen
-Anhang-/Notiztests und die organisatorische Entscheidung zur Ablösung des
-Slack-Kanals.
+Zusätzlich wurde ein Backup-Smoke-Test mit lesbarem PostgreSQL-Dump, lesbarem
+Uploadarchiv und SHA-256-Prüfsummen abgeschlossen. Als laufende Betriebsaufgaben
+bleiben insbesondere ein isolierter Vollrestore, regelmäßige Anhang-/Notiz-
+Regressionstests und die Festlegung der Aufbewahrungsfristen. Slack
+`#it-support` dient nur noch als Übergang bis zur Abschaltung von Slack.
 
 ## Produktionsreife
 
-Die Kerndienste und das interne Monitoring sind funktionsfähig. Vaultwarden ist
-technisch bereitgestellt, aber organisatorisch noch nicht freigegeben. Vollständig
+Die Kerndienste, LibreDesk und das interne Monitoring sind funktionsfähig.
+Vaultwarden ist technisch bereitgestellt, aber organisatorisch noch nicht
+freigegeben. Vollständig
 belastbare Produktionsreife wird erst angenommen, wenn ein externes Backup und
 ein erfolgreicher Restore-Test dokumentiert sind. Ein VPS-Snapshot allein erfüllt
 diese Anforderung nicht. Uptime Kuma kann einen vollständigen VPS-Ausfall zwar
@@ -289,4 +294,5 @@ unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 4. MFA und Recovery der Break-Glass-Konten abschließen.
 5. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
 6. Vaultwarden-Organisationen, Clients, Offboarding und Restore-Gate abschließen.
-7. LibreDesk-Backup und isolierten Restore testen sowie Datenschutz-, Aufbewahrungs- und Ablöseentscheidung treffen.
+7. LibreDesk-Backup extern absichern, isolierten Restore testen und
+   Aufbewahrungsfristen festlegen.
