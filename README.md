@@ -46,7 +46,7 @@ nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 | `prometheus` | Metriken und Alarmregeln | Monitoring | keine |
 | `grafana` | Monitoringoberfläche | Frontend, Monitoring | keine |
 | `vaultwarden` | Passwort- und Secret-Verwaltung | Frontend | keine |
-| `libredesk` | IT-Support-Ticketing (PoC) | Frontend, Backend | keine |
+| `libredesk` | produktives IT-Support-Ticketing | Frontend, Backend | keine |
 | `libredesk-redis` | anwendungseigener Cache und Queue | Backend | keine |
 
 Hostbezogene Stacks außerhalb des VPS stehen unter `hosts/`. Der derzeit

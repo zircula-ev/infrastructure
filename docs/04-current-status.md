@@ -107,12 +107,16 @@ Auf dem VPS aktiv und geprüft:
   Startdashboard angezeigt
 - keine öffentlichen Metrik- oder Administrationsports außer Grafana über Caddy
 
-Auf `nctest` überwacht Uptime Kuma die vier öffentlichen Endpunkte für
-Nextcloud, Authentik, Collabora und Talk HPB unabhängig vom VPS. Die Oberfläche
-ist nur im Tailnet über Tailscale Serve auf HTTPS-Port 8443 erreichbar. DOWN- und
-Entwarnungsnachrichten an Slack wurden mit einem ungefährlichen Testmonitor
-bestätigt. Da `nctest` versehentlich ausgeschaltet werden kann, bleibt diese
-Instanz eine Übergangslösung und keine hochverfügbare externe Überwachung.
+Auf `nctest` überwacht Uptime Kuma acht öffentliche Dienste
+beziehungsweise Ports unabhängig vom VPS: Nextcloud, Authentik, Collabora, Talk
+HPB, LibreDesk, Grafana, Vaultwarden und den öffentlichen HTTPS-Port des VPS.
+Die Oberfläche ist nur im Tailnet über Tailscale Serve auf HTTPS-Port 8443
+erreichbar. Alle Monitore bleiben während der Übergangsphase an Slack gebunden;
+zentrale Ausfälle gehen zusätzlich per SMTP an den technischen Verteiler und
+LibreDesk. DOWN- und Entwarnungsnachrichten wurden mit einem ungefährlichen
+Testmonitor bestätigt. Da `nctest` versehentlich ausgeschaltet werden kann,
+bleibt diese Instanz eine Übergangslösung und keine hochverfügbare externe
+Überwachung.
 
 ## Migration und Organisation
 
@@ -151,8 +155,6 @@ Offen:
 
 - externes Backupziel und Restore-Test etablieren
 - ergänzendes Image- und Secret-Scanning etablieren
-- ausstehende Ubuntu-Paketupdates im Wartungsfenster installieren
-- MFA und Recovery für beide Break-Glass-Konten abschließen
 - MFA-Governance für weitere Organisationsgruppen festlegen
 - OIDC-Offboarding sowie Desktop-/Mobile-Client und WebDAV testen
 

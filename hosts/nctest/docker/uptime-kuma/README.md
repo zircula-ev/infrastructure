@@ -100,18 +100,90 @@ tailscale serve status
 | Authentik | HTTP(s) | `https://auth.zircula.org/-/health/ready/` | – |
 | Collabora | HTTP(s) – Keyword | `https://office.zircula.org/hosting/discovery` | `wopi-discovery` |
 | Nextcloud Talk HPB | HTTP(s) | `https://talk.cloud.zircula.org/api/v1/welcome` | – |
+| LibreDesk | HTTP(s) – Keyword | `https://support.zircula.org/health` | `"status":"success"` |
+| Grafana | HTTP(s) – Keyword | `https://monitoring.zircula.org/api/health` | `"database":"ok"` |
+| Vaultwarden | HTTP(s) | `https://vault.zircula.org/alive` | – |
+| Zircula VPS HTTPS | TCP Port | `195.90.217.88:443` | – |
 
-Alle vier Monitore verwenden ein Intervall von 60 Sekunden, drei Wiederholungen,
-30 Sekunden Wiederholungsabstand, 20 Sekunden Request-Timeout und akzeptieren
-HTTP-Status 200 bis 299. TLS-Fehler werden nicht ignoriert; die
-Zertifikatsablaufwarnung ist aktiviert. Benachrichtigungen gehen über den
-bestehenden Monitoring-Webhook an Slack.
+Die HTTP-Monitore verwenden ein Intervall von 60 Sekunden und drei
+Wiederholungen. Der Wiederholungsabstand liegt je nach Monitor zwischen 30 und
+60 Sekunden; dadurch führt ein einzelner kurzer Fehler nicht sofort zu einer
+Benachrichtigung. Der Request-Timeout beträgt 20 Sekunden. Erfolgreich sind
+HTTP-Status 200 bis 299. TLS-Fehler werden nicht ignoriert und die
+Zertifikatsablaufwarnung bleibt aktiv.
 
-Die vollständige Alarmkette wurde mit einem temporären HTTP-Monitor gegen den
-absichtlich geschlossenen lokalen Port `127.0.0.1:9` geprüft. Nach der
-DOWN-Nachricht wurde dessen Ziel auf den erreichbaren Nextcloud-Statusendpunkt
-geändert und die UP-/Entwarnungsnachricht bestätigt. Der Testmonitor wurde
-anschließend gelöscht; kein produktiver Dienst wurde gestoppt.
+Der TCP-Monitor prüft bewusst nur, ob der öffentliche HTTPS-Port des VPS
+erreichbar ist. Er unterscheidet einen vollständigen VPS-/Caddy-Ausfall von
+einem Fehler einer einzelnen Anwendung.
+
+## Benachrichtigungsrouting
+
+Uptime Kuma verwaltet Benachrichtigungsziele in seiner lokalen
+Laufzeitdatenbank. Unter **Settings → Notifications** existieren zwei getrennte
+Ziele:
+
+### Slack – Übergang
+
+Der bestehende Monitoring-Webhook bleibt während der Slack-Übergangsphase an
+allen Monitoren aktiviert. Er wird erst entfernt, wenn der Ersatzweg unter
+realen Bedingungen geprüft wurde.
+
+### E-Mail – kritischer externer Ausfall
+
+Die SMTP-Benachrichtigung verwendet:
+
+| Feld | Wert |
+|---|---|
+| Benachrichtigungstyp | Email (SMTP) |
+| Name | `E-Mail – kritischer externer Ausfall` |
+| SMTP-Server | `mail.manitu.de` |
+| Port | `465` |
+| Sicherheit | TLS |
+| Benutzername | `itadmin@zircula.org` |
+| Absender | `itadmin@zircula.org` |
+| Empfänger | `itadmin@zircula.org` |
+| CC | `itsupport@zircula.org` |
+
+Das Passwort wird nur in Uptime Kumas SQLite-Datenbank gespeichert und nicht in
+Git oder dieser Dokumentation. Die Benachrichtigung wird nicht als pauschaler
+Standard für neue Monitore aktiviert, sondern gezielt diesen kritischen
+Monitoren zugewiesen:
+
+- Zircula VPS HTTPS
+- Nextcloud
+- Authentik
+- LibreDesk
+
+Damit erreicht ein vollständiger oder zentraler Ausfall den technischen
+Verteiler direkt. Die Kopie an `itsupport@zircula.org` bleibt im externen
+Manitu-Postfach erhalten und wird von LibreDesk nach dessen Wiederkehr als
+Ticket eingelesen.
+
+Collabora, Talk HPB, Grafana und das noch nicht allgemein ausgerollte
+Vaultwarden senden zunächst nur an Slack. Ihre spätere E-Mail-Eskalation wird
+nach Beobachtung des Alarmvolumens entschieden.
+
+Benachrichtigungsziele werden pro Monitor unter **Edit → Notifications**
+zugeordnet. Geplante Arbeiten erhalten vorher ein Maintenance Window, damit
+erwartete DOWN-/UP-Folgen keine Tickets erzeugen.
+
+## Funktionstest
+
+Die vorhandenen und neu ergänzten Monitore wurden mit ihren realen Endpunkten
+erfolgreich geprüft. Die vollständige Slack-Alarmkette wurde zusätzlich mit
+einem temporären HTTP-Monitor gegen den absichtlich geschlossenen lokalen Port
+`127.0.0.1:9` getestet.
+
+Nach Einrichtung des SMTP-Ziels wird derselbe ungefährliche Negativtest einmal
+mit der kritischen E-Mail-Benachrichtigung wiederholt. Erwartet werden:
+
+1. DOWN-Nachricht an Slack,
+2. E-Mail an `itadmin@zircula.org`,
+3. LibreDesk-Ticket über `itsupport@zircula.org`,
+4. nach Korrektur des Ziels eine UP-/Entwarnung.
+
+Der Testmonitor wird danach gelöscht. Kein produktiver Dienst wird dafür
+gestoppt.
 
 ## Updates und Datenprüfung
 

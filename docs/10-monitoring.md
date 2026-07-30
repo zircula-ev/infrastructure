@@ -12,7 +12,9 @@ flowchart LR
     Prometheus --> Grafana
     Prometheus --> Alertmanager
     Kuma --> Slack
+    Kuma -->|kritische Ausfälle| ITMail[itadmin und LibreDesk]
     Alertmanager --> Slack
+    Alertmanager -->|severity critical| ITMail
 ```
 
 Uptime Kuma ist vorläufig auf nctest untergebracht. Da nctest ausgeschaltet
@@ -41,8 +43,9 @@ Alertmanager, Prometheus und Grafana. Bestätigt wurden:
 - öffentliche Erreichbarkeit ausschließlich von Grafana über Caddy
 - rootless Uptime Kuma auf dem lokalen ZFS-Dataset von `nctest`
 - Zugriff auf Uptime Kuma ausschließlich über Tailscale Serve auf HTTPS-Port 8443
-- vier erfolgreiche externe Dienstprüfungen sowie getestete Slack-DOWN- und
-  Entwarnungsnachrichten
+- acht erfolgreiche externe Dienstprüfungen einschließlich LibreDesk, Grafana,
+  Vaultwarden und öffentlichem VPS-HTTPS-Port
+- getestete Slack-DOWN- und Entwarnungsnachrichten
 
 Das VPS-Dashboard ist als Grafana-Startseite ausgerollt und wird nach dem
 Authentik-Login direkt angezeigt. Ein temporärer Benutzer ohne
@@ -103,9 +106,9 @@ danach außerhalb von Git verwahrt:
 | Node Exporter | keine Secrets | nur Versionswert in `.env` |
 | Blackbox Exporter | keine Secrets | nur Versionswert in `.env` |
 | Prometheus | derzeit keine Secrets | Aufbewahrungswerte in `.env` |
-| Alertmanager | Slack-Webhook | `secrets/slack_webhook_url`, UID/GID 65534 und Modus 400 |
+| Alertmanager | Slack-Webhook, SMTP-Passwort des technischen Postfachs | `secrets/slack_webhook_url` und `secrets/itadmin_smtp_password`, UID/GID 65534 und Modus 400 |
 | Grafana | Break-Glass-Zugang, Secret Key, OIDC-Client | `.env`, Modus 600 |
-| Uptime Kuma | lokaler Admin und Slack-Webhook | Laufzeitdatenbank auf nctest |
+| Uptime Kuma | lokaler Admin, Slack-Webhook und SMTP-Zugang | Laufzeitdatenbank auf nctest |
 
 Das Kopieren einer `.env.example` erzeugt nur die dokumentierte lokale
 Konfigurationsdatei. Werte mit `CHANGE_ME` müssen vor dem Start ersetzt werden.
@@ -119,8 +122,9 @@ Erfasst werden zunächst:
 - CPU, RAM, Swap, Load und Netzwerk des VPS
 - Dateisystembelegung
 - Erreichbarkeit aller Monitoringkomponenten
-- öffentliche HTTPS-Endpunkte einschließlich Vaultwardens `/alive`-Route und
-  nach dem PoC-Start LibreDesks `/health`-Route
+- öffentliche HTTPS-Endpunkte einschließlich Vaultwardens `/alive`-Route,
+  LibreDesks `/health`-Route und Grafanas `/api/health`
+- öffentlicher TCP-Port 443 des VPS als unabhängiger Transportcheck
 - Restlaufzeit der TLS-Zertifikate
 - verfügbare APT-Paket- und Sicherheitsupdates
 - Neustartbedarf sowie Alter der letzten erfolgreichen Updateprüfung
@@ -154,21 +158,44 @@ bewusste administrative Wartungsschritte.
 ## Alarmierung
 
 Prometheus-Regeln werden ausschließlich nach erfolgreicher `promtool`-Prüfung
-aktiviert. Alertmanager gruppiert und dedupliziert Alarme und sendet sie zunächst
-an Slack. Der Webhook liegt in einer lokalen Secret-Datei und nicht in Git oder
-Container-Umgebungsvariablen.
+aktiviert. Alertmanager gruppiert und dedupliziert Alarme und routet sie anhand
+des Labels `severity`.
 
-Uptime Kuma alarmiert unabhängig direkt an Slack. Dadurch bleibt die externe
-Verfügbarkeitsmeldung von Prometheus getrennt. Alertmanager wiederholt aktive
-Alarme standardmäßig nach vier Stunden; der weniger zeitkritische Hinweis
-`HostRebootRequired` wird nach seiner ersten Meldung nur alle 24 Stunden
-wiederholt. Slack-Titel verweisen auf das öffentliche, per Authentik geschützte
-Grafana statt auf interne Containeradressen. Ein späterer Wechsel zu Nextcloud
-Talk erfolgt über einen Webhook beziehungsweise Bot, ohne die Messwerterfassung
-neu aufzubauen.
+Während der Slack-Übergangsphase gilt:
 
-Alarmtests stoppen keine Produktivdienste. Verwendet werden befristete Testregeln
-oder absichtlich nicht existierende Testziele.
+| Alarmklasse | Slack | Direkte IT-Mail | LibreDesk |
+|---|---|---|---|
+| Warnung | ja | nein | nein |
+| `HostRebootRequired` | ja, höchstens täglich | nein | nein |
+| Kritisch | ja | ja | ja |
+
+Kritische Alarme gehen zusätzlich über das technische Manitu-Postfach an
+`itadmin@zircula.org` und `itsupport@zircula.org`. Das SMTP-Passwort liegt
+ausschließlich in der lokalen Datei
+`docker/alertmanager/secrets/itadmin_smtp_password`. Alertmanager-E-Mail-
+Threading hält Alarm, Wiederholungen und Entwarnung derselben Alertgruppe in
+einem Mailthread, damit LibreDesk eine bestehende Konversation aktualisieren
+kann. Kritische Alarme werden nach zwölf Stunden wiederholt; normale Warnungen
+nach vier Stunden.
+
+Uptime Kuma alarmiert unabhängig vom VPS. Slack bleibt zunächst an allen
+Monitoren aktiv. Die zusätzliche SMTP-Benachrichtigung
+`E-Mail – kritischer externer Ausfall` ist nur dem VPS-Portmonitor sowie
+Nextcloud, Authentik und LibreDesk zugeordnet. Sie sendet direkt an
+`itadmin@zircula.org` und als Kopie an `itsupport@zircula.org`. So bleibt die
+Meldung auch bei einem vollständigen VPS-Ausfall im externen Manitu-Postfach
+erhalten.
+
+Geplante Arbeiten werden vorab als Uptime-Kuma-Maintenance und bei Bedarf als
+zeitlich begrenzte Alertmanager-Silence eingetragen. Alarmtests stoppen keine
+Produktivdienste. Verwendet werden befristete Testalarme oder absichtlich nicht
+existierende Testziele.
+
+Slack wird erst entfernt, wenn sowohl Uptime-Kuma-E-Mail als auch der
+Alertmanager-/LibreDesk-Thread einschließlich Entwarnung unter realen
+Bedingungen getestet wurden. Ein späterer zusätzlicher Wechsel zu Nextcloud Talk
+erfolgt über einen Webhook beziehungsweise Bot, ohne die Messwerterfassung neu
+aufzubauen.
 
 ## Datenschutz und Sicherheit
 
@@ -234,6 +261,6 @@ erreichbar.
 
 Die öffentliche Probe bestätigt Prozess, Reverse Proxy und TLS. Sie prüft weder
 IMAP-Abruf noch SMTP-Versand, OIDC, Ticket-Threading oder Backupaktualität. Diese
-Funktionen bleiben Teil der manuellen PoC-Gates in `docs/13-libredesk.md`. Nach
-dem stabilen VPS-Test wird derselbe Health-Endpunkt optional in Uptime Kuma auf
-`nctest` ergänzt.
+Funktionen bleiben Teil der regelmäßigen Betriebsprüfungen in
+`docs/13-libredesk.md`. Derselbe Health-Endpunkt ist zusätzlich in Uptime Kuma
+auf `nctest` aktiv und wurde erfolgreich getestet.
