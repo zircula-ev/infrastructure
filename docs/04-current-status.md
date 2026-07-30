@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 29.07.2026
+Stand: 30.07.2026
 
 ## Ziel
 
@@ -74,16 +74,22 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Organisations-, Collection-, Client-, Offboarding-, Backup- und Restore-Gates
   stehen in `docs/12-vaultwarden.md`
 
-### LibreDesk (PoC vorbereitet, noch nicht ausgerollt)
+### LibreDesk (technischer PoC aktiv)
 
 - getrennte Stacks für LibreDesk 2.5.0 und anwendungseigenen Redis 7.4.10
-- vorgesehene Domain `support.zircula.org` ohne direkte Hostports
+- öffentlich unter `support.zircula.org` ohne direkte Hostports
 - getrennte PostgreSQL-Rolle und Datenbank sowie eigene Redis-Authentifizierung
-- dediziertes Postfach `itsupport@zircula.org` mit IMAP/SMTP über Manitu
-- Authentik-OIDC nur für manuell angelegte Agent:innen; MFA für die vorgesehene
-  Gruppe `LibreDesk Agents`
+- dediziertes Postfach `itsupport@zircula.org` mit geprüftem IMAP, SMTP und
+  Antwort-Threading über Manitu
+- Authentik-OIDC nur für manuell angelegte Agent:innen über den Provider-Slug
+  `libre-desk`
+- Zugriff und MFA über `LibreDesk Agents`; `LibreDesk Admins` ist die
+  zusätzliche Governance-Gruppe für lokal als Admin berechtigte Agent:innen
+- lokale Rollen bleiben in LibreDesk; der unabhängige `System`-Break-Glass-
+  Zugang wurde nach dem SSO-Rollout erneut geprüft
 - Slack bleibt während PoC und Beobachtungsphase unverändert bestehen
-- Produktivfreigabegates und Rückbau unter `docs/13-libredesk.md`
+- Restore-, Datenschutz- und organisatorische Produktivfreigabegates stehen
+  weiterhin unter `docs/13-libredesk.md`
 
 ### Monitoring
 
@@ -247,6 +253,25 @@ Erfolgreich geprüft:
   Löschen eines Testeintrags
 - Abmeldung, erneute SSO-Anmeldung und SMTP-Nachtest
 
+## Validierung LibreDesk vom 30.07.2026
+
+Erfolgreich auf dem VPS bereitgestellt und geprüft:
+
+- LibreDesk 2.5.0 und eigener authentifizierter Redis 7.4.10
+- getrennte PostgreSQL-Datenbank und persistentes Upload-Verzeichnis
+- UID/GID 1000, read-only Root-Dateisystem, keine Capabilities und keine
+  veröffentlichten Hostports
+- interner und öffentlicher Healthcheck sowie gültiges TLS
+- IMAP-Abruf, SMTP-Versand, Absendername und Antwort-Threading
+- Authentik-OIDC mit strikter öffentlicher Callback-URL, Gruppenbinding und MFA
+- unveränderte lokale Agenten-, Team- und Adminzuordnung nach SSO
+- unabhängiger lokaler `System`-Break-Glass-Zugang
+- öffentliche Blackbox-Probe über Prometheus
+
+Offen bleiben insbesondere der isolierte Restore-Test, die vollständigen
+Anhang-/Notiztests und die organisatorische Entscheidung zur Ablösung des
+Slack-Kanals.
+
 ## Produktionsreife
 
 Die Kerndienste und das interne Monitoring sind funktionsfähig. Vaultwarden ist
@@ -264,4 +289,4 @@ unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 4. MFA und Recovery der Break-Glass-Konten abschließen.
 5. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
 6. Vaultwarden-Organisationen, Clients, Offboarding und Restore-Gate abschließen.
-7. LibreDesk-PoC intern deployen und Mail-, OIDC-, Rechte- und Restore-Gates testen.
+7. LibreDesk-Backup und isolierten Restore testen sowie Datenschutz-, Aufbewahrungs- und Ablöseentscheidung treffen.
