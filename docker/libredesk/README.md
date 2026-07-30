@@ -1,10 +1,10 @@
 # LibreDesk
 
-Dieser Stack stellt einen isolierten Proof of Concept für das interne
-IT-Support-Ticketing bereit. Der technische VPS-Rollout sowie Mail, OIDC, MFA,
-Rollen und lokaler Break-Glass-Zugang wurden erfolgreich geprüft. LibreDesk
-ersetzt Slack organisatorisch dennoch nicht automatisch; Backup-Restore,
-Aufbewahrung und Beobachtungsphase bleiben Freigabegates.
+Dieser Stack stellt das produktive interne IT-Support-Ticketing bereit. Der
+VPS-Rollout sowie Mail, OIDC, MFA, Rollen, lokaler Break-Glass-Zugang und
+Backup-Smoke-Test wurden erfolgreich geprüft. Slack `#it-support` bleibt bis
+zur vollständigen Slack-Ablösung als Übergangskanal bestehen; neue Supportfälle
+sollen regulär über LibreDesk und `itsupport@zircula.org` bearbeitet werden.
 
 ## Architektur
 
@@ -16,9 +16,10 @@ Aufbewahrung und Beobachtungsphase bleiben Freigabegates.
 - Authentik über OIDC nur für zuvor in LibreDesk angelegte Agent:innen
 - Anfragen regulärer Nutzer:innen per E-Mail ohne LibreDesk-Konto
 
-LibreDesk ist ein vergleichsweise junges Projekt. Der erste Rollout bleibt daher
-ein rückbaubarer PoC. Slack `#it-support` wird nicht abgeschaltet, bevor der
-Betrieb über einen vereinbarten Zeitraum stabil war.
+LibreDesk ist ein vergleichsweise junges Projekt und wird deshalb eng
+überwacht, regelmäßig gesichert und vor Updates besonders sorgfältig geprüft.
+Slack `#it-support` bleibt nur für die Übergangszeit bis zur vollständigen
+Slack-Ablösung erreichbar und ist kein paralleles Datei- oder Wissensarchiv.
 
 ## Secrets
 
@@ -187,7 +188,7 @@ Antwort-Threading. Ein versehentlich als `mail.manitu.org` eingetragener
 SMTP-Host löste reproduzierbar `connection refused` aus; korrekt ist in beiden
 Richtungen ausschließlich `mail.manitu.de`.
 
-Vor der organisatorischen Freigabe vollständig testen:
+Regelmäßig sowie nach relevanten Änderungen testen:
 
 1. neue externe E-Mail erzeugt genau ein Ticket,
 2. Antwort erreicht nur die anfragende Person,
@@ -199,7 +200,7 @@ Vor der organisatorischen Freigabe vollständig testen:
 
 ## Veröffentlichung
 
-Erst nach erfolgreichem internen Test:
+Nach Änderungen an Caddy oder der LibreDesk-Route:
 
 ```bash
 cd /opt/zircula/git/infrastructure/docker/caddy
