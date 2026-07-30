@@ -158,7 +158,11 @@ an Slack. Der Webhook liegt in einer lokalen Secret-Datei und nicht in Git oder
 Container-Umgebungsvariablen.
 
 Uptime Kuma alarmiert unabhängig direkt an Slack. Dadurch bleibt die externe
-Verfügbarkeitsmeldung von Prometheus getrennt. Ein späterer Wechsel zu Nextcloud
+Verfügbarkeitsmeldung von Prometheus getrennt. Alertmanager wiederholt aktive
+Alarme standardmäßig nach vier Stunden; der weniger zeitkritische Hinweis
+`HostRebootRequired` wird nach seiner ersten Meldung nur alle 24 Stunden
+wiederholt. Slack-Titel verweisen auf das öffentliche, per Authentik geschützte
+Grafana statt auf interne Containeradressen. Ein späterer Wechsel zu Nextcloud
 Talk erfolgt über einen Webhook beziehungsweise Bot, ohne die Messwerterfassung
 neu aufzubauen.
 
