@@ -11,6 +11,11 @@ route:
   group_wait: 30s
   group_interval: 5m
   repeat_interval: 4h
+  routes:
+    - receiver: slack
+      matchers:
+        - alertname="HostRebootRequired"
+      repeat_interval: 24h
 
 receivers:
   - name: slack
@@ -19,6 +24,7 @@ receivers:
         send_resolved: true
         username: Zircula Monitoring
         title: '{{ if eq .Status "firing" }}ALARM{{ else }}ENTWARNUNG{{ end }}: {{ .CommonLabels.alertname }}'
+        title_link: https://monitoring.zircula.org/
         text: >-
           {{ range .Alerts }}
           *{{ .Annotations.summary }}*
