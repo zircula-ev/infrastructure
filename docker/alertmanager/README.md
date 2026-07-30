@@ -1,96 +1,133 @@
 # Alertmanager
 
-Alertmanager empfängt Prometheus-Alarme, gruppiert und dedupliziert sie und sendet
-sie zunächst an Slack. Der Dienst besitzt keinen öffentlichen Hostport und ist
-nur im Netz `zircula_monitoring` erreichbar.
+Alertmanager empfängt Prometheus-Alarme, gruppiert und dedupliziert sie und
+verteilt sie nach Schweregrad. Während der Slack-Übergangsphase gehen alle
+Alarme weiterhin an Slack. Kritische Alarme werden zusätzlich per E-Mail an
+LibreDesk und die technische Verteileradresse gesendet.
 
-## Secret und Daten
+Der Dienst besitzt keinen öffentlichen Hostport und ist nur im Netz
+`zircula_monitoring` erreichbar.
+
+## Routing
+
+| Alarm | Slack | LibreDesk | `itadmin@zircula.org` | Wiederholung |
+|---|---|---|---|---|
+| `severity="warning"` | ja | nein | nein | 4 Stunden |
+| `HostRebootRequired` | ja | nein | nein | 24 Stunden |
+| `severity="critical"` | ja | ja | ja | 12 Stunden |
+
+Die E-Mail-Empfänger sind:
+
+- `itsupport@zircula.org`: erzeugt beziehungsweise aktualisiert ein
+  LibreDesk-Ticket.
+- `itadmin@zircula.org`: erreicht den technischen Personenkreis unabhängig
+  davon, ob LibreDesk gerade verfügbar ist.
+
+Für kritische E-Mails ist Alertmanager-Threading mit
+`thread_by_date: none` aktiviert. Meldung, Wiederholung und Entwarnung derselben
+Alertgruppe verwenden dadurch einen gemeinsamen E-Mail-Thread. LibreDesk kann
+die Antworten anhand der Mail-Header derselben Konversation zuordnen.
+
+Der Betreff enthält bewusst keinen wechselnden Status:
+
+```text
+[Zircula Monitoring] <Alertname> – <Instance>
+```
+
+Dadurch bleibt der Thread bei `firing` und `resolved` stabil. Der aktuelle
+Status steht im Nachrichtentext.
+
+## Secrets und Daten
 
 - `/srv/zircula/alertmanager/data` – Silences und Laufzeitdaten
-- `secrets/slack_webhook_url` – lokaler Slack-Webhook, niemals versionieren
+- `secrets/slack_webhook_url` – lokaler Slack-Webhook
+- `secrets/itadmin_smtp_password` – SMTP-Passwort des technischen Postfachs
 - `alertmanager.yml` – versionierte Routing- und Gruppierungsregeln
 
-Der Slack-Webhook wird über `slack_api_url_file` gelesen und erscheint dadurch
-nicht als Umgebungsvariable oder Kommandozeilenargument. Der konfigurierte
-Channel `#it-support` entspricht dem vorhandenen Slack-Webhook; bei modernen
-Incoming Webhooks ist häufig der im Webhook hinterlegte Channel maßgeblich.
+Beide Secrets werden nur als read-only Bind-Mounts eingebunden. Fehlende Dateien
+werden durch `create_host_path: false` nicht automatisch als leere Dateien oder
+root-eigene Verzeichnisse erzeugt. Passwörter erscheinen weder in der
+Compose-Datei noch als Umgebungsvariable oder Prozessargument.
 
-Compose erzeugt die Secret-Datei nicht automatisch und ist mit
-`create_host_path: false` absichtlich so konfiguriert, dass der Start bei einer
-fehlenden Datei abbricht. Dadurch wird an dieser Stelle kein root-eigenes
-Verzeichnis angelegt und kein leerer beziehungsweise unsicherer Ersatzwert
-verwendet.
+Nicht geheime SMTP-Werte sind versioniert:
 
-## Vorbereitung
+- Server: `mail.manitu.de:465`
+- Transport: implizites TLS
+- Benutzer und Absender: `itadmin@zircula.org`
+
+## SMTP-Secret vorbereiten
+
+Das Postfachpasswort niemals in die Shellhistorie, Git, Tickets oder Chats
+kopieren. Im Alertmanager-Verzeichnis ausführen:
 
 ```bash
-sudo install -d -o 65534 -g 65534 -m 750 \
-  /srv/zircula/alertmanager/data
+cd /opt/zircula/git/infrastructure/docker/alertmanager
 
-install -d -m 700 secrets
-install -m 600 /dev/null secrets/slack_webhook_url
+sudo install -d -o 65534 -g 65534 -m 750 secrets
 
-read -rsp "Slack-Webhook: " SLACK_WEBHOOK
+if ! sudo test -e secrets/itadmin_smtp_password; then
+  sudo install -o 65534 -g 65534 -m 400     /dev/null     secrets/itadmin_smtp_password
+fi
+
+read -rsp "SMTP-Passwort für itadmin@zircula.org: " SMTP_PASSWORD
 printf '\n'
-printf '%s' "$SLACK_WEBHOOK" > secrets/slack_webhook_url
-unset SLACK_WEBHOOK
 
-sudo chown 65534:65534 secrets/slack_webhook_url
-sudo chmod 400 secrets/slack_webhook_url
+printf '%s' "$SMTP_PASSWORD"   | sudo tee secrets/itadmin_smtp_password   >/dev/null
+
+unset SMTP_PASSWORD
+
+sudo chown 65534:65534   secrets   secrets/slack_webhook_url   secrets/itadmin_smtp_password
+
+sudo chmod 750 secrets
+sudo chmod 400   secrets/slack_webhook_url   secrets/itadmin_smtp_password
 ```
 
-Der echte Webhook darf nicht in Terminalausgaben, Git, Tickets oder Chats
-kopiert werden. Alertmanager läuft als UID/GID 65534 und benötigt deshalb das
-Eigentum an der nur lesbaren Secret-Datei. Änderungen erfolgen künftig mit
-`sudo`; der Wert wird nicht zum interaktiven Benutzer zurückgelesen.
-
-Rechte prüfen, ohne den Inhalt auszugeben:
+Rechte prüfen, ohne Inhalte auszugeben:
 
 ```bash
-sudo stat -c '%U:%G %a %n' \
-  secrets \
-  secrets/slack_webhook_url
+sudo stat -c '%U:%G %a %n'   secrets   secrets/slack_webhook_url   secrets/itadmin_smtp_password
 ```
 
-Erwartet werden `timo:timo 700` für das Verzeichnis und `nobody:nogroup 400`
-für die Datei. Das Verzeichnis bleibt beim Deploymentbenutzer, damit Git und
-Compose den Pfad traversieren können; im Container wird ausschließlich die
-Datei eingebunden.
+Erwartet:
 
-## Benachrichtigungsintervalle und Links
+```text
+nobody:nogroup 750 secrets
+nobody:nogroup 400 secrets/slack_webhook_url
+nobody:nogroup 400 secrets/itadmin_smtp_password
+```
 
-Aktive Alarme werden standardmäßig frühestens alle vier Stunden erneut an Slack
-gesendet. `HostRebootRequired` besitzt eine eigene Unterroute mit 24 Stunden
-Wiederholungsabstand: Der erste Hinweis bleibt zeitnah, ohne während einer bewusst
-geplanten Wartung mehrmals am selben Tag zu stören. Entwarnungen bleiben für alle
-Alarme aktiviert.
+## Validierung und Deployment
 
-Der Titel einer Slack-Nachricht verweist auf das öffentliche, per Authentik
-geschützte Grafana unter `https://monitoring.zircula.org/`. Interne
-Alertmanager-Containeradressen werden nicht an Slack ausgegeben; Alertmanager
-selbst erhält weiterhin keinen öffentlichen Hostport.
-
-## Validierung und Start
+Vor jeder Aktivierung:
 
 ```bash
-docker compose run --rm --no-deps \
-  --entrypoint amtool alertmanager \
-  check-config /etc/alertmanager/alertmanager.yml
+cd /opt/zircula/git/infrastructure/docker/alertmanager
+
+docker compose run --rm --no-deps   --entrypoint amtool alertmanager   check-config /etc/alertmanager/alertmanager.yml
 
 docker compose config --quiet
-docker compose up -d
-docker compose ps
-docker compose logs --tail=100 alertmanager
 ```
 
-## Alarmtest
+Anschließend kontrolliert neu erstellen:
 
-Der folgende Test sendet einen befristeten Alarm direkt an die interne
-Alertmanager-API. Er prüft Container-Netz, Alertmanager-Konfiguration,
-Secret-Zugriff und die Zustellung nach Slack. Prometheus und dessen Regeln werden
-dabei bewusst nicht geprüft.
+```bash
+docker compose up -d --force-recreate
+docker compose ps
 
-Aus dem Alertmanager-Verzeichnis ausführen:
+docker run --rm --network zircula_monitoring   curlimages/curl:8.16.0   --fail --silent --show-error   http://alertmanager:9093/-/ready
+
+printf '\n'
+```
+
+## Kritischen Testalarm senden
+
+Der Test sendet einen befristeten kritischen Alarm direkt an die interne
+Alertmanager-API. Erwartet werden:
+
+- Slack-Alarm,
+- E-Mail an `itadmin@zircula.org`,
+- LibreDesk-Ticket über `itsupport@zircula.org`,
+- nach fünf Minuten eine Entwarnung im selben E-Mail-/Ticketthread.
 
 ```bash
 cd /opt/zircula/git/infrastructure/docker/alertmanager
@@ -98,44 +135,41 @@ cd /opt/zircula/git/infrastructure/docker/alertmanager
 STARTS_AT="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 ENDS_AT="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%SZ')"
 
-docker run --rm --network zircula_monitoring \
-  curlimages/curl:8.16.0 \
-  --fail --silent --show-error \
-  --header 'Content-Type: application/json' \
-  --data "[{
+docker run --rm --network zircula_monitoring   curlimages/curl:8.16.0   --fail --silent --show-error   --header 'Content-Type: application/json'   --data "[{
     \"labels\": {
-      \"alertname\": \"MonitoringPipelineTest\",
-      \"severity\": \"warning\",
+      \"alertname\": \"MonitoringTicketPipelineTest\",
+      \"severity\": \"critical\",
       \"instance\": \"manual-test\",
       \"job\": \"manual-test\"
     },
     \"annotations\": {
-      \"summary\": \"Manueller Monitoring-Test\",
-      \"description\": \"Befristeter Test der Alertmanager-Slack-Zustellung\"
+      \"summary\": \"Manueller kritischer Monitoring-Test\",
+      \"description\": \"Befristeter Test von Slack, E-Mail und LibreDesk-Threading\"
     },
     \"startsAt\": \"$STARTS_AT\",
     \"endsAt\": \"$ENDS_AT\"
-  }]" \
-  http://alertmanager:9093/api/v2/alerts
+  }]"   http://alertmanager:9093/api/v2/alerts
 
 printf '\nTestalarm gültig bis %s\n' "$ENDS_AT"
 ```
 
-Die erfolgreiche API-Annahme erzeugt bei `curl` keine Nutzdaten. Anschließend
-prüfen:
+Danach prüfen:
 
 ```bash
-docker compose logs --since=5m alertmanager
+docker compose logs --since=10m alertmanager   | grep -Ei 'error|failed|permission denied|smtp'   || echo "Keine Zustellungsfehler"
 ```
 
-Erwartet werden eine Slack-Nachricht ohne `permission denied` oder
-Zustellungsfehler und nach Ablauf des Zeitfensters eine Auflösung. Der Alarm
-läuft durch `endsAt` automatisch aus; keine Regel und kein produktiver Dienst
-wird verändert.
+Das Testticket wird mit dem Tag `Monitoring` versehen, dem IT-Team zugeordnet
+und nach der Entwarnung geschlossen. Der Alarm läuft durch `endsAt`
+automatisch aus; keine Prometheus-Regel und kein produktiver Dienst wird
+verändert.
 
-Für einen vollständigen Test von Prometheus über Alertmanager bis Slack wird
-separat eine befristete Prometheus-Testregel verwendet. Sie wird vor dem Reload
-mit `promtool` geprüft und nach erfolgreicher Zustellung wieder entfernt.
+## Wartungsfenster
+
+Geplante Arbeiten werden in Uptime Kuma als Maintenance Window hinterlegt.
+Prometheus-Alarme können bei Bedarf zusätzlich mit einer zeitlich begrenzten
+Alertmanager-Silence unterdrückt werden. Silences ersetzen keine
+Wartungsdokumentation und werden nicht dauerhaft für bekannte Fehler verwendet.
 
 ## Update und Rollback
 
@@ -145,5 +179,7 @@ docker compose up -d
 docker compose ps
 ```
 
-Bei Fehlern wird die vorherige Image-Version wiederhergestellt. Silences und
-Laufzeitdaten bleiben dabei erhalten.
+Bei SMTP-Problemen wird die kritische Unterroute vorübergehend auf den
+Slack-Empfänger zurückgesetzt oder der vorherige Repository-Commit ausgerollt.
+Die bestehende Slack-Alarmierung bleibt während der Einführung der
+E-Mail-Route vollständig erhalten.
