@@ -29,6 +29,12 @@ services:
         read_only: true
         bind:
           create_host_path: false
+      - type: bind
+        source: ./secrets/itadmin_smtp_password
+        target: /run/secrets/itadmin_smtp_password
+        read_only: true
+        bind:
+          create_host_path: false
       - /srv/zircula/alertmanager/data:/alertmanager
 
     networks:
