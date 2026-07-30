@@ -57,6 +57,19 @@ für die Datei. Das Verzeichnis bleibt beim Deploymentbenutzer, damit Git und
 Compose den Pfad traversieren können; im Container wird ausschließlich die
 Datei eingebunden.
 
+## Benachrichtigungsintervalle und Links
+
+Aktive Alarme werden standardmäßig frühestens alle vier Stunden erneut an Slack
+gesendet. `HostRebootRequired` besitzt eine eigene Unterroute mit 24 Stunden
+Wiederholungsabstand: Der erste Hinweis bleibt zeitnah, ohne während einer bewusst
+geplanten Wartung mehrmals am selben Tag zu stören. Entwarnungen bleiben für alle
+Alarme aktiviert.
+
+Der Titel einer Slack-Nachricht verweist auf das öffentliche, per Authentik
+geschützte Grafana unter `https://monitoring.zircula.org/`. Interne
+Alertmanager-Containeradressen werden nicht an Slack ausgegeben; Alertmanager
+selbst erhält weiterhin keinen öffentlichen Hostport.
+
 ## Validierung und Start
 
 ```bash
