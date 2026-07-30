@@ -14,6 +14,25 @@ allgemeiner Chat, Aufgabenplaner oder Dateiarchiv.
   verlinkt, soweit das sinnvoll ist.
 - Slack bleibt bis zur ausdrücklichen organisatorischen Ablösung bestehen.
 
+## Technischer Teststand
+
+Am 30.07.2026 wurden auf dem VPS erfolgreich geprüft:
+
+- interner und öffentlicher Healthcheck einschließlich TLS,
+- gehärteter Betrieb als UID/GID 1000 ohne Hostport,
+- eigener authentifizierter Redis und getrennte PostgreSQL-Datenbank,
+- IMAP-Abruf und SMTP-Versand über `mail.manitu.de`,
+- Zuordnung einer Antwort zur bestehenden Konversation,
+- Agenten- und Teamzuordnung sowie sichtbarer Absendername,
+- Authentik-OIDC über den Provider-Slug `libre-desk`,
+- Zugriffsbinding an `LibreDesk Agents` und MFA für diese Gruppe,
+- unveränderte lokale LibreDesk-Adminrolle nach dem SSO-Login,
+- unabhängiger lokaler `System`-Break-Glass-Login.
+
+Die Root URL in **Administration → General** ist
+`https://support.zircula.org`. Sie ist maßgeblich für die generierte
+OIDC-Callback-URL und weitere absolute Anwendungslinks.
+
 ## Nutzererlebnis
 
 Reguläre Nutzer:innen benötigen kein LibreDesk-Konto. Eine E-Mail erzeugt ein
@@ -31,7 +50,10 @@ Slack zu Nextcloud Talk unverändert.
 Agent:innen werden manuell in LibreDesk mit derselben verifizierten E-Mail wie in
 Authentik angelegt. OIDC übernimmt nur Anmeldung, nicht Kontoerstellung, Rolle
 oder Teamzuordnung. Die Anwendung wird ausschließlich an `LibreDesk Agents`
-gebunden; für diese Gruppe gilt MFA. Offboarding umfasst Authentik und LibreDesk.
+gebunden; für diese Gruppe gilt MFA. `LibreDesk Admins` ist eine Teilmenge zur
+Governance, vergibt aber keine lokale LibreDesk-Adminrolle. Administrator:innen
+müssen Mitglied beider Gruppen sein. Offboarding umfasst Authentik und
+LibreDesk.
 
 ## Datenschutz und Governance
 
@@ -64,9 +86,11 @@ LibreDesk wird erst zum verbindlichen Supportkanal, wenn:
 
 1. interner und öffentlicher Healthcheck stabil sind,
 2. das lokale Break-Glass-Konto getestet ist,
-3. OIDC mit berechtigtem Agent und Ablehnung ohne Binding getestet ist,
+3. OIDC mit berechtigtem Agent getestet und die Ablehnung ohne Binding geprüft
+   ist,
 4. MFA für `LibreDesk Agents` aktiv ist,
-5. Mail, Antwort, Threading, Anhänge und Umlaute getestet sind,
+5. Mail, Antwort und Threading geprüft sowie Anhänge und Umlaute vollständig
+   getestet sind,
 6. interne Notizen nicht an externe Empfänger gelangen,
 7. Rollen und Teams mit mindestens zwei Testkonten geprüft sind,
 8. Offboarding in Authentik und LibreDesk geprüft ist,
@@ -93,3 +117,15 @@ Der PoC kann unabhängig zurückgebaut werden: Caddy- und Monitoringroute
 entfernen, beide LibreDesk-Stacks stoppen, Authentik-Anwendung und DNS entfernen
 und Daten nach beschlossener Frist sichern oder datenschutzgerecht löschen.
 Containerentfernung allein löscht keine produktiven Daten.
+
+## Betriebsnotizen
+
+- Der Authentik-Anwendungsname erzeugte automatisch den Slug `libre-desk`; die
+  Discovery-/Issuer-URL lautet daher
+  `https://auth.zircula.org/application/o/libre-desk/`.
+- LibreDesk erzeugt die OIDC-Callback-URL aus `app.root_url`. Ein verbliebener
+  Wert `http://localhost:9000` führt nach erfolgreicher Authentik-Anmeldung zu
+  einer Rückleitung auf localhost.
+- Für IMAP und SMTP ist `mail.manitu.de` einzutragen. Die ähnlich aussehende,
+  aber falsche Domain `mail.manitu.org` löst beim Versand einen Verbindungsfehler
+  aus.
