@@ -21,10 +21,12 @@ Erfolgreich geprüft wurden Container-Hardening, persistente SQLite-Daten,
 öffentliche TLS-Erreichbarkeit, Authentik-OIDC mit verifizierter E-Mail,
 Master-Passwort, regulärer Neustart sowie SMTP-Anmeldung über den technischen
 Absender `noreply@nextcloud.zircula.org`. Am 29.07.2026 wurde das
-Sicherheitsupdate auf Vaultwarden 1.37.0 mit Vorher-Backup, Datenbankprüfung,
-SSO/MFA, Vault-Operationen, erneuter Anmeldung und SMTP-Nachtest erfolgreich
-ausgerollt. Temporäre Debug-Konfigurationen wurden entfernt; erweitertes Logging
-und SSO-Token-Logging sind deaktiviert.
+Sicherheitsupdate auf Vaultwarden 1.37.0 erfolgreich ausgerollt. Am 30.07.2026
+folgte das Wartungsupdate auf 1.37.1. Für beide Updates lagen vollständige
+Vorher-Backups vor; Datenbank, SSO/MFA, Master-Passwort, Vault-Operationen,
+Synchronisation, erneute Anmeldung, SMTP und die öffentliche Health-Route wurden
+erfolgreich nachgetestet. Temporäre Debug-Konfigurationen wurden entfernt;
+erweitertes Logging und SSO-Token-Logging sind deaktiviert.
 
 Der Rollout bleibt Phase zwei nach der Nextcloud-Migration. Bis dahin werden
 Organisationen, Collections, Gruppen, zweiter Owner, Clients, Offboarding,
