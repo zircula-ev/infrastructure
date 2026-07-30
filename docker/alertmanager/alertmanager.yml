@@ -1,6 +1,13 @@
 global:
   resolve_timeout: 5m
   slack_api_url_file: /run/secrets/slack_webhook_url
+  smtp_from: itadmin@zircula.org
+  smtp_smarthost: mail.manitu.de:465
+  smtp_hello: monitoring.zircula.org
+  smtp_auth_username: itadmin@zircula.org
+  smtp_auth_password_file: /run/secrets/itadmin_smtp_password
+  smtp_require_tls: true
+  smtp_force_implicit_tls: true
 
 route:
   receiver: slack
@@ -12,6 +19,10 @@ route:
   group_interval: 5m
   repeat_interval: 4h
   routes:
+    - receiver: slack-and-email-critical
+      matchers:
+        - severity="critical"
+      repeat_interval: 12h
     - receiver: slack
       matchers:
         - alertname="HostRebootRequired"
@@ -29,6 +40,43 @@ receivers:
           {{ range .Alerts }}
           *{{ .Annotations.summary }}*
           {{ .Annotations.description }}
+          {{ end }}
+
+  - name: slack-and-email-critical
+    slack_configs:
+      - channel: "#it-support"
+        send_resolved: true
+        username: Zircula Monitoring
+        title: '{{ if eq .Status "firing" }}ALARM{{ else }}ENTWARNUNG{{ end }}: {{ .CommonLabels.alertname }}'
+        title_link: https://monitoring.zircula.org/
+        text: >-
+          {{ range .Alerts }}
+          *{{ .Annotations.summary }}*
+          {{ .Annotations.description }}
+          {{ end }}
+    email_configs:
+      - to: 'itsupport@zircula.org, itadmin@zircula.org'
+        send_resolved: true
+        force_implicit_tls: true
+        threading:
+          enabled: true
+          thread_by_date: none
+        headers:
+          Subject: '[Zircula Monitoring] {{ .CommonLabels.alertname }} – {{ .CommonLabels.instance }}'
+        text: |-
+          Status: {{ .Status }}
+          Grafana: https://monitoring.zircula.org/
+
+          {{ range .Alerts -}}
+          {{ .Annotations.summary }}
+          {{ .Annotations.description }}
+          {{ end }}
+        html: >-
+          <p><strong>Status: {{ .Status }}</strong></p>
+          <p><a href="https://monitoring.zircula.org/">Grafana öffnen</a></p>
+          {{ range .Alerts }}
+          <p><strong>{{ .Annotations.summary }}</strong><br>
+          {{ .Annotations.description }}</p>
           {{ end }}
 
 inhibit_rules:
