@@ -14,6 +14,12 @@ if [[ ! -r config.toml ]]; then
   exit 1
 fi
 
+config_mode="$(stat -c '%a' config.toml)"
+if [[ "$config_mode" != "644" ]]; then
+  echo >&2 "FEHLER: docker/libredesk/config.toml benötigt Modus 644 (aktuell: ${config_mode})."
+  exit 1
+fi
+
 set -a
 source .env
 set +a
