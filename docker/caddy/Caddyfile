@@ -45,6 +45,15 @@ vault.zircula.org {
 	reverse_proxy vaultwarden:8080
 }
 
+support.zircula.org {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+	reverse_proxy libredesk:9000 {
+		header_up X-Client-IP {remote_host}
+	}
+}
+
 talk.cloud.zircula.org {
 	header {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

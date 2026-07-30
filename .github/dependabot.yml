@@ -9,6 +9,8 @@ updates:
       - /docker/caddy
       - /docker/collabora
       - /docker/grafana
+      - /docker/libredesk
+      - /docker/libredesk-redis
       - /docker/nextcloud
       - /docker/node-exporter
       - /docker/postgres

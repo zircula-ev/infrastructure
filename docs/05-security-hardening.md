@@ -16,8 +16,8 @@ Von außen erforderlich sind nur:
 | 443 | TCP/UDP | HTTPS und HTTP/3 durch Caddy |
 | 3478 | TCP/UDP | Nextcloud Talk TURN/STUN |
 
-PostgreSQL 5432, Redis 6379, Nextcloud 80, Collabora 9980 und Talk Signaling 8081
-dürfen nicht öffentlich veröffentlicht werden.
+PostgreSQL 5432, Redis 6379, Nextcloud 80, Collabora 9980, LibreDesk 9000 und
+Talk Signaling 8081 dürfen nicht öffentlich veröffentlicht werden.
 
 Docker-Portfreigaben werden vor UFW verarbeitet. Deshalb werden sowohl IPv4 als
 auch IPv6 mit `ss`, Docker-Portlisten und einem externen Portscan geprüft. Docker-
@@ -135,6 +135,8 @@ Abgeschlossen:
   Authentik-OIDC
 - Uptime Kuma getrennt auf `nctest`, nur über Tailscale administrierbar
 - Vaultwarden als UID/GID 1000 ohne Capabilities, Docker-Socket oder Host-Port
+- LibreDesk-PoC als UID/GID 1000 sowie anwendungseigener Redis ohne
+  Capabilities, Docker-Socket oder Host-Port vorbereitet
 - Vaultwarden-OIDC, Master-Passwort, SMTP und öffentliche TLS-Route geprüft
 
 Noch offen:

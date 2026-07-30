@@ -31,8 +31,8 @@ Alertmanager, Prometheus und Grafana. Bestätigt wurden:
 
 - Hostmetriken und ausschließlich lesende Mounts im Node Exporter
 - erfolgreiche HTTP-, TLS- und Zertifikatsprüfung durch Blackbox Exporter
-- validierte Prometheus-Konfiguration, sechs Regeln und sieben erreichbare Targets
-- vier erfolgreiche öffentliche Probes
+- validierte Prometheus-Konfiguration, neun Regeln und sieben erreichbare Targets
+- sechs erfolgreiche öffentliche Probes einschließlich Vaultwarden und LibreDesk
 - Alertmanager-Readiness und ein in Slack angekommener manueller Testalarm
 - Grafana-Health, provisionierte Prometheus-Datenquelle und VPS-Dashboard
 - lokaler Grafana-Break-Glass-Login
@@ -119,7 +119,8 @@ Erfasst werden zunächst:
 - CPU, RAM, Swap, Load und Netzwerk des VPS
 - Dateisystembelegung
 - Erreichbarkeit aller Monitoringkomponenten
-- öffentliche HTTPS-Endpunkte einschließlich Vaultwardens `/alive`-Route
+- öffentliche HTTPS-Endpunkte einschließlich Vaultwardens `/alive`-Route und
+  nach dem PoC-Start LibreDesks `/health`-Route
 - Restlaufzeit der TLS-Zertifikate
 - verfügbare APT-Paket- und Sicherheitsupdates
 - Neustartbedarf sowie Alter der letzten erfolgreichen Updateprüfung
@@ -129,7 +130,7 @@ provisioniert Datenquelle und Basisdashboard aus Git. Das Basisdashboard ist als
 Startdashboard konfiguriert, damit der Einzelserver nach dem Login direkt
 angezeigt wird.
 
-Anwendungsspezifische Metriken für Nextcloud, Authentik, Vaultwarden,
+Anwendungsspezifische Metriken für Nextcloud, Authentik, Vaultwarden, LibreDesk,
 PostgreSQL, Redis und Caddy folgen einzeln. Dafür werden keine Datenbankkonten,
 Docker-Socket-Mounts oder privilegierten Container vorsorglich angelegt.
 
@@ -222,3 +223,17 @@ zweiten Vaultwarden-Rolloutphase wird derselbe Endpunkt auf `nctest` als fünfte
 HTTPS-Monitor mit Slack-Benachrichtigung ergänzt. Die öffentliche Probe bestätigt Erreichbarkeit und TLS, aber weder Login noch
 Entschlüsselbarkeit oder die Aktualität des Backups. Dafür bleiben regelmäßige
 funktionale Tests und ein separater Backupalter-Alarm erforderlich.
+
+
+## LibreDesk
+
+Als sechstes öffentliches Blackbox-Ziel ist
+`https://support.zircula.org/health` aktiv. Nach internem Healthcheck, DNS- und
+TLS-Freigabe wurde Prometheus neu gestartet; Target und öffentliche Probe sind
+erreichbar.
+
+Die öffentliche Probe bestätigt Prozess, Reverse Proxy und TLS. Sie prüft weder
+IMAP-Abruf noch SMTP-Versand, OIDC, Ticket-Threading oder Backupaktualität. Diese
+Funktionen bleiben Teil der manuellen PoC-Gates in `docs/13-libredesk.md`. Nach
+dem stabilen VPS-Test wird derselbe Health-Endpunkt optional in Uptime Kuma auf
+`nctest` ergänzt.

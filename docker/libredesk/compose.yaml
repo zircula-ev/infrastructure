@@ -1,0 +1,86 @@
+services:
+  libredesk:
+    image: libredesk/libredesk:v2.5.0
+
+    container_name: libredesk
+    restart: unless-stopped
+    user: "1000:1000"
+
+    env_file:
+      - .env
+
+    environment:
+      TZ: Europe/Berlin
+      LIBREDESK_APP__LOG_LEVEL: info
+      LIBREDESK_APP__ENV: prod
+      LIBREDESK_APP__CHECK_UPDATES: "false"
+      LIBREDESK_APP__ENCRYPTION_KEY: ${LIBREDESK_APP_ENCRYPTION_KEY}
+      LIBREDESK_APP__SERVER__ADDRESS: 0.0.0.0:9000
+      LIBREDESK_APP__SERVER__DISABLE_SECURE_COOKIES: "false"
+      LIBREDESK_APP__SERVER__SESSION_LIFETIME: 9h
+      LIBREDESK_APP__SERVER__MAX_BODY_SIZE: "104857600"
+      LIBREDESK_UPLOAD__PROVIDER: fs
+      LIBREDESK_UPLOAD__FS__UPLOAD_PATH: /data/uploads
+      LIBREDESK_UPLOAD__FS__EXPIRY: 1h
+      LIBREDESK_DB__HOST: postgres
+      LIBREDESK_DB__PORT: "5432"
+      LIBREDESK_DB__USER: ${LIBREDESK_DB_USER}
+      LIBREDESK_DB__PASSWORD: ${LIBREDESK_DB_PASSWORD}
+      LIBREDESK_DB__DATABASE: ${LIBREDESK_DB_NAME}
+      LIBREDESK_DB__SSL_MODE: disable
+      LIBREDESK_DB__MAX_OPEN: "15"
+      LIBREDESK_DB__MAX_IDLE: "5"
+      LIBREDESK_DB__MAX_LIFETIME: 300s
+      LIBREDESK_REDIS__ADDRESS: libredesk-redis:6379
+      LIBREDESK_REDIS__USER: ""
+      LIBREDESK_REDIS__PASSWORD: ${LIBREDESK_REDIS_PASSWORD}
+      LIBREDESK_REDIS__DB: "0"
+
+    command:
+      - sh
+      - -c
+      - |
+        ./libredesk --install --idempotent-install --yes --config /libredesk/config.toml &&
+        ./libredesk --upgrade --yes --config /libredesk/config.toml &&
+        exec ./libredesk --config /libredesk/config.toml
+
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 300
+
+    volumes:
+      - type: bind
+        source: ./config.toml
+        target: /libredesk/config.toml
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: /srv/zircula/libredesk/uploads
+        target: /data/uploads
+        bind:
+          create_host_path: false
+
+    networks:
+      - frontend
+      - backend
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:9000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
+  backend:
+    external: true
+    name: zircula_backend

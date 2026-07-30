@@ -13,11 +13,16 @@ Mindestens zu sichern sind:
 - logische PostgreSQL-Dumps aller produktiven Datenbanken
 - `/srv/zircula/caddy`
 - `/srv/zircula/authentik`
+- `/srv/zircula/libredesk/uploads`
+- logischer Dump der LibreDesk-Datenbank
+- LibreDesk-Anwendungsschlüssel im verschlüsselten Secret-Backup
 - produktive `.env`- und rclone-Konfiguration getrennt verschlüsselt
 - Repository und eine dokumentierte Liste der verwendeten Image-Versionen/Digests
 
 Redis-Daten sind für Nextcloud üblicherweise Cache- und Lock-Zustand und werden
-nicht als alleinige Wiederherstellungsquelle behandelt. Ob ein Redis-Backup
+nicht als alleinige Wiederherstellungsquelle behandelt. Auch LibreDesk-Redis ist
+keine primäre Wiederherstellungsquelle; maßgeblich sind Datenbankdump, Uploads
+und der zum Sicherungsstand gehörende Anwendungsschlüssel. Ob ein Redis-Backup
 benötigt wird, wird pro Anwendung dokumentiert.
 
 ## Konsistenz
