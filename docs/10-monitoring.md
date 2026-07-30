@@ -32,7 +32,7 @@ Alertmanager, Prometheus und Grafana. Bestätigt wurden:
 - Hostmetriken und ausschließlich lesende Mounts im Node Exporter
 - erfolgreiche HTTP-, TLS- und Zertifikatsprüfung durch Blackbox Exporter
 - validierte Prometheus-Konfiguration, neun Regeln und sieben erreichbare Targets
-- fünf erfolgreiche öffentliche Probes einschließlich Vaultwarden
+- sechs erfolgreiche öffentliche Probes einschließlich Vaultwarden und LibreDesk
 - Alertmanager-Readiness und ein in Slack angekommener manueller Testalarm
 - Grafana-Health, provisionierte Prometheus-Datenquelle und VPS-Dashboard
 - lokaler Grafana-Break-Glass-Login
@@ -227,11 +227,10 @@ funktionale Tests und ein separater Backupalter-Alarm erforderlich.
 
 ## LibreDesk
 
-Der Feature-Branch ergänzt als sechstes öffentliches Blackbox-Ziel
-`https://support.zircula.org/health`. Die Prometheus-Konfiguration wird erst neu
-geladen, nachdem LibreDesk intern gesund, DNS aktiv und die Caddy-Route öffentlich
-erreichbar ist. So erzeugt die vorbereitete Konfiguration vor dem eigentlichen
-PoC-Start keinen absichtlichen Fehlalarm.
+Als sechstes öffentliches Blackbox-Ziel ist
+`https://support.zircula.org/health` aktiv. Nach internem Healthcheck, DNS- und
+TLS-Freigabe wurde Prometheus neu gestartet; Target und öffentliche Probe sind
+erreichbar.
 
 Die öffentliche Probe bestätigt Prozess, Reverse Proxy und TLS. Sie prüft weder
 IMAP-Abruf noch SMTP-Versand, OIDC, Ticket-Threading oder Backupaktualität. Diese
