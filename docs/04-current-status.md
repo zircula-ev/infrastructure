@@ -64,7 +64,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 
 ### Vaultwarden (bereitgestellt, Rollout in Phase zwei)
 
-- gehärteter Stack mit Vaultwarden 1.37.0 unter `vault.zircula.org`
+- gehärteter Stack mit Vaultwarden 1.37.1 unter `vault.zircula.org`
 - Container als UID/GID 1000, ohne Host-Port, Capabilities oder Docker-Socket
 - read-only Root-Dateisystem und persistente SQLite-Daten unter
   `/srv/zircula/vaultwarden/data`
@@ -256,6 +256,18 @@ Erfolgreich geprüft:
 - Master-Passwort, bestehender Vault, Erstellen, Ändern, Synchronisieren und
   Löschen eines Testeintrags
 - Abmeldung, erneute SSO-Anmeldung und SMTP-Nachtest
+
+## Validierung Vaultwarden-Update vom 30.07.2026
+
+Erfolgreich geprüft:
+
+- vollständiges Vorher-Backup bei gestopptem Container mit SHA-256-Prüfsumme
+- Wartungsupdate von Vaultwarden 1.37.0 auf 1.37.1
+- Container-Healthcheck, öffentliche `/alive`-Route und fehlerfreie Startlogs
+- unverändertes Rootless-, Read-only-, Capability- und Port-Hardening
+- Authentik-SSO, MFA, Master-Passwort und bestehender Tresor
+- Erstellen, Ändern, Synchronisieren und Löschen eines Testeintrags
+- Abmeldung, erneute Anmeldung und SMTP-Nachtest
 
 ## Validierung LibreDesk vom 30.07.2026
 
