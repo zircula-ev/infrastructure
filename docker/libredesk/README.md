@@ -31,6 +31,7 @@ verschlüsselte Secret-Backup.
 ```bash
 cp .env.example .env
 chmod 600 .env
+chmod 644 config.toml
 
 openssl rand -hex 16
 openssl rand -hex 32
@@ -38,7 +39,10 @@ openssl rand -hex 32
 ```
 
 Die Werte werden direkt in `.env` eingetragen und nicht in Chats, Tickets oder
-Shell-Befehle kopiert.
+Shell-Befehle kopiert. `config.toml` enthält keine Secrets und benötigt Modus 644,
+damit der Containerprozess mit UID 1000 sie auch dann lesen kann, wenn der
+Deploymentbenutzer auf dem Host eine andere UID besitzt. Modus 600 führt in
+diesem Fall absichtlich zu einem Preflight-Fehler.
 
 ## PostgreSQL vorbereiten
 
