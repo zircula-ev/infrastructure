@@ -1,9 +1,10 @@
 # LibreDesk
 
-Dieser Stack stellt zunächst einen isolierten Proof of Concept für das interne
-IT-Support-Ticketing bereit. Er ersetzt Slack nicht automatisch und wird erst
-nach erfolgreichem Mail-, OIDC-, Backup- und Rechte-Test organisatorisch
-freigegeben.
+Dieser Stack stellt einen isolierten Proof of Concept für das interne
+IT-Support-Ticketing bereit. Der technische VPS-Rollout sowie Mail, OIDC, MFA,
+Rollen und lokaler Break-Glass-Zugang wurden erfolgreich geprüft. LibreDesk
+ersetzt Slack organisatorisch dennoch nicht automatisch; Backup-Restore,
+Aufbewahrung und Beobachtungsphase bleiben Freigabegates.
 
 ## Architektur
 
@@ -145,19 +146,29 @@ wie in Authentik angelegt.
 
 Empfohlener Ablauf:
 
-1. Authentik-Gruppe `LibreDesk Agents` anlegen und MFA verpflichten.
-2. OAuth2/OpenID-Provider als vertraulichen Client mit Authorization Code
+1. Authentik-Gruppen `LibreDesk Agents` und `LibreDesk Admins` anlegen.
+2. Alle Administrator:innen zusätzlich in `LibreDesk Agents` aufnehmen.
+3. OAuth2/OpenID-Provider als vertraulichen Client mit Authorization Code,
+   UUID-basiertem Subject und den Scopes `openid`, `profile` und `email`
    erstellen.
-3. Scopes `openid`, `profile` und `email` freigeben.
-4. Anwendung ausschließlich an `LibreDesk Agents` binden.
-5. In LibreDesk unter **Administration → Security → SSO** einen generischen
-   Provider mit `https://auth.zircula.org/application/o/libredesk/` anlegen.
-6. die angezeigte Callback-URL in Authentik als strikte Redirect-URI ergänzen.
-7. berechtigten Login, lokalen Break-Glass-Login und Ablehnung eines Kontos ohne
-   Binding jeweils in frischer privater Sitzung testen.
+4. Anwendung ausschließlich an `LibreDesk Agents` binden und diese Gruppe an
+   der vorhandenen MFA-Stufe von `zircula-authentication` verpflichten.
+5. In LibreDesk unter **Administration → General** die Root URL ohne
+   abschließenden Slash auf `https://support.zircula.org` setzen.
+6. Unter **Administration → Security → SSO** einen generischen Provider mit
+   `https://auth.zircula.org/application/o/libre-desk/` anlegen. Authentik hat
+   aus dem Anwendungsnamen den Slug `libre-desk` erzeugt.
+7. Die von LibreDesk erzeugte Callback-URL
+   `https://support.zircula.org/api/v1/oidc/1/finish` in Authentik ausschließlich
+   als strikte Authorization-Redirect-URI hinterlegen; temporäre localhost-URIs
+   entfernen.
+8. berechtigten Login mit MFA, unveränderte lokale Rolle und den lokalen
+   Break-Glass-Login jeweils in frischer privater Sitzung testen.
 
-OIDC ersetzt weder LibreDesk-Rolle noch Teamzuordnung. Offboarding umfasst daher
-das Entfernen des Authentik-Bindings und das Deaktivieren des Agentenkontos.
+OIDC ersetzt weder LibreDesk-Rolle noch Teamzuordnung. `LibreDesk Admins` ist
+eine Governance-Gruppe und vergibt keine lokale LibreDesk-Rolle. Offboarding
+umfasst daher das Entfernen aus `LibreDesk Agents` und das Deaktivieren des
+Agentenkontos in LibreDesk.
 
 ## Mailbox
 
@@ -171,7 +182,12 @@ Das dedizierte Postfach ist `itsupport@zircula.org`:
 Die Einrichtung erfolgt unter **Administration → Inboxes**. Das
 Mailbox-Passwort wird nicht in die Stack-`.env` übernommen.
 
-Vor der Freigabe testen:
+Getestet wurden IMAP-Abruf, SMTP-Versand, sichtbarer Absendername und
+Antwort-Threading. Ein versehentlich als `mail.manitu.org` eingetragener
+SMTP-Host löste reproduzierbar `connection refused` aus; korrekt ist in beiden
+Richtungen ausschließlich `mail.manitu.de`.
+
+Vor der organisatorischen Freigabe vollständig testen:
 
 1. neue externe E-Mail erzeugt genau ein Ticket,
 2. Antwort erreicht nur die anfragende Person,
