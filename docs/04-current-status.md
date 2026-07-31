@@ -95,8 +95,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 
 ### Backup nach nctest (in Einführung)
 
-- versionierte Backupkomponente für VPS und nctest im Branch
-  `agent/add-nctest-backup-foundation`
+- versionierte Backupkomponente für VPS und nctest vorbereitet
 - clientseitig verschlüsseltes Restic-Repository auf dem VPS
 - konsistente PostgreSQL-, Vaultwarden- und Grafana-Sicherungen sowie
   Nextcloud-Wartungsmodus während des kritischen Abschnitts
