@@ -27,6 +27,8 @@ Vaultwarden ─OIDC─► Authentik
 LibreDesk ──► PostgreSQL und eigener Redis
 LibreDesk ─OIDC─► Authentik
 nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
+VPS ──Restic, verschlüsselt──► lokales Export-Repository
+nctest ──rrsync, nur lesend──► Export-Repository ──► ZFS-Snapshots
 ```
 
 ## Docker-Stacks auf dem VPS
@@ -65,6 +67,7 @@ Jeder produktive Stack besitzt:
 /opt/zircula/git/infrastructure  Repository
 /srv/zircula                    persistente Anwendungsdaten
 /opt/zircula/backups            lokale Arbeits- und Backupdaten
+/DATA_Store/vps-backup           verschlüsselter Spiegel auf nctest
 ```
 
 ## Docker-Netzwerke
@@ -105,6 +108,9 @@ einzeln neu erstellt.
 - Containerupdates erfolgen kontrolliert in einem Wartungsfenster.
 - Dependabot prüft die aktiven Compose-Stacks wöchentlich und erstellt nur Pull
   Requests; automatisches Mergen oder Ausrollen ist nicht aktiviert.
+- Das versionierte Backupverfahren erstellt konsistente Dumps und ein
+  clientseitig verschlüsseltes Restic-Repository; nctest spiegelt dieses nur
+  lesend und schützt Stände zusätzlich mit ZFS-Snapshots.
 - Ein Snapshot ergänzt das Backup, ersetzt aber keinen getesteten Restore.
 - Server- und Sicherheitsmaßnahmen werden unter `docs/` dokumentiert.
 
@@ -115,6 +121,7 @@ Wichtige Dokumente:
 - `docs/05-security-hardening.md`
 - `docs/06-update-strategy.md`
 - `docs/07-backup-restore.md`
+- `backup/README.md`
 - `docs/08-authentik-nextcloud-oidc.md`
 - `docs/09-container-privilege-review.md`
 - `docs/10-monitoring.md`
