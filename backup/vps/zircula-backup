@@ -14,14 +14,49 @@ readonly textfile_directory="/srv/zircula/node-exporter/textfile"
 readonly metric_file="${textfile_directory}/backup.prom"
 readonly started_at="$(date +%s)"
 
+readonly database_dump="${staging_directory}/postgres-all.sql.zst"
+readonly database_dump_temporary="${database_dump}.tmp"
+readonly grafana_source="/srv/zircula/grafana/data/grafana.db"
+readonly grafana_backup="${staging_directory}/grafana.db"
+readonly grafana_backup_temporary="${grafana_backup}.tmp"
+readonly vaultwarden_data="/srv/zircula/vaultwarden/data"
+readonly vaultwarden_backup="${staging_directory}/vaultwarden.db"
+readonly vaultwarden_backup_temporary="${vaultwarden_backup}.tmp"
+readonly vaultwarden_marker="${staging_directory}/.vaultwarden-backup-marker"
+
 maintenance_enabled_by_script=false
 backup_success=0
+vaultwarden_generated_backup=""
 
 exec 9>/run/lock/zircula-backup.lock
 if ! flock -n 9; then
   printf '%s\n' "Another Zircula backup is already running" >&2
   exit 75
 fi
+
+nextcloud_compose() {
+  docker compose \
+    --project-directory "${infrastructure_directory}/docker/nextcloud" \
+    --env-file "${infrastructure_directory}/docker/nextcloud/.env" \
+    -f "${infrastructure_directory}/docker/nextcloud/compose.yaml" \
+    "$@"
+}
+
+postgres_compose() {
+  docker compose \
+    --project-directory "${infrastructure_directory}/docker/postgres" \
+    --env-file "${infrastructure_directory}/docker/postgres/.env" \
+    -f "${infrastructure_directory}/docker/postgres/compose.yaml" \
+    "$@"
+}
+
+vaultwarden_compose() {
+  docker compose \
+    --project-directory "${infrastructure_directory}/docker/vaultwarden" \
+    --env-file "${infrastructure_directory}/docker/vaultwarden/.env" \
+    -f "${infrastructure_directory}/docker/vaultwarden/compose.yaml" \
+    "$@"
+}
 
 write_metrics() {
   local finished_at duration temporary_metric
@@ -31,13 +66,19 @@ write_metrics() {
   temporary_metric="$(mktemp "${textfile_directory}/.backup.prom.XXXXXX")"
 
   {
-    printf '%s\n'       '# HELP zircula_backup_last_run_success Whether the last VPS backup completed successfully.'       '# TYPE zircula_backup_last_run_success gauge'
+    printf '%s\n' \
+      '# HELP zircula_backup_last_run_success Whether the last VPS backup completed successfully.' \
+      '# TYPE zircula_backup_last_run_success gauge'
     printf 'zircula_backup_last_run_success %s\n' "${backup_success}"
 
-    printf '%s\n'       '# HELP zircula_backup_last_run_timestamp_seconds Unix timestamp of the last completed VPS backup attempt.'       '# TYPE zircula_backup_last_run_timestamp_seconds gauge'
+    printf '%s\n' \
+      '# HELP zircula_backup_last_run_timestamp_seconds Unix timestamp of the last completed VPS backup attempt.' \
+      '# TYPE zircula_backup_last_run_timestamp_seconds gauge'
     printf 'zircula_backup_last_run_timestamp_seconds %s\n' "${finished_at}"
 
-    printf '%s\n'       '# HELP zircula_backup_last_run_duration_seconds Duration of the last VPS backup attempt.'       '# TYPE zircula_backup_last_run_duration_seconds gauge'
+    printf '%s\n' \
+      '# HELP zircula_backup_last_run_duration_seconds Duration of the last VPS backup attempt.' \
+      '# TYPE zircula_backup_last_run_duration_seconds gauge'
     printf 'zircula_backup_last_run_duration_seconds %s\n' "${duration}"
   } >"${temporary_metric}"
 
@@ -47,7 +88,8 @@ write_metrics() {
 
 disable_maintenance_if_needed() {
   if [[ "${maintenance_enabled_by_script}" == true ]]; then
-    docker compose --project-directory "${infrastructure_directory}/docker/nextcloud" --env-file "${infrastructure_directory}/docker/nextcloud/.env" -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"       exec -T --user www-data nextcloud       php occ maintenance:mode --off
+    nextcloud_compose exec -T --user www-data nextcloud \
+      php occ maintenance:mode --off
   fi
 }
 
@@ -55,8 +97,21 @@ cleanup() {
   local exit_code="$?"
 
   disable_maintenance_if_needed || true
-  write_metrics || true
 
+  rm -f \
+    "${database_dump}" \
+    "${database_dump_temporary}" \
+    "${grafana_backup}" \
+    "${grafana_backup_temporary}" \
+    "${vaultwarden_backup}" \
+    "${vaultwarden_backup_temporary}" \
+    "${vaultwarden_marker}"
+
+  if [[ -n "${vaultwarden_generated_backup}" ]]; then
+    rm -f "${vaultwarden_generated_backup}"
+  fi
+
+  write_metrics || true
   exit "${exit_code}"
 }
 
@@ -67,7 +122,22 @@ if [[ "${EUID}" -ne 0 ]]; then
   exit 77
 fi
 
-for path in   "${password_file}"   "${exclude_file}"   "${infrastructure_directory}/docker/postgres/compose.yaml"   "${infrastructure_directory}/docker/nextcloud/compose.yaml"
+for command in docker flock install mktemp python3 restic zstd; do
+  if ! command -v "${command}" >/dev/null; then
+    printf 'Required command is missing: %s\n' "${command}" >&2
+    exit 69
+  fi
+done
+
+for path in \
+  "${password_file}" \
+  "${exclude_file}" \
+  "${infrastructure_directory}/docker/postgres/compose.yaml" \
+  "${infrastructure_directory}/docker/postgres/.env" \
+  "${infrastructure_directory}/docker/nextcloud/compose.yaml" \
+  "${infrastructure_directory}/docker/nextcloud/.env" \
+  "${infrastructure_directory}/docker/vaultwarden/compose.yaml" \
+  "${infrastructure_directory}/docker/vaultwarden/.env"
 do
   if [[ ! -r "${path}" ]]; then
     printf 'Required path is not readable: %s\n' "${path}" >&2
@@ -75,7 +145,9 @@ do
   fi
 done
 
-install -d -o root -g zircula-backup -m 0750   "$(dirname "${repository}")"   "${staging_directory}"
+install -d -o root -g zircula-backup -m 0750 \
+  "$(dirname "${repository}")" \
+  "${staging_directory}"
 
 install -d -o root -g root -m 0755 "${textfile_directory}"
 
@@ -87,29 +159,70 @@ if [[ ! -f "${repository}/config" ]]; then
 fi
 
 maintenance_state="$(
-  docker compose --project-directory "${infrastructure_directory}/docker/nextcloud" --env-file "${infrastructure_directory}/docker/nextcloud/.env" -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"     exec -T --user www-data nextcloud     php occ config:system:get maintenance     | tr -d '\r'
+  nextcloud_compose exec -T --user www-data nextcloud \
+    php occ config:system:get maintenance \
+    | tr -d '\r'
 )"
 
 if [[ "${maintenance_state}" != "true" ]]; then
-  docker compose --project-directory "${infrastructure_directory}/docker/nextcloud" --env-file "${infrastructure_directory}/docker/nextcloud/.env" -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"     exec -T --user www-data nextcloud     php occ maintenance:mode --on
+  nextcloud_compose exec -T --user www-data nextcloud \
+    php occ maintenance:mode --on
 
   maintenance_enabled_by_script=true
 fi
 
-database_dump="${staging_directory}/postgres-all.sql.zst"
-database_dump_temporary="${database_dump}.tmp"
-
-docker compose --project-directory "${infrastructure_directory}/docker/postgres" --env-file "${infrastructure_directory}/docker/postgres/.env" -f "${infrastructure_directory}/docker/postgres/compose.yaml"   exec -T postgres   sh -c 'exec pg_dumpall -U "$POSTGRES_USER"'   | zstd --quiet --threads=0 --force       --output "${database_dump_temporary}"
+postgres_compose exec -T postgres \
+  sh -c 'exec pg_dumpall -U "$POSTGRES_USER"' \
+  | zstd \
+      --quiet \
+      --threads=0 \
+      --force \
+      --output "${database_dump_temporary}"
 
 mv -f "${database_dump_temporary}" "${database_dump}"
 
-docker compose --project-directory "${infrastructure_directory}/docker/vaultwarden" --env-file "${infrastructure_directory}/docker/vaultwarden/.env" -f "${infrastructure_directory}/docker/vaultwarden/compose.yaml"   exec -T vaultwarden   /vaultwarden backup
+touch "${vaultwarden_marker}"
+vaultwarden_compose exec -T vaultwarden /vaultwarden backup
 
-grafana_source="/srv/zircula/grafana/data/grafana.db"
-grafana_backup="${staging_directory}/grafana.db"
+vaultwarden_generated_backup="$(
+  find "${vaultwarden_data}" \
+    -maxdepth 1 \
+    -type f \
+    -name 'db_*.sqlite3' \
+    -newer "${vaultwarden_marker}" \
+    -printf '%T@ %p\n' \
+    | sort -nr \
+    | head -n 1 \
+    | cut -d' ' -f2-
+)"
+
+if [[ -z "${vaultwarden_generated_backup}" ]]; then
+  printf '%s\n' "Vaultwarden did not create a new SQLite backup" >&2
+  exit 65
+fi
+
+install -o root -g root -m 0640 \
+  "${vaultwarden_generated_backup}" \
+  "${vaultwarden_backup_temporary}"
+
+python3 - "${vaultwarden_backup_temporary}" <<'PY'
+import sqlite3
+import sys
+
+with sqlite3.connect(f"file:{sys.argv[1]}?mode=ro", uri=True) as database:
+    result = database.execute("PRAGMA quick_check").fetchone()[0]
+
+if result != "ok":
+    raise SystemExit(f"Vaultwarden SQLite backup check failed: {result}")
+PY
+
+mv -f "${vaultwarden_backup_temporary}" "${vaultwarden_backup}"
 
 if [[ -f "${grafana_source}" ]]; then
-  python3 - "${grafana_source}" "${grafana_backup}" <<'PY'
+  rm -f "${grafana_backup_temporary}"
+
+  python3 - "${grafana_source}" "${grafana_backup_temporary}" <<'PY'
+import os
 import sqlite3
 import sys
 
@@ -124,12 +237,26 @@ with sqlite3.connect(f"file:{target}?mode=ro", uri=True) as check_db:
 
 if result != "ok":
     raise SystemExit(f"Grafana SQLite backup check failed: {result}")
+
+os.chmod(target, 0o640)
 PY
+
+  mv -f "${grafana_backup_temporary}" "${grafana_backup}"
 fi
 
-restic backup   --tag automated   --exclude-file "${exclude_file}"   /srv/zircula   "${infrastructure_directory}"   "${staging_directory}"
+restic backup \
+  --tag automated \
+  --exclude-file "${exclude_file}" \
+  /srv/zircula \
+  "${infrastructure_directory}" \
+  "${staging_directory}"
 
-restic forget   --tag automated   --keep-daily 7   --keep-weekly 4   --keep-monthly 6   --prune
+restic forget \
+  --tag automated \
+  --keep-daily 7 \
+  --keep-weekly 4 \
+  --keep-monthly 6 \
+  --prune
 
 restic check
 
