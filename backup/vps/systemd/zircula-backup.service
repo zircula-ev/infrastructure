@@ -1,0 +1,29 @@
+[Unit]
+Description=Create encrypted Zircula VPS backup
+Wants=network-online.target docker.service
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=root
+Group=zircula-backup
+UMask=0027
+ExecStart=/usr/local/sbin/zircula-backup
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ReadWritePaths=/opt/zircula/backups
+ReadWritePaths=/srv/zircula/node-exporter/textfile
+ReadWritePaths=/srv/zircula/nextcloud
+ReadWritePaths=/srv/zircula/vaultwarden/data
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+TimeoutStartSec=infinity
