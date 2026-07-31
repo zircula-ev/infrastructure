@@ -47,7 +47,7 @@ write_metrics() {
 
 disable_maintenance_if_needed() {
   if [[ "${maintenance_enabled_by_script}" == true ]]; then
-    docker compose       -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"       exec -T --user www-data nextcloud       php occ maintenance:mode --off
+    docker compose --project-directory "${infrastructure_directory}/docker/nextcloud" --env-file "${infrastructure_directory}/docker/nextcloud/.env" -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"       exec -T --user www-data nextcloud       php occ maintenance:mode --off
   fi
 }
 
@@ -87,11 +87,11 @@ if [[ ! -f "${repository}/config" ]]; then
 fi
 
 maintenance_state="$(
-  docker compose     -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"     exec -T --user www-data nextcloud     php occ config:system:get maintenance     | tr -d '\r'
+  docker compose --project-directory "${infrastructure_directory}/docker/nextcloud" --env-file "${infrastructure_directory}/docker/nextcloud/.env" -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"     exec -T --user www-data nextcloud     php occ config:system:get maintenance     | tr -d '\r'
 )"
 
 if [[ "${maintenance_state}" != "true" ]]; then
-  docker compose     -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"     exec -T --user www-data nextcloud     php occ maintenance:mode --on
+  docker compose --project-directory "${infrastructure_directory}/docker/nextcloud" --env-file "${infrastructure_directory}/docker/nextcloud/.env" -f "${infrastructure_directory}/docker/nextcloud/compose.yaml"     exec -T --user www-data nextcloud     php occ maintenance:mode --on
 
   maintenance_enabled_by_script=true
 fi
@@ -99,11 +99,11 @@ fi
 database_dump="${staging_directory}/postgres-all.sql.zst"
 database_dump_temporary="${database_dump}.tmp"
 
-docker compose   -f "${infrastructure_directory}/docker/postgres/compose.yaml"   exec -T postgres   sh -c 'exec pg_dumpall -U "$POSTGRES_USER"'   | zstd --quiet --threads=0 --force       --output "${database_dump_temporary}"
+docker compose --project-directory "${infrastructure_directory}/docker/postgres" --env-file "${infrastructure_directory}/docker/postgres/.env" -f "${infrastructure_directory}/docker/postgres/compose.yaml"   exec -T postgres   sh -c 'exec pg_dumpall -U "$POSTGRES_USER"'   | zstd --quiet --threads=0 --force       --output "${database_dump_temporary}"
 
 mv -f "${database_dump_temporary}" "${database_dump}"
 
-docker compose   -f "${infrastructure_directory}/docker/vaultwarden/compose.yaml"   exec -T vaultwarden   /vaultwarden backup
+docker compose --project-directory "${infrastructure_directory}/docker/vaultwarden" --env-file "${infrastructure_directory}/docker/vaultwarden/.env" -f "${infrastructure_directory}/docker/vaultwarden/compose.yaml"   exec -T vaultwarden   /vaultwarden backup
 
 grafana_source="/srv/zircula/grafana/data/grafana.db"
 grafana_backup="${staging_directory}/grafana.db"
