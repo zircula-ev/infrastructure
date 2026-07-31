@@ -1,0 +1,25 @@
+[Unit]
+Description=Pull encrypted Zircula VPS backup to nctest
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0027
+ExecStart=/usr/local/sbin/zircula-backup-pull
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ReadWritePaths=/DATA_Store/vps-backup
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+TimeoutStartSec=infinity
