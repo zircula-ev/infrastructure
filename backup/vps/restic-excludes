@@ -15,6 +15,7 @@
 /srv/zircula/vaultwarden/data/db.sqlite3
 /srv/zircula/vaultwarden/data/db.sqlite3-shm
 /srv/zircula/vaultwarden/data/db.sqlite3-wal
+/srv/zircula/vaultwarden/data/db_*.sqlite3
 
 # Abandoned diagnostic copy from the initial Vaultwarden troubleshooting.
 /srv/zircula/vaultwarden/data-partial-20260724T150625Z
