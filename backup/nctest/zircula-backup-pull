@@ -42,7 +42,7 @@ snapshot="${dataset}@pull-${timestamp}"
 zfs snapshot "${snapshot}"
 
 mapfile -t snapshots < <(
-  zfs list     -H     -t snapshot     -o name     -s creation     | grep "^\${dataset}@pull-"     || true
+  zfs list     -H     -t snapshot     -o name     -s creation     | grep "^${dataset}@pull-"     || true
 )
 
 if (( ${#snapshots[@]} > keep_snapshots )); then
