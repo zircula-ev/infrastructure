@@ -128,6 +128,7 @@ Erfasst werden zunächst:
 - Restlaufzeit der TLS-Zertifikate
 - verfügbare APT-Paket- und Sicherheitsupdates
 - Neustartbedarf sowie Alter der letzten erfolgreichen Updateprüfung
+- Erfolg, Zeitpunkt und Dauer des letzten vollständigen VPS-Backups
 
 Prometheus bewahrt Werte standardmäßig 15 Tage und bis maximal 5 GB auf. Grafana
 provisioniert Datenquelle und Basisdashboard aus Git. Das Basisdashboard ist als
@@ -154,6 +155,27 @@ Grafana zeigt normale Updates, Sicherheitsupdates, Neustartbedarf und Alter der
 Prüfung. Slack erhält Warnungen nur für Sicherheitsupdates, Neustartbedarf und
 fehlende beziehungsweise veraltete Prüfungen. Installation und Neustarts bleiben
 bewusste administrative Wartungsschritte.
+
+## Backupüberwachung
+
+Der versionierte VPS-Backupservice schreibt nach jedem abgeschlossenen Versuch
+atomar drei Metriken in den Textfile Collector des Node Exporters:
+
+- `zircula_backup_last_run_success`
+- `zircula_backup_last_run_timestamp_seconds`
+- `zircula_backup_last_run_duration_seconds`
+
+`VPSBackupFailed` meldet einen fehlgeschlagenen Lauf nach zehn Minuten als
+kritisch. `VPSBackupStale` meldet nach 36 Stunden ohne neuen abgeschlossenen Lauf
+ebenfalls kritisch. Beide Alarme werden über Alertmanager an Slack, die direkte
+IT-Mail und LibreDesk geroutet.
+
+Vor dem ersten Lauf existieren diese Metriken absichtlich noch nicht. Die Regeln
+verwenden daher keinen sofort auslösenden `absent()`-Ausdruck. Timer und
+Alarmregeln werden erst nach einem erfolgreichen manuellen VPS-Backup, dem
+read-only-Pull nach nctest und einem kleinen isolierten Restore-Test aktiviert.
+Der nctest-Pull und sein ZFS-Snapshot werden zusätzlich auf nctest geprüft; sie
+sind nicht durch eine erfolgreiche lokale VPS-Metrik bewiesen.
 
 ## Alarmierung
 
@@ -233,7 +255,7 @@ ohne die übrigen Monitoringkomponenten neu zu erstellen.
 ## Grenzen und nächste Stufen
 
 - unabhängiges externes Monitoringziel beziehungsweise Heartbeat
-- Backupalter über Node-Exporter-Textfile-Collector
+- unabhängige Überwachung des nctest-Pulls und des jüngsten ZFS-Snapshots
 - Nextcloud- und Authentik-Metriken
 - PostgreSQL- und Redis-Exporter mit minimal berechtigten Konten
 - Caddy-Requestmetriken ohne sensible Pfadlabels
