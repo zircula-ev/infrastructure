@@ -11,11 +11,13 @@ vertragliches oder lokales Ziel beschlossen ist. nctest bleibt ein
 2. PostgreSQL wird logisch mit `pg_dumpall` gesichert.
 3. Vaultwarden erzeugt eine anwendungseigene SQLite-Sicherung.
 4. Grafanas SQLite-Datenbank wird über die SQLite-Backup-API kopiert.
-5. Restic sichert die produktiven Dateidaten, Konfigurationen, Secrets und Dumps
+5. Die neu erzeugten Datenbankkopien werden vor der Sicherung auf Integrität
+   geprüft und nach dem Lauf wieder aus dem unverschlüsselten Staging entfernt.
+6. Restic sichert die produktiven Dateidaten, Konfigurationen, Secrets und Dumps
    clientseitig verschlüsselt.
-6. Ein dedizierter SSH-Benutzer stellt ausschließlich das verschlüsselte
+7. Ein dedizierter SSH-Benutzer stellt ausschließlich das verschlüsselte
    Exportverzeichnis über `rrsync -ro` bereit.
-7. nctest spiegelt den Export und erstellt danach einen ZFS-Snapshot.
+8. nctest spiegelt den Export und erstellt danach einen ZFS-Snapshot.
 
 Der private SSH-Key auf nctest besitzt keine Shell, kein Forwarding und keinen
 Schreibzugriff auf dem VPS. Der Restic-Schlüssel wird getrennt davon offline an
@@ -37,7 +39,10 @@ Gesichert werden insbesondere:
 
 Bewusst ausgeschlossen sind rohe PostgreSQL-Datendateien, Redis-Cache- und
 Queuezustände, Prometheus-Zeitreihen, Git-Objektdaten, der alte partielle
-Vaultwarden-Diagnosepfad und der leere Minecraft-Bootstrap-Platzhalter.
+Vaultwarden-Diagnosepfad, automatisch erzeugte `db_*.sqlite3`-Arbeitskopien und
+  der leere Minecraft-Bootstrap-Platzhalter. Die geprüfte Vaultwarden-Datenbank
+  liegt stattdessen nur während des Laufs im geschützten Staging und wird in
+  dieser Form in Restic aufgenommen.
 
 ## Aufbewahrung
 
@@ -187,7 +192,9 @@ sudo systemctl daemon-reload
 8. nctest-Pullservice manuell starten.
 9. Spiegel, ZFS-Snapshot und Dateianzahlen prüfen.
 10. kleine Datei isoliert nach `/tmp` wiederherstellen und vergleichen.
-11. Erst danach beide Timer aktivieren.
+11. Prometheus-Regeln mit `promtool` prüfen und erst nach vorhandenen
+    Backupmetriken neu laden.
+12. Erst danach beide Timer aktivieren.
 
 ```bash
 sudo systemctl enable --now zircula-backup.timer
