@@ -96,3 +96,22 @@ groups:
           summary: "Host-Updateprüfung fehlt oder ist veraltet"
           description: "Die Updateprüfung des VPS hat seit mehr als 36 Stunden keine aktuellen Metriken geliefert."
 
+
+
+      - alert: VPSBackupFailed
+        expr: zircula_backup_last_run_success == 0
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "VPS-Backup fehlgeschlagen"
+          description: "Der letzte vollständige VPS-Backupversuch ist fehlgeschlagen."
+
+      - alert: VPSBackupStale
+        expr: time() - zircula_backup_last_run_timestamp_seconds > 36 * 60 * 60
+        for: 15m
+        labels:
+          severity: critical
+        annotations:
+          summary: "VPS-Backup ist veraltet"
+          description: "Das letzte abgeschlossene VPS-Backup ist seit mehr als 36 Stunden nicht aktualisiert worden."
