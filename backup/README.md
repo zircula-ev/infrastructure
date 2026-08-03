@@ -29,8 +29,10 @@ Während der konsistenten Sicherung zeigt Nextcloud eine Wartungsseite. Die
 versionierte Anpassung soll ausschließlich einen festen, ehrlichen Hinweis
 verwenden und keine dynamische Fortschritts- oder Zeitangabe vortäuschen:
 
-> Die WERK × ZIRCULA Cloud wird derzeit gewartet oder gesichert und ist in Kürze
-> wieder verfügbar. Bei unerwartet langer Nichterreichbarkeit:
+> Die WERK × ZIRCULA Cloud wird derzeit gewartet oder gesichert. Reguläre
+> Sicherungen beginnen täglich zwischen 02:30 und 02:45 Uhr und dauern
+> üblicherweise 10–20 Minuten. Außerhalb dieses Zeitfensters kann es sich um
+> geplante Wartungsarbeiten handeln. Bei unerwartet langer Nichterreichbarkeit:
 > itsupport@zircula.org
 
 Nextclouds eingebauter Wartungsmodus unterstützt keinen individuellen
