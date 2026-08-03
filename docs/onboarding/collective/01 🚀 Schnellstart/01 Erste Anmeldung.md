@@ -7,7 +7,7 @@ nicht weitergeleitet werden.
 ## Bei Nextcloud anmelden
 
 1. Öffne `https://cloud.zircula.org`.
-2. Wähle die Anmeldung über WERK × ZIRCULA beziehungsweise Single Sign-on.
+2. Wähle **Mit authentik anmelden**.
 3. Du wirst zur zentralen Anmeldung unter `auth.zircula.org` weitergeleitet.
 4. Melde dich mit deinem eigenen Konto an.
 5. Danach gelangst du automatisch zurück zu Nextcloud.

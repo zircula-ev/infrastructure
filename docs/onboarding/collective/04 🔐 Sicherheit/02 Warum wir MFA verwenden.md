@@ -14,7 +14,7 @@ zugreifen können.
 - Lehne unerwartete Anfragen ab.
 - Melde wiederholte unbekannte Anfragen dem IT-Support.
 - Richte nach Möglichkeit mehr als einen zulässigen Wiederherstellungsweg ein.
-- Bewahre statische Wiederherstellungscodes sicher und nicht neben dem Gerät auf.
+- Bewahre statische Einmalcodes sicher und nicht neben dem Gerät auf.
 
 MFA ist kein Misstrauen gegenüber einzelnen Personen, sondern ein gemeinsamer
 Schutz für Vereins-, Organisations- und Personendaten.
