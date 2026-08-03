@@ -1,0 +1,10 @@
+2026/07/31 16:20:59 INFO  : Using sha1 for hash comparisons
+2026/07/31 16:21:00 ERROR : Nextcloud Manual.pdf: file not in webdav root 'Migration/Migration nextcloud.zircula.org'
+2026/07/31 16:21:00 ERROR : Readme.md: file not in webdav root 'Migration/Migration nextcloud.zircula.org'
+2026/07/31 16:21:00 ERROR : Zircula_Mission.md: file not in webdav root 'Migration/Migration nextcloud.zircula.org'
+2026/07/31 16:21:00 ERROR : webdav root 'Migration/Migration nextcloud.zircula.org': error reading destination root directory: couldn't list files: System is in maintenance mode.: OCA\DAV\Exception\ServerMaintenanceMode: 503 Service Unavailable
+2026/07/31 16:21:00 NOTICE: webdav root 'Migration/Migration nextcloud.zircula.org': 3 files missing
+2026/07/31 16:21:00 NOTICE: webdav root 'Migration/Migration nextcloud.zircula.org': 3 differences found
+2026/07/31 16:21:00 NOTICE: webdav root 'Migration/Migration nextcloud.zircula.org': 4 errors while checking
+2026/07/31 16:21:00 NOTICE: 2026/07/31 16:21:00 -           0 B / 0 B, -, 0 B/s, ETA -
+2026/07/31 16:21:00 NOTICE: Failed to check with 4 errors: last error was: couldn't list files: System is in maintenance mode.: OCA\DAV\Exception\ServerMaintenanceMode: 503 Service Unavailable

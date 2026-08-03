@@ -1,0 +1,10 @@
+× zircula-migration-nextcloud-pass1.service - Zircula migration: first copy from old Zircula cloud
+     Loaded: loaded (/run/systemd/transient/zircula-migration-nextcloud-pass1.service; transient)
+  Transient: yes
+     Active: failed (Result: exit-code) since Fri 2026-07-31 14:32:53 CEST; 31min ago
+   Duration: 2h 49min 40.691s
+ Invocation: 76d43b02927542eeb162f4e6223491d4
+    Process: 38171 ExecStart=/usr/bin/rclone copy nextcloud.zircula: cloud.zircula:Migration/Migration nextcloud.zircula.org --create-empty-src-dirs --transfers 4 --checkers 8 --retries 5 --low-level-retries 10 --contimeout 30s --timeout 5m --stats 30s --stats-one-line-date --log-level INFO (code=exited, status=1/FAILURE)
+   Main PID: 38171 (code=exited, status=1/FAILURE)
+   Mem peak: 107.6M
+        CPU: 49min 8.005s

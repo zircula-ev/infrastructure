@@ -1,0 +1,2478 @@
+1_Bau/
+1_Bau/0_KOSTEN/
+1_Bau/0_KOSTEN/00_Planung_DIN276/
+1_Bau/0_KOSTEN/00_Planung_DIN276/Phase I/
+1_Bau/0_KOSTEN/00_Planung_DIN276/_ARCHIV/
+1_Bau/0_KOSTEN/00_Planung_DIN276/_ARCHIV/EG/
+1_Bau/0_KOSTEN/00_Planung_DIN276/_Vorlagen_Info/
+1_Bau/0_KOSTEN/00_Planung_DIN276/_Vorlagen_Info/DIN276-BKI-XML/
+1_Bau/0_KOSTEN/00_Planung_DIN276/_Vorlagen_Info/DIN276-Excel-Vorlagen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Baeckerei Dach/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Baeckerei Dach/Christian Modersitzki/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Baeckerei Dach/Seipel/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Balkone/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Balkone/Hilko Schmidt/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Bauleitung/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Bauleitung/2025-Bauphase2/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Bauleitung/Projektleitung EG Abraham/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Boden-EG/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Brandschutz/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Brandschutz/Brainbrandschutz-Haus/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Brandschutz/Brandmeldeanlagen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Brandschutz/Keller-Haustechnik/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Dach-Rinnen-Gauben/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Dach-Rinnen-Gauben/Hofdach/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/AktivierungEinheiten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/Anschluss-Keller/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/Anschluss-Keller/Freund von Fiona/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/Anschluss-Keller/Sebastian Monsees/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/Anschluss-Keller/Sebastian Sperling/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/EG/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/EG/Roman Root/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Elektrik/EG/Spannhake/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Entkernung/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Entkernung/Hilko Schmidt Bauunternehmen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Entsorgung/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Entsorgung/Heinsohn/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fahrstuhl/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fahrstuhl/Rammung/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fahrstuhl/Rammung/Krut Fredrich Spezialtiefbau/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fahrstuhl/Rammung/Krut Fredrich Spezialtiefbau/Firmenunterlagen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Hinten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Hinten/Hilko Schmidt Bauunternehmen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/250428-Leistungsbeschreibung-Statik/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/Malerarbeiten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/Maurerarbeiten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/Maurerarbeiten/A_David/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/Maurerarbeiten/B_Ahrens/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/Maurerarbeiten/D_Hilko Schmidt Bauunternehmen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fassade Vorne/Reinigung_Felske/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fenster/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fenster/Erdgeschoss/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fenster/Erdgeschoss/FensterHaven/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fenster/Erdgeschoss/Ordemann/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fenster/Haus Vorne/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Fenster/Haus Vorne/Fensterhaven/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Geruest/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Geruest/KAIB/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Geruest/Nietiedt/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Hausanschluesse_Wesernetz/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Heizung-EG/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Keller-Abdichtung/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Keller-Stahltraeger/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Keller-Stahltraeger/_ANNAHME DER ANGEBOTE/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Kuehlzelle/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Kuehlzelle/SchultzePartner/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Kuehlzelle/Strupeit/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Lüftung/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Malerarbeiten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Maurerarbeiten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Maurerarbeiten/Hilko Schmidt/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Putzarbeiten/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Rollgeruest-Innen/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Sanitär/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Statik/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Statik/KSF/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Trockenbau-EG/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Tueren-EG/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Tueren-EG/Fensterhaven/
+1_Bau/0_KOSTEN/01_KVA_Angebote/Tueren-EG/Ordemann/
+1_Bau/0_KOSTEN/02_Rechnungen/
+1_Bau/0_KOSTEN/02_Rechnungen/Baeckerei Dach/
+1_Bau/0_KOSTEN/02_Rechnungen/Beratung/
+1_Bau/0_KOSTEN/02_Rechnungen/Betriebskosten/
+1_Bau/0_KOSTEN/02_Rechnungen/Boden-EG/
+1_Bau/0_KOSTEN/02_Rechnungen/Brandschutz/
+1_Bau/0_KOSTEN/02_Rechnungen/Elektrik-EG/
+1_Bau/0_KOSTEN/02_Rechnungen/Elektrik-Hausanschluss/
+1_Bau/0_KOSTEN/02_Rechnungen/Elektrik-Weitere/
+1_Bau/0_KOSTEN/02_Rechnungen/Entsorgung/
+1_Bau/0_KOSTEN/02_Rechnungen/Fassade-Vorne/
+1_Bau/0_KOSTEN/02_Rechnungen/Fassade-Vorne/Felske-Reinigung-2025/
+1_Bau/0_KOSTEN/02_Rechnungen/Fassade-Vorne/HilkoSchmidt2024/
+1_Bau/0_KOSTEN/02_Rechnungen/FensterEG/
+1_Bau/0_KOSTEN/02_Rechnungen/Heizung/
+1_Bau/0_KOSTEN/02_Rechnungen/Heizung/Allgemein/
+1_Bau/0_KOSTEN/02_Rechnungen/Heizung/Fussboden/
+1_Bau/0_KOSTEN/02_Rechnungen/Keller/
+1_Bau/0_KOSTEN/02_Rechnungen/Keller/Abdichtung/
+1_Bau/0_KOSTEN/02_Rechnungen/Keller/Statik-Traeger/
+1_Bau/0_KOSTEN/02_Rechnungen/Material/
+1_Bau/0_KOSTEN/02_Rechnungen/Planung/
+1_Bau/0_KOSTEN/02_Rechnungen/Putzarbeiten/
+1_Bau/0_KOSTEN/02_Rechnungen/Sanitaer/
+1_Bau/0_KOSTEN/02_Rechnungen/Statik/
+1_Bau/0_KOSTEN/02_Rechnungen/Tuere-EG-Hinten/
+1_Bau/0_KOSTEN/03_Finanzierung-Vermietung/
+1_Bau/0_KOSTEN/03_Finanzierung-Vermietung/ARCHIV/
+1_Bau/0_KOSTEN/03_Finanzierung-Vermietung/Grundeinkommen-Modelle/
+1_Bau/0_KOSTEN/03_Finanzierung-Vermietung/Grundeinkommen-Modelle/Scans/
+1_Bau/0_KOSTEN/03_Finanzierung-Vermietung/_Vorlagen/
+1_Bau/0_KOSTEN/04_Lieferscheine/
+1_Bau/0_KOSTEN/05_Ausschreibungen/
+1_Bau/0_KOSTEN/Eigenarbeit/
+1_Bau/1_PLANUNG/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/220922_PlaeneFuerBauantrag/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/220922_PlaeneFuerBauantrag/dwg/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/230124-PlaeneEG-Neu/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/230324-PlaeneOG-Neu/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/230505-Aussen_OGs/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/230511-GrundrissOG-moebliert/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/230517-Umbaupläne/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/240909-KuecheEG-Balkenlage/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/250501-Obergeschosse-Neu/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/250501-Obergeschosse-Neu/BauplanungMSHAUS-WERK-Gesamt-2024/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/260101-Hinterhaus-Ideen/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/Fassade-2025/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/Pläne für BRAIN Brandschutz/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/Pläne für BRAIN Brandschutz/21.02.23/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/Pläne für BRAIN Brandschutz/21.02.23/CAD/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/Pläne für BRAIN Brandschutz/21.02.23/PDF/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/171030_1te Variante Umbauplanung Stäwog/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/180724_2te Variante Umbauplanung Stäwog/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/201015_3te Variante Umbauplanung Hannah Kordes/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210119-Pläne neu/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210119-Pläne neu/dwg_218_stäwog/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210202 Variante Umbauplanung Hannah Kordes/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210202 Variante Umbauplanung Hannah Kordes/Pläne neu/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210202 Variante Umbauplanung Hannah Kordes/Pläne neu/dwg_218_stäwog/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210511/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210628/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210804/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210920/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210920/210920_Grundrisse_bpn/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210920/210920_Grundrisse_dwg/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210920/210920_Grundrisse_pln/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210920/PDF/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210921-Entwurfspläne/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210921-Entwurfspläne/PDF/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/210921-Entwurfspläne/dwg/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/211117_WERK_Planmaterial/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/211117_WERK_Planmaterial/PDF/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/211227/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/211227/211127_WERK.Planpaket_Bauantrag/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220308_interne_Anpassungen_Grundrisse/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220317_Update Pläne/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220421_Update Pläne NUR PDF/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220426_Update Pläne/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220426_Update Pläne/Pdf/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220426_Update Pläne/dwg/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/220524_Plaene-OhneBeschriftungen/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/Historische Pläne/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_ARCHIV/Historische Pläne/Daten_Bauarchiv/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_Grundrisse_Bauakte/
+1_Bau/1_PLANUNG/1_Plaene_Grundrisse/_bpn_pln_Dateien/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/ElektrikEG-RWA/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/ElektrikEG-RWA/Vergleichsangebote/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/Heizung/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/Raumlueftung/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/Sanitaer/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/Trockenbau/
+1_Bau/1_PLANUNG/2_AusschreibungenP1/_Infos/
+1_Bau/1_PLANUNG/3_Fenster/
+1_Bau/1_PLANUNG/Aufmaße/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Bautenstandsbericht/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Konzept/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Konzept/Anhang/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Konzept/Docs/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Testat01/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Testat02/
+1_Bau/1_PLANUNG/Baubegleitung_Staewog/Testat03/
+1_Bau/1_PLANUNG/FU-Abnahmen-Bescheide/
+1_Bau/1_PLANUNG/_Phasenpläne/
+1_Bau/1_PLANUNG/umbauskizzen_Fahrstuhl/
+1_Bau/1_PLANUNG/x_Energie/
+1_Bau/1_PLANUNG/x_Energie/Datenblaetter/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/01_Nutzungsänderungsantrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/01_Nutzungsänderungsantrag/Fertige Unterlagen für Antrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/01_Nutzungsänderungsantrag/Genehmigung_30082023/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/01_Nutzungsänderungsantrag/Unterlagen Termin Bauamt 1.3.23/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/01_Nutzungsänderungsantrag/Unterlagen allgemein/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/01_Nutzungsänderungsantrag/Unterlagen allgemein/Flächenermittlung/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/00_Protokolle/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/00_Protokolle/2022_03_08_Kommentare_Bauantrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/00_Protokolle/Neue Pläne Bauantrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/00_Protokolle/Neue Pläne Bauantrag/220128-Pläne/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/01_Lageplan/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/02_Bebauungsplan/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/03_Bauzeichnungen_Grundrisse/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/03_Bauzeichnungen_Grundrisse/220922_PlaeneFuerBauantrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/04_Bau_Betriebsbeschreibungen/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/04_Bau_Betriebsbeschreibungen/0-AlteTexte/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/04_Bau_Betriebsbeschreibungen/1-Baubeschreibung/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/04_Bau_Betriebsbeschreibungen/1-Baubeschreibung/Archiv/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/04_Bau_Betriebsbeschreibungen/2-Betriebsbeschreibung/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/04_Bau_Betriebsbeschreibungen/2-Betriebsbeschreibung/Archiv/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/05_NachweisStandsicherheit_Statik/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/06_NachweisBrandschutz/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/07_ErschliessungWasserEnergie/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/08_Bruttorauminhalte_DIN277/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/08_Bruttorauminhalte_DIN277/Infos/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/08_Bruttorauminhalte_DIN277/alt/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/09_Baukostenanzeige_DIN276/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/09_Baukostenanzeige_DIN276/Archiv/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/09_Fotos_Illustrationen/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/09_Fotos_Illustrationen/Ansichten/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/10_Stellplatznachweis/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/10_Stellplatznachweis/Archiv/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/10_Stellplatznachweis/Info/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/11_Kampfmittelbescheinigung/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/12_Baumbestandsbescheinigung/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/02_Bauantrag/99_Ressourcen/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/03_Entwässerungsbauantrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/03_Entwässerungsbauantrag/Antrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/04_Hausanschluss_Wesernetz/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/04_Hausanschluss_Wesernetz/240702_Antrag/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/04_Hausanschluss_Wesernetz/240827-Antrag_Gas/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/04_Hausanschluss_Wesernetz/250319-Stromzaehler-OG1/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/05_Hausanschluss_Telefon/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/05_Hausanschluss_Telefon/240422-AuftragTelekom/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/05_Hausanschluss_Telefon/240422-AuftragTelekom/Auftragsbestätigung_Infos/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/05_Hausanschluss_Telefon/240628-Vodafone/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/05_Hausanschluss_Telefon/Glasfaser_OXG/
+1_Bau/2_BAUORDNUNGSAMT_Anschlussanmeldungen/_Vorlagen/
+1_Bau/3_Fachplanung_Gutachten/
+1_Bau/3_Fachplanung_Gutachten/Baumbestandbescheinigung/
+1_Bau/3_Fachplanung_Gutachten/Brandschutz/
+1_Bau/3_Fachplanung_Gutachten/Brandschutz/Besprechungen/
+1_Bau/3_Fachplanung_Gutachten/Brandschutz/Decken-Infos/
+1_Bau/3_Fachplanung_Gutachten/Brandschutz/Konzept/
+1_Bau/3_Fachplanung_Gutachten/Brandschutz/Plaene/
+1_Bau/3_Fachplanung_Gutachten/Elektrik/
+1_Bau/3_Fachplanung_Gutachten/Elektrik/Spannhake Revision Bürger 218 ELT/
+1_Bau/3_Fachplanung_Gutachten/Elektrik/Spannhake Revision Bürger 218 ELT/Brandschottungen/
+1_Bau/3_Fachplanung_Gutachten/Energie/
+1_Bau/3_Fachplanung_Gutachten/Kontakte/
+1_Bau/3_Fachplanung_Gutachten/Schadstoffe/
+1_Bau/3_Fachplanung_Gutachten/Statik/
+1_Bau/3_Fachplanung_Gutachten/Statik/211117-BegutachtungFahrtstuhl/
+1_Bau/3_Fachplanung_Gutachten/Statik/230315-Begutachtung-GrundrissNeu/
+1_Bau/3_Fachplanung_Gutachten/Statik/240430-Statikgutachten-FassadeKeller/
+1_Bau/3_Fachplanung_Gutachten/Statik/240430-Statikgutachten-FassadeKeller/0_Bestandspläne/
+1_Bau/3_Fachplanung_Gutachten/Statik/240430-Statikgutachten-FassadeKeller/1_Statische Berechnung/
+1_Bau/3_Fachplanung_Gutachten/Statik/240430-Statikgutachten-FassadeKeller/2_Nachtrag Fassade_Erker_EG/
+1_Bau/3_Fachplanung_Gutachten/Statik/241101-ErkerReparatur/
+1_Bau/3_Fachplanung_Gutachten/Statik/241213-Erker-Fotos/
+1_Bau/3_Fachplanung_Gutachten/Statik/241213-Erker-Fotos/ErkerLi/
+1_Bau/3_Fachplanung_Gutachten/Statik/241213-Erker-Fotos/ErkerRe/
+1_Bau/3_Fachplanung_Gutachten/Statik/241213-Erker-Fotos/Risse-Mauerwerk/
+1_Bau/3_Fachplanung_Gutachten/Statik/250317-ErkerRe-Neu/
+1_Bau/3_Fachplanung_Gutachten/Statik/251023-Garagendach_PV/
+1_Bau/5_Beteiligung_Aktionstage/
+1_Bau/6_Baufoerderungen/
+1_Bau/6_Baufoerderungen/Aktion Mensch/
+1_Bau/6_Baufoerderungen/BIS-InvestiveMittel/
+1_Bau/6_Baufoerderungen/BIS-InvestiveMittel/Formulare/
+1_Bau/6_Baufoerderungen/_AktionMensch/
+1_Bau/6_Baufoerderungen/_BAB-KfW/
+1_Bau/6_Baufoerderungen/_BremerModernisieren/
+1_Bau/6_Baufoerderungen/_LebendigeQuartiere/
+1_Bau/6_Baufoerderungen/_Staedtebaufoerderung_BZP/
+1_Bau/6_Baufoerderungen/_Staedtebaufoerderung_BZP/230505-Erstgespraech/
+1_Bau/6_Baufoerderungen/_Staedtebaufoerderung_BZP/Haus Entwurfsskizze 050523/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/Baustoffe_Lieferanten/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/Baustoffe_Lieferanten/Datenblätter/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/Boden/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/Boden/Epoxidharz/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/Garagendach/
+1_Bau/7_Ausfuehrung-Infos-Hersteller/Material_Hinweise/
+1_Bau/8_Kontakte_Partner/
+1_Bau/9_Infos_Fotos_Texte/
+1_Bau/9_Infos_Fotos_Texte/Fotos/
+1_Bau/9_Infos_Fotos_Texte/Fotos/.attachments.128122/
+1_Bau/9_Infos_Fotos_Texte/Fotos/250630-Fassade-nach-Reinigung/
+1_Bau/9_Infos_Fotos_Texte/Infos/
+1_Bau/Angebote/
+1_Bau/Bau-Ideen/
+1_Bau/Bau-Ideen/Boden/
+1_Bau/Bau-Ideen/Elektrik/
+1_Bau/Bau-Ideen/Elektrik/Schaltplaene/
+1_Bau/Bau-Ideen/Lagerung/
+1_Bau/Bau-Ideen/Lastenrad-Unterstand/
+1_Bau/Bau-Ideen/Solaranlage/
+1_Bau/Datenpaket Objekt 218 2022/
+1_Bau/Datenpaket Objekt 218 2022/Entwurfspläne_Hannah/
+1_Bau/Datenpaket Objekt 218 2022/Entwurfspläne_Hannah/210628/
+1_Bau/Datenpaket Objekt 218 2022/Entwurfspläne_Hannah/WERK.Planpaket_Bauantrag/
+1_Bau/Datenpaket Objekt 218 2022/Entwurfspläne_Hannah/dwgs/
+1_Bau/Lageplaene/
+1_Bau/Rechercheinfos/
+1_Bau/Rechercheinfos/230110-VortragEnergieeffizienzhaus/
+1_Bau/Rechercheinfos/230110-VortragEnergieeffizienzhaus/Screenshots/
+1_Bau/_Aufgabenplanung/
+2a_Finanzen/
+2a_Finanzen/Objekt218GmbH/
+2a_Finanzen/Objekt218GmbH/Amtsgericht/
+2a_Finanzen/Objekt218GmbH/Banken/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/221129_InvestorenTreff-Wespa/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/Preis-Leistungsverzeichnis/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Eigenkapital/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Finanzierungsplan/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Flurkarte/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/FoerderungCrowdfunding/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Foerderung_Klimastadtbuero_Umweltbingo/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Foerderung_SWAH/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Grundrisse/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Kapitalfluss/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Mieterliste/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_01_04_Checkliste_GLS_Bank/Privatdarlehen/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_09_26-Einzeldokumente/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_11_10/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-GLS/_SENDOUT/2022_11_25/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Trias/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Trias/220921_Einzeldokumente/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Trias/Infos/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Trias/_SENDOUT/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/01-AllgemeineDarstellung/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/02-Flurkarte/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/03-Registerauszug-Satzung/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/03-Registerauszug-Satzung/Objekt218-GmbH/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/03-Registerauszug-Satzung/WERK-Verein/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/04-Organigramm/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/05-Kostenschätzung-Investitionen/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/06-Zeitplanung/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/07-Architekt, Bauunternehmen/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/08-Finanzierungsstruktur, Eigenmittel/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/09-Bauvorhaben-Bauantragsdokumente/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/10-Jahresabschluss-Vermoegensübersicht/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/11-Businessplan/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/12-Liquiditätsplanung-Jahr1/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/13-Vermietungsstand/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/14-Kaufvertrag/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/15-Absicherungsdokumente/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/_Kontakt/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Bankdarlehen-Triodos/_SENDOUT/
+2a_Finanzen/Objekt218GmbH/Banken/ARCHIV/Interhyp/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/BAB-Unterlagen/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Amtsgericht/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Baubeschreibung/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Baugenehmigung2023/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Bauzeichnungen Grundrisse/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Betriebsbeschreibung/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Fertige Unterlagen für Antrag/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Flächenberechnung/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Gesellschafterliste Alt/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Gesellschafterliste Neu/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Gesellschaftervertrag Objekt 218 GmbH/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Grundbuchauszug/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Grundstueckskaufvertrag/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Handelsbilanz 2021/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Handelsbilanzen-bis23-vorlaeufig/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Handelsregistereintragung/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Handelsregistereintragung/Auszug2024/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Handelsregistereintragung/Eintragung2021/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Lageplan/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Mietverträge/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Mindestlohnerklaerung_BAB/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Personalausweiskopie Fiona Brinker/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Personalausweiskopie Jonas Hummel/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Personalausweiskopie Niklas Piatkowski/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Sanierungskonzept2021/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Steuer ID Daniel Lang/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Steuer ID Fiona Brinker/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Steuer ID Jonas Hummel/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Steuer ID Niklas Piatkowski/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Steuernummer GmbH/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Transparenzregisterauzug/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/GmbH-Unterlagen-KOPIE/Versicherungsnachweis/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Hinweise/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Referenzen/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2401/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2401/Belege/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2402/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2402/Belege/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2402_04/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2402_04/Belege/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2405/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2406-DarlehenWERKev_AlteAusgaben/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2406-DarlehenWERKev_AlteAusgaben/Belege/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2407/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2408/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2410/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2411/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2412/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/2413/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/_Beleglisten-fortlaufend/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/Valutierung-Wespa/_Beleglisten-fortlaufend/ARCHIV/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_Darlehensvertrag 2024/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_Girokonto/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/221219/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/230323/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/230508/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/230621/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/231113/
+2a_Finanzen/Objekt218GmbH/Banken/Bankdarlehen-WESPA/_SendOut/231113/AktuelleDokumente/
+2a_Finanzen/Objekt218GmbH/Banken/Vorlage-Blanko/
+2a_Finanzen/Objekt218GmbH/Banken/Vorlagen/
+2a_Finanzen/Objekt218GmbH/Banken/Vorlagen/MHS/
+2a_Finanzen/Objekt218GmbH/Banken/Vorlagen/Trias/
+2a_Finanzen/Objekt218GmbH/Banken/_Booklet_Bankunterlagen/
+2a_Finanzen/Objekt218GmbH/Banken/_Booklet_Bankunterlagen/_Archiv/
+2a_Finanzen/Objekt218GmbH/Banken/_Booklet_Bankunterlagen/_Archiv/Korrekturen/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2021/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2021/Ausgang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2021/Eingang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2021/Konto/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2022/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2022/Ausgang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2022/Eingang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2022/Konto/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/Ausgang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/Eingang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/Konto/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/Konto/GLS-Auszuege/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/fehlende-Belege/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2023/fehlende-Belege/Belege/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Ausgang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Eingang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Eingang/Neuer Ordner/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Eingang/_unbezahlt/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Eingang/_unbezahlt/Hilko Schmidt Taetigkeit Haelfte Bezahlt/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Eingang/eingepflegt/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Konto/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Konto/GLS-Auszuege/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Konto/GLS/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2024/Konto/WESPA/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Ausgang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Eingang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Eingang/_unbezahlt/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Konto/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Konto/GLS/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Konto/Wespa/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2025/Steuer/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2026/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2026/Ausgang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2026/Eingang/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2026/Konto/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2026/Konto/Kontoauszuege/
+2a_Finanzen/Objekt218GmbH/Buchhaltung/2026/Steuer/
+2a_Finanzen/Objekt218GmbH/Controlling/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/2026-AltWieNeu-Sanierungspreis/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/Antrag/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/Antrag/Vorarbeit/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/Bescheid/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/VN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/VN/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/AktionMensch/VN/Belege/Andere/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/220919-Aenderungsantrag/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/240802-BWAs/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/Fassadensanierung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/Fassadensanierung_Sicherung_Abstuerzung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/FensterEG/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/Kellerabdichtung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/Kellersanierung Einbau Stahltraeger/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Aktualiserte KVA's/Kellersanierung Einbau Stahltraeger/ANNAHME DER ANGEBOTE/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Antrag und Anschreiben/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Eintragung Grundbuch/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Finanzierungsbestaetigung WESPA/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Formulare_signed/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/HRB/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/Ubersicht Foerderungen/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/240506-EinreichungFinal/_Sanierung des Kreativhub WERK in der Bürgermeister-Smidt-Straße 218/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241022-EinreichungKostenplan_Loi/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241022-EinreichungKostenplan_Loi/Archiv/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241022-EinreichungKostenplan_Loi/LOI/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241216-Kostenplan-Anpassungen/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241216-Kostenplan-Anpassungen/Nachweise/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241216-Kostenplan-Anpassungen/Nachweise/Bank/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241216-Kostenplan-Anpassungen/Nachweise/Direktkredite/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/241216-Kostenplan-Anpassungen/Nachweise/Direktkredite/Kurzfristige2024/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Antrag/250514-Änderunsantrag_Fristende/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/1_Angebote/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/2_VVs/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/2_VVs/Alt/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/2_VVs/Vergabeverfahren-Arten-nachUVGO.rtfd/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/3_Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/4_Zahlungsbelege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Buha-Auszuege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Buha-Auszuege/Ecovis/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Buha-Auszuege/Vorbereitung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA01/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA01/Belege-2/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA01/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA01/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA01/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA01/_ALT/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA02/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA02/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA02/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA02/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA02/_ALT/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA03/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA03/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA03/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA03/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA03/_ALT/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA04/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA04/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA04/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA04/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA05/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA05/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA05/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA05/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA06/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA06/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA06/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA06/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA07/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA07/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA07/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA07/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/VV/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/VV/Unterlagen-Kellerabdichtung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/VV/Unterlagen-Kellerabdichtung/Angebote/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/VV/Unterlagen-Kellerabdichtung/Angebotsaufforderungen/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/MA08/ZN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Nachweis-Angebote-Vergabe/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Nachweis-Angebote-Vergabe/02-Keller/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Nachweis-Angebote-Vergabe/03/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Nachweis-Angebote-Vergabe/04a-c/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/Nachweis-Angebote-Vergabe/16/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/Mittelabruf/_Kostenplan-Controlling/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/VN/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/VN/AZ99023-Verwendungsnachweis-Belege/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/VN/AZ99023-Verwendungsnachweis-Belege/Belege-Buchhaltung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/VN/Belege-Buchhaltung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/ZWB/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/ZWB/241118-99023-ZB-Vordrucke-Versand/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/ZWB/241118-99023-ZB-Vordrucke-Versand/weitere laut Bescheid/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/_infos/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/Verwaltung/_infos/weitere laut Bescheid/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/InvestiveMittel/_Vorlagen_Infos/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/LebendigeQuartiere/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/1_Erstgespraech_2022/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/230505-Erstgespraech/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/2_Antrag/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/BZP-Unterlagen/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/BZP-Unterlagen/Bauzeichnungen/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/BZP-Unterlagen/Hausansichten/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/Haus Entwurfsskizze 050523/
+2a_Finanzen/Objekt218GmbH/Foerderungen_Antraege/Staedtebaufoerderung/_Vorlagen/
+2a_Finanzen/Objekt218GmbH/GmbH Gesellschaftervertrag/
+2a_Finanzen/Objekt218GmbH/GmbH Gesellschaftervertrag/2024/
+2a_Finanzen/Objekt218GmbH/GmbH Gesellschaftervertrag/Aenderung2023/
+2a_Finanzen/Objekt218GmbH/GmbH Gesellschaftervertrag/Gesellschaftervertrag2021/
+2a_Finanzen/Objekt218GmbH/GmbH Gesellschaftervertrag/Gesellschaftervertrag2021/_Skizze-Vertragsaenderung/
+2a_Finanzen/Objekt218GmbH/GmbH Gesellschaftervertrag/Liste der Gesellschafter/
+2a_Finanzen/Objekt218GmbH/Hauskauf/
+2a_Finanzen/Objekt218GmbH/Hauskauf/Grundbucheintragung/
+2a_Finanzen/Objekt218GmbH/Hauskauf/Grundschuld/
+2a_Finanzen/Objekt218GmbH/Hauskauf/Unterschrieben/
+2a_Finanzen/Objekt218GmbH/Hauskauf/Zahlungsanweisung/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Archiv/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/BauphaseII_2025/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/03 Mieterunterlagen/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/03 Mieterunterlagen/01 Mietenliste/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/03 Mieterunterlagen/02 Mietverträge/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/03 Mieterunterlagen/03 Betriebskosten/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/03 Mieterunterlagen/04 Kautionen/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/03 Mieterunterlagen/05 Forderungsmanagement/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/01 Grundbücher/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/02 Katasterpläne/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/03 Altlasten/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/04 Baulasten/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/05 Erschließungsbeiträge/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/06 Denkmalschutz/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/07 Erbbau/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/1 Behörden/08 Grundsteuerbescheid/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/2 Technik/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Bgm220/Bremerhaven, Bürgermeister-Schmidt-Straße 220/2 Technik/01 Energieausweise/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Mittelverwendung/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/Mittelverwendung/Belege/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/_Finanzierungsplanung-Meilensteine/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/_MaximalCase/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/_MaximalCase/Archiv/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/_Mietspiegel/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/_ProjektfoerderungBhv/
+2a_Finanzen/Objekt218GmbH/Investitionsplanung/_WorstCase/
+2a_Finanzen/Objekt218GmbH/Kapitalfluss/
+2a_Finanzen/Objekt218GmbH/Konto GLS/
+2a_Finanzen/Objekt218GmbH/Konzept/
+2a_Finanzen/Objekt218GmbH/Konzept/_FindusXWerk/
+2a_Finanzen/Objekt218GmbH/Konzept/_Gemeinnuetzigkeit/
+2a_Finanzen/Objekt218GmbH/Konzept/_Historie/
+2a_Finanzen/Objekt218GmbH/Konzept/_Nutzungskonzept/
+2a_Finanzen/Objekt218GmbH/Konzept/_Nutzungskonzept_Stadtplanungsamt/
+2a_Finanzen/Objekt218GmbH/Konzept/_Supportletter/
+2a_Finanzen/Objekt218GmbH/Organigramm/
+2a_Finanzen/Objekt218GmbH/Protokolle/
+2a_Finanzen/Objekt218GmbH/Steuer/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2021/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2022/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2022/2486_Jahresabschluss+Steuererklärungen 2022/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2022/Hinterlegung 2022/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/Belege/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/Buchungen/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/FehlendeBelege/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/JA23/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/JA23/Blanko/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/JA23/Entwurf Jahresabschluss und Steuererklärungen 2023/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2023/JA23/Entwurf Jahresabschluss und Steuererklärungen 2023/_Versand/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/Dokumente-signed/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/1-Kontoauszuege/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/2-Jahreskonto-Wespa/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/3-Lohnjournal/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/4-Sammelueberweisung-Einzeln/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/5-Mietkonten-Belege/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/6-Darlehen/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/7-Darlehen2022/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251104-Dokumente/8-ZuordnungBaukosten/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/251208-Dokumente/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/FehlendeBelege/7-Darlehen_Hamann_Ecovis/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/JA24/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/JA24/Entwurf Jahresabschluss und Steuererklärungen 2024/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/Kontenbl則ter an Mdt/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/Kontenbl則ter an Mdt/N. Piatkowski/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2024/Kontenbl則ter an Mdt/Zinsen Darlehen/
+2a_Finanzen/Objekt218GmbH/Steuer/Bilanz2025/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/240829-Dokumente/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/240920-Dokumente/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/241015-Beratung/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/241016-Dokumente/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/241107-Finanzamt/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/_Vertrag/
+2a_Finanzen/Objekt218GmbH/Steuer/Ecovis/_Vertrag/Umfirmierungsvertrag/
+2a_Finanzen/Objekt218GmbH/Steuer/Elster/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/250806-Bescheide-ungeprueft/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/260519-bescheid2024/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/260528-Bescheide-geprueft/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/Ausgang/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/Posteingang FA 17.01.2025/
+2a_Finanzen/Objekt218GmbH/Steuer/Finanzamt/Prüfunsgsergebnis Bescheide 2022 v. 17.01.25/
+2a_Finanzen/Objekt218GmbH/Steuer/UmsatzsteuerVA/
+2a_Finanzen/Objekt218GmbH/Steuer/UmsatzsteuerVA/Belege-Beispiele/
+2a_Finanzen/Objekt218GmbH/Steuer/_Piat218:?_PosteingangEcovis/
+2a_Finanzen/Objekt218GmbH/Steuernummer/
+2a_Finanzen/Objekt218GmbH/Studienarbeit-BWL/
+2a_Finanzen/Objekt218GmbH/Transparenzregister/
+2a_Finanzen/Objekt218GmbH/Vermietung/
+2a_Finanzen/Objekt218GmbH/Vermietung/01_Angebote/
+2a_Finanzen/Objekt218GmbH/Vermietung/02_Vertraege/
+2a_Finanzen/Objekt218GmbH/Vermietung/03_Mieteraufstellung/
+2a_Finanzen/Objekt218GmbH/Vermietung/_Ressourcen/
+2a_Finanzen/Objekt218GmbH/Vermietung/_Vorlagen/
+2a_Finanzen/Objekt218GmbH/Vertraege/
+2a_Finanzen/Objekt218GmbH/Vertraege/Telekom/
+2a_Finanzen/Objekt218GmbH/Zeitplan Schriftlich/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2021/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2021/0012021_WERKev/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2021/0022021_WERKev/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2021/0032021_WERKev/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2021/0042021_NiklasPiatkowski/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0012022_KaiKaehler/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0022022_JochenHertrampf/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0032022_JochenHertrampf/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0042022_NickStrauss/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0042022_NickStrauss/_Unterschrieben_NickStrauss/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0052022_WERKev-ABGEBROCHEN/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0062022_WerkeV/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/0072022_WerkeV/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2022/_0052022_vergebenAn_NP/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2023/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2023/2023001_WERKeV/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2023/2023002_FritzscheSens/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2023/2023003_SchmeckLindenau/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2023/2023004_Hentschel/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024001/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024002/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024003/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024004/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024005/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024006/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024007/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2024/2024008/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2025/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2025/2025001/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2025/2025002/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/2025/2025003/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2021001_getilgt/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2021002/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2021003_getilgt/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2022004/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2022006/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2022007_getilgt/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2023001/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2023003/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2024003/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2024004/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2024006/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/2024008/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/ZINSEN/Mietspiegel/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Investment Proposal/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Investment Proposal/2023/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/0012021_WERK_eV/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/0012022_KaiKaehler/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/0022022_JochenHertrampf/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/0032021_WERK_eV/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/0032022_JH/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/00xxxxx_NickStrauss/
+2a_Finanzen/Objekt218GmbH/_Direktkredite/_Vorlage/_ARCHIV/Investment_Proposal/
+2a_Finanzen/Objekt218GmbH/_scan_o218/
+2a_Finanzen/Verein/
+2a_Finanzen/Verein/1_Buchhaltung/
+2a_Finanzen/Verein/1_Buchhaltung/0_Vorlagen/
+2a_Finanzen/Verein/1_Buchhaltung/2021/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Ausgang/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Ausgang/_Rechnungsstellung/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Eingang/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Eingang/Belege-WEFA2/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Kontoauszuege/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Steuer/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Steuer/ESt/
+2a_Finanzen/Verein/1_Buchhaltung/2021/Steuer/USt/
+2a_Finanzen/Verein/1_Buchhaltung/2022/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Angebote_Auftraege/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Ausgang/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Eigenbelege/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Eingang/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Eingang/Gebuchte_Belege/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Kontoumsaetze/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Kontoumsaetze/Paypal/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Scans/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Steuer/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Steuer/ESt/
+2a_Finanzen/Verein/1_Buchhaltung/2022/Steuer/USt/
+2a_Finanzen/Verein/1_Buchhaltung/2023/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Angebote/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Ausgang/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Eingang/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Eingang/Nicht-Zuordnenbar/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Kontoumsaetze/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Kontoumsaetze/Kontoauszuege/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Kontoumsaetze/Paypal/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Kontoumsaetze/S_20231103_135545_Ihre_Unterlagen_vom_02_11.2023 10 37/
+2a_Finanzen/Verein/1_Buchhaltung/2023/Steuerbuero/
+2a_Finanzen/Verein/1_Buchhaltung/2024/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Angebote/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Ausgang/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Belege-Sonstige/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Eingang/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Eingang/_AuslageJonas/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Kontoumsaetze/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Kontoumsaetze/Kontoauszuege/
+2a_Finanzen/Verein/1_Buchhaltung/2024/Kontoumsaetze/Paypal/
+2a_Finanzen/Verein/1_Buchhaltung/2025/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Angebote/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Ausgang/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Eingang/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Eingang/Auslage-Jonas/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Konto/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Konto/Kontoauszuege/
+2a_Finanzen/Verein/1_Buchhaltung/2025/Konto/Paypal/
+2a_Finanzen/Verein/1_Buchhaltung/2026/
+2a_Finanzen/Verein/1_Buchhaltung/2026/Angebote/
+2a_Finanzen/Verein/1_Buchhaltung/2026/Ausgang/
+2a_Finanzen/Verein/1_Buchhaltung/2026/Eingang/
+2a_Finanzen/Verein/1_Buchhaltung/2026/Konto/
+2a_Finanzen/Verein/1_Buchhaltung/2026/Konto/Paypal/
+2a_Finanzen/Verein/1_Buchhaltung/2026/Konto/Wespa-Auszuege/
+2a_Finanzen/Verein/1_Buchhaltung/4_Darlehen-vergeben/
+2a_Finanzen/Verein/1_Buchhaltung/4_Darlehen-vergeben/Vertraege/
+2a_Finanzen/Verein/1_Buchhaltung/4_Darlehen-vergeben/Vorlagen/
+2a_Finanzen/Verein/1_Buchhaltung/4_Darlehen/
+2a_Finanzen/Verein/1_Buchhaltung/Foerderungen-Controlling/
+2a_Finanzen/Verein/1_Buchhaltung/Foerderungen-Controlling/ARCHIV/
+2a_Finanzen/Verein/1_Buchhaltung/Rückforderungen/
+2a_Finanzen/Verein/1_Buchhaltung/_DROPBOX/
+2a_Finanzen/Verein/1_Buchhaltung/_DROPBOX/_Auslage_Jonas/
+2a_Finanzen/Verein/1_Buchhaltung/_DROPBOX/_altes/
+2a_Finanzen/Verein/2_Konto/
+2a_Finanzen/Verein/3_Steuer/
+2a_Finanzen/Verein/3_Steuer/1_Finanzamt/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/221101-Nov22/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/221101-Nov22/1/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/221101-Nov22/2/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/221201/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/221216/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/230117/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/230203/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/230330-gemeinnuetzigkeit/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/230525-Jahresabschluss21-Belege/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/231018/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/231204/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/231204/Andere/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/231204/Belege-Hummel-655/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/231204/Belege-WEFA2/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240107/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240107/Belege-Barzahlung/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240107/Darlehen-Aus/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240107/Rechnung-Ausgang/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240107/Rechnung-Eingang/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240107/Zuschuesse/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240212-Kontoauszugsfreigabe/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240222/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240321-Abschluss22/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240321-Abschluss22/Belege23/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240321-Abschluss22/Gehalt-Barzahlung_Auslagen/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/240321-Abschluss22/Rechnungen23-Aus/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/250120-EintragungGemeinützigkeit/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Ausgang/Zuwendungsbescheide_WERK/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Eingang/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Eingang/221026/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Eingang/221124-Finanzamt/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Eingang/230425/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Eingang/231220-ZugangDATEV/
+2a_Finanzen/Verein/3_Steuer/2_Steuerberatung/Eingang/240117/
+2a_Finanzen/Verein/3_Steuer/Betriebspruefung2024/
+2a_Finanzen/Verein/3_Steuer/Jahresabschluss/
+2a_Finanzen/Verein/3_Steuer/Jahresabschluss/2021/
+2a_Finanzen/Verein/3_Steuer/Jahresabschluss/2023/
+2a_Finanzen/Verein/3_Steuer/Jahresabschluss/2024/
+2a_Finanzen/Verein/3_Steuer/SEPA-Mandate/
+2a_Finanzen/Verein/3_Steuer/Steuerbescheide/
+2a_Finanzen/Verein/4_Spenden/
+2a_Finanzen/Verein/6_Foerderungen/
+2a_Finanzen/Verein/6_Foerderungen/10-BIS-ComuMgmt/
+2a_Finanzen/Verein/6_Foerderungen/11-KlimaschutzQuartiereHB/
+2a_Finanzen/Verein/6_Foerderungen/12-Designscapes02-EU/
+2a_Finanzen/Verein/6_Foerderungen/12-Designscapes02-EU/ressourcen/
+2a_Finanzen/Verein/6_Foerderungen/13-Stadtumbau/
+2a_Finanzen/Verein/6_Foerderungen/14-BingomittelBhv-2022-1/
+2a_Finanzen/Verein/6_Foerderungen/14-BingomittelBhv-2022-1/01-Metropolregion-Lastenradworkshop/
+2a_Finanzen/Verein/6_Foerderungen/14-BingomittelBhv-2022-1/01-Metropolregion-Lastenradworkshop/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/14-BingomittelBhv-2022-1/01-Metropolregion-Lastenradworkshop/Verwaltung/
+2a_Finanzen/Verein/6_Foerderungen/14-BingomittelBhv-2022-1/01-Metropolregion-Lastenradworkshop/Verwaltung/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/14-BingomittelBhv-2022-1/02-Klappfenster/
+2a_Finanzen/Verein/6_Foerderungen/15-Interreg-Antrag-CircularTrustBuilding/
+2a_Finanzen/Verein/6_Foerderungen/15-Interreg-Antrag-CircularTrustBuilding/Dokumente/
+2a_Finanzen/Verein/6_Foerderungen/15-Interreg-Antrag-CircularTrustBuilding/Protokolle/
+2a_Finanzen/Verein/6_Foerderungen/15-Interreg-Antrag-CircularTrustBuilding/Ressourcen/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/Antrag/Angebote/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/Verwendungsnachweis/Belege/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/Verwendungsnachweis/Infos-CarlaCargo/
+2a_Finanzen/Verein/6_Foerderungen/16-Bingomittel-KSB-2022-2/Zuwendungsbescheid/
+2a_Finanzen/Verein/6_Foerderungen/17-DieckellStiftung-Erntedank/
+2a_Finanzen/Verein/6_Foerderungen/17-DieckellStiftung-Erntedank/Belege/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/220929-v1/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/230310-v2/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/231127-v3/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/240523-Anmerkungen/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Bauantrag/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Eigentuemer-Erlaubnis/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Grundbuchnachweis/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Jobbeschreibung-Assistenz/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Kostenplan/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Kostenvoranschläge/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Kostenvoranschläge/Alt/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/240506-Update/Unterlagen/Sanierungskonzept/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/250131-Kostenplan-Anpassung/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/Anhang/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/Anhang/Anhang-1/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/Anhang/Anhang-2/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/Antrag/Anhang/Finanzierung/
+2a_Finanzen/Verein/6_Foerderungen/18-LLQ-2022/_Vorlagen/
+2a_Finanzen/Verein/6_Foerderungen/19-BAFA-Lastenraeder/
+2a_Finanzen/Verein/6_Foerderungen/19-BAFA-Lastenraeder/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/19-BAFA-Lastenraeder/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/19-BAFA-Lastenraeder/Zuwendungsbescheid/
+2a_Finanzen/Verein/6_Foerderungen/2-Bingomittel-KSB/
+2a_Finanzen/Verein/6_Foerderungen/2-Bingomittel-KSB/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Finanzplan/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Finanzplan/Angebote/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Verwendungsnachweis/Belege/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Verwendungsnachweis/Belege/Doku/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Verwendungsnachweis/Vorlagen/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/1-Floorwork/Zuwendungsbescheid/
+2a_Finanzen/Verein/6_Foerderungen/20-WiN2023/2-Stadtglueck/
+2a_Finanzen/Verein/6_Foerderungen/21-BIS-GWOE/
+2a_Finanzen/Verein/6_Foerderungen/21-BIS-GWOE/0_Ausschreibung/
+2a_Finanzen/Verein/6_Foerderungen/21-BIS-GWOE/1_Antrag/
+2a_Finanzen/Verein/6_Foerderungen/22-IBV-BAMF-Bund/
+2a_Finanzen/Verein/6_Foerderungen/23-BIWAQ-ELAN/
+2a_Finanzen/Verein/6_Foerderungen/23-BIWAQ-ELAN/Info/
+2a_Finanzen/Verein/6_Foerderungen/24-TransformD/
+2a_Finanzen/Verein/6_Foerderungen/25-BMBF-SINBA/
+2a_Finanzen/Verein/6_Foerderungen/25-BMBF-SINBA/Abgabe/
+2a_Finanzen/Verein/6_Foerderungen/25-BMBF-SINBA/Abgabe/LOI's/
+2a_Finanzen/Verein/6_Foerderungen/25-BMBF-SINBA/Recherche/
+2a_Finanzen/Verein/6_Foerderungen/25-BMBF-SINBA/Skizze/
+2a_Finanzen/Verein/6_Foerderungen/26-WIN2024/
+2a_Finanzen/Verein/6_Foerderungen/27-AktionMensch-Toilette/
+2a_Finanzen/Verein/6_Foerderungen/28-KulturtopfBhv2024/
+2a_Finanzen/Verein/6_Foerderungen/28-KulturtopfBhv2024/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/28-KulturtopfBhv2024/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/28-KulturtopfBhv2024/Verwendungsnachweis/Belege/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/230819-AenderungSatzung/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/251117-MV/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/260319-MV/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/260319-MV/Vorbereitung/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/Antrag-Bund/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/Antrag-Bund/LOIs/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/Antrag-Bund/Personalkonzept/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/Antrag-Bund2/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/Antrag-Bund2/LOI-WERKev/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/Antrag-Land/
+2a_Finanzen/Verein/6_Foerderungen/28-SocialImpactBund/Verein_Bremen-zuwilab/_VORSTAND/
+2a_Finanzen/Verein/6_Foerderungen/29-LLQ-2025/
+2a_Finanzen/Verein/6_Foerderungen/3-Klimameile/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Abschlussbericht/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Antrag/Antragstext/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Antrag/Antragstext/Vorbereitung/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Antrag/_infos_Leistungen/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Antrag/_infos_Leistungen/Anlagen mit Angebot einzureichen/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Antrag/_infos_Leistungen/Anlagen zum Verbleib und Einreichung falls erforderlich/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Verwaltung/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Verwaltung/Belege/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/Verwaltung/Mittelabruf/
+2a_Finanzen/Verein/6_Foerderungen/30-GWÖ-Bremerhaven-BIS/ZWB/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/Antrag/Antrag_versenden/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/Infos/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/Verwaltung/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/Verwaltung/Belege/
+2a_Finanzen/Verein/6_Foerderungen/31-WiN2025-Filmfestival/Verwaltung/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/32-BAMF-reactBhv/
+2a_Finanzen/Verein/6_Foerderungen/32-BAMF-reactBhv/0_Infos/
+2a_Finanzen/Verein/6_Foerderungen/32-BAMF-reactBhv/1_Interessensbekundung/
+2a_Finanzen/Verein/6_Foerderungen/33-IGP-GreenTechTraining/
+2a_Finanzen/Verein/6_Foerderungen/33-IGP-GreenTechTraining/recherche/
+2a_Finanzen/Verein/6_Foerderungen/34-SubkulturHB/
+2a_Finanzen/Verein/6_Foerderungen/34-SubkulturHB/antrag/
+2a_Finanzen/Verein/6_Foerderungen/34-SubkulturHB/infos/
+2a_Finanzen/Verein/6_Foerderungen/35-200JahreBHV/
+2a_Finanzen/Verein/6_Foerderungen/36-KDS-Veranstaltungsfonds-AntragBIS/
+2a_Finanzen/Verein/6_Foerderungen/36-KDS-Veranstaltungsfonds-AntragBIS/Formulare/
+2a_Finanzen/Verein/6_Foerderungen/37-Winterkonzerte2025/
+2a_Finanzen/Verein/6_Foerderungen/37-Winterkonzerte2025/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/37-Winterkonzerte2025/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/37-Winterkonzerte2025/Verwendungsnachweis/Belege/
+2a_Finanzen/Verein/6_Foerderungen/37-Winterkonzerte2025/Verwendungsnachweis/Belege/Zahlungsnachweise/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Angebote/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Angebote/nicht verwendet/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Einkauf/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Textbausteine.rtfd/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/VORDRUCKE/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Verwendungsnachweis WEFA1/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Verwendungsnachweis WEFA1/Belege-WEFA/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Verwendungsnachweis WEFA1/Geraete-im-Einsatz/
+2a_Finanzen/Verein/6_Foerderungen/4-WiN-2021-01/Vorlagen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/0_Ausschreibung/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/0_Ausschreibung/Vorlagen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/1_Protokolle_Treffen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/2_Dokumente/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/AK-Praesentation/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/AK-Praesentation/pic/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/Bilder/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/ErsterAntrag/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/Flyer/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/Vollantrag/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/3_Texte/Vollantrag/Recherche/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/4_Finanzierung/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/Alt/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/BBB/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/Bamboo/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/BambooMvmt/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/Beet/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/BikeIt/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/KSB/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/Koop Reparaturrat-Oldenburg/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/Langen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/LogistikLotsen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/QM_altebuerger/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/RISK/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/WNK-ZukunftAhoi/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Antrag/5_Partner_LOI/Zircula/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Aenderungsantraege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/Abschluss/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/Abschluss/Medien/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/Website-stadtlabor/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB01/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB01/Vorarbeit/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB02/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB02/Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB02/Belege/Bilder/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB02/Medien/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB03/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/ZB04/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Berichte/_Vorlagen_Beispiele/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22000/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/22001-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/22001-Belege/IK-22001/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/22001-Belege/PK-22001-Lohnjournale/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/22001-Belege/SK-22001-Stadtlabor-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/22001-Belege/Tabellen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/22001_MA01/_Archiv/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23001_MA02/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23001_MA02/23001-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23001_MA02/23001-Belege/IK-23001/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23001_MA02/23001-Belege/PK-23001/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23001_MA02/23001-Belege/PK-23001/Lohnjournale/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23001_MA02/23001-Belege/SK-23001/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23002_MA03/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23002_MA03/23002-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23002_MA03/23002-Belege/IK-23002/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23002_MA03/23002-Belege/PK-23002/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23002_MA03/23002-Belege/PK-23002/Lohnjournale/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23002_MA03/23002-Belege/SK-23002/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23003_MA04/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23003_MA04/23003-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23003_MA04/Belege-Zusatz-Juli/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23004_MA05/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/23004_MA05/23004-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24001_MA06/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24001_MA06/24001-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24001_MA06/24001-Belege/SK/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24002_MA07/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24002_MA07/24002-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24002_MA07/24002-BelegeSK/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24003_Abschlussliste/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24003_Abschlussliste/24003-PK/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/24003_Abschlussliste/24003-SK/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/Belege-fortlaufende/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/Vergabevermerke/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/_BIKEIT/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Mittelabruf/_BIS_Eigenmittel_Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Presse/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Vertraege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Vertraege/KoopVertrag-Zircula/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Vertraege/KooperationsvertragOL/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Vertraege/VertragBIS/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/VN2024-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/VN2024-Belege/Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/VN2024-Belege/Belege/BIS/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/VN2024-Belege/Belege/Vertraege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/VN2024-Belege/Einnahmen-Belege/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Verwendungsnachweis/_vorlagen/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/Zuwendungsbescheide/
+2a_Finanzen/Verein/6_Foerderungen/5-MetropolregionNordwest-2021/Verwaltung/_Vorlagen_BIS/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/0_Ressourcen/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/0_Ressourcen/VORDRUCKE/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/1_Planung/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/2_Antrag/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/3_Angebote/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/4_Verwendungsnachweis WEFA2/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/4_Verwendungsnachweis WEFA2/Belege/
+2a_Finanzen/Verein/6_Foerderungen/6-WiN-2021-02/4_Verwendungsnachweis WEFA2/Fahrrad-Workshop-Basics/
+2a_Finanzen/Verein/6_Foerderungen/7-BIS-WERK.open/
+2a_Finanzen/Verein/6_Foerderungen/8-Crowdfunding-SocialMission/
+2a_Finanzen/Verein/6_Foerderungen/8-WFB/
+2a_Finanzen/Verein/6_Foerderungen/9-LLQ2021/
+2a_Finanzen/Verein/6_Foerderungen/9-LLQ2021/Verwendungsnachweis/
+2a_Finanzen/Verein/6_Foerderungen/9-LLQ2021/Verwendungsnachweis/Belege/
+2a_Finanzen/Verein/6_Foerderungen/AktionMensch-Fahrstuhl/
+2a_Finanzen/Verein/7_Darlehen/
+2a_Finanzen/Verein/7_Darlehen/_Vorlagen_Blankos/
+2a_Finanzen/Verein/ARCHIV/
+2a_Finanzen/Verein/Finanzierungsrunde (2)/
+2b_Projektadmin/
+2b_Projektadmin/GMBH/
+2b_Projektadmin/GMBH/Arbeitgeberin/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Arbeitsvertraege/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-05/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-05/Trygve-Hannes_Holst/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-06/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-06/2024-06/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-06/2024-07/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-07/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-08/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-08/2024-08/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-08/2024-09/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-09/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-10/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-10/2024-10/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-10/2024-11/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-11/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2024-12/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Entgeltbescheinigungen/2025-01/
+2b_Projektadmin/GMBH/Arbeitgeberin/Angestellte/Versicherung_KV/
+2b_Projektadmin/GMBH/Arbeitgeberin/Doks-extern/
+2b_Projektadmin/GMBH/Banken/
+2b_Projektadmin/GMBH/Betriebskosten/
+2b_Projektadmin/GMBH/Betriebskosten/Gas-Heizung/
+2b_Projektadmin/GMBH/Betriebskosten/Gas-Heizung/97975182-EG-Gas/
+2b_Projektadmin/GMBH/Betriebskosten/Grundsteuer/
+2b_Projektadmin/GMBH/Betriebskosten/Internet/
+2b_Projektadmin/GMBH/Betriebskosten/Muell/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/97900851-Baustrom/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/97967468-Allgemein/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/97980958-EG/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/98002961-OG1/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/98071600-OG3/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/98071701-OG5/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/98071702-OG2/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/98071703-OG4/
+2b_Projektadmin/GMBH/Betriebskosten/Strom/98107257-EG/
+2b_Projektadmin/GMBH/Betriebskosten/Telefon/
+2b_Projektadmin/GMBH/Betriebskosten/Telefon/1und1/
+2b_Projektadmin/GMBH/Betriebskosten/Telefon/Kabel_Vodafone/
+2b_Projektadmin/GMBH/Betriebskosten/Telefon/Telekom/
+2b_Projektadmin/GMBH/Betriebskosten/Wasser/
+2b_Projektadmin/GMBH/Betriebskosten/Wasser/97972092-Allgemein-Wasser/
+2b_Projektadmin/GMBH/Finanzamt/
+2b_Projektadmin/GMBH/Firmenkonten/
+2b_Projektadmin/GMBH/Firmenkonten/Hornbach/
+2b_Projektadmin/GMBH/Firmenkonten/Zajadacz/
+2b_Projektadmin/GMBH/Organisationsform/
+2b_Projektadmin/GMBH/Organisationsform/Gmbh-zu-Genossenschaft/
+2b_Projektadmin/GMBH/Organisationsform/gmbh-2023/
+2b_Projektadmin/GMBH/Organisationsform/gmbh-2024/
+2b_Projektadmin/GMBH/Projekte/
+2b_Projektadmin/GMBH/Projekte/Garage-Graffitti/
+2b_Projektadmin/GMBH/Sitzungen_Protokolle/
+2b_Projektadmin/GMBH/Skybar/
+2b_Projektadmin/GMBH/Versicherung/
+2b_Projektadmin/GMBH/Versicherung/Berufsgenossenschaft_VBG/
+2b_Projektadmin/GMBH/Versicherung/ERGO/
+2b_Projektadmin/GMBH/Versicherung/ERGO/Verein_gewHP/
+2b_Projektadmin/GMBH/Versicherung/ERGO/Wasserschaden_2026/
+2b_Projektadmin/GMBH/Versicherung/ERGO/Wohngebaeude-Versicherung/
+2b_Projektadmin/GMBH/Versicherung/ERGO/Wohngebaeude-Versicherung/2026/
+2b_Projektadmin/GMBH/Versicherung/ERGO/Wohngebaeude-Versicherung/2026/Angebote/
+2b_Projektadmin/GMBH/Versicherung/ERGO/_/
+2b_Projektadmin/GMBH/Versicherung/HUK/
+2b_Projektadmin/GMBH/Versicherung/IHK/
+2b_Projektadmin/GMBH/Versicherung/WESPA/
+2b_Projektadmin/GMBH/Versicherung/ÖVB-Stäwog/
+2b_Projektadmin/GMBH/Versicherung/ÖVB-Stäwog/_alt/
+2b_Projektadmin/GMBH/Versicherung/ÖVB/
+2b_Projektadmin/GMBH/_admin/
+2b_Projektadmin/GMBH/_sortieren/
+2b_Projektadmin/VEREIN/
+2b_Projektadmin/VEREIN/Merchandise/
+2b_Projektadmin/VEREIN/Mitglieder_verwaltung/
+2b_Projektadmin/VEREIN/Notar/
+2b_Projektadmin/VEREIN/Notar/2025/
+2b_Projektadmin/VEREIN/Registereintragung/
+2b_Projektadmin/VEREIN/Registereintragung/Scan-Hires/
+2b_Projektadmin/VEREIN/Registereintragung/_Vorlagen/
+2b_Projektadmin/VEREIN/Satzung/
+2b_Projektadmin/VEREIN/Satzung/221003-Änderung2022_bestaetigt/
+2b_Projektadmin/VEREIN/Satzung/221003-Änderung2022_bestaetigt/Notar/
+2b_Projektadmin/VEREIN/Satzung/Beitragsordnung/
+2b_Projektadmin/VEREIN/Satzung/Gemeinnützigkeit/
+2b_Projektadmin/VEREIN/Satzung/Gemeinnützigkeit/240920-AntwortFA/
+2b_Projektadmin/VEREIN/Satzung/Gemeinnützigkeit/RISKev/
+2b_Projektadmin/VEREIN/Satzung/_Vorlagen/
+2b_Projektadmin/VEREIN/Satzung/v1-2021/
+2b_Projektadmin/VEREIN/Satzung/v2-2022_gueltig/
+2b_Projektadmin/VEREIN/Satzung/v3-2023-04-01/
+2b_Projektadmin/VEREIN/Satzung/v5-2023-04-25/
+2b_Projektadmin/VEREIN/Satzung/v6-2024-11-11/
+2b_Projektadmin/VEREIN/Satzung/v7-2025-04-02/
+2b_Projektadmin/VEREIN/Satzung/v8-2025-10-01/
+2b_Projektadmin/VEREIN/Satzung/v9-2026-Beitraege/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2021/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2022/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2022/221003-MV/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2022/221003-MV/Bilder/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2023/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2023/230401-MV1/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2023/230401-MV1/Medien/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2023/231122-MV2/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2024/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2024/240807-MV/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2024/241108-MV/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/250402-MV/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/250402-MV/Zustimmung_Mitglieder/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/250402-MV/_Versand/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/250511-Vorstand/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/250702-Vorstand/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/251001-MV-Extra/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2025/251215-BeratungGmbH/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/260313-Vorstand/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/260418-MV-2025/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/260418-MV-2025/Protokoll-fertig/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/260418-MV-2025/Taetigkeitsbericht/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/260418-MV-2025/Taetigkeitsbericht/Insta-Review/
+2b_Projektadmin/VEREIN/Sitzungen_+_Protokolle/2026/260418-MV-2025/Taetigkeitsbericht/Veranstaltungsbilder Fiona/
+2b_Projektadmin/VEREIN/Strukturen/
+2b_Projektadmin/VEREIN/Strukturen/220726-WERK-Strukturen/
+2b_Projektadmin/VEREIN/Strukturen/230712-Geschaeftsmodell-WS-SocialImpact/
+2b_Projektadmin/VEREIN/Strukturen/Beratung/
+2b_Projektadmin/VEREIN/Strukturen/Beratung/220503-CommunityBuilding-Webinar/
+2b_Projektadmin/VEREIN/Strukturen/Beratung/Kontakte_MHS.rtfd/
+2b_Projektadmin/VEREIN/Strukturen/Infos_Vorlagen/
+2b_Projektadmin/VEREIN/Strukturen/Infos_Vorlagen/Genossenschaft/
+2b_Projektadmin/VEREIN/Strukturen/Infos_Vorlagen/MHS-Doks/
+2b_Projektadmin/VEREIN/Strukturen/Infos_Vorlagen/Soziokratie/
+2b_Projektadmin/VEREIN/Strukturen/Infos_Vorlagen/Verein/
+2b_Projektadmin/VEREIN/Strukturen/Infos_Vorlagen/gGmbH/
+2b_Projektadmin/VEREIN/Strukturen/W-Strukturen-Fotos2025/
+2b_Projektadmin/VEREIN/Versicherung/
+2b_Projektadmin/VEREIN/Versicherung/Baucamp-VeranstalterHP/
+2b_Projektadmin/VEREIN/Versicherung/Baucamp-VeranstalterHP/2023/
+2b_Projektadmin/VEREIN/Versicherung/Baucamp-VeranstalterHP/2024/
+2b_Projektadmin/VEREIN/Versicherung/DeutschesEhrenamt-Vorstand/
+2b_Projektadmin/VEREIN/Versicherung/HP/
+2b_Projektadmin/VEREIN/Versicherung/Lastenraeder/
+2b_Projektadmin/VEREIN/Versicherung/Unfall-VBG/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/Fotos/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/Fotos/250604/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/Fotos/250609/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/Fotos/250611/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/Fotos/250612-Einbruch3/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/_VERSANDDATEN-Polizei/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/_VERSANDDATEN-Polizei/Fotos-Videos-Einbrecher/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/_VERSANDDATEN-Polizei/Fotos-WeitereVorgänge/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/_VERSANDDATEN-Polizei/Inserate/
+2b_Projektadmin/VEREIN/Versicherung/Versicherung-Diebstahl/_VERSANDDATEN-Polizei/Kauf-Belege/
+2b_Projektadmin/VEREIN/Vision_Konzept_Selbstbild/
+2b_Projektadmin/VEREIN/Vision_Konzept_Selbstbild/Beispiele/
+2b_Projektadmin/VEREIN/Vision_Konzept_Selbstbild/KommKonzept/
+2b_Projektadmin/VEREIN/_InfosVerein/
+2b_Projektadmin/VORSTAND/
+2b_Projektadmin/VORSTAND/Ausschreibungen/
+2b_Projektadmin/VORSTAND/Ausschreibungen/2023-01-Management/
+2b_Projektadmin/VORSTAND/Ehrenamtspauschalen/
+2b_Projektadmin/VORSTAND/Finanzen x Kasse/
+2b_Projektadmin/VORSTAND/Finanzen x Kasse/Kassenbuch/
+2b_Projektadmin/VORSTAND/Finanzen x Kasse/Rechnungen/
+2b_Projektadmin/VORSTAND/Finanzen x Kasse/Rechnungen/2026/
+2b_Projektadmin/VORSTAND/Finanzen x Kasse/Rechnungen/2026/04.2026/
+2b_Projektadmin/VORSTAND/Kooperationen/
+2b_Projektadmin/VORSTAND/Kooperationen/Aktuelle Kooperationen/
+2b_Projektadmin/VORSTAND/Kooperationen/Geendete Kooperationen/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliederliste/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliederliste/Alte Listen/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliederliste/Alte Listen/Archiv-bis2024/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliederliste/Austritte/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/Ausgefuellte Mitgliedsantraege/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/Ausgefuellte Mitgliedsantraege/Alte-Fotos/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/Blanko Mitgliedsantrag/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/Blanko Mitgliedsantrag/Aktueller Antrag & Satzung/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/Blanko Mitgliedsantrag/Archiv/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/Mitgliedsantraege/Blanko Mitgliedsantrag/Archiv/Mitgliedsantrag+Satzung/
+2b_Projektadmin/VORSTAND/Mitgliederverwaltung/SEPA Mandate/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/0_WERK-Arbeitgeberdoc/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/1_VORLAGEN/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/1_VORLAGEN/Arbeitsvertrag-befristet/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/1_VORLAGEN/Arbeitszeiten/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/1_VORLAGEN/Minijob-Befreiung-RV/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/1_VORLAGEN/Personalfragebogen/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/1_VORLAGEN/Weitere/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/220122-Inserate/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/220122-Inserate/Für-Insta/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/220122-Inserate/Neujahrs-Gruss/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/220122-Inserate/pic/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/220717-Stellenausschreibungen/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/2_Vertraege/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/2_Vertraege/Honorarvertraege/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/2_Vertraege/Vertraege-Blanko/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/2_Vertraege/Vertraege-unterzeichnet/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2201-NP/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2202-JH/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2203-OB/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2204-LG/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2205-SK/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2206-GB/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2207-FB/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2208-DG/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2301-MJ/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2302-NF/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2303-MG/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2304-FS/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/3_Personalbogen/W2305-MS/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/4_Lohnauswertungen/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/5_Arbeitszeiten/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/6_MA_Zeugnisse_Feedback/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/6_MA_Zeugnisse_Feedback/Arbeitszeugnisse/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/7_Praktikum/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/8_Freiwilligendienst/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/9_Versicherung/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Dominic Greßing/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Felix Steinhauer/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Jonas Hummel/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Laurenz Greschner/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Laurenz Greschner/2022/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Laurenz Greschner/2023/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Laurenz Greschner/2024/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Malinka/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Marie Janda/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Noah Föll/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Samuel Kotzan/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Samuel Kotzan/2023/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Arbeitszeiten/Samuel Kotzan/2024/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/Infos-fuer-Arbeitgeber/
+2b_Projektadmin/VORSTAND/Personal-Anstellung/_Scans/
+2b_Projektadmin/VORSTAND/Protokolle-Vorstand/
+2b_Projektadmin/VORSTAND/Protokolle-Vorstand/Protokolle 2025/
+2b_Projektadmin/VORSTAND/Protokolle-Vorstand/Protokolle 2026/
+2b_Projektadmin/VORSTAND/Taetigkeiten/
+2b_Projektadmin/VORSTAND/Verschiedenes x Alt/
+2b_Projektadmin/VORSTAND/Verschiedenes x Alt/Wohnung-Extern/
+2b_Projektadmin/VORSTAND/Vertraege/
+2b_Projektadmin/VORSTAND/_scans-sortieren/
+2b_Projektadmin/VORSTAND/_scans-sortieren/Diebstahl2025/
+3_Öffentlichkeitsarbeit/
+3_Öffentlichkeitsarbeit/ARCHIV/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Auswertung/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Auswertung/Adresslisten/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Beispiele/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Bilder/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/CofoundingStarthaus/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Dankeschoens/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Netzwerk/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Text/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Crowdfunding/Video/
+3_Öffentlichkeitsarbeit/ARCHIV/2021-Postkarte/
+3_Öffentlichkeitsarbeit/ARCHIV/2022-WERK-schau/
+3_Öffentlichkeitsarbeit/ARCHIV/2022-Website/
+3_Öffentlichkeitsarbeit/ARCHIV/2022-Website/Texte/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Banner-quadratisch/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/Medien/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/WERK_Flyer_2023 Ordner/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/WERK_Flyer_2023 Ordner/Document fonts/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/WERK_Flyer_2023 Ordner/Links/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/WERK_Flyer_2024/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Flyer/WERK_Flyer_2025/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Logo_CD/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/OpenWERK/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/OpenWERK/1x/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Schaufenster/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Schaufensterplakat_cut25/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Siebdruck/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Vorlage_WERK_Events_Instagram 2/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Vorlage_WERK_Events_Instagram 2/Document fonts/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/Vorlage_WERK_Events_Instagram 2/Links/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/WERK-SDGs/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/WERK-in-progress/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/WERK-in-progress/Story Slides/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/WERK-in-progress/slides/
+3_Öffentlichkeitsarbeit/Design-Vorlagen/stadtlabor_Design/
+3_Öffentlichkeitsarbeit/Konzepte/
+3_Öffentlichkeitsarbeit/Konzepte/210325-Klimameile/
+3_Öffentlichkeitsarbeit/Konzepte/210622-GesamtkonzeptInkubator_WFB/
+3_Öffentlichkeitsarbeit/Konzepte/211125-RotaryClubBhv/
+3_Öffentlichkeitsarbeit/Konzepte/230227-StorytellingWorkshop/
+3_Öffentlichkeitsarbeit/Konzepte/230431-UrbaneLiga/
+3_Öffentlichkeitsarbeit/Konzepte/240624-Storybrand/
+3_Öffentlichkeitsarbeit/Konzepte/250630-Designsystem-WERK/
+3_Öffentlichkeitsarbeit/Konzepte/251216-WorkshopIma/
+3_Öffentlichkeitsarbeit/Konzepte/260204-FassadeRecycling/
+3_Öffentlichkeitsarbeit/Konzepte/PR_WERK_Manifest 2023/
+3_Öffentlichkeitsarbeit/Konzepte/PR_WERK_Manifest 2023/PDF/
+3_Öffentlichkeitsarbeit/Konzepte/PR_WERK_Manifest 2023/Pages/
+3_Öffentlichkeitsarbeit/Konzepte/PR_WERK_Manifest 2023/Word/
+3_Öffentlichkeitsarbeit/Planung/
+3_Öffentlichkeitsarbeit/Planung/RIP2023_Alphabet/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250604-Palettenmöbel/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250605-Kickoff/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250611-Bauworkshop-Palette/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250611-Fruehstueck/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250611-SiebdruckI/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250612-Jam-Session/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250612-SiebdruckII/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250620-Naehmaschine/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250621-Tauschabend/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250621-TdoG/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/250629-Aktionstag-verschoben/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/_Vorlagen/
+3_Öffentlichkeitsarbeit/SocialMedia-Designs/_Vorlagen/Logos_KSB/
+3_Öffentlichkeitsarbeit/Texte/
+3_Öffentlichkeitsarbeit/Texte/2021/
+3_Öffentlichkeitsarbeit/Texte/2021/Material/
+3_Öffentlichkeitsarbeit/Texte/2022/
+3_Öffentlichkeitsarbeit/Texte/2022/2022_WERK.stadtlabor/
+3_Öffentlichkeitsarbeit/Texte/2022/220906-werk-klimaschutz-text.rtfd/
+3_Öffentlichkeitsarbeit/Texte/2023/
+3_Öffentlichkeitsarbeit/Texte/2023/Blog-Posts/
+3_Öffentlichkeitsarbeit/Texte/2023/Blog-Posts/.attachments.79365/
+3_Öffentlichkeitsarbeit/Texte/2023/Broschüre-2023/
+3_Öffentlichkeitsarbeit/Texte/2023/Broschüre-2023/.attachments.112372/
+3_Öffentlichkeitsarbeit/Texte/2023/Email-Newsletter/
+3_Öffentlichkeitsarbeit/Texte/2023/Email-Newsletter/230412-PostKampagne/
+3_Öffentlichkeitsarbeit/Texte/2023/Email-Newsletter/230412-Stadtlabor-Auftakt/
+3_Öffentlichkeitsarbeit/Texte/2023/Email-Newsletter/230823-Stadtlabor-Partner/
+3_Öffentlichkeitsarbeit/Texte/2023/Email-Newsletter/Vorlagen/
+3_Öffentlichkeitsarbeit/Texte/2024/
+3_Öffentlichkeitsarbeit/Texte/2025/
+3_Öffentlichkeitsarbeit/Texte/2025/BIS-News/
+3_Öffentlichkeitsarbeit/Texte/2025/Events/
+3_Öffentlichkeitsarbeit/Texte/2025/GEW-Artikel/
+3_Öffentlichkeitsarbeit/Texte/2025/Invest-Flyer/
+3_Öffentlichkeitsarbeit/Texte/2025/Newsletter-Email/
+3_Öffentlichkeitsarbeit/Texte/2025/SocialImpact-Beratung/
+3_Öffentlichkeitsarbeit/Texte/2026/
+3_Öffentlichkeitsarbeit/Texte/2026/Invest-Flyer/
+3_Öffentlichkeitsarbeit/Texte/2026/newsletter/
+3_Öffentlichkeitsarbeit/Texte/_Vorlagen/
+3_Öffentlichkeitsarbeit/Texte/_Vorlagen/PM-GruendungAlteMu.rtfd/
+3_Öffentlichkeitsarbeit/Video/
+3_Öffentlichkeitsarbeit/Video/2024-Staewog-Reel/
+3_Öffentlichkeitsarbeit/Video/2025-KeineAngstBhv/
+3_Öffentlichkeitsarbeit/Video/2025-KeineAngstBhv/Adobe Premiere Pro Auto-Save/
+3_Öffentlichkeitsarbeit/WERK_presse/
+3_Öffentlichkeitsarbeit/WERK_presse/Archiv/
+3_Öffentlichkeitsarbeit/WERK_presse/Archiv/Lastenradinitiative/
+3_Öffentlichkeitsarbeit/WERK_presse/Bilder/
+3_Öffentlichkeitsarbeit/WERK_presse/Bilder/Haus-Material/
+3_Öffentlichkeitsarbeit/WERK_presse/Grafik/
+3_Öffentlichkeitsarbeit/WERK_presse/Texte/
+3_Öffentlichkeitsarbeit/WERK_presse/Texte/221022-Statement-MUTFestAnlage/
+3_Öffentlichkeitsarbeit/WERK_presse/Video/
+3_Öffentlichkeitsarbeit/WERK_presse/Video/Instareels/
+3_Öffentlichkeitsarbeit/WERK_presse/Video/werk.schau/
+4_Projekte/
+4_Projekte/1_Planung_Konzepte/
+4_Projekte/1_Planung_Konzepte/Eventplanung (Alt)/
+4_Projekte/1_Planung_Konzepte/Eventplanung 2024/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/01_Planung/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/02_Partner/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/02_Partner/Kooperation-Oldenburg/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/02_Partner/WNK/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/02_Partner/_Neue_Kontakte/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/Stadtlabor_Abschluss_24/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/Stadtlabor_Abschluss_24/.attachments.169471/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/Verleihsystem/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/Workshops/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/Workshops/.attachments.79866/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/Workshops/Inspiration/
+4_Projekte/1_Planung_Konzepte/Stadtlabor_Programm/_ARCHIV/
+4_Projekte/1_Planung_Konzepte/WERK-Eventplanung 2023/
+4_Projekte/1_Planung_Konzepte/_Ressourcen_Recherche/
+4_Projekte/1_Planung_Konzepte/_Ressourcen_Recherche/JugendStadtLabor-Ausgaben/
+4_Projekte/1_Planung_Konzepte/_Ressourcen_Recherche/UrbaneLiga/
+4_Projekte/2_Events/
+4_Projekte/2_Events/2021/
+4_Projekte/2_Events/2021/01-werk_open/
+4_Projekte/2_Events/2021/01-werk_open/Finanzen/
+4_Projekte/2_Events/2021/01-werk_open/Finanzen/Rechnungen/
+4_Projekte/2_Events/2021/01-werk_open/Flyer/
+4_Projekte/2_Events/2021/01-werk_open/Grafik/
+4_Projekte/2_Events/2021/01-werk_open/Openday-2022/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/VA1-HK/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/VA2-FH/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/VA3-JH/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/VA3-JH/pic/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/VA4-JH/
+4_Projekte/2_Events/2021/01-werk_open/Praesentation/VA5-HK/
+4_Projekte/2_Events/2021/01-werk_open/Texte/
+4_Projekte/2_Events/2021/01-werk_open/Texte/TN-Listen/
+4_Projekte/2_Events/2021/01-werk_open/Texte/WERK-open-03-einladung-HSHB.rtfd/
+4_Projekte/2_Events/2021/01-werk_open/Texte/WERK-open-03-einladung.rtfd/
+4_Projekte/2_Events/2021/01-werk_open/doku/
+4_Projekte/2_Events/2021/02-Handwerkskunst/
+4_Projekte/2_Events/2022/
+4_Projekte/2_Events/2022/03-werk_open_2/
+4_Projekte/2_Events/2022/04-MissionNow-Workshop/
+4_Projekte/2_Events/2022/05-Altbaukriterium/
+4_Projekte/2_Events/2022/05-Altbaukriterium/Kosten/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Archiv/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Archiv/Location/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Archiv/Location/Floorplan/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Archiv/Programm/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Grafik/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Grafik/_alt/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Grafik/wetransfer_220519_konferenz_der_systeme_plakat_v04_nurhg_schwarz-pdf_2022-05-19_2239/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/Floorplan/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/Floorplan/Blank Floorplan/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/Floorplan/Grundrisse/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/Fotos Location Werk April 22/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/Raum Gestaltung und Bühne/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/Raum Gestaltung und Bühne/Referenz Fotos ähnlicher Veranstaltungen/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Cardenas-Alexandra/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Carstensen-Jens/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Gelek-Lopsang/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Gola-Bruno/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Guffond-Jasmine/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Hardt-Rob/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Ho-Echo/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Schreiber-Ralf/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/UDK/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/tecin/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Artists Info/Özdemir-jeff/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Logos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Logos/Abacus logos dic formate/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Logos/unerhört plus partner/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Neuer Ordner/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Location/unerhört/Verträge in Kopie/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/Auslagen/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/Auslagen/Honorare/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/Auslagen/Jonas/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/Foerderung/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/_KOSTEN/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Orga/vorlage/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/11_Jonas_Hummel/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/12_S4NTP_Seretan/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/13_Jasmine_Guffond/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/13_Jasmine_Guffond/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/14_LenniCredits_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/21_S4NTP_Pablo_Torres/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/21_S4NTP_Pablo_Torres/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/22_S4NTP_Selenay_Kiray/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/23_S4NTP_Alberto_DeCampo_Isak_Han/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/23_S4NTP_Alberto_DeCampo_Isak_Han/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/24_earweego_revival-Hannes_Hoelzl_Echo_Ho_Lopsang_Gelek/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/24_earweego_revival-Hannes_Hoelzl_Echo_Ho_Lopsang_Gelek/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/25_Jeff_Özdemir_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/25_Jeff_Özdemir_DJ/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/31_S4NTP_IljaDjordjevic/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/31_S4NTP_IljaDjordjevic/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/32_S4NTP_Andres/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/32_S4NTP_Andres/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/33_S4NTP_Jiawen/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/33_S4NTP_Jiawen/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/34_Bruno_Gola/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/34_Bruno_Gola/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/35a_AlexandraCardenas/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/35a_AlexandraCardenas/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/35b_FlorDeFuega_Naoto_Hieda/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/35b_FlorDeFuega_Naoto_Hieda/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/36_Rob_Hardt/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/36_Rob_Hardt/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/37_RalfP/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/37_RalfP/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/38_AcidTom_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/39_Galga_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/40_Ulenspiegel_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/41_Zoonslows/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/41_Zoonslows/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/42_OperatorX/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/43_Nonstop_Elektropop/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/43_Nonstop_Elektropop/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/44_Monopohl/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/44_Monopohl/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/45_Yrrwesen/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/45_Yrrwesen/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/46_loutech_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/47_BoomBunny_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/48_Der_Baron_DJ/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A1_Jens_Carstensen_Kai_Zeller_Das_andere_Saitenorchester/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A1_Jens_Carstensen_Kai_Zeller_Das_andere_Saitenorchester/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A2_bohrmaschine_privat_Xaver_Wittlinger/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A2_bohrmaschine_privat_Xaver_Wittlinger/Technik/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A3_SelenayKiray_Soundink/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A4_PabloTorres/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A5_Jens_Carstensen_Treppenhausinstallation/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/A6_Özcan_AirSculptures/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/B_Seestadtarchiv_Ausstellung/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/C_MiniBooth/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/Dead_Industrie_2.0/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/Dead_Industrie_2.0/Logo/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS01_MusicmakersLab_DIY-Synth/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS02_Ralf_Schreiber/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS02_Ralf_Schreiber/Fotos/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS03_LiveCoding_Utopia/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS04_LiveCoding_Gola/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS05_LiveCoding_Tidal/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS06_LivePerformance/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS07_Production_DJing/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/WS08_AnalogSynthesis/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/_nochNichtPlatziert/
+4_Projekte/2_Events/2022/06-KonferenzDerSysteme/Programm/ArtistsInfo_OrderOfAppearance/_nochNichtPlatziert/tecin/
+4_Projekte/2_Events/2022/07-ZirkulaeresBauen-WS/
+4_Projekte/2_Events/2022/07-ZirkulaeresBauen-WS/0-Vorgespraech-290422/
+4_Projekte/2_Events/2022/07-ZirkulaeresBauen-WS/0-Vorgespraech-290422/20220429-Präsi WERK ZirkBauen-klein/
+4_Projekte/2_Events/2022/08-Kantinchen/
+4_Projekte/2_Events/2022/09-xyzcargoWS/
+4_Projekte/2_Events/2022/09-xyzcargoWS/DOKU/
+4_Projekte/2_Events/2022/10-VDiniCamp/
+4_Projekte/2_Events/2022/11-LehmbauWS/
+4_Projekte/2_Events/2022/11-LehmbauWS/Material/
+4_Projekte/2_Events/2022/11-LehmbauWS/Werbung/
+4_Projekte/2_Events/2022/12-Studiprojekt-Finanzierung/
+4_Projekte/2_Events/2022/12-Studiprojekt-Finanzierung/Ergebnisse/
+4_Projekte/2_Events/2022/13-Studiprojekt-Lokalwaehrung/
+4_Projekte/2_Events/2022/14-Fahrradwerkstatt/
+4_Projekte/2_Events/2022/15-ParkingDay/
+4_Projekte/2_Events/2022/16-Erntedank-Party/
+4_Projekte/2_Events/2022/17-BarcampNov22/
+4_Projekte/2_Events/2022/17-BarcampNov22/Archiv/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/.attachments.59693/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/Filme/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/Fotos/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/Fotos/Niklas/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/Online/
+4_Projekte/2_Events/2022/17-BarcampNov22/DOKU/TN-Listen/
+4_Projekte/2_Events/2022/17-BarcampNov22/Planung/
+4_Projekte/2_Events/2022/17-BarcampNov22/_Materialien/
+4_Projekte/2_Events/2022/17-BarcampNov22/_docs/
+4_Projekte/2_Events/2022/17-BarcampNov22/medien/
+4_Projekte/2_Events/2022/17-BarcampNov22/recherche/
+4_Projekte/2_Events/2022/18-SiebdruckWS/
+4_Projekte/2_Events/2022/220608-WS-Partnertreffen/
+4_Projekte/2_Events/2022/220608-WS-Partnertreffen/Archiv/
+4_Projekte/2_Events/2022/220608-WS-Partnertreffen/Doku/
+4_Projekte/2_Events/2022/220608-WS-Partnertreffen/Material/
+4_Projekte/2_Events/2022/220608-WS-Partnertreffen/Material/WERK.stadtlabor-Mike-Story/
+4_Projekte/2_Events/2022/220608-WS-Partnertreffen/Pressemitteilung/
+4_Projekte/2_Events/2022/220707_WS-xyzcargo/
+4_Projekte/2_Events/2022/220716_WS-WNK-Mobilität/
+4_Projekte/2_Events/2022/220716_WS-WNK-Mobilität/media/
+4_Projekte/2_Events/2022/220909-WS-CargoBikeItFestival/
+4_Projekte/2_Events/2023/
+4_Projekte/2_Events/2023/19-werk_open_2_2023/
+4_Projekte/2_Events/2023/21-Neujahrsempfang/
+4_Projekte/2_Events/2023/22-FahrradkinoBikeIt/
+4_Projekte/2_Events/2023/23-SiebdruckWS-SchollGyO/
+4_Projekte/2_Events/2023/23-SiebdruckWS-SchollGyO/Ressourcen/
+4_Projekte/2_Events/2023/23-SiebdruckWS-SchollGyO/Ressourcen/Fashion/
+4_Projekte/2_Events/2023/23-SiebdruckWS-SchollGyO/Ressourcen/Scholl/
+4_Projekte/2_Events/2023/23-SiebdruckWS-SchollGyO/Vorlagen/
+4_Projekte/2_Events/2023/23_03_06_Plastikrecycling/
+4_Projekte/2_Events/2023/24-HinterhofEroberung_310323/
+4_Projekte/2_Events/2023/24-HinterhofEroberung_310323/Fotos/
+4_Projekte/2_Events/2023/25-Workshop-Ehlert-VisionWERK/
+4_Projekte/2_Events/2023/25-Workshop-Ehlert-VisionWERK/Materialien/
+4_Projekte/2_Events/2023/26-220709_WS-fahrradbasics/
+4_Projekte/2_Events/2023/27-Schulpraktikum/
+4_Projekte/2_Events/2023/28-Balkonkraftwerk-Reuse/
+4_Projekte/2_Events/2023/29-Kalkfarben/
+4_Projekte/2_Events/2023/29-Kalkfarben/Recherche/
+4_Projekte/2_Events/2023/30-WERK-movement/
+4_Projekte/2_Events/2023/31-Dachgauben/
+4_Projekte/2_Events/2023/32-Lehmbau/
+4_Projekte/2_Events/2023/33-Klettergriffe/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/Fotodokumentation_KollektivesArbeiten/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/Fotodokumentation_KollektivesArbeiten/WERK_AufgabenCluster_WS_KollektivesArbeiten/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/Fotodokumentation_KollektivesArbeiten/WERK_Aufgaben_WS_KollektivesArbeiten/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/Fotodokumentation_KollektivesArbeiten/WERK_Kreis_WS_KollektivesArbeiten/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/Fotodokumentation_KollektivesArbeiten/WERK_Rollen_WS_KollektivesArbeiten/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Doku/Fotodokumentation_KollektivesArbeiten/WERK_ToDos_WS_KollektivesArbeiten/
+4_Projekte/2_Events/2023/34-KollektivArbeitII/Dokumentation Miroboard/
+4_Projekte/2_Events/2023/35-DrumsetAutomat/
+4_Projekte/2_Events/2023/36-Siebdruck/
+4_Projekte/2_Events/2023/37-Holzrecycling/
+4_Projekte/2_Events/2023/38-CleanUp/
+4_Projekte/2_Events/2023/39-Sumpfkalk/
+4_Projekte/2_Events/2023/40-WERKerklettern/
+4_Projekte/2_Events/2023/41-HavenglueckBrunch/
+4_Projekte/2_Events/2023/42-RecyclingSchmuck/
+4_Projekte/2_Events/2023/43-Geschaeftsmodell-Workshop-SocialImpact/
+4_Projekte/2_Events/2023/43-Geschaeftsmodell-Workshop-SocialImpact/.attachments.132359/
+4_Projekte/2_Events/2023/43-Geschaeftsmodell-Workshop-SocialImpact/Medien/
+4_Projekte/2_Events/2023/44-Baucamp/
+4_Projekte/2_Events/2023/44-Baucamp/Auswertung/
+4_Projekte/2_Events/2023/44-Baucamp/Material/
+4_Projekte/2_Events/2023/44-Baucamp/Material/Elektro/
+4_Projekte/2_Events/2023/44-Baucamp/Material/Nachbestellung/
+4_Projekte/2_Events/2023/44-Baucamp/PM/
+4_Projekte/2_Events/2023/44-Baucamp/Sonstiges/
+4_Projekte/2_Events/2023/44-Baucamp/Verwaltung/
+4_Projekte/2_Events/2023/45-Hoffest/
+4_Projekte/2_Events/2023/45-Hoffest/Ausdrucke/
+4_Projekte/2_Events/2023/46-CleanUp-Plastik/
+4_Projekte/2_Events/2023/47-WandDurchbruch/
+4_Projekte/2_Events/2023/47-WandDurchbruch/Media/
+4_Projekte/2_Events/2023/48-StorytellingWS-II/
+4_Projekte/2_Events/2023/49-Partnertreffen-Stadtlabor/
+4_Projekte/2_Events/2023/49-Partnertreffen-Stadtlabor/Info/
+4_Projekte/2_Events/2023/49-Partnertreffen-Stadtlabor/Medien/
+4_Projekte/2_Events/2023/50-Vortrag-Raumunion/
+4_Projekte/2_Events/2023/51-Vortrag Sozialunternehmen Hanna/
+4_Projekte/2_Events/2023/51-Vortrag Sozialunternehmen Hanna/A3 Poster/
+4_Projekte/2_Events/2023/51-Vortrag Sozialunternehmen Hanna/Instagram Post/
+4_Projekte/2_Events/2023/52-Crimp-Elektro-WS/
+4_Projekte/2_Events/2023/54-Aktionstag-November/
+4_Projekte/2_Events/2023/55-ebikeconversion/
+4_Projekte/2_Events/2023/55-ebikeconversion/Doku/
+4_Projekte/2_Events/2023/56-HausParty/
+4_Projekte/2_Events/2023/57-RessourceSharing-Vortrag/
+4_Projekte/2_Events/2023/57-RessourceSharing-Vortrag/Infos/
+4_Projekte/2_Events/2023/57-RessourceSharing-Vortrag/Media Kit "Bremerhaven wirkt!"/
+4_Projekte/2_Events/2023/57-RessourceSharing-Vortrag/Media/
+4_Projekte/2_Events/2023/57-RessourceSharing-Vortrag/Presi/
+4_Projekte/2_Events/2023/58-Lebkuchen-Baucamp/
+4_Projekte/2_Events/2023/60-PollutionSolution/
+4_Projekte/2_Events/2023/60-PollutionSolution/DOKU/
+4_Projekte/2_Events/2023/60-PollutionSolution/Poster_programm/
+4_Projekte/2_Events/2023/60-PollutionSolution/SM_Beitragsbilder/
+4_Projekte/2_Events/2023/60-PollutionSolution/SM_Beitragsbilder/01 -Vortrag & Diskussionsrunde/
+4_Projekte/2_Events/2023/60-PollutionSolution/SM_Beitragsbilder/02 - Shredder in Aktion/
+4_Projekte/2_Events/2023/60-PollutionSolution/SM_Beitragsbilder/03 - Kreative Kunstwerke aus Plastikabfall/
+4_Projekte/2_Events/2023/60-PollutionSolution/SM_Beitragsbilder/04 - Plastikidentifikation und -sortierung/
+4_Projekte/2_Events/2023/60-PollutionSolution/SM_Beitragsbilder/05 - Filmreihe und Ausstellung/
+4_Projekte/2_Events/2023/99-OpenWERK/
+4_Projekte/2_Events/2023/Planung Aktionen/
+4_Projekte/2_Events/2024/
+4_Projekte/2_Events/2024/01-Hofdach/
+4_Projekte/2_Events/2024/02-Kickoffparty/
+4_Projekte/2_Events/2024/02-Kickoffparty/Werkhain CI/
+4_Projekte/2_Events/2024/02-Kickoffparty/Werkhain CI/Instagram/
+4_Projekte/2_Events/2024/02-Kickoffparty/Werkhain CI/Instagram/Beitrag/
+4_Projekte/2_Events/2024/02-Kickoffparty/Werkhain CI/Instagram/Story/
+4_Projekte/2_Events/2024/02-Kickoffparty/Werkhain CI/Plakat/
+4_Projekte/2_Events/2024/03-Rahmenbau-Workshop/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Ausstellung/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/Auswahl/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/Bearbeitet_240426 nummeriert/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/Bearbeitet_240426 nummeriert/A2/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/Bearbeitet_240426 nummeriert/A3/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/Bearbeitet_240426 nummeriert/Jonas_Werk/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/Bearbeitet_240426 nummeriert/opt/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/_B/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Bilder/_filmdreh-keller/
+4_Projekte/2_Events/2024/04-Abschlussevent Stadtlabor/Presi-Aktionswoche-Auftakt/
+4_Projekte/2_Events/2024/05-BarcampNr2/
+4_Projekte/2_Events/2024/06-CleanUp-140424/
+4_Projekte/2_Events/2024/07-Schuelerpraktikum_NOL/
+4_Projekte/2_Events/2024/08-E-Bike Conversion BBB/
+4_Projekte/2_Events/2024/09-Omnium Lastenradaufbau/
+4_Projekte/2_Events/2024/10-Fitnessraum-Konzept/
+4_Projekte/2_Events/2024/10-Fitnessraum-Konzept/WERK-Regeln-Schilder/
+4_Projekte/2_Events/2024/10-Fitnessraum-Konzept/WERK. SPORT. FLYER./
+4_Projekte/2_Events/2024/11-NEUS/
+4_Projekte/2_Events/2024/11-NEUS/wetransfer_neus_signet_gruen-png_2024-08-13_1253/
+4_Projekte/2_Events/2024/12-Baucamp/
+4_Projekte/2_Events/2024/12-Baucamp/Doku/
+4_Projekte/2_Events/2024/12-Baucamp/Doku/pic/
+4_Projekte/2_Events/2024/12-Baucamp/Doku/vid/
+4_Projekte/2_Events/2024/12-Baucamp/Infos/
+4_Projekte/2_Events/2024/12-Baucamp/Planung/
+4_Projekte/2_Events/2024/12-Baucamp/Planung/Schilder_Tueren/
+4_Projekte/2_Events/2024/12-Baucamp/Verwaltung/
+4_Projekte/2_Events/2024/13-Kunstflohmarkt/
+4_Projekte/2_Events/2024/13-Kunstflohmarkt/Raumplan/
+4_Projekte/2_Events/2024/14-Sperrgutmarkt/
+4_Projekte/2_Events/2024/15-LastenradTestival/
+4_Projekte/2_Events/2024/16-PlastikCleanUp/
+4_Projekte/2_Events/2024/17-CNC/
+4_Projekte/2_Events/2024/18-NSPKongress-Impuls/
+4_Projekte/2_Events/2024/18-NSPKongress-Impuls/Praesentation-NSP Export/
+4_Projekte/2_Events/2024/18-NSPKongress-Impuls/Praesentation-NSP Export/Präsi WERK NSP Bilder/
+4_Projekte/2_Events/2024/18-NSPKongress-Impuls/SocialMedia/
+4_Projekte/2_Events/2024/18-NSPKongress-Impuls/Verwaltung/
+4_Projekte/2_Events/2024/19-LightPollutionFest/
+4_Projekte/2_Events/2024/19-LightPollutionFest/_Antrag/
+4_Projekte/2_Events/2024/20-Jugendbarcamp_WNK/
+4_Projekte/2_Events/2024/20-Jugendbarcamp_WNK/Presi/
+4_Projekte/2_Events/2024/20-Jugendbarcamp_WNK/Presi/Material/
+4_Projekte/2_Events/2024/20-Jugendbarcamp_WNK/Presi/Material/Medien/
+4_Projekte/2_Events/2024/20-Jugendbarcamp_WNK/Presi/Material/_Links/
+4_Projekte/2_Events/2024/20-Jugendbarcamp_WNK/Presi/Wirkung-Umsetzung-Matrix/
+4_Projekte/2_Events/2024/21-Kalkworkshop/
+4_Projekte/2_Events/2024/22-CNC-Workshop/
+4_Projekte/2_Events/2024/23-Naehworkshop/
+4_Projekte/2_Events/2024/24-3DDruckWorkshop/
+4_Projekte/2_Events/2024/99-OpenWERK/
+4_Projekte/2_Events/2024/x-OecoToilette/
+4_Projekte/2_Events/2024/x-SolarcampForFuture/
+4_Projekte/2_Events/2025/
+4_Projekte/2_Events/2025/01-16MeterSkybar/
+4_Projekte/2_Events/2025/01-16MeterSkybar/Doku/
+4_Projekte/2_Events/2025/02-Dachparty/
+4_Projekte/2_Events/2025/02-PollutionSolutions/
+4_Projekte/2_Events/2025/051-Sozialunternehmen/
+4_Projekte/2_Events/2025/052-Beratung-WERK-SocialImpact/
+4_Projekte/2_Events/2025/061-CoolTour/
+4_Projekte/2_Events/2025/084-SAIL-Typhone/
+4_Projekte/2_Events/2025/085-Baucamps25/
+4_Projekte/2_Events/2025/085-Baucamps25/Admin/
+4_Projekte/2_Events/2025/085-Baucamps25/Anmeldungen/
+4_Projekte/2_Events/2025/085-Baucamps25/Doku/
+4_Projekte/2_Events/2025/085-Baucamps25/Hanfkalk-Vortrag/
+4_Projekte/2_Events/2025/085-Baucamps25/Kalkworkshop/
+4_Projekte/2_Events/2025/085-Baucamps25/Kalkworkshop/Ablauf/
+4_Projekte/2_Events/2025/085-Baucamps25/Kalkworkshop/Ablaufplan-skript/
+4_Projekte/2_Events/2025/085-Baucamps25/Kalkworkshop/Einladung/
+4_Projekte/2_Events/2025/085-Baucamps25/Kalkworkshop/Material/
+4_Projekte/2_Events/2025/085-Baucamps25/Kalkworkshop/Material/Kalkwerke-Breckweg/
+4_Projekte/2_Events/2025/093-CleanupDay/
+4_Projekte/2_Events/2025/094-LastenradTestival03/
+4_Projekte/2_Events/2025/095-Filmfestival/
+4_Projekte/2_Events/2025/095-Filmfestival/Filme/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Export/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/Adobe Premiere Pro Audio Previews/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/Adobe Premiere Pro Audio Previews/Bremerhaven-Spricht-Reel.PRV/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/Adobe Premiere Pro Audio Previews/Bremerhaven-Spricht-Reel.PRV/Peak Files/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/Adobe Premiere Pro Auto-Save/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/Adobe Premiere Pro Captured Audio/
+4_Projekte/2_Events/2025/101-BremerhavenSpricht/Premiere-Projekt/Adobe Premiere Pro Captured Audio/Bremerhaven-Spricht-Reel/
+4_Projekte/2_Events/2026/
+4_Projekte/2_Events/2026/001-BhvGespraeche-II/
+4_Projekte/2_Events/2026/KDS/
+4_Projekte/2_Events/2026/KDS/Antrag BIS/
+4_Projekte/2_Events/2026/KDS/Antrag BIS/Formulare/
+4_Projekte/2_Events/2026/KDS/Antrag-Musikfonds/
+4_Projekte/2_Events/2026/KDS/Antrag-Musikfonds/Medien/
+4_Projekte/2_Events/2026/KDS/Flyer-Poster/
+4_Projekte/2_Events/2026/KDS/Recherche/
+4_Projekte/2_Events/2026/KDS/_infos/
+4_Projekte/2_Events/2026/KDS/tech-docs/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/ARMLP-extension/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/ARMLP-extension/ARMLP/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/ARMLP-extension/ARMLP/HelpSource/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/ARMLP-extension/ARMLP/HelpSource/Classes/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/NeuraLaby4_4/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/NeuraLabyWorkshop/
+4_Projekte/2_Events/2026/KDS/tech-docs/bhaven26/object_pictures/
+4_Projekte/2_Events/_VORLAGEN_Ausdrucklisten/
+4_Projekte/3_Netzwerke/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/GreenTechTraining/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/GreenTechTraining/Fotos/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/GreenTechTraining/Plaene/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/GreenTechTraining/Plaene/CAD_3D/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/GreenTechTraining/Solartechnik/
+4_Projekte/3_Netzwerke/Solarcamp-Greentech/GreenTechTraining/Statik/
+4_Projekte/3_Netzwerke/UniBremen/
+4_Projekte/3_Netzwerke/UniBremen/2024-KomplexEntscheiden-Gruppe/
+4_Projekte/3_Netzwerke/UniBremen/2024-KomplexEntscheiden-Gruppe/Fotos/
+4_Projekte/3_Netzwerke/UrbaneLiga2023/
+4_Projekte/3_Netzwerke/UrbaneLiga2023/230617-AuftakttreffenBerlin/
+4_Projekte/3_Netzwerke/UrbaneLiga2023/231013-ZweitesTreffen/
+4_Projekte/3_Netzwerke/UrbaneLiga2023/Bewerbung/
+4_Projekte/4_Praktikum/
+4_Projekte/4_Praktikum/02-25_Nele/
+4_Projekte/Lastenradinitiative/
+4_Projekte/Lastenradinitiative/Aufkleber/
+4_Projekte/Lastenradinitiative/Grafik/
+4_Projekte/Lastenradinitiative/Initiative Meetings/
+4_Projekte/Lastenradinitiative/Kontakte/
+4_Projekte/Lastenradinitiative/Recherche Lastenrad Bhv/
+4_Projekte/Lastenradinitiative/Recherche Lastenrad Bhv/Bauplan-VeloZack2.0_PDF/
+4_Projekte/Lastenradinitiative/Verleih/
+4_Projekte/Lastenradinitiative/Verwaltung/
+4_Projekte/Lastenradinitiative/Verwaltung/Versicherung/
+4_Projekte/Lastenradinitiative/Verwaltung/Zugangsdaten/
+4_Projekte/Lastenradinitiative/Wartung/
+4_Projekte/Lastenradinitiative/Wartung/Carlacargo/
+4_Projekte/Lastenradinitiative/Wartung/Carlacargo/PAs-Sensor/
+4_Projekte/Lastenradinitiative/Wartung/xyz/
+5_Community/
+5_Community/FreiwilligeHelferInnen/
+5_Community/FreiwilligeHelferInnen/BFD/
+5_Community/FreiwilligeHelferInnen/Bauorden/
+5_Community/FreiwilligeHelferInnen/Bauorden/Infos/
+5_Community/FreiwilligeHelferInnen/Schuelerpraktikum/
+5_Community/FreiwilligeHelferInnen/WorkAway/
+5_Community/Freundeskreis/
+5_Community/PARTNER/
+5_Community/PARTNER/Ergotherapie+WERK/
+5_Community/PARTNER/LoIs/
+5_Community/PARTNER/SEND-RegionalgruppeHB/
+5_Community/PARTNER/Stadtlabor/
+5_Community/PARTNER/Stadtlabor/Emailverteiler-Partner/
+5_Community/PARTNER/Stadtlabor/LoI-fertig/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/220101-Einladung/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/221212-Treffen001/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/230227-Treffen002/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/230523-Treffen003/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/230701-Havenbrunch01/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/230904-Treffen004/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/231009-Treffen005/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/231211-Treffen006/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/Festival2024/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/Festival2024/Konzept/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/Offener-Emailverteiler/
+5_Community/PARTNER/StammtischBHV_Nachhaltig/Website/
+5_Community/PARTNER/WSL/
+5_Community/_TN-Listen/
+6_Hausorga/
+6_Hausorga/CoC_Hausregeln/
+6_Hausorga/Digitales_IT/
+6_Hausorga/Digitales_IT/Router-Telekom/
+6_Hausorga/Garagen/
+6_Hausorga/Inventar/
+6_Hausorga/Inventar/Ausleihsystem/
+6_Hausorga/Inventar/Ausleihsystem/dingsda2mex/
+6_Hausorga/Inventar/Ausleihsystem/dingsda2mex/Zugaenge-dingsda2mex-werk-haus.org/
+6_Hausorga/Inventar/Manuals/
+6_Hausorga/Raeume/
+6_Hausorga/Raumplanung/
+6_Hausorga/Schluessel/
+6_Hausorga/Werkstaetten_Zlabs/
+6_Hausorga/Werkstaetten_Zlabs/Fotos/
+6_Hausorga/Werkstaetten_Zlabs/Ga1_Fahrradwerkstatt/
+6_Hausorga/Werkstaetten_Zlabs/Ga2_Materiallager/
+6_Hausorga/Werkstaetten_Zlabs/Ga3_Werkzeuggarage/
+6_Hausorga/Werkstaetten_Zlabs/Ga4_Metallwerkstatt/
+6_Hausorga/Werkstaetten_Zlabs/Ga5_Holzlager/
+6_Hausorga/Werkstaetten_Zlabs/Ga6_Plastiklabor/
+6_Hausorga/Werkstaetten_Zlabs/Garagen/
+6_Hausorga/Werkstaetten_Zlabs/Garagen/Metallwerkstatt/
+6_Hausorga/Werkstaetten_Zlabs/Garagen/Werkzeuggarage/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Co-Working Spaces/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Digitallabor/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/Dremel+4000+MPCNC+Primo+Mount/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/Dremel+4000+MPCNC+Primo+Mount/files/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/Dremel+4000+MPCNC+Primo+Mount/images/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/Mostly+Printed+CNC+Primo+F-25mm+MPCNC+/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/Mostly+Printed+CNC+Primo+F-25mm+MPCNC+/files/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/Mostly+Printed+CNC+Primo+F-25mm+MPCNC+/images/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/UnclephilsMPCNC/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/_ZLabsVersion001-Primo/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/_ZLabsVersion001-Primo/mostly-printed-cnc-primo-f-25mm-mpcnc-model_files/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/_ZLabsVersion001-Primo/mostly-printed-cnc-primo-f-25mm-mpcnc-model_files/1-Corner/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/_ZLabsVersion001-Primo/mostly-printed-cnc-primo-f-25mm-mpcnc-model_files/2-Trucks/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/_ZLabsVersion001-Primo/mostly-printed-cnc-primo-f-25mm-mpcnc-model_files/3-ZAxis/
+6_Hausorga/Werkstaetten_Zlabs/OG1_Holzwurm/CNCFraese/_ZLabsVersion001-Primo/mostly-printed-cnc-primo-f-25mm-mpcnc-model_files/4-Center/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Filmstudio/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Naehen/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Naehen/Anleitungen/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Naehen/Schnittmuster/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Risographie/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Doku/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Halbtonraster/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/AWI/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Beet/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Bhv-Botschaft/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Bhv-Botschaft/Originaldaten/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Glückswinkel/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Glückswinkel/Glueckswinkel-Wort-Bildmarke_Graustufe/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/HS_Bhv/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Logos/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/PPHB/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Scholl-Alumni/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Scholl/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Schulpraktikum/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/SommerDerLiebe/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/SommerDerLiebe/1x/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Material zum Teilen/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Material zum Teilen/01 – Standard/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Material zum Teilen/02 – Zweigeteilt/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Material zum Teilen/03 – Video für Story/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Material zum Teilen/04 – als Sammel-PDF/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Vorlagen zum Anpassen/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Vorlagen zum Anpassen/Standard/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Vorlagen zum Anpassen/Standard/Document fonts/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Vorlagen zum Anpassen/Zweigeteilt/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Aktionspaket-Klartext-Grundgsetz-1/Vorlagen zum Anpassen/Zweigeteilt/Document fonts/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Folien_sw/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Website Downloadbereich/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Website Downloadbereich/Assets/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Website Downloadbereich/Flyer/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Website Downloadbereich/Plakat/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/TdoG25/Website Downloadbereich/Social Media/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/WERK/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Wut_Mut/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/ZIRCULA/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Siebdruckmotiv_Druckdaten/Zolli/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/Astronaut_siebdruckland/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/1-farbige-motive/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/2-farbige-motive/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/blanko-vorlagen-passermarken/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/fotohalbtonraster/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/motiv-mit-nackendruck/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Vorlagen/siebdruckversand-motiv-vorlagen/papierdruck/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Siebdruck/Werkstatt-Zubehoer/
+6_Hausorga/Werkstaetten_Zlabs/OG2_Textilstudio/Transferdruck/
+6_Hausorga/Werkstaetten_Zlabs/OG5_Fitnessraum/
+6_Hausorga/Wohnung-AmGitter/
+6_Hausorga/Wohnung-AmGitter/Strom_Wasser_Telefon/
+99_Medienarchiv/
+99_Medienarchiv/2021-Navigo/
+99_Medienarchiv/210301-Bilder-Alt/
+99_Medienarchiv/220917-Navigo/
+99_Medienarchiv/221015-MUTFest/
+99_Medienarchiv/230505-Fritteuse/
+99_Medienarchiv/230506-ReUseBalkonKraftwerk/
+99_Medienarchiv/230509-Plastikgarage/
+99_Medienarchiv/230531-WERK-Ecarla/
+99_Medienarchiv/230602-PoolLeeren/
+99_Medienarchiv/230602-Siebdruck/
+99_Medienarchiv/230617-UrbaneLiga/
+99_Medienarchiv/230618-Sperrgutmarkt/
+99_Medienarchiv/230620-AWI-Sommerfest/
+99_Medienarchiv/230623-Siebdruck-Hochschulsommerfest/
+99_Medienarchiv/230627-VortragKollektivarbeitII/
+99_Medienarchiv/230702-Havenglueckbrunch/
+99_Medienarchiv/230710-Dachleckagen/
+99_Medienarchiv/230714-BreminaleSiebdruckIdeen/
+99_Medienarchiv/230720-HofSortierung/
+99_Medienarchiv/230811-Raumunion/
+99_Medienarchiv/230827-WERK.OPEN/
+99_Medienarchiv/230909-Baucamp/
+99_Medienarchiv/230909-Baucamp/Insta/
+99_Medienarchiv/230909-Baucamp/Jonas/
+99_Medienarchiv/230909-Baucamp/Jonas/WERK /
+99_Medienarchiv/230909-Baucamp/Laurenz Bilder/
+99_Medienarchiv/230909-Baucamp/Laurenz Bilder/Bilder_Baucamp_Tag1/
+99_Medienarchiv/230909-Baucamp/Laurenz Bilder/Bilder_Baucamp_Tag5/
+99_Medienarchiv/230909-Baucamp/Laurenz Bilder/Bilder_Baucamp_Tag8/
+99_Medienarchiv/230909-Baucamp/TN-Bilder/
+99_Medienarchiv/230914-DurchbruchOG1/
+99_Medienarchiv/230915-CleanUpPausenhof/
+99_Medienarchiv/230916-CleanUp_ParkingDay/
+99_Medienarchiv/230922-Lastenrad-Testival/
+99_Medienarchiv/230922-Lastenrad-Testival/Auswahl_Stadtmarketing/
+99_Medienarchiv/230922-Lastenrad-Testival/Delete?/
+99_Medienarchiv/230922-Lastenrad-Testival/Fails/
+99_Medienarchiv/230922-Lastenrad-Testival/Felix aufnahmen/
+99_Medienarchiv/230922-Lastenrad-Testival/Felix aufnahmen/230922 Testival/
+99_Medienarchiv/230922-Lastenrad-Testival/Good Shots/
+99_Medienarchiv/230922-Lastenrad-Testival/Petra Unger Aufnahmen/
+99_Medienarchiv/230928-OG1-Raeume/
+99_Medienarchiv/230928-WS-AlternativeFinanzierung/
+99_Medienarchiv/231010-Glasschneiden/
+99_Medienarchiv/231013-Raumunion/
+99_Medienarchiv/231016-GabrielsJam/
+99_Medienarchiv/231017-KKW-Ressourcenplattform/
+99_Medienarchiv/231020-AbsorberBau/
+99_Medienarchiv/231022-FilmdrehKeller/
+99_Medienarchiv/231023-Sozialunternehmen/
+99_Medienarchiv/231102-BaristaWS/
+99_Medienarchiv/231106-SiebdruckVideo/
+99_Medienarchiv/231110-3DDesign-Ersatzteile/
+99_Medienarchiv/231116-Changeschoolsummit/
+99_Medienarchiv/231117-BremerWirtschaftswerkstatt/
+99_Medienarchiv/231122-Vereinstreffen/
+99_Medienarchiv/231201-EbikeWS/
+99_Medienarchiv/231204-VortragRessourcensharing/
+99_Medienarchiv/231207-Eitempera-Wandputz/
+99_Medienarchiv/231209-WS-Crimpen/
+99_Medienarchiv/231210-Lebkuchenbau/
+99_Medienarchiv/231213-Weihnachtsfeier/
+99_Medienarchiv/231216-Zlabs-Release01/
+99_Medienarchiv/240116-WS-Hofdach-Vorbereitung/
+99_Medienarchiv/240122-PollutionSolution/
+99_Medienarchiv/240207-3DDruck/
+99_Medienarchiv/240207-Hofdach/
+99_Medienarchiv/240209-Aktionstag/
+99_Medienarchiv/240216-Aktionstag/
+99_Medienarchiv/240220-RegaleBauen/
+99_Medienarchiv/240222-PopOffice/
+99_Medienarchiv/240223-Werkhain/
+99_Medienarchiv/240228-Schweissen/
+99_Medienarchiv/240301-ZLab-Release02/
+99_Medienarchiv/240302-WS-Rahmenbau/
+99_Medienarchiv/240315-BilderKyle/
+99_Medienarchiv/240318-Baustelle/
+99_Medienarchiv/240404-TürschlossBau/
+99_Medienarchiv/240405-BaustelleDornbusch/
+99_Medienarchiv/240408-SchuelerpraktikumNOL/
+99_Medienarchiv/240410-Siebdruck-Papier/
+99_Medienarchiv/240502-Aktionswoche/
+99_Medienarchiv/240502-Aktionswoche/Jonas-Handy/
+99_Medienarchiv/240502-Aktionswoche/Werk-Handy/
+99_Medienarchiv/240503-Improkonzert/
+99_Medienarchiv/240503-Improkonzert/mitschnitt_jonas/
+99_Medienarchiv/240617-MarketingWS-Tari/
+99_Medienarchiv/240812-WorkawayPeter/
+99_Medienarchiv/240812-WorkawayPeter/ForPeter/
+99_Medienarchiv/240812-WorkawayPeter/FromPeter/
+99_Medienarchiv/240815-NEUS_risographie/
+99_Medienarchiv/240825-KunstCommunityTag/
+99_Medienarchiv/240830-Baucamp/
+99_Medienarchiv/240901-Goethestrassenfest-Risographie-Sperrgutmarkt/
+99_Medienarchiv/240907-LastenradTestival/
+99_Medienarchiv/240917-NSPKongress/
+99_Medienarchiv/240920-CleanUpDay/
+99_Medienarchiv/240927-LightPollution/
+99_Medienarchiv/240930-NELA-VortragHB/
+99_Medienarchiv/241001-JugendBarcamp/
+99_Medienarchiv/241102-TinasParty/
+99_Medienarchiv/241108-Naehworkshop/
+99_Medienarchiv/241111-Holzwerkstatt-Saegereinigen/
+99_Medienarchiv/241111-PolierWS/
+99_Medienarchiv/241112-BiberBaumarkt/
+99_Medienarchiv/241116-KalkWS-ReparaturTag/
+99_Medienarchiv/241119-PlasticVideodreh/
+99_Medienarchiv/241122-PlastikWS/
+99_Medienarchiv/241211-PlotterWS/
+99_Medienarchiv/250104-BesprechungWERK/
+99_Medienarchiv/250117-Hansebau/
+99_Medienarchiv/250218-Morgenrot-Vortrag/
+99_Medienarchiv/250219-InvestorenDinner/
+99_Medienarchiv/250219-LEDWorkshop/
+99_Medienarchiv/250319-PlakatSchreddern/
+99_Medienarchiv/250320-Fritteuse/
+99_Medienarchiv/250320-Plastikausstellung/
+99_Medienarchiv/250321-FindusOpening/
+99_Medienarchiv/250321-Skybar-Opening/
+99_Medienarchiv/250404-LoxstedtSchuelertag/
+99_Medienarchiv/250430-Skybar2/
+99_Medienarchiv/250501-EroeffnungSommerstr/
+99_Medienarchiv/250503-ZolliEroeffnung/
+99_Medienarchiv/250509-MeinLeheMeinEuropa/
+99_Medienarchiv/250512-LaserWorkshop/
+99_Medienarchiv/250519-KSiA-Partnertreffen/
+99_Medienarchiv/250520-BauwagenSommerstrasse/
+99_Medienarchiv/250521-BesuchBBU/
+99_Medienarchiv/250521-PalettenbauAktion/
+99_Medienarchiv/250528-ZirculaLabsRaeume/
+99_Medienarchiv/250611-SiebdruckWS/
+99_Medienarchiv/250612-KompostWS/
+99_Medienarchiv/250618-PoetrySlam/
+99_Medienarchiv/250620-Sommerstrasse/
+99_Medienarchiv/250621-TdOG/
+99_Medienarchiv/250630-BesichtigungBGM220/
+99_Medienarchiv/250630-BesichtigungBGM220/Camera/
+99_Medienarchiv/250709-AbholungMischer-Hubwagen/
+99_Medienarchiv/250806-Siebdruck/
+99_Medienarchiv/250816-NEUS/
+99_Medienarchiv/250831-Baucamp1/
+99_Medienarchiv/250904-FilmclipWERK/
+99_Medienarchiv/250907-Goethestrassenfest/
+99_Medienarchiv/250917-PreisverleihungWFB/
+99_Medienarchiv/250920-LastenradTestival/
+99_Medienarchiv/250926-Filmfestival/
+99_Medienarchiv/250929-Baucamp2/
+99_Medienarchiv/251017-Fensterhaven-Uebrige/
+99_Medienarchiv/251019-Skybar-Geburtstag/
+99_Medienarchiv/251022-BesuchPlatzprojekt-BTBH/
+99_Medienarchiv/251024-Bauteilboerse-HB/
+99_Medienarchiv/251101-ZolliApfelsaft/
+99_Medienarchiv/251107-BaggerEinfahrt/
+99_Medienarchiv/251107-TinaMaterialien-Sahlenburg/
+99_Medienarchiv/251114-BesichtigungGruenderzentrumBIS/
+99_Medienarchiv/251201-UmbauOG3/
+99_Medienarchiv/251207-Markstand/
+99_Medienarchiv/251208-HipHopVideodreh/
+99_Medienarchiv/251209-BaggerAbfahrt/
+99_Medienarchiv/251209-Lebkuchenbau/
+99_Medienarchiv/251223-SchreinereiAlber/
+99_Medienarchiv/260313-baucamp1-26/
+99_Medienarchiv/260325Fermentationsws/
+99_Medienarchiv/Bastelideen-Inspiration/
+99_Medienarchiv/Bastelideen-Inspiration/3D-Druck/
+99_Medienarchiv/Bastelideen-Inspiration/BHV-Sights-Map/
+99_Medienarchiv/Bastelideen-Inspiration/Bad/
+99_Medienarchiv/Bastelideen-Inspiration/Balkone/
+99_Medienarchiv/Bastelideen-Inspiration/Balkongelaender/
+99_Medienarchiv/Bastelideen-Inspiration/Boden-Gestaltung/
+99_Medienarchiv/Bastelideen-Inspiration/Brettspiel/
+99_Medienarchiv/Bastelideen-Inspiration/Brottheke/
+99_Medienarchiv/Bastelideen-Inspiration/Fahrrad-Erweiterungen/
+99_Medienarchiv/Bastelideen-Inspiration/Fahrradstaender/
+99_Medienarchiv/Bastelideen-Inspiration/Fahrstuhl/
+99_Medienarchiv/Bastelideen-Inspiration/Farbe-Mischen/
+99_Medienarchiv/Bastelideen-Inspiration/Fassade/
+99_Medienarchiv/Bastelideen-Inspiration/Fenster/
+99_Medienarchiv/Bastelideen-Inspiration/Fliesen/
+99_Medienarchiv/Bastelideen-Inspiration/Holz-Konstruktion/
+99_Medienarchiv/Bastelideen-Inspiration/Holzverbindungen/
+99_Medienarchiv/Bastelideen-Inspiration/Klettergriffe/
+99_Medienarchiv/Bastelideen-Inspiration/Kletterwand/
+99_Medienarchiv/Bastelideen-Inspiration/Lichttechnik-Traverse/
+99_Medienarchiv/Bastelideen-Inspiration/Muelleimer/
+99_Medienarchiv/Bastelideen-Inspiration/Muellgreifer/
+99_Medienarchiv/Bastelideen-Inspiration/Ofen/
+99_Medienarchiv/Bastelideen-Inspiration/Raumakustik/
+99_Medienarchiv/Bastelideen-Inspiration/Regale/
+99_Medienarchiv/Bastelideen-Inspiration/Reparaturen/
+99_Medienarchiv/Bastelideen-Inspiration/Reparaturen/Klavier/
+99_Medienarchiv/Bastelideen-Inspiration/Reparaturen/Sackkarre/
+99_Medienarchiv/Bastelideen-Inspiration/Schiebetuer/
+99_Medienarchiv/Bastelideen-Inspiration/Seifenspender/
+99_Medienarchiv/Bastelideen-Inspiration/Sitzbank/
+99_Medienarchiv/Bastelideen-Inspiration/Sitzmoebel-Wabe/
+99_Medienarchiv/Bastelideen-Inspiration/Sortierkisten-Frozenfish/
+99_Medienarchiv/Bastelideen-Inspiration/Staubsauger/
+99_Medienarchiv/Bastelideen-Inspiration/Stullen-Rezepte/
+99_Medienarchiv/Bastelideen-Inspiration/Theke/
+99_Medienarchiv/Bastelideen-Inspiration/Tisch/
+99_Medienarchiv/Bastelideen-Inspiration/Treppenstufen/
+99_Medienarchiv/Bastelideen-Inspiration/Trocknungsregal/
+99_Medienarchiv/Bastelideen-Inspiration/Tueren/
+99_Medienarchiv/Bastelideen-Inspiration/WC-barrierefrei/
+99_Medienarchiv/Bastelideen-Inspiration/Werkzeug-Tipps/
+99_Medienarchiv/Bastelideen-Inspiration/Zircula/
+99_Medienarchiv/Digitale Hausführung Video/
+99_Medienarchiv/Diverse Bilder/
+99_Medienarchiv/Fahrrad/
+99_Medienarchiv/Fotos-Jonas-Stadtlabor/
+99_Medienarchiv/Fotos-Jonas-Stadtlabor/Programm_FZF/
+99_Medienarchiv/Hausansichten/
+99_Medienarchiv/Inspiration/
+99_Medienarchiv/Instagram/
+99_Medienarchiv/Instagram/211013-9er-Kacheln/
+99_Medienarchiv/Instagram/211025-3er-Kachel/
+99_Medienarchiv/Instagram/220508-ComingUpNextPost/
+99_Medienarchiv/Instagram/220509-KW19/
+99_Medienarchiv/Instagram/220509-KW19/220508-WerkWaffeln/
+99_Medienarchiv/Instagram/220509-KW19/220514-Defib/
+99_Medienarchiv/Instagram/220516-KW20/
+99_Medienarchiv/Instagram/220516-KW20/Bilder/
+99_Medienarchiv/Instagram/220524-KW21/
+99_Medienarchiv/Instagram/220524-KW21/Bilder/
+99_Medienarchiv/Instagram/220531-KW22/
+99_Medienarchiv/Inventar/
+99_Medienarchiv/Kleinanzeigen/
+99_Medienarchiv/Lastenrad/
+99_Medienarchiv/Lastenrad/eCarla-Stecker/
+99_Medienarchiv/Materialfotos-CTB/
+99_Medienarchiv/Open-WERK/
+99_Medienarchiv/SAM Handy/
+99_Medienarchiv/WERK.schau/
+99_Medienarchiv/WERK.schau/thumbs/
+99_Medienarchiv/_BAUDOKU/
+99_Medienarchiv/_BAUDOKU/240320-Fassade-Energieberatung/
+99_Medienarchiv/_BAUDOKU/Bau_EG-Waende-Decken/
+99_Medienarchiv/_BAUDOKU/Dach/
+99_Medienarchiv/_BAUDOKU/Dach/2022/
+99_Medienarchiv/_BAUDOKU/Dach/2023/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-02/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-03/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-06/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-07/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-08/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-09/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-10/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2022-11/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2023-05/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2023-09-Baucamp/
+99_Medienarchiv/_BAUDOKU/EG GroßerRaum/2023-12/
+99_Medienarchiv/_BAUDOKU/EG-Boden/
+99_Medienarchiv/_BAUDOKU/EG-Decke-Trockenbau/
+99_Medienarchiv/_BAUDOKU/EG-Elektro-Rohbau/
+99_Medienarchiv/_BAUDOKU/EG-Kueche/
+99_Medienarchiv/_BAUDOKU/EG-Stahltraeger-Reparatur/
+99_Medienarchiv/_BAUDOKU/EG-Steigleitungen/
+99_Medienarchiv/_BAUDOKU/EG-WC/
+99_Medienarchiv/_BAUDOKU/EG-WC/Barrierefrei_fertig/
+99_Medienarchiv/_BAUDOKU/EG-WC/EG-WC-Griff-Verstaerkung/
+99_Medienarchiv/_BAUDOKU/Erker-Stahltraeger-Reparatur/
+99_Medienarchiv/_BAUDOKU/Fassade-Balkone/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/22-02/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/22-05/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/23-02/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/23-04/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/24-02-07/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/24-04/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/24-08/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/24-09/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/24-10/
+99_Medienarchiv/_BAUDOKU/Fassade-Flaechen/Dach/
+99_Medienarchiv/_BAUDOKU/Fassade-FliesenRestauration/
+99_Medienarchiv/_BAUDOKU/FassadeRueck/
+99_Medienarchiv/_BAUDOKU/Flur-Treppenhaus/
+99_Medienarchiv/_BAUDOKU/Fotos-Umbau-Cafe-Maurice/
+99_Medienarchiv/_BAUDOKU/Fotos-Umbau-Cafe-Maurice/Fassadenbegehung 2024_02/
+99_Medienarchiv/_BAUDOKU/Garage/
+99_Medienarchiv/_BAUDOKU/Garage/230703-Betonboden-Holzgarage/
+99_Medienarchiv/_BAUDOKU/Geibelstrasse_Schimmelstellen/
+99_Medienarchiv/_BAUDOKU/HOF/
+99_Medienarchiv/_BAUDOKU/HOF/22/
+99_Medienarchiv/_BAUDOKU/HOF/23/
+99_Medienarchiv/_BAUDOKU/HOF/24-02/
+99_Medienarchiv/_BAUDOKU/Hausanschluesse/
+99_Medienarchiv/_BAUDOKU/Hausansicht/
+99_Medienarchiv/_BAUDOKU/Kamine/
+99_Medienarchiv/_BAUDOKU/Keller/
+99_Medienarchiv/_BAUDOKU/Keller/2022-07/
+99_Medienarchiv/_BAUDOKU/Keller/2023-10/
+99_Medienarchiv/_BAUDOKU/Keller/2023-12/
+99_Medienarchiv/_BAUDOKU/Keller/2024-03/
+99_Medienarchiv/_BAUDOKU/OG-Elektroinstallationen/
+99_Medienarchiv/_BAUDOKU/OG1-Seminarraum/
+99_Medienarchiv/_BAUDOKU/OG1/
+99_Medienarchiv/_BAUDOKU/OG1/2022/
+99_Medienarchiv/_BAUDOKU/OG1/2023/
+99_Medienarchiv/_BAUDOKU/OG2/
+99_Medienarchiv/_BAUDOKU/OG2/2022/
+99_Medienarchiv/_BAUDOKU/OG2/2023/
+99_Medienarchiv/_BAUDOKU/OG2/OG2-Naehatelier/
+99_Medienarchiv/_BAUDOKU/OG3/
+99_Medienarchiv/_BAUDOKU/OG3/2022/
+99_Medienarchiv/_BAUDOKU/OG3/2023/
+99_Medienarchiv/_BAUDOKU/OG3/2023/04-April/
+99_Medienarchiv/_BAUDOKU/OG3/2023/12-Dezember/
+99_Medienarchiv/_BAUDOKU/OG4/
+99_Medienarchiv/_BAUDOKU/OG4/23-03/
+99_Medienarchiv/_BAUDOKU/OG4/23-05/
+99_Medienarchiv/_BAUDOKU/OG4/23-06/
+99_Medienarchiv/_BAUDOKU/OG4/23-12/
+99_Medienarchiv/_BAUDOKU/OG4/24-02/
+99_Medienarchiv/_BAUDOKU/OG5/
+99_Medienarchiv/_BAUDOKU/OG5/22-09/
+99_Medienarchiv/_BAUDOKU/OG5/23-05/
+99_Medienarchiv/_BAUDOKU/OG5/24-02/
+99_Medienarchiv/_BAUDOKU/OG_Filmstudio/
+99_Medienarchiv/_BAUDOKU/Sonstige_Inventar/
+99_Medienarchiv/_BAUDOKU/Tueren-Reparatur/
+99_Medienarchiv/_BAUDOKU/_Bauinfos_Materialien/
+99_Medienarchiv/_BAUDOKU/_Entsorgung/
+99_Medienarchiv/_BAUDOKU/_Fassaden-Inspiration/
+99_Medienarchiv/_BAUDOKU/_Stromzaehler/
+99_Medienarchiv/_Dropbox/
+99_Medienarchiv/_Dropbox/wülfrath-jhlab/
+99_Medienarchiv/_Inspirationen/
+99_Medienarchiv/_WERK-Raeume-Collection/
+99_Medienarchiv/_WERK-Raeume-Collection/OG_Technikausleihe/
+99_Medienarchiv/__KALENDER/
+99_Medienarchiv/__KALENDER/10-Plastik/
+99_Medienarchiv/__KALENDER/11-WC/
+99_Medienarchiv/__KALENDER/13-Staewog/
+99_Medienarchiv/__KALENDER/14-GmbH/
+99_Medienarchiv/__KALENDER/14-GmbH/Portrait1-FB/
+99_Medienarchiv/__KALENDER/14-GmbH/Portrait2-JH/
+99_Medienarchiv/__KALENDER/15/
+99_Medienarchiv/__KALENDER/18-Kunst/
+99_Medienarchiv/__KALENDER/18-Kunst/Diskussionen/
+99_Medienarchiv/__KALENDER/18-Kunst/LegitCRW/
+99_Medienarchiv/__KALENDER/1_Auftakt/
+99_Medienarchiv/__KALENDER/2/
+99_Medienarchiv/__KALENDER/20-Dach/
+99_Medienarchiv/__KALENDER/20-DruckWERK/
+99_Medienarchiv/__KALENDER/3-Portrait5-Workaway/
+99_Medienarchiv/__KALENDER/3/
+99_Medienarchiv/__KALENDER/4/
+99_Medienarchiv/__KALENDER/5/
+99_Medienarchiv/__KALENDER/6/
+99_Medienarchiv/__KALENDER/7/
+99_Medienarchiv/__KALENDER/8/
+99_Medienarchiv/__KALENDER/9/
+99_Medienarchiv/__KALENDER/BFD/
+99_Medienarchiv/__KALENDER/Baucamp/
+99_Medienarchiv/__KALENDER/Chor/
+99_Medienarchiv/__KALENDER/EG-Boden1/
+99_Medienarchiv/__KALENDER/EG-Boden2/
+99_Medienarchiv/__KALENDER/EG-Boden3/
+99_Medienarchiv/__KALENDER/EG-Fenster/
+99_Medienarchiv/__KALENDER/EG-Komplett/
+99_Medienarchiv/__KALENDER/Haus Front/
+99_Medienarchiv/__KALENDER/Keller/
+99_Medienarchiv/__KALENDER/Kueche/
+99_Medienarchiv/__KALENDER/Lastenrad/
+99_Medienarchiv/__KALENDER/Tenants/
+99_Medienarchiv/__KALENDER/Tenants/240503-Fotos-Performance/
+99_Medienarchiv/__KALENDER/Werkhain/
+99_Medienarchiv/__KALENDER/Zircula-CNC-Laser/
+99_Medienarchiv/__KALENDER/Zircula-Labs/
+99_Ressourcen/
+Kollektive/
+Kollektive/bau/
+Kollektive/bau/.attachments.138397/
+Kollektive/bau/Kalk-Workshop 2025/
+Kollektive/community/
+Kollektive/fahrradwerkstatt/
+Kollektive/finanzen/
+Kollektive/hausorga/
+Kollektive/hausverein/
+Kollektive/hausverein/.templates/
+Kollektive/hausverein/Protokolle/
+Kollektive/plastikgarage/
+Kollektive/stadtlabor/
+Kollektive/stadtlabor/.attachments.2803/
+Notizen/
+Photos/
+Talk/
+_Eventdocs/
+_Eventdocs/Doku_Fotos/
+_Eventdocs/Evaluation/
+_Eventdocs/_Vorlagen_Ausdrucken/
+_Protokolle/
+_Protokolle/.attachments.138550/
+_Protokolle/.attachments.83354/
+_Protokolle/ARCHIV/
+_Protokolle/Nextcloud-Anleitungen/
+_Protokolle/Nextcloud-Anleitungen/Bilder/
+_Protokolle/Nextcloud-Anleitungen/Screenshots-nextcloud/
+_Protokolle/Nextcloud-Anleitungen/Zugaenge/
+_Protokolle/Nextcloud-Anleitungen/_Ressourcen/
+_Protokolle/Nextcloud-Anleitungen/_Ressourcen/Seminar-Digitallotsen-Onlineshops/
+_Protokolle/Protokoll Medien/
+_Protokolle/_TASKS/
+_Protokolle/_TASKS/.attachments.81445/
+_Protokolle/_TASKS/Greta/
+_Protokolle/_TASKS/Laurenz/
+_Protokolle/_TASKS/Marie/
+_Protokolle/_TASKS/Noah/
+_Protokolle/_TASKS/Sam/
+_Protokolle/_TASKS/_ERLEDIGT/
+_Protokolle/_TASKS/_ERLEDIGT/B01-Recherche-AntrageVelenergy/
