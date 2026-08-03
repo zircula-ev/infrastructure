@@ -23,6 +23,23 @@ Der private SSH-Key auf nctest besitzt keine Shell, kein Forwarding und keinen
 Schreibzugriff auf dem VPS. Der Restic-Schlüssel wird getrennt davon offline an
 mindestens zwei kontrollierten Orten verwahrt.
 
+## Wartungsseite während der Sicherung
+
+Während der konsistenten Sicherung zeigt Nextcloud eine Wartungsseite. Die
+versionierte Anpassung soll ausschließlich einen festen, ehrlichen Hinweis
+verwenden und keine dynamische Fortschritts- oder Zeitangabe vortäuschen:
+
+> Die WERK × ZIRCULA Cloud wird derzeit gewartet oder gesichert und ist in Kürze
+> wieder verfügbar. Bei unerwartet langer Nichterreichbarkeit:
+> itsupport@zircula.org
+
+Nextclouds eingebauter Wartungsmodus unterstützt keinen individuellen
+Begründungstext. Die Anpassung wird deshalb als kleine, persistente
+Theme-Überschreibung umgesetzt und nach jedem Nextcloud-Major-Update gegen die
+aktuelle Core-Vorlage geprüft. Die produktive Einbindung erfolgt außerhalb eines
+laufenden Backups und erst nach einem Test des automatischen Ein- und
+Ausschaltens des Wartungsmodus.
+
 ## Schutzumfang
 
 Gesichert werden insbesondere:
