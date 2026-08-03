@@ -177,7 +177,7 @@ postgres_compose exec -T postgres \
       --quiet \
       --threads=0 \
       --force \
-      --output "${database_dump_temporary}"
+      -o "${database_dump_temporary}"
 
 mv -f "${database_dump_temporary}" "${database_dump}"
 
