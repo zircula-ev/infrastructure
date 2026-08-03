@@ -1,15 +1,23 @@
-# ⏱️ Arbeitszeitcheck
+# ⏱️ ArbeitszeitCheck
 
-Arbeitszeitcheck unterstützt die nachvollziehbare Erfassung von Arbeitszeiten.
-Ob und wie du die App verwenden musst, richtet sich nach deiner Tätigkeit und
-den mit deinem Team vereinbarten Abläufen.
+ArbeitszeitCheck ist die Zeiterfassung in unserer Nextcloud. Wenn du deine
+Arbeitszeit erfassen musst, findest du hier deine Einträge und eine Übersicht
+über Arbeitszeit, Pausen und Zeitkonto.
 
-Wenn die App für dich vorgesehen ist:
+Wichtig im Alltag:
 
-- erfasse Zeiten zeitnah und nicht erst Wochen später,
+- erfasse Arbeitsbeginn, Pausen und Arbeitsende zeitnah,
 - verwende die vereinbarten Kategorien oder Projekte,
-- kontrolliere deine Einträge regelmäßig,
-- kläre Korrekturen mit der dafür zuständigen Person.
+- kontrolliere regelmäßig, ob deine Einträge vollständig sind,
+- kläre fehlende oder falsche Einträge mit der dafür zuständigen Person.
 
-Arbeitszeitcheck ist keine Aufgabenplanung. Was zu tun ist, gehört weiterhin in
-Deck oder die vereinbarte Arbeitsstruktur.
+Je nach Einrichtung kann ArbeitszeitCheck außerdem Abwesenheiten,
+Urlaubsanträge, Freigaben und einen Monatsabschluss abbilden. Verwende diese
+Funktionen nur so, wie es für dein Team vereinbart wurde.
+
+ArbeitszeitCheck beantwortet die Frage **„Wann und wie lange habe ich
+gearbeitet?“**. Aufgaben und Arbeitsplanung gehören weiterhin in Deck oder die
+mit deinem Team vereinbarte Arbeitsstruktur.
+
+Eine kurze Anleitung findest du unter **Typische Abläufe → Arbeitszeit
+erfassen**.

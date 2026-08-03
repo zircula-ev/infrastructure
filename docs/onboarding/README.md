@@ -62,7 +62,10 @@ gemergten Stand.
 ## Redaktionell vor Veröffentlichung prüfen
 
 - Ist Nextcloud Mail für die Zielgruppe freigeschaltet und gewünscht?
-- Welche Personen müssen Arbeitszeitcheck verbindlich nutzen?
+- Welche Personen müssen ArbeitszeitCheck verbindlich nutzen?
+- Werden Stempeluhr, manuelle Einträge, Abwesenheiten und Monatsabschluss
+  tatsächlich eingesetzt?
+- Wer ist für Freigaben und nachträgliche Korrekturen zuständig?
 - Sind alle Organisationskalender für die richtigen Teams freigegeben?
 - Sind die Standardlimits nach der Kalendereinrichtung wiederhergestellt?
 - Ist Slack weiterhin Übergangskanal oder bereits abgeschaltet?
