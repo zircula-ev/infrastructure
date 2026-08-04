@@ -30,6 +30,7 @@ services:
       - /srv/zircula/nextcloud/html:/var/www/html
       - /srv/zircula/nextcloud/data:/var/www/html/data
       - ./php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
+      - ./config/notify-push.config.php:/var/www/html/config/notify-push.config.php:ro
       - ./templates/update.user.php:/var/www/html/core/templates/update.user.php:ro
 
     networks:
@@ -61,7 +62,7 @@ services:
       REDIS_HOST: redis
       REDIS_HOST_PASSWORD_FILE: /run/secrets/redis_password
 
-      NEXTCLOUD_URL: https://cloud.zircula.org
+      NEXTCLOUD_URL: http://nextcloud
       NEXTCLOUD_DATABASE_PREFIX: oc_
 
     secrets:

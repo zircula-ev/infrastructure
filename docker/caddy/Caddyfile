@@ -69,4 +69,3 @@ talk.cloud.zircula.org {
 	}
 	reverse_proxy talk-hpb:8081
 }
-

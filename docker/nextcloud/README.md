@@ -28,6 +28,7 @@ ausschließlich über Caddy.
 - `.env.example` – Vorlage ohne produktive Geheimnisse
 - `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
 - `secrets/redis_password` – lokales Redis-Secret; nicht versioniert, `root:www-data`, Modus 640
+- `config/notify-push.config.php` – versionierte interne Trusted Domain für Client Push
 - `php/conf.d/opcache.ini` – zusätzliche PHP-OPcache-Konfiguration
 - `templates/update.user.php` – versionierter Hinweis im Wartungsmodus
 - `scripts/notify-push-entrypoint` – sicherer Start des Client-Push-Sidecars
@@ -126,7 +127,10 @@ traten keine Redis-Authentifizierungs- oder Verbindungsfehler auf.
 Die App `notify_push` und der gehärtete Sidecar liefern Änderungen zeitnah an
 unterstützte Nextcloud-Clients. Der Sidecar verwendet PostgreSQL und Redis über
 das Backend-Netz, veröffentlicht keinen Hostport und ist ausschließlich über
-Caddys Route `https://cloud.zircula.org/push/` erreichbar.
+Caddys Route `https://cloud.zircula.org/push/` erreichbar. Für Rückrufe nutzt er
+direkt `http://nextcloud`; dieser interne Name ist über die read-only
+eingebundene Datei `config/notify-push.config.php` als Trusted Domain
+nachvollziehbar ergänzt.
 
 Installation, Selbsttest, Betrieb, Update und Rollback sind in
 `docs/14-client-push.md` beschrieben.

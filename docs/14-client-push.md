@@ -31,6 +31,13 @@ die offiziell unterstützten Verbindungs-URLs deshalb zur Laufzeit aus denselben
 Compose-Variablen und demselben Redis-Secret wie Nextcloud. Sonderzeichen werden
 URL-kodiert; die erzeugten URLs werden weder protokolliert noch versioniert.
 
+Der Sidecar erreicht Nextcloud direkt über `http://nextcloud`. Die versionierte,
+read-only eingebundene Datei `config/notify-push.config.php` ergänzt diesen rein
+internen Docker-Namen als Trusted Domain und hält dabei die bestehenden
+öffentlichen Domains vollständig fest. So umgeht der Selbsttest keinen
+öffentlichen Schutz, sondern lediglich den für interne Kommunikation unnötigen
+Rückweg über NAT und Caddy.
+
 ## Sicherheitsmodell
 
 - Betrieb als UID/GID 33 (`www-data`)
@@ -74,7 +81,7 @@ sudo chown root:www-data secrets/redis_password
 sudo chmod 640 secrets/redis_password
 
 docker compose config --quiet
-docker compose up -d notify-push
+docker compose up -d --force-recreate nextcloud notify-push
 docker compose ps
 docker compose logs --tail=100 notify-push
 ```
