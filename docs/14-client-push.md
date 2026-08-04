@@ -33,10 +33,14 @@ URL-kodiert; die erzeugten URLs werden weder protokolliert noch versioniert.
 
 Der Sidecar erreicht Nextcloud direkt über `http://nextcloud`. Dieser rein
 interne Docker-Name wird einmalig über `occ` als zusätzliche Trusted Domain in
-der persistenten Nextcloud-Konfiguration ergänzt. Der dokumentierte Befehl ist
-idempotent und lässt die bestehenden öffentlichen Domains unverändert. So
-umgeht der Selbsttest keinen öffentlichen Schutz, sondern lediglich den für
-interne Kommunikation unnötigen Rückweg über NAT und Caddy.
+der persistenten Nextcloud-Konfiguration ergänzt. Da die direkte Verbindung
+über `zircula_backend` erfolgt, wird außerdem dessen festes Subnetz
+`172.19.0.0/16` als Trusted Proxy eingetragen. Die dokumentierten Befehle sind
+idempotent und lassen die bestehenden öffentlichen Domains und das bereits für
+Caddy vertraute Frontend-Netz unverändert. So umgeht der Selbsttest keinen
+öffentlichen Schutz, sondern lediglich den für interne Kommunikation unnötigen
+Rückweg über NAT und Caddy. Es wird bewusst das versionierte Docker-Subnetz und
+nicht die dynamische IP eines einzelnen Containers freigegeben.
 
 ## Sicherheitsmodell
 
@@ -72,6 +76,10 @@ docker compose exec -T --user www-data nextcloud \
 docker compose exec -T --user www-data nextcloud \
   php occ config:system:set trusted_domains 2 \
     --value=nextcloud
+
+docker compose exec -T --user www-data nextcloud \
+  php occ config:system:set trusted_proxies 1 \
+    --value='172.19.0.0/16'
 
 install -d -m 700 secrets
 umask 077
@@ -117,7 +125,9 @@ docker compose exec -T --user www-data nextcloud \
 ```
 
 Der Befehl muss alle internen und externen Verbindungstests erfolgreich
-abschließen.
+abschließen. Insbesondere müssen Redis, Datenbank, interne Nextcloud-Verbindung,
+Trusted Proxy und Versionsgleichheit jeweils mit einem grünen Haken bestätigt
+werden.
 
 ## Smoke-Test
 
