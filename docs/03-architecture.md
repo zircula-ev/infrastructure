@@ -30,6 +30,10 @@ flowchart TD
     BlackboxExporter[Blackbox Exporter] --> Prometheus
     Prometheus --> Alertmanager
     Grafana --> Prometheus
+
+    VPSBackup[VPS Backup / Restic] -->|verschlüsseltes Repository| VPSExport[Lokales Exportverzeichnis]
+    nctestBackup[nctest Backup Pull] -->|rrsync nur lesend| VPSExport
+    nctestBackup --> ZFSSnapshots[ZFS-Snapshots auf nctest]
 ```
 
 ## Frontend-Netz
@@ -67,6 +71,29 @@ Compose-Dateien, Vorlagen und Betriebsdokumentation liegen im Repository unter
 
 Hostbezogene Stacks außerhalb des VPS werden unter `hosts/<hostname>`
 dokumentiert. Laufzeitdaten und Secrets bleiben auf dem jeweiligen Host.
+
+## Backup-Architektur
+
+Der VPS erzeugt unter `/opt/zircula/backups/export/restic` ein clientseitig
+verschlüsseltes Restic-Repository. Vor der Sicherung werden PostgreSQL logisch,
+Vaultwarden mit seinem eingebauten Backupverfahren und Grafana über die
+SQLite-Backup-API konsistent gesichert. Nextcloud befindet sich während des
+kritischen Sicherungsabschnitts im Wartungsmodus.
+
+Ein dedizierter SSH-Benutzer stellt ausschließlich dieses verschlüsselte
+Exportverzeichnis über einen erzwungenen `rrsync -ro`-Befehl bereit. nctest
+initiiert die Übertragung, besitzt auf dem VPS weder Shell- noch Schreibrechte
+und speichert den Spiegel im eigenen ZFS-Dataset. Nach einer vollständigen
+Übertragung wird ein ZFS-Snapshot angelegt. Der Restic-Schlüssel wird nicht auf
+dem Transportweg mitgegeben, sondern getrennt offline an mindestens zwei
+kontrollierten Orten verwahrt.
+
+Das lokale Repository auf dem VPS ermöglicht schnelle Prüfungen und Restores,
+ist aber keine unabhängige Sicherung. Die nctest-Kopie ist das vorläufige externe
+Ziel; wegen Stromversorgung, Standort und gelegentlichem Ausschalten bleibt ein
+dauerhaftes zweites Ziel eine spätere Ausbaustufe. Technische Details,
+Aufbewahrung und Restore-Verfahren stehen in `docs/07-backup-restore.md` und
+`backup/README.md`.
 
 ## Domainstrategie
 

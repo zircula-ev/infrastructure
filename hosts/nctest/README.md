@@ -23,8 +23,11 @@ hochverfügbarer Produktionsserver.
 - Alle Monitore alarmieren während der Übergangsphase über Slack; zentrale
   Ausfälle gehen zusätzlich per SMTP an `itadmin@zircula.org` und
   `itsupport@zircula.org`.
-- nctest dient vorläufig als zusätzliches Backupziel, bis Vorstand und Vereine
-  das dauerhafte externe beziehungsweise lokale Backupziel beschlossen haben.
+- nctest spiegelt das clientseitig verschlüsselte Restic-Repository des VPS
+  über einen dedizierten read-only-SSH-Zugang und schützt erfolgreiche Stände
+  zusätzlich mit ZFS-Snapshots.
+- nctest bleibt ein vorläufiges Backupziel, bis Vorstand und Vereine ein
+  dauerhaftes zweites Ziel beschlossen haben.
 - kleinere Buchungs-, Mail- und Slack-Skripte existieren außerhalb des derzeit
   versionierten Umfangs.
 
@@ -52,13 +55,14 @@ Der gewünschte Checkoutpfad lautet:
 /opt/zircula/git/infrastructure
 ```
 
-Da die Organisation Deploy-Keys nicht zulässt, erfolgt der private
-Repositoryzugriff interaktiv über einen zeitlich begrenzten Fine-grained
-Personal Access Token. Der Token ist ausschließlich für
-`zircula-ev/infrastructure` freigegeben und besitzt nur `Contents: Read-only`.
-Er wird weder in der Remote-URL noch dauerhaft im Git Credential Store
-hinterlegt. Änderungen entstehen in Feature-Branches und werden nicht direkt auf
-nctest committet.
+Da die Organisation Deploy-Keys nicht zulässt, verwendet der bestehende
+Checkout derzeit einen persönlichen GitHub-SSH-Schlüssel. Das Remote ist als
+SSH-URL konfiguriert; ein inzwischen gelöschter Fine-grained Token wird nicht
+mehr verwendet. Der Schlüssel ist funktional, besitzt aber einen größeren
+persönlichen Geltungsbereich als für einen reinen Deployment-Host ideal. Eine
+organisationsseitige Machine-User- oder vergleichbare least-privilege-Lösung
+bleibt deshalb als Nacharbeit dokumentiert. Änderungen entstehen in
+Feature-Branches und werden nicht direkt auf nctest committet.
 
 Produktive `.env`, rclone-Konfigurationen, Slack-Webhooks, SMTP-Zugangsdaten,
 Kamerazugangsdaten und Uptime-Kuma-Laufzeitdaten bleiben ausschließlich lokal.
@@ -81,6 +85,10 @@ tailscale status
 tailscale serve status
 sudo zpool status -v DATA_Store
 ```
+
+Der Backup-Pull, der verschlüsselte Spiegel und der jüngste ZFS-Snapshot werden
+nach jedem manuellen oder automatischen Lauf getrennt geprüft. Installation,
+Schlüsselbindung und Restore-Test stehen in `backup/README.md`.
 
 Der Zustand von Shinobi und den Backupjobs wird getrennt geprüft. Uptime Kuma
 wird zusätzlich über den Stack unter

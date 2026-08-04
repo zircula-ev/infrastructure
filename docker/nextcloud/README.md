@@ -28,6 +28,7 @@ ausschließlich über Caddy.
 - `.env.example` – Vorlage ohne produktive Geheimnisse
 - `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
 - `php/conf.d/opcache.ini` – zusätzliche PHP-OPcache-Konfiguration
+- `templates/update.user.php` – versionierter Hinweis im Wartungsmodus
 - `/srv/zircula/nextcloud/html` – Installation, Konfiguration und Apps
 - `/srv/zircula/nextcloud/data` – Nutzdaten
 
@@ -147,6 +148,78 @@ Cron-Container – muss überwacht und dokumentiert werden.
 - persönliche Administratorkonten statt geteilter Konten
 - Freigabelinks und App-Berechtigungen regelmäßig überprüfen
 - `allowed_admin_ranges` nach Einführung eines stabilen Admin-VPNs prüfen
+
+## Wartungsseite
+
+Der Nextcloud-Container bindet
+`templates/update.user.php` schreibgeschützt über die gleichnamige
+Core-Vorlage ein. Dadurch bleibt der Hinweis bei einer Neuerstellung des
+Containers erhalten, ohne die übrige Installation oder das konfigurierte
+Branding zu verändern.
+
+Während eines Backups oder einer geplanten Wartung informiert die Seite über
+das reguläre Sicherungsfenster zwischen 02:30 und 02:45 Uhr, die übliche Dauer
+von 10–20 Minuten und die Kontaktadresse `itsupport@zircula.org`. Sie zeigt
+bewusst keinen vermeintlichen Live-Fortschritt und unterscheidet technisch nicht
+zwischen Backup und anderer Wartung.
+
+Nach jedem Nextcloud-Update wird die versionierte Vorlage mit
+`core/templates/update.user.php` des neuen Images verglichen. Die Einbindung
+wird danach einmal kontrolliert getestet:
+
+```bash
+set -Eeuo pipefail
+
+docker compose config --quiet
+docker compose up -d --force-recreate nextcloud
+
+maintenance_enabled=false
+response_file="$(mktemp)"
+
+cleanup_maintenance_test() {
+  if [[ "${maintenance_enabled}" == true ]]; then
+    docker compose exec -T --user www-data nextcloud \
+      php occ maintenance:mode --off \
+      || true
+  fi
+
+  rm -f "${response_file}"
+}
+
+trap cleanup_maintenance_test EXIT
+
+docker compose exec -T --user www-data nextcloud \
+  php occ maintenance:mode --on
+
+maintenance_enabled=true
+
+http_status="$(
+  curl -sS \
+    -o "${response_file}" \
+    -w '%{http_code}' \
+    https://cloud.zircula.org/
+)"
+
+test "${http_status}" = 503
+
+grep -F \
+  'Reguläre Sicherungen beginnen täglich zwischen 02:30 und 02:45 Uhr' \
+  "${response_file}"
+
+docker compose exec -T --user www-data nextcloud \
+  php occ maintenance:mode --off
+
+maintenance_enabled=false
+rm -f "${response_file}"
+trap - EXIT
+
+docker compose exec -T --user www-data nextcloud \
+  php occ status
+```
+
+Der Wartungsmodus wird unmittelbar nach dem Sichttest wieder deaktiviert. Vor
+dem Verlassen der Sitzung wird zusätzlich mit `php occ status` kontrolliert,
+dass `maintenance: false` gilt.
 
 ## Backup
 

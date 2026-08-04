@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 30.07.2026
+Stand: 31.07.2026
 
 ## Ziel
 
@@ -93,6 +93,20 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   SHA-256-Prüfsummen erfolgreich; isolierter Restore und Aufbewahrungsregeln
   bleiben regelmäßige Betriebsaufgaben gemäß `docs/13-libredesk.md`
 
+### Backup nach nctest (in Einführung)
+
+- versionierte Backupkomponente für VPS und nctest vorbereitet
+- clientseitig verschlüsseltes Restic-Repository auf dem VPS
+- konsistente PostgreSQL-, Vaultwarden- und Grafana-Sicherungen sowie
+  Nextcloud-Wartungsmodus während des kritischen Abschnitts
+- dedizierter read-only-SSH-Abruf von nctest ohne VPS-Shell oder Schreibrechte
+- ZFS-Spiegel und zusätzliche Snapshots auf nctest
+- Aufbewahrung mit 7 täglichen, 4 wöchentlichen und 6 monatlichen Restic-Ständen
+- produktive Aktivierung erst nach manuellem Vollbackup, externem Spiegel und
+  isoliertem Restore-Test
+- nctest bleibt ein vorläufiges Ziel; ein dauerhaftes zweites unabhängiges Ziel
+  ist weiterhin erforderlich
+
 ### Monitoring
 
 Auf dem VPS aktiv und geprüft:
@@ -153,7 +167,8 @@ Positiv geprüft:
 
 Offen:
 
-- externes Backupziel und Restore-Test etablieren
+- Backupbranch auf VPS und nctest ausrollen, ersten vollständigen Lauf spiegeln
+  und einen isolierten Restore-Test dokumentieren
 - ergänzendes Image- und Secret-Scanning etablieren
 - MFA-Governance für weitere Organisationsgruppen festlegen
 - OIDC-Offboarding sowie Desktop-/Mobile-Client und WebDAV testen
@@ -294,19 +309,18 @@ Regressionstests und die Festlegung der Aufbewahrungsfristen. Slack
 
 Die Kerndienste, LibreDesk und das interne Monitoring sind funktionsfähig.
 Vaultwarden ist technisch bereitgestellt, aber organisatorisch noch nicht
-freigegeben. Vollständig
-belastbare Produktionsreife wird erst angenommen, wenn ein externes Backup und
-ein erfolgreicher Restore-Test dokumentiert sind. Ein VPS-Snapshot allein erfüllt
+freigegeben. Vollständig belastbare Produktionsreife wird erst angenommen, wenn der
+vorbereitete verschlüsselte nctest-Spiegel produktiv läuft und ein erfolgreicher
+Restore-Test dokumentiert ist. Ein VPS-Snapshot allein erfüllt
 diese Anforderung nicht. Uptime Kuma kann einen vollständigen VPS-Ausfall zwar
 unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
 
 ## Nächste Schritte
 
-1. Backupziel, Aufbewahrung und Restore-Test umsetzen.
-2. ausstehende Ubuntu-Paketupdates kontrolliert installieren.
-3. regelmäßige Image- und Secret-Scans ergänzen.
-4. MFA und Recovery der Break-Glass-Konten abschließen.
-5. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
-6. Vaultwarden-Organisationen, Clients, Offboarding und Restore-Gate abschließen.
-7. LibreDesk-Backup extern absichern, isolierten Restore testen und
-   Aufbewahrungsfristen festlegen.
+1. Backupbranch ausrollen, VPS-Sicherung nach nctest spiegeln und Restore testen.
+2. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
+3. nach dem ersten erfolgreichen Backup die Timer und Backupalarme aktivieren.
+4. regelmäßige Image- und Secret-Scans ergänzen.
+5. MFA und Recovery der Break-Glass-Konten abschließen.
+6. Vaultwarden-Organisationen, Clients und Offboarding in Phase zwei abschließen.
+7. dauerhaftes zweites, von nctest unabhängiges Backupziel beschließen.
