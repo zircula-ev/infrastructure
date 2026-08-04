@@ -70,7 +70,8 @@ docker compose exec -T nextcloud \
   > secrets/redis_password
 
 test -s secrets/redis_password
-chmod 600 secrets/redis_password
+sudo chown root:www-data secrets/redis_password
+sudo chmod 640 secrets/redis_password
 
 docker compose config --quiet
 docker compose up -d notify-push
