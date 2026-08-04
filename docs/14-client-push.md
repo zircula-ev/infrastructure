@@ -51,13 +51,26 @@ Backup erfasst.
 
 Die App muss vor dem ersten Start des Daemons installiert werden, weil das
 ausführbare Programm aus dem App-Verzeichnis der Nextcloud-Installation geladen
-wird.
+wird. Bei einem read-only Container unterstützt Docker Compose ausschließlich
+dateibasierte Secrets. Das bereits laufend verwendete Redis-Secret wird deshalb
+einmalig ohne Ausgabe aus dem Nextcloud-Container in die ignorierte lokale Datei
+`secrets/redis_password` übernommen.
 
 ```bash
 cd /opt/zircula/git/infrastructure/docker/nextcloud
 
 docker compose exec -T --user www-data nextcloud \
   php occ app:install notify_push
+
+install -d -m 700 secrets
+umask 077
+
+docker compose exec -T nextcloud \
+  cat /run/secrets/redis_password \
+  > secrets/redis_password
+
+test -s secrets/redis_password
+chmod 600 secrets/redis_password
 
 docker compose config --quiet
 docker compose up -d notify-push

@@ -27,6 +27,7 @@ ausschließlich über Caddy.
 - `compose.yaml` – Container, Volumes, Secrets und Netzwerke
 - `.env.example` – Vorlage ohne produktive Geheimnisse
 - `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
+- `secrets/redis_password` – lokales Redis-Secret; nicht versioniert, Modus 600
 - `php/conf.d/opcache.ini` – zusätzliche PHP-OPcache-Konfiguration
 - `templates/update.user.php` – versionierter Hinweis im Wartungsmodus
 - `scripts/notify-push-entrypoint` – sicherer Start des Client-Push-Sidecars

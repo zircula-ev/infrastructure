@@ -111,4 +111,4 @@ networks:
 
 secrets:
   redis_password:
-    environment: REDIS_PASSWORD
+    file: ./secrets/redis_password
