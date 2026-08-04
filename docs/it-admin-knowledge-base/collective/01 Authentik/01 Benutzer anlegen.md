@@ -13,14 +13,18 @@ Du brauchst:
 ## Vorgehen
 
 1. Authentik öffnen und mit dem persönlichen Administrationskonto anmelden.
-2. **Verzeichnis → Benutzer** öffnen.
-3. Den Pfad **zircula** auswählen.
-4. **Benutzer erstellen** wählen.
-5. Benutzernamen, Namen und E-Mail-Adresse eintragen.
+2. Auf dem Dashboard unter **Schnellaktionen** die Aktion
+   **Benutzer verwalten** öffnen.
+3. **Neu** beziehungsweise **Benutzer hinzufügen** wählen.
+4. Benutzernamen, Namen und E-Mail-Adresse eintragen.
+5. Den vorgeschlagenen Standard im Feld **Pfad** beibehalten, sofern keine
+   abgestimmte organisatorische Abweichung benötigt wird.
 6. Das Konto als aktiv markieren, wenn die Person sich jetzt anmelden darf.
 7. Die Attribute als ein gemeinsames Dictionary eintragen.
 8. Benutzer speichern.
 9. Erst danach die abgestimmten Gruppen zuweisen.
+
+Alternativ führt auch **Verzeichnis → Benutzer** zur gleichen Benutzerverwaltung.
 
 Beispiel:
 
@@ -28,6 +32,12 @@ Beispiel:
 email_verified: true
 nextcloud_user_id: vornameNachname
 ```
+
+## Der Pfad
+
+Der Pfad sortiert Benutzerkonten innerhalb von Authentik. Er erteilt keine
+Berechtigungen und muss für normale Konten nicht zwingend auf `zircula`
+geändert werden. Zugriffe entstehen durch die ausdrücklich zugewiesenen Gruppen.
 
 ## Benutzernamen und Nextcloud-ID
 
