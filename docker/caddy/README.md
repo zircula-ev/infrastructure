@@ -8,12 +8,17 @@ Zircula-Infrastruktur bereit.
 | Domain | Internes Ziel |
 |---|---|
 | `cloud.zircula.org` | `nextcloud:80` |
+| `cloud.zircula.org/push/*` | `notify-push:7867` |
 | `office.zircula.org` | `collabora:9980` |
 | `auth.zircula.org` | `authentik-server:9000` |
 | `monitoring.zircula.org` | `grafana:3000` |
 | `vault.zircula.org` | `vaultwarden:8080` |
 | `support.zircula.org` | `libredesk:9000` |
 | `talk.cloud.zircula.org` | `talk-hpb:8081` |
+
+Die spezifischere Route `/push/*` entfernt das Präfix und leitet HTTP- sowie
+WebSocket-Verbindungen an den Client-Push-Sidecar. Alle übrigen Anfragen an
+`cloud.zircula.org` gehen weiterhin an Nextcloud.
 
 Caddy ist ausschließlich mit `zircula_frontend` verbunden. Interne Zielports
 werden nicht am Host veröffentlicht.

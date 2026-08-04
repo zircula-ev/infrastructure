@@ -9,7 +9,7 @@ Gruppen, Team Folders, Talk-Unterhaltungen, Collectives und App-Berechtigungen.
 ```text
 Browser ──HTTPS──► Caddy ──HTTP/Docker──► Nextcloud
                                            ├── PostgreSQL
-                                           ├── Redis
+                                           ├── Redis ──► Client Push
                                            ├── Collabora
                                            └── Talk HPB
 ```
@@ -29,6 +29,7 @@ ausschließlich über Caddy.
 - `.env` – produktive lokale Konfiguration; nicht versioniert, Modus 600
 - `php/conf.d/opcache.ini` – zusätzliche PHP-OPcache-Konfiguration
 - `templates/update.user.php` – versionierter Hinweis im Wartungsmodus
+- `scripts/notify-push-entrypoint` – sicherer Start des Client-Push-Sidecars
 - `/srv/zircula/nextcloud/html` – Installation, Konfiguration und Apps
 - `/srv/zircula/nextcloud/data` – Nutzdaten
 
@@ -40,7 +41,8 @@ berücksichtigen.
 1. `zircula_frontend` und `zircula_backend` existieren.
 2. PostgreSQL und Redis laufen und sind im Backend-Netz erreichbar.
 3. Datenbank- und Redis-Zugangsdaten stimmen mit den jeweiligen Stacks überein.
-4. Caddy enthält die Route `cloud.zircula.org` auf `nextcloud:80`.
+4. Caddy enthält die Routen für `cloud.zircula.org` auf `nextcloud:80`
+   sowie `/push/*` auf `notify-push:7867`.
 5. Die Verzeichnisse unter `/srv/zircula/nextcloud` besitzen die erforderlichen
    Eigentümer und Rechte.
 
@@ -117,6 +119,16 @@ Die gemeinsame Redis-Authentifizierung wurde am 15.07.2026 produktiv aktiviert.
 Geprüft wurden Nextcloud-Status, Dateibrowser, Dateioperationen, Talk sowie das
 Erstellen und Bearbeiten eines Dokuments über Collabora. In den Nextcloud-Logs
 traten keine Redis-Authentifizierungs- oder Verbindungsfehler auf.
+
+## Client Push
+
+Die App `notify_push` und der gehärtete Sidecar liefern Änderungen zeitnah an
+unterstützte Nextcloud-Clients. Der Sidecar verwendet PostgreSQL und Redis über
+das Backend-Netz, veröffentlicht keinen Hostport und ist ausschließlich über
+Caddys Route `https://cloud.zircula.org/push/` erreichbar.
+
+Installation, Selbsttest, Betrieb, Update und Rollback sind in
+`docs/14-client-push.md` beschrieben.
 
 ## Authentik und OIDC
 

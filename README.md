@@ -10,7 +10,7 @@ und sind nicht Bestandteil des Repositories.
 ```text
 Internet
   ├── :80/:443 ──► Caddy
-  │                 ├── cloud.zircula.org ──────► Nextcloud
+  │                 ├── cloud.zircula.org ──────► Nextcloud / Client Push
   │                 ├── office.zircula.org ─────► Collabora
   │                 ├── auth.zircula.org ───────► Authentik
   │                 ├── monitoring.zircula.org ─► Grafana
@@ -20,7 +20,7 @@ Internet
   └── :3478 TCP/UDP ─────────────────────────────► Talk TURN/STUN
 
 Nextcloud ──► PostgreSQL
-Nextcloud ──► Redis
+Nextcloud ──► Redis ──► Client Push
 Prometheus ─► Alertmanager, Node Exporter und Blackbox Exporter
 Grafana ────► Prometheus
 Vaultwarden ─OIDC─► Authentik
@@ -37,6 +37,7 @@ nctest ──rrsync, nur lesend──► Export-Repository ──► ZFS-Snapsho
 |---|---|---|---|
 | `caddy` | Reverse Proxy und TLS | Frontend | 80/TCP, 443/TCP |
 | `nextcloud` | zentrale Kollaborationsplattform | Frontend, Backend | keine |
+| `notify-push` | zeitnahe Nextcloud-Clientbenachrichtigungen | Frontend, Backend | keine |
 | `postgres` | zentrale Datenbankinstanz | Backend | keine |
 | `redis` | Cache, Sitzungen und Dateisperren | Backend | keine |
 | `collabora` | Nextcloud Office | Frontend | keine |
@@ -93,7 +94,8 @@ ersetzen keine Authentifizierung der darin betriebenen Dienste.
 ## Typische Startreihenfolge
 
 ```text
-Netzwerke → PostgreSQL → Redis → Nextcloud → Collabora/Authentik/Talk HPB
+Netzwerke → PostgreSQL → Redis → Nextcloud → Client Push
+          → Collabora/Authentik/Talk HPB
           → Vaultwarden → LibreDesk Redis → LibreDesk
           → Monitoring-Exporter → Alertmanager → Prometheus → Grafana → Caddy
 ```
@@ -128,4 +130,6 @@ Wichtige Dokumente:
 - `docs/11-slack-nextcloud-nutzungsabgrenzung.md`
 - `docs/12-vaultwarden.md`
 - `docs/13-libredesk.md`
+- `docs/14-client-push.md`
 - `docs/onboarding/README.md`
+

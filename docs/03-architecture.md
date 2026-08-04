@@ -9,6 +9,7 @@ flowchart TD
     nctest[nctest / Uptime Kuma] -->|HTTPS von außen| Caddy
 
     Caddy --> Nextcloud
+    Caddy --> NotifyPush[Nextcloud Client Push]
     Caddy --> Collabora
     Caddy --> Authentik
     Caddy --> Grafana
@@ -18,6 +19,9 @@ flowchart TD
 
     Nextcloud --> PostgreSQL
     Nextcloud --> Redis
+    Redis -->|Pub/Sub| NotifyPush
+    NotifyPush --> PostgreSQL
+    NotifyPush --> Nextcloud
     Nextcloud --> Collabora
     Nextcloud --> TalkHPB
     Authentik --> PostgreSQL
@@ -38,14 +42,14 @@ flowchart TD
 
 ## Frontend-Netz
 
-`zircula_frontend` verbindet Caddy mit Nextcloud, Collabora, Authentik, Grafana,
-Vaultwarden, LibreDesk und Talk HPB. Nur Caddy veröffentlicht 80/443; Talk veröffentlicht
+`zircula_frontend` verbindet Caddy mit Nextcloud, Client Push, Collabora,
+Authentik, Grafana, Vaultwarden, LibreDesk und Talk HPB. Nur Caddy veröffentlicht 80/443; Talk veröffentlicht
 zusätzlich den für TURN/STUN benötigten Port 3478 über TCP und UDP.
 
 ## Backend-Netz
 
-`zircula_backend` verbindet Nextcloud, Authentik und LibreDesk mit PostgreSQL,
-Nextcloud mit seinem Redis sowie LibreDesk mit dem getrennten LibreDesk-Redis. Es ist ein internes gemeinsames Vertrauensnetz. Datenbankrollen und
+`zircula_backend` verbindet Nextcloud, Client Push, Authentik und LibreDesk
+mit PostgreSQL, Nextcloud und Client Push mit ihrem gemeinsamen Redis sowie LibreDesk mit dem getrennten LibreDesk-Redis. Es ist ein internes gemeinsames Vertrauensnetz. Datenbankrollen und
 Redis-Authentifizierung begrenzen den Schaden, falls ein angebundener Container
 kompromittiert wird.
 
