@@ -128,3 +128,4 @@ Wichtige Dokumente:
 - `docs/11-slack-nextcloud-nutzungsabgrenzung.md`
 - `docs/12-vaultwarden.md`
 - `docs/13-libredesk.md`
+- `docs/onboarding/README.md`
