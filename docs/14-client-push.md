@@ -31,12 +31,12 @@ die offiziell unterstützten Verbindungs-URLs deshalb zur Laufzeit aus denselben
 Compose-Variablen und demselben Redis-Secret wie Nextcloud. Sonderzeichen werden
 URL-kodiert; die erzeugten URLs werden weder protokolliert noch versioniert.
 
-Der Sidecar erreicht Nextcloud direkt über `http://nextcloud`. Die versionierte,
-read-only eingebundene Datei `config/notify-push.config.php` ergänzt diesen rein
-internen Docker-Namen als Trusted Domain und hält dabei die bestehenden
-öffentlichen Domains vollständig fest. So umgeht der Selbsttest keinen
-öffentlichen Schutz, sondern lediglich den für interne Kommunikation unnötigen
-Rückweg über NAT und Caddy.
+Der Sidecar erreicht Nextcloud direkt über `http://nextcloud`. Dieser rein
+interne Docker-Name wird einmalig über `occ` als zusätzliche Trusted Domain in
+der persistenten Nextcloud-Konfiguration ergänzt. Der dokumentierte Befehl ist
+idempotent und lässt die bestehenden öffentlichen Domains unverändert. So
+umgeht der Selbsttest keinen öffentlichen Schutz, sondern lediglich den für
+interne Kommunikation unnötigen Rückweg über NAT und Caddy.
 
 ## Sicherheitsmodell
 
@@ -68,6 +68,10 @@ cd /opt/zircula/git/infrastructure/docker/nextcloud
 
 docker compose exec -T --user www-data nextcloud \
   php occ app:install notify_push
+
+docker compose exec -T --user www-data nextcloud \
+  php occ config:system:set trusted_domains 2 \
+    --value=nextcloud
 
 install -d -m 700 secrets
 umask 077

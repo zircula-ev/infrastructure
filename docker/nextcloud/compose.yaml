@@ -30,7 +30,6 @@ services:
       - /srv/zircula/nextcloud/html:/var/www/html
       - /srv/zircula/nextcloud/data:/var/www/html/data
       - ./php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
-      - ./config/notify-push.config.php:/var/www/html/config/notify-push.config.php:ro
       - ./templates/update.user.php:/var/www/html/core/templates/update.user.php:ro
 
     networks:
