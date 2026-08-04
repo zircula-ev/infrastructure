@@ -36,6 +36,70 @@ services:
       - frontend
       - backend
 
+  notify-push:
+    image: nextcloud:34.0.2-apache
+
+    container_name: notify-push
+
+    restart: unless-stopped
+
+    user: "33:33"
+
+    init: true
+
+    env_file:
+      - .env
+
+    environment:
+      TZ: ${TZ}
+
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+      REDIS_HOST: redis
+      REDIS_HOST_PASSWORD_FILE: /run/secrets/redis_password
+
+      NEXTCLOUD_URL: http://nextcloud
+      NEXTCLOUD_DATABASE_PREFIX: oc_
+
+    secrets:
+      - redis_password
+
+    entrypoint:
+      - /usr/local/bin/notify-push-entrypoint
+
+    volumes:
+      - /srv/zircula/nextcloud/html:/var/www/html:ro
+      - ./scripts/notify-push-entrypoint:/usr/local/bin/notify-push-entrypoint:ro
+
+    read_only: true
+
+    tmpfs:
+      - /tmp
+
+    cap_drop:
+      - ALL
+
+    security_opt:
+      - no-new-privileges:true
+
+    networks:
+      - frontend
+      - backend
+
+    healthcheck:
+      test:
+        - CMD
+        - php
+        - -r
+        - '$$socket = @fsockopen("127.0.0.1", 7867); if (!$$socket) { exit(1); } fclose($$socket);'
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+
 networks:
   frontend:
     external: true
@@ -47,5 +111,4 @@ networks:
 
 secrets:
   redis_password:
-    environment: REDIS_PASSWORD
-
+    file: ./secrets/redis_password
