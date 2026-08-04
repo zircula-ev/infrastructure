@@ -12,5 +12,12 @@ Die Oberfläche eignet sich für:
 - geplante Wartungsfenster
 - Test der eingerichteten Benachrichtigungen
 
+## Zugang
+
+Die Oberfläche ist ausschließlich über Tailscale unter
+`https://nctest.tailf7eaa5.ts.net:8443` erreichbar und verwendet zusätzlich
+eine eigene Anmeldung mit TOTP. Einladung, Ersteinrichtung und Offboarding
+stehen im Bereich **Zugang und Adressen**.
+
 Neue oder geänderte Monitore werden nach dem Speichern immer kontrolliert
 getestet.
