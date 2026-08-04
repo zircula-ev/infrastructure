@@ -36,11 +36,13 @@ verwenden und keine dynamische Fortschritts- oder Zeitangabe vortäuschen:
 > itsupport@zircula.org
 
 Nextclouds eingebauter Wartungsmodus unterstützt keinen individuellen
-Begründungstext. Die Anpassung wird deshalb als kleine, persistente
-Theme-Überschreibung umgesetzt und nach jedem Nextcloud-Major-Update gegen die
-aktuelle Core-Vorlage geprüft. Die produktive Einbindung erfolgt außerhalb eines
-laufenden Backups und erst nach einem Test des automatischen Ein- und
-Ausschaltens des Wartungsmodus.
+Begründungstext. Die Anpassung wird deshalb als kleine, persistente und
+schreibgeschützte Template-Überschreibung eingebunden. Sie verändert weder die
+übrige Installation noch das konfigurierte Branding. Nach jedem
+Nextcloud-Update wird sie gegen die aktuelle Core-Vorlage geprüft. Die
+produktive Einbindung und der Sichttest erfolgen außerhalb eines laufenden
+Backups; anschließend wird ausdrücklich kontrolliert, dass der Wartungsmodus
+wieder deaktiviert ist.
 
 ## Schutzumfang
 
