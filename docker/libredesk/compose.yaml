@@ -1,6 +1,6 @@
 services:
   libredesk:
-    image: libredesk/libredesk:v2.5.0
+    image: libredesk/libredesk:v2.6.1
 
     container_name: libredesk
     restart: unless-stopped
