@@ -129,6 +129,30 @@ abschließen. Insbesondere müssen Redis, Datenbank, interne Nextcloud-Verbindun
 Trusted Proxy und Versionsgleichheit jeweils mit einem grünen Haken bestätigt
 werden.
 
+## Integration mit Nextcloud Text
+
+Nextcloud Text verwendet Client Push nicht allein durch die Installation der
+App. Die WebSocket-Integration wird zusätzlich und persistent in der
+App-Konfiguration aktiviert:
+
+```bash
+cd /opt/zircula/git/infrastructure/docker/nextcloud
+
+docker compose exec -T --user www-data nextcloud \
+  php occ config:app:set text notify_push \
+    --type=boolean \
+    --value=true
+
+docker compose exec -T --user www-data nextcloud \
+  php occ config:app:get text notify_push
+```
+
+Der gespeicherte Wert muss `1` sein. Bereits geöffnete Text- und
+Markdown-Seiten werden danach vollständig geschlossen und neu geöffnet. Die
+Integration beschleunigt die Übermittlung von Dateiänderungen; sie verhindert
+keine echten Versionskonflikte, wenn dieselbe Datei gleichzeitig über einen
+lokalen Sync-Client oder einen weiteren Editor verändert wird.
+
 ## Smoke-Test
 
 ```bash
@@ -142,6 +166,12 @@ docker compose exec -T --user www-data nextcloud \
 
 docker compose exec -T --user www-data nextcloud \
   php occ notify_push:metrics
+
+test "$(
+  docker compose exec -T --user www-data nextcloud \
+    php occ config:app:get text notify_push \
+    | tr -d '\r'
+)" = 1
 
 docker compose logs --since=5m notify-push \
   | grep -Ei 'error|failed|panic' \
