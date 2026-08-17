@@ -1,6 +1,6 @@
 services:
   nextcloud:
-    image: nextcloud:34.0.2-apache
+    image: nextcloud:34.0.3-apache
 
     container_name: nextcloud
 
@@ -37,7 +37,7 @@ services:
       - backend
 
   notify-push:
-    image: nextcloud:34.0.2-apache
+    image: nextcloud:34.0.3-apache
 
     container_name: notify-push
 
