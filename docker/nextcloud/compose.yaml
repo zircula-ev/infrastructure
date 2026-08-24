@@ -29,7 +29,9 @@ services:
     volumes:
       - /srv/zircula/nextcloud/html:/var/www/html
       - /srv/zircula/nextcloud/data:/var/www/html/data
+      - ./apache/security.conf:/etc/apache2/conf-enabled/security.conf:ro
       - ./php/conf.d/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini:ro
+      - ./php/conf.d/security.ini:/usr/local/etc/php/conf.d/security.ini:ro
       - ./templates/update.user.php:/var/www/html/core/templates/update.user.php:ro
 
     networks:
