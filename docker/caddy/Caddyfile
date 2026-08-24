@@ -8,11 +8,7 @@ cloud.zircula.org {
 	}
 
 	@davDiscovery {
-		path \
-			/.well-known/caldav \
-			/.well-known/caldav/ \
-			/.well-known/carddav \
-			/.well-known/carddav/
+		path /.well-known/caldav /.well-known/caldav/ /.well-known/carddav /.well-known/carddav/
 	}
 	redir @davDiscovery https://cloud.zircula.org/remote.php/dav/ 301
 
