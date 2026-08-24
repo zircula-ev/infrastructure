@@ -1,6 +1,6 @@
 services:
   libredesk-redis:
-    image: redis:7.4.10-alpine
+    image: redis:7.4.11-alpine
 
     container_name: libredesk-redis
     restart: unless-stopped
