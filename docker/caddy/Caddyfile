@@ -7,6 +7,13 @@ cloud.zircula.org {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 	}
 
+	@davDiscovery path \
+		/.well-known/caldav \
+		/.well-known/caldav/ \
+		/.well-known/carddav \
+		/.well-known/carddav/
+	redir @davDiscovery https://cloud.zircula.org/remote.php/dav/ 301
+
 	handle_path /push/* {
 		reverse_proxy notify-push:7867
 	}
