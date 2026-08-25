@@ -131,5 +131,8 @@ Wichtige Dokumente:
 - `docs/12-vaultwarden.md`
 - `docs/13-libredesk.md`
 - `docs/14-client-push.md`
+- `docs/15-http-response-hardening.md`
+- `docs/16-dav-discovery.md`
+- `docs/17-maintenance-2026-08-24-25.md`
 - `docs/onboarding/README.md`
 
