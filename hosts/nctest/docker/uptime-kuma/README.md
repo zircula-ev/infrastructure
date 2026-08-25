@@ -1,5 +1,7 @@
 # Uptime Kuma auf nctest
 
+Produktiver Sollstand: `2.5.3-rootless` (geprüft am 25.08.2026).
+
 Uptime Kuma prüft die öffentlichen Zircula-Dienste von außerhalb des Manitu-VPS.
 nctest ist kein hochverfügbarer Monitoringstandort; der Rechner kann versehentlich
 ausgeschaltet werden. Diese Instanz ist deshalb eine dokumentierte Übergangslösung
@@ -187,13 +189,40 @@ gestoppt.
 
 ## Updates und Datenprüfung
 
+Vor jedem Update werden Release Notes, Image-Tag und Compose-Diff geprüft. Für
+einen anwendungskonsistenten ZFS-Snapshot wird Uptime Kuma kurz gestoppt:
+
 ```bash
-docker compose pull
-docker compose up -d
-docker compose ps
-docker compose logs --tail=100 uptime-kuma
+snapshot="DATA_Store/uptime-kuma@pre-update-$(date -u +%Y%m%dT%H%M%SZ)"
+
+docker compose stop uptime-kuma
+sudo zfs snapshot "$snapshot"
+sudo zfs list -t snapshot -o name,creation,used "$snapshot"
+docker compose start uptime-kuma
+```
+
+Nach erneutem Status `healthy` kann die gepinnte Version aus `main`
+ausgerollt werden:
+
+```bash
+git switch main
+git pull --ff-only origin main
+
+docker compose config --quiet
+docker compose pull uptime-kuma
+docker compose up -d --force-recreate uptime-kuma
+
+docker compose ps uptime-kuma
+docker compose logs --since=10m uptime-kuma
 sudo zfs list DATA_Store/uptime-kuma
 ```
 
-Vor Major-Updates werden die Uptime-Kuma-Release-Notes und ein ZFS-Snapshot des
-Datasets geprüft. Snapshots ersetzen kein separates Backup der Konfiguration.
+Anschließend werden mindestens Anwendungsversion, Healthcheck, Neustartzähler,
+lokale HTTP-Antwort, SQLite-Datei und kritische Start- oder Migrationsmeldungen
+geprüft. Ein HTTP-302 an der Wurzel ist die erwartete Weiterleitung zur
+Anmeldung.
+
+Der Snapshot bleibt mindestens bis nach dem nächsten erfolgreichen externen
+Backup-Pull erhalten. Snapshots ersetzen kein separates Backup der
+Konfiguration. Ein Rollback wird nicht automatisch ausgeführt, da er alle
+Änderungen am Dataset seit dem Snapshot verwirft.
