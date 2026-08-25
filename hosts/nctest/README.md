@@ -4,7 +4,7 @@ nctest ist ein aus vorhandener Hardware aufgebauter, intern betriebener Ubuntu-
 Host. Er ist Spielwiese und Standort einiger lokaler Hilfsdienste, aber kein
 hochverfügbarer Produktionsserver.
 
-## Dokumentierter Stand vom 24.07.2026
+## Dokumentierter Stand vom 25.08.2026
 
 - Ubuntu 26.04 LTS
 - Intel Core i5-2400, vier Kerne
@@ -18,8 +18,8 @@ hochverfügbarer Produktionsserver.
 ## Rollen
 
 - Shinobi zeichnet Kameras aus dem lokalen Hausnetz für wenige Tage auf.
-- Uptime Kuma überwacht als vorläufige externe Instanz acht öffentliche
-  Endpunkte beziehungsweise Ports des Manitu-VPS.
+- Uptime Kuma 2.5.3-rootless überwacht als vorläufige externe Instanz acht
+  öffentliche Endpunkte beziehungsweise Ports des Manitu-VPS.
 - Alle Monitore alarmieren während der Übergangsphase über Slack; zentrale
   Ausfälle gehen zusätzlich per SMTP an `itadmin@zircula.org` und
   `itsupport@zircula.org`.
@@ -89,6 +89,21 @@ sudo zpool status -v DATA_Store
 Der Backup-Pull, der verschlüsselte Spiegel und der jüngste ZFS-Snapshot werden
 nach jedem manuellen oder automatischen Lauf getrennt geprüft. Installation,
 Schlüsselbindung und Restore-Test stehen in `backup/README.md`.
+
+## Wartungsstand vom 25.08.2026
+
+- Ubuntu-Paketupdates installiert und auf Kernel `7.0.0-30-generic` neu gestartet
+- keine fehlgeschlagenen systemd-Dienste oder weitere Neustartanforderung
+- ZFS-Pool und Dataset `DATA_Store/vps-backup` fehlerfrei verfügbar
+- täglicher Backup-Pull-Timer aktiviert; jüngste Läufe erfolgreich
+- Docker und produktive Container nach dem Neustart automatisch gestartet
+- Uptime Kuma nach konsistentem ZFS-Snapshot auf 2.5.3-rootless aktualisiert
+- Uptime-Kuma-Healthcheck, Anwendungsversion, SQLite-Persistenz und Logs geprüft
+- zuvor vorhandene Zombieprozesse des Shinobi-Prozessbaums durch den Neustart
+  bereinigt; ein erneutes Auftreten wird getrennt beobachtet
+
+Der ausführliche hostübergreifende Nachweis steht in
+`docs/17-maintenance-2026-08-24-25.md`.
 
 Der Zustand von Shinobi und den Backupjobs wird getrennt geprüft. Uptime Kuma
 wird zusätzlich über den Stack unter
