@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 31.07.2026
+Stand: 25.08.2026
 
 ## Ziel
 
@@ -25,8 +25,9 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 
 ### Nextcloud
 
-- produktiv unter `cloud.zircula.org`
+- Nextcloud 34.0.3 produktiv unter `cloud.zircula.org`
 - PostgreSQL und Redis
+- Client Push 1.3.5 als eigener gehärteter Container eingerichtet und geprüft
 - Team Folders, Collectives, Deck und weitere Vereinsanwendungen
 - Collabora Online unter `office.zircula.org`
 - zentrale Benutzer- und Gruppenstruktur über Authentik und OIDC
@@ -76,7 +77,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 
 ### LibreDesk (produktiv)
 
-- getrennte Stacks für LibreDesk 2.5.0 und anwendungseigenen Redis 7.4.10
+- getrennte Stacks für LibreDesk 2.5.0 und anwendungseigenen Redis 7.4.11
 - öffentlich unter `support.zircula.org` ohne direkte Hostports
 - getrennte PostgreSQL-Rolle und Datenbank sowie eigene Redis-Authentifizierung
 - dediziertes Postfach `itsupport@zircula.org` mit geprüftem IMAP, SMTP und
@@ -93,17 +94,17 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   SHA-256-Prüfsummen erfolgreich; isolierter Restore und Aufbewahrungsregeln
   bleiben regelmäßige Betriebsaufgaben gemäß `docs/13-libredesk.md`
 
-### Backup nach nctest (in Einführung)
+### Backup nach nctest (produktiv)
 
-- versionierte Backupkomponente für VPS und nctest vorbereitet
 - clientseitig verschlüsseltes Restic-Repository auf dem VPS
 - konsistente PostgreSQL-, Vaultwarden- und Grafana-Sicherungen sowie
   Nextcloud-Wartungsmodus während des kritischen Abschnitts
 - dedizierter read-only-SSH-Abruf von nctest ohne VPS-Shell oder Schreibrechte
-- ZFS-Spiegel und zusätzliche Snapshots auf nctest
+- tägliche Timer auf VPS und nctest aktiviert und erfolgreich gelaufen
+- verschlüsselter Spiegel mit ungefähr 102 GiB auf nctest
+- ZFS-Snapshot nach jedem vollständigen erfolgreichen Pull
+- Restic-Snapshot, Lesbarkeit und isolierter Restore einer Testdatei geprüft
 - Aufbewahrung mit 7 täglichen, 4 wöchentlichen und 6 monatlichen Restic-Ständen
-- produktive Aktivierung erst nach manuellem Vollbackup, externem Spiegel und
-  isoliertem Restore-Test
 - nctest bleibt ein vorläufiges Ziel; ein dauerhaftes zweites unabhängiges Ziel
   ist weiterhin erforderlich
 
@@ -113,15 +114,15 @@ Auf dem VPS aktiv und geprüft:
 
 - Node Exporter für Hostmetriken
 - Blackbox Exporter für HTTPS- und TLS-Prüfungen
-- Prometheus mit validierten Regeln und ausschließlich internen Targets
-- Alertmanager mit erfolgreichem Slack-Testalarm
-- Grafana unter `monitoring.zircula.org`
+- Prometheus 3.14.0 mit validierten Regeln und ausschließlich internen Targets
+- Alertmanager 0.34.0 mit erfolgreichem Slack-Testalarm
+- Grafana 13.2.0 unter `monitoring.zircula.org`
 - lokaler Grafana-Break-Glass-Login und Authentik-OIDC mit Admin-Mapping
 - versioniertes VPS-Basisdashboard wird nach dem Login direkt als
   Startdashboard angezeigt
 - keine öffentlichen Metrik- oder Administrationsports außer Grafana über Caddy
 
-Auf `nctest` überwacht Uptime Kuma acht öffentliche Dienste
+Auf `nctest` überwacht Uptime Kuma 2.5.3-rootless acht öffentliche Dienste
 beziehungsweise Ports unabhängig vom VPS: Nextcloud, Authentik, Collabora, Talk
 HPB, LibreDesk, Grafana, Vaultwarden und den öffentlichen HTTPS-Port des VPS.
 Die Oberfläche ist nur im Tailnet über Tailscale Serve auf HTTPS-Port 8443
@@ -136,8 +137,9 @@ bleibt diese Instanz eine Übergangslösung und keine hochverfügbare externe
 
 - gemeinsame Ordner- und Berechtigungsstruktur definiert
 - Team Folders eingerichtet
-- rclone für die Migration der bisherigen Clouds vorbereitet
-- erste Werk-Haus-Datenübernahme läuft beziehungsweise wird geprüft
+- Migration der bisherigen Zircula- und Werk-Clouds abgeschlossen
+- Größenvergleich der übertragenen Bestände ohne Unterschiede abgeschlossen
+- nicht lesbare gesperrte Quelldateien neutral als Ausnahmen dokumentiert
 - Datenmigration und organisatorisches Onboarding werden getrennt vom
   Infrastrukturaufbau dokumentiert
 
@@ -167,8 +169,7 @@ Positiv geprüft:
 
 Offen:
 
-- Backupbranch auf VPS und nctest ausrollen, ersten vollständigen Lauf spiegeln
-  und einen isolierten Restore-Test dokumentieren
+- regelmäßige vollständige Restore-Übungen und Prüfung der Backupalarme fortführen
 - ergänzendes Image- und Secret-Scanning etablieren
 - MFA-Governance für weitere Organisationsgruppen festlegen
 - OIDC-Offboarding sowie Desktop-/Mobile-Client und WebDAV testen
@@ -305,22 +306,47 @@ bleiben insbesondere ein isolierter Vollrestore, regelmäßige Anhang-/Notiz-
 Regressionstests und die Festlegung der Aufbewahrungsfristen. Slack
 `#it-support` dient nur noch als Übergang bis zur Abschaltung von Slack.
 
+## Validierung der Wartung vom 24. und 25.08.2026
+
+Erfolgreich ausgerollt und geprüft:
+
+- Ubuntu-Paketupdates und Neustarts auf Kernel `7.0.0-30-generic` auf VPS und
+  nctest
+- Nextcloud 34.0.3 einschließlich Datenbank- und App-Upgrades
+- Client Push, DAV-Discovery, HTTP-Header-Härtung und OPcache-Konfiguration
+- Collabora 26.04.3.1.1, Grafana 13.2.0, Prometheus 3.14.0,
+  Alertmanager 0.34.0 und LibreDesk Redis 7.4.11
+- öffentliche Healthchecks, Prometheus-Targets, Alarmzustand und
+  Nextcloud-Coreintegrität
+- produktiver Backup-Pull, ZFS-Spiegel, Restic-Snapshot und isolierter Restore
+- nctest-Hostupdate, fehlerfreier ZFS-Pool und automatischer Containerstart
+- Uptime Kuma 2.5.3-rootless nach konsistentem ZFS-Snapshot
+
+Der ausführliche Nachweis steht in
+`docs/17-maintenance-2026-08-24-25.md`.
+
 ## Produktionsreife
 
-Die Kerndienste, LibreDesk und das interne Monitoring sind funktionsfähig.
-Vaultwarden ist technisch bereitgestellt, aber organisatorisch noch nicht
-freigegeben. Vollständig belastbare Produktionsreife wird erst angenommen, wenn der
-vorbereitete verschlüsselte nctest-Spiegel produktiv läuft und ein erfolgreicher
-Restore-Test dokumentiert ist. Ein VPS-Snapshot allein erfüllt
-diese Anforderung nicht. Uptime Kuma kann einen vollständigen VPS-Ausfall zwar
-unabhängig melden, sein Standort `nctest` ist jedoch nicht hochverfügbar.
+Die Kerndienste, LibreDesk, das interne Monitoring und der verschlüsselte
+Backupspiegel nach nctest sind funktionsfähig und geprüft. Ein isolierter
+Dateirestore wurde erfolgreich durchgeführt. Vaultwarden ist technisch
+bereitgestellt, aber organisatorisch noch nicht allgemein freigegeben. Uptime
+Kuma kann einen vollständigen VPS-Ausfall unabhängig melden; sein Standort
+`nctest` ist jedoch nicht hochverfügbar. Ein dauerhaftes zweites,
+organisatorisch unabhängiges Backup- und Monitoringziel bleibt eine
+Ausbaustufe.
 
 ## Nächste Schritte
 
-1. Backupbranch ausrollen, VPS-Sicherung nach nctest spiegeln und Restore testen.
-2. Migration der bisherigen Clouds ab 31.07.2026 durchführen.
-3. nach dem ersten erfolgreichen Backup die Timer und Backupalarme aktivieren.
-4. regelmäßige Image- und Secret-Scans ergänzen.
-5. MFA und Recovery der Break-Glass-Konten abschließen.
-6. Vaultwarden-Organisationen, Clients und Offboarding in Phase zwei abschließen.
-7. dauerhaftes zweites, von nctest unabhängiges Backupziel beschließen.
+1. regelmäßige vollständige Restore-Übungen und Prüfung der Backupalarme
+   durchführen.
+2. ergänzende Image- und Secret-Scans etablieren.
+3. MFA-Governance und Recovery der verbleibenden Break-Glass-Konten
+   vervollständigen.
+4. Vaultwarden-Organisationen, Clients und Offboarding in Phase zwei
+   abschließen.
+5. dauerhaftes zweites, von nctest unabhängiges Backup- und Monitoringziel
+   beschließen.
+6. betriebliche Änderungen aus
+   `docs/17-maintenance-2026-08-24-25.md` in künftigen Wartungsfenstern
+   fortschreiben.
