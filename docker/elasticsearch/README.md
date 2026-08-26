@@ -37,7 +37,7 @@ Vor dem ersten Start:
 sudo install -d -o 1000 -g root -m 770 \
   /srv/zircula/elasticsearch
 
-printf 'vm.max_map_count=262144\n' \
+printf 'vm.max_map_count=1048576\n' \
   | sudo tee /etc/sysctl.d/90-zircula-elasticsearch.conf
 
 sudo sysctl --system
