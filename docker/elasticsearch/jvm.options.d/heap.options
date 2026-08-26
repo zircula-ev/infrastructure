@@ -1,0 +1,4 @@
+# Keep heap deliberately small on the shared 15 GiB VPS.
+# The container also needs off-heap memory and filesystem cache.
+-Xms768m
+-Xmx768m
