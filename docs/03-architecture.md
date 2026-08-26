@@ -19,6 +19,7 @@ flowchart TD
 
     Nextcloud --> PostgreSQL
     Nextcloud --> Redis
+    Nextcloud -->|isoliertes Suchnetz| Elasticsearch
     Redis -->|Pub/Sub| NotifyPush
     NotifyPush --> PostgreSQL
     NotifyPush --> Nextcloud
@@ -53,6 +54,14 @@ mit PostgreSQL, Nextcloud und Client Push mit ihrem gemeinsamen Redis sowie Libr
 Redis-Authentifizierung begrenzen den Schaden, falls ein angebundener Container
 kompromittiert wird.
 
+## Suchnetz
+
+`zircula_search` verbindet ausschließlich Nextcloud und Elasticsearch. Das Netz
+ist intern, besitzt keinen Hostport und ist weder mit Caddy noch mit dem
+gemeinsamen Backend-Netz verbunden. Der extrahierte Dokumenttext im Suchindex
+bleibt dadurch außerhalb anderer Anwendungscontainer. Elasticsearch ist eine
+regenerierbare Hilfsplattform und keine Primärdatenquelle.
+
 ## Monitoring-Netz
 
 `zircula_monitoring` verbindet Prometheus mit Grafana, Alertmanager, Node
@@ -71,7 +80,9 @@ LibreDesk-Uploads liegen unter `/srv/zircula/libredesk/uploads`; Tickets und
 Konfiguration liegen in der getrennten PostgreSQL-Datenbank. LibreDesk-Redis
 persistiert ergänzenden Queue-/Cachezustand unter `/srv/zircula/libredesk-redis`.
 Compose-Dateien, Vorlagen und Betriebsdokumentation liegen im Repository unter
-`/opt/zircula/git/infrastructure`.
+`/opt/zircula/git/infrastructure`. Der regenerierbare Elasticsearch-Index liegt
+unter `/srv/zircula/elasticsearch` und wird bewusst nicht als primäre
+Wiederherstellungsquelle gesichert.
 
 Hostbezogene Stacks außerhalb des VPS werden unter `hosts/<hostname>`
 dokumentiert. Laufzeitdaten und Secrets bleiben auf dem jeweiligen Host.
