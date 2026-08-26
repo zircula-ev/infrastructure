@@ -1,0 +1,14 @@
+{
+  "index_patterns": [
+    "nextcloud*"
+  ],
+  "priority": 200,
+  "template": {
+    "settings": {
+      "index.number_of_replicas": 0
+    }
+  },
+  "_meta": {
+    "description": "Single-node settings for the regenerable Nextcloud full-text index"
+  }
+}
