@@ -60,10 +60,15 @@ eine von Nextcloud unabhängige Suche verwendet.
 Der gemeinsame VPS besitzt 8 CPU-Kerne und 15 GiB RAM. Elasticsearch erhält:
 
 - 768 MiB festen JVM-Heap,
-- 2 GiB hartes Containerlimit,
+- 3 GiB hartes Containerlimit,
 - maximal 4096 Prozesse beziehungsweise Threads,
 - null Indexreplikate über eine versionierte Einzelknoten-Vorlage,
 - begrenzte Docker-Logdateien.
+
+Das zunächst getestete 2-GiB-Limit erzeugte während der vollständigen
+Erstindexierung wiederholten Cgroup-Speicherdruck, obwohl weder der Host noch
+der JVM-Heap ausgelastet waren. Das Containerlimit wurde deshalb ohne
+Vergrößerung des Heaps auf 3 GiB angehoben.
 
 Machine Learning, Kibana, Watcher und GeoIP-Downloads bleiben deaktiviert. Die
 erste Indexierung erfolgt außerhalb der Hauptnutzung unter Beobachtung. Bei
