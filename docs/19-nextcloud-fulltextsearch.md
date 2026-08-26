@@ -62,6 +62,7 @@ Der gemeinsame VPS besitzt 8 CPU-Kerne und 15 GiB RAM. Elasticsearch erhält:
 - 768 MiB festen JVM-Heap,
 - 2 GiB hartes Containerlimit,
 - maximal 4096 Prozesse beziehungsweise Threads,
+- null Indexreplikate über eine versionierte Einzelknoten-Vorlage,
 - begrenzte Docker-Logdateien.
 
 Machine Learning, Kibana, Watcher und GeoIP-Downloads bleiben deaktiviert. Die
@@ -70,6 +71,12 @@ Speicherdruck, Swap, wiederholten Neustarts oder spürbaren Auswirkungen auf
 Nextcloud wird sie gestoppt und die Dimensionierung neu bewertet.
 
 ## Suchumfang
+
+Die Dateiprovider-App 34.0.1 erwartet ihre Schalter als Ganzzahlen `0` und `1`.
+Booleanwerte werden wegen eines App-Fehlers nicht verwendet. Das anfängliche
+Inhaltsgrößenlimit beträgt 100 MiB. Größere Dateien bleiben über Namen und
+Metadaten auffindbar; eine Erhöhung wird erst nach Messung der Extraktionslast
+entschieden.
 
 Im Zielzustand eingeschlossen werden:
 
