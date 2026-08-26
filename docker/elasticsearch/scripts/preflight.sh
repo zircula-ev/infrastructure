@@ -4,7 +4,7 @@ set -Eeuo pipefail
 
 data_directory='/srv/zircula/elasticsearch'
 network='zircula_search'
-minimum_map_count=262144
+minimum_map_count=1048576
 minimum_available_kib=4194304
 
 test -f .env || {
