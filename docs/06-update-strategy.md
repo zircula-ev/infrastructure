@@ -49,6 +49,7 @@ deaktiviert.
 - Caddy
 - Collabora
 - Grafana
+- Elasticsearch
 - LibreDesk
 - LibreDesk Redis
 - Nextcloud
@@ -176,5 +177,8 @@ Empfehlung für den kleinen Vereinsbetrieb:
   Versand, Threading, Anhänge, Rollen und interner Redis-Zugriff
 - LibreDesk Redis: authentifizierter `PONG`, anonymer Zugriff abgewiesen, AOF
   beschreibbar und kein Hostport
+- Elasticsearch: Cluster-Health, Speicherlimit, keine Hostports, ausschließlich
+  internes Suchnetz, Nextcloud-Plattformtest, Berechtigungsfilter sowie PDF- und
+  Office-Suche
 - Uptime Kuma: öffentliche HTTP-/TCP-Prüfungen und Benachrichtigung; kein ICMP,
   solange `NET_RAW` nicht ausdrücklich freigegeben ist
