@@ -8,6 +8,9 @@
 # Prometheus history is intentionally rebuildable.
 /srv/zircula/prometheus/data
 
+# The Nextcloud full-text index is rebuilt from primary files after a restore.
+/srv/zircula/elasticsearch
+
 # Live SQLite files are replaced by application-aware copies in staging.
 /srv/zircula/grafana/data/grafana.db
 /srv/zircula/grafana/data/grafana.db-shm
