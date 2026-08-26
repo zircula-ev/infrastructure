@@ -73,7 +73,16 @@ docker inspect --format \
 ```
 
 Der Knoten muss `healthy` sein, darf keinen veröffentlichten Port besitzen
-und muss ein Speicherlimit von 2147483648 Bytes zeigen. Der Hostwert
+und muss ein Speicherlimit von 2147483648 Bytes zeigen. Anschließend wird die
+versionierte Einzelknoten-Vorlage idempotent angewendet:
+
+```bash
+bash scripts/configure-nextcloud-index.sh
+```
+
+Sie setzt für vorhandene und künftig neu erzeugte `nextcloud*`-Indizes null
+Replikate. Ohne diese Einstellung bleibt ein gesunder Einzelknoten wegen einer
+nicht zuweisbaren Replik absichtlich gelb. Der Hostwert
 `vm.max_map_count` muss mindestens 1048576 betragen.
 
 Interner Test ausschließlich aus dem Suchnetz:
@@ -112,6 +121,10 @@ Für die Plattform gelten anschließend:
 - lokale Dateien: aktiviert
 - Team Folders: aktiviert
 - PDF- und Office-Inhalt: aktiviert
+- App-Schalter werden bei Version 34.0.1 als Ganzzahlen `0` und `1` übergeben;
+  JSON-Booleanwerte lösen einen TypeError aus
+- Inhaltsgrößenlimit zunächst 100 MiB; größere Dateien bleiben über Namen und
+  Metadaten auffindbar, die Inhaltsauswertung wird gesondert bewertet
 - externe und föderierte Speicher nur, wenn sie bewusst zum produktiven
   Suchumfang gehören
 
