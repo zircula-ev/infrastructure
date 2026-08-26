@@ -37,6 +37,7 @@ services:
     networks:
       - frontend
       - backend
+      - search
 
   notify-push:
     image: nextcloud:34.0.3-apache
@@ -110,6 +111,10 @@ networks:
   backend:
     external: true
     name: zircula_backend
+
+  search:
+    external: true
+    name: zircula_search
 
 secrets:
   redis_password:
