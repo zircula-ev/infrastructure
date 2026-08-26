@@ -50,7 +50,9 @@ docker network inspect "$network" >/dev/null 2>&1 || {
 }
 
 internal="$(
-  docker network inspect     --format '{{.Internal}}'     "$network"
+  docker network inspect \
+    --format '{{.Internal}}' \
+    "$network"
 )"
 
 test "$internal" = 'true' || {
