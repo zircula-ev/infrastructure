@@ -44,7 +44,8 @@ Gesichert werden insbesondere:
 
 Bewusst nicht als primäre Wiederherstellungsquelle gesichert werden rohe
 PostgreSQL-Datendateien, Redis-Cache- und Queuezustände sowie
-Prometheus-Zeitreihen. Ebenfalls ausgeschlossen sind Git-Objektdaten, bekannte
+Prometheus-Zeitreihen und der aus Nextcloud vollständig regenerierbare
+Elasticsearch-Suchindex. Ebenfalls ausgeschlossen sind Git-Objektdaten, bekannte
 temporäre Diagnosepfade und leere historische Platzhalter. Die konkrete Liste
 liegt versioniert unter `backup/vps/restic-excludes`.
 
@@ -116,7 +117,9 @@ quartalsweise in einer isolierten Umgebung geprüft:
 5. Nextcloud-Konfiguration, Apps, Daten und Eigentümer wiederherstellen
 6. Nextcloud-Status, Login und Stichproben von Dateien und Team Folders prüfen
 7. Office, Talk, Authentik-OIDC und LibreDesk-Anhänge stichprobenartig testen
-8. Dauer, Probleme und verwendeten Sicherungsstand dokumentieren
+8. Elasticsearch leer bereitstellen und den Volltextindex aus Nextcloud neu
+   aufbauen; der Index wird nicht aus Restic restauriert
+9. Dauer, Probleme und verwendeten Sicherungsstand dokumentieren
 
 Ein Backup gilt betrieblich erst nach einem erfolgreichen Restore-Test als
 belastbar.
