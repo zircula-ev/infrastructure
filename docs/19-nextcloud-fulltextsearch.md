@@ -134,6 +134,44 @@ produktiven Bestand abdeckt.
 - Update-, Fehler- und Neuindexierungsverfahren dokumentieren
 - Indexwachstum und Vollständigkeit regelmäßig prüfen
 
+## Produktiver Rollout vom 26. August 2026
+
+Die vollständige Erstindexierung wurde als entkoppelter systemd-Lauf
+abgeschlossen:
+
+- Laufzeit: 4 Stunden, 16 Minuten und 12 Sekunden,
+- 34.762 Dokumente im fertigen Elasticsearch-Index,
+- Elasticsearch-Clusterstatus `green`,
+- keine OOM-Beendigung und keine Containerneustarts,
+- vollständiger Plattform-Selbsttest einschließlich Benutzer- und
+  Gruppenberechtigungen erfolgreich,
+- positive und negative Suchtests mit produktiven Berechtigungen erfolgreich.
+
+Nextcloud blieb während der Indexierung erreichbar. Das endgültige
+Elasticsearch-Containerlimit von 3 GiB bietet gegenüber dem während des Laufs
+beobachteten Bedarf ausreichend Reserve; der JVM-Heap bleibt bei 768 MiB.
+
+### Bekannte Einschränkung bei Team Folders
+
+Der Erstlauf meldete 40 einzelne
+`ClientResponseException: unknown error`-Einträge. Die exemplarische Prüfung
+zeigte keinen Ausfall von Elasticsearch, sondern eine bereits indexierte Datei
+aus einem Team Folder, die über mehrere berechtigte Benutzerkonten erneut unter
+derselben Dokument-ID verarbeitet wurde. Der Indexeintrag enthielt weiterhin
+die korrekte Zugriffsgruppe und die praktischen Berechtigungstests waren
+erfolgreich.
+
+Dieses Verhalten entspricht der upstream bekannten Mehrfachindexierung
+geteilter Ordner und Team Folders. Der Suchumfang für Team Folders bleibt
+aktiviert, weil sie den wesentlichen gemeinsamen Vereinsbestand enthalten.
+Fehlerzahl, Indexwachstum und Berechtigungsänderungen werden bei Wartungen
+weiter beobachtet.
+
+Passwortgeschützte oder anderweitig nicht extrahierbare Dokumente werden über
+Dateiname, Pfad und Berechtigungsmetadaten erfasst; ihr verschlüsselter Inhalt
+ist erwartungsgemäß nicht durchsuchbar. Ein vollständiger Neuaufbau ist wegen
+einzelner solcher Dokumente nicht erforderlich.
+
 ## Backup und Wiederherstellung
 
 Elasticsearch ist keine Primärdatenquelle. Sein Datenpfad wird nicht in Restic
