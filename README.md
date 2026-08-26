@@ -21,6 +21,7 @@ Internet
 
 Nextcloud ──► PostgreSQL
 Nextcloud ──► Redis ──► Client Push
+Nextcloud ──internes Suchnetz──► Elasticsearch
 Prometheus ─► Alertmanager, Node Exporter und Blackbox Exporter
 Grafana ────► Prometheus
 Vaultwarden ─OIDC─► Authentik
@@ -38,6 +39,7 @@ nctest ──rrsync, nur lesend──► Export-Repository ──► ZFS-Snapsho
 | `caddy` | Reverse Proxy und TLS | Frontend | 80/TCP, 443/TCP |
 | `nextcloud` | zentrale Kollaborationsplattform | Frontend, Backend | keine |
 | `notify-push` | zeitnahe Nextcloud-Clientbenachrichtigungen | Frontend, Backend | keine |
+| `elasticsearch` | regenerierbarer Nextcloud-Volltextindex | Search | keine |
 | `postgres` | zentrale Datenbankinstanz | Backend | keine |
 | `redis` | Cache, Sitzungen und Dateisperren | Backend | keine |
 | `collabora` | Nextcloud Office | Frontend | keine |
@@ -76,6 +78,7 @@ Jeder produktive Stack besitzt:
 - `zircula_frontend`: Dienste, die Caddy erreichen muss
 - `zircula_backend`: interne Kommunikation mit PostgreSQL und Redis
 - `zircula_monitoring`: Prometheus, Grafana, Alertmanager und Exporter
+- `zircula_search`: internes, isoliertes Netz ausschließlich für Nextcloud und Elasticsearch
 
 Die Netzwerke werden einmalig auf dem Host erstellt und von den Stacks als
 `external: true` referenziert. Gemeinsame Netze sind Vertrauensbereiche und
@@ -94,7 +97,7 @@ ersetzen keine Authentifizierung der darin betriebenen Dienste.
 ## Typische Startreihenfolge
 
 ```text
-Netzwerke → PostgreSQL → Redis → Nextcloud → Client Push
+Netzwerke → PostgreSQL → Redis → Elasticsearch → Nextcloud → Client Push
           → Collabora/Authentik/Talk HPB
           → Vaultwarden → LibreDesk Redis → LibreDesk
           → Monitoring-Exporter → Alertmanager → Prometheus → Grafana → Caddy
@@ -134,5 +137,7 @@ Wichtige Dokumente:
 - `docs/15-http-response-hardening.md`
 - `docs/16-dav-discovery.md`
 - `docs/17-maintenance-2026-08-24-25.md`
+- `docs/18-nextcloud-memories.md`
+- `docs/19-nextcloud-fulltextsearch.md`
 - `docs/onboarding/README.md`
 
