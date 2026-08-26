@@ -14,7 +14,8 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Docker Engine und Docker Compose
 - Caddy 2.11 als zentraler Reverse Proxy
 - gemeinsame externe Netze `zircula_frontend`, `zircula_backend` und
-  `zircula_monitoring`
+  `zircula_monitoring`; zusätzlich vorbereitetes internes Netz
+  `zircula_search` ausschließlich für Nextcloud und Elasticsearch
 - PostgreSQL und Redis als getrennte Stacks
 - Redis mit Passwortauthentifizierung über Compose-Secret
 - automatische Ubuntu-Sicherheitsupdates
@@ -31,6 +32,8 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Team Folders, Collectives, Deck und weitere Vereinsanwendungen
 - Collabora Online unter `office.zircula.org`
 - zentrale Benutzer- und Gruppenstruktur über Authentik und OIDC
+- Elasticsearch-basierte Volltextsuche als kontrollierter Rollout vorbereitet,
+  aber noch nicht produktiv freigegeben
 
 ### Talk High Performance Backend
 
@@ -169,6 +172,8 @@ Positiv geprüft:
 
 Offen:
 
+- Elasticsearch-Stack, Nextcloud-Suchapps, Berechtigungs-Pilot und vollständige
+  Volltextindexierung gemäß `docs/19-nextcloud-fulltextsearch.md` ausrollen
 - regelmäßige vollständige Restore-Übungen und Prüfung der Backupalarme fortführen
 - ergänzendes Image- und Secret-Scanning etablieren
 - MFA-Governance für weitere Organisationsgruppen festlegen
