@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 25.08.2026
+Stand: 26.08.2026
 
 ## Ziel
 
@@ -14,8 +14,8 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Docker Engine und Docker Compose
 - Caddy 2.11 als zentraler Reverse Proxy
 - gemeinsame externe Netze `zircula_frontend`, `zircula_backend` und
-  `zircula_monitoring`; zusätzlich vorbereitetes internes Netz
-  `zircula_search` ausschließlich für Nextcloud und Elasticsearch
+  `zircula_monitoring`; zusätzlich internes Netz `zircula_search`
+  ausschließlich für Nextcloud und Elasticsearch
 - PostgreSQL und Redis als getrennte Stacks
 - Redis mit Passwortauthentifizierung über Compose-Secret
 - automatische Ubuntu-Sicherheitsupdates
@@ -32,8 +32,9 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Team Folders, Collectives, Deck und weitere Vereinsanwendungen
 - Collabora Online unter `office.zircula.org`
 - zentrale Benutzer- und Gruppenstruktur über Authentik und OIDC
-- Elasticsearch-basierte Volltextsuche als kontrollierter Rollout vorbereitet,
-  aber noch nicht produktiv freigegeben
+- Elasticsearch 8.19.19 und die Nextcloud-Volltextsuche 34.0.1 produktiv
+  freigegeben; vollständiger Datei- und Team-Folder-Index mit geprüften
+  Berechtigungsfiltern
 
 ### Talk High Performance Backend
 
@@ -172,8 +173,6 @@ Positiv geprüft:
 
 Offen:
 
-- Elasticsearch-Stack, Nextcloud-Suchapps, Berechtigungs-Pilot und vollständige
-  Volltextindexierung gemäß `docs/19-nextcloud-fulltextsearch.md` ausrollen
 - regelmäßige vollständige Restore-Übungen und Prüfung der Backupalarme fortführen
 - ergänzendes Image- und Secret-Scanning etablieren
 - MFA-Governance für weitere Organisationsgruppen festlegen
@@ -329,6 +328,26 @@ Erfolgreich ausgerollt und geprüft:
 
 Der ausführliche Nachweis steht in
 `docs/17-maintenance-2026-08-24-25.md`.
+
+## Validierung der Volltextsuche vom 26.08.2026
+
+Erfolgreich ausgerollt und geprüft:
+
+- Elasticsearch 8.19.19 ohne öffentlichen Port im internen Netz
+  `zircula_search`
+- vollständige Erstindexierung von 34.762 Dokumenten in 4 Stunden und
+  16 Minuten
+- Clusterstatus `green`, keine OOM-Beendigung und keine Containerneustarts
+- Plattform-Selbsttest einschließlich Benutzer- und Gruppenberechtigungen
+- positive und negative Suchtests mit produktiven Team-Folder-Rechten
+- 3 GiB Containerlimit bei unverändertem JVM-Heap von 768 MiB
+- regenerierbarer Index bewusst vom Restic-Backup ausgeschlossen
+
+Die beim Erstlauf protokollierten 40 Konflikte betreffen die upstream bekannte
+Mehrfachverarbeitung derselben Team-Folder-Dokumente über mehrere berechtigte
+Konten. Die geprüften Dokumente waren mit der korrekten Gruppe indexiert. Diese
+Einschränkung und das Betriebsverfahren stehen in
+`docs/19-nextcloud-fulltextsearch.md`.
 
 ## Produktionsreife
 
