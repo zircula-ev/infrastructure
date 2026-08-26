@@ -1,9 +1,9 @@
 # Elasticsearch für Nextcloud Full Text Search
 
-Dieser Stack stellt den regenerierbaren Suchindex für die Nextcloud-App
-**Full text search** bereit. Er wird zunächst als kontrollierter Pilot
-ausgerollt und erst nach Berechtigungs-, Ressourcen- und Suchtests für den
-gesamten regulären Dateibestand freigegeben.
+Dieser Stack stellt den regenerierbaren, produktiv freigegebenen Suchindex für
+die Nextcloud-App **Full text search** bereit. Architektur, vollständige
+Erstindexierung sowie Berechtigungs- und Ressourcentests sind in
+`docs/19-nextcloud-fulltextsearch.md` dokumentiert.
 
 ## Architektur und Grenzen
 
@@ -11,7 +11,7 @@ gesamten regulären Dateibestand freigegeben.
 - ausschließlich im internen Docker-Netz `zircula_search`
 - kein Hostport, keine Caddy-Route und keine öffentliche Oberfläche
 - das Suchnetz verbindet nur Nextcloud und Elasticsearch
-- 768 MiB JVM-Heap, 2 GiB Containerlimit und 512 Prozesse
+- 768 MiB JVM-Heap, 3 GiB Containerlimit und maximal 4096 Prozesse beziehungsweise Threads
 - persistenter, aber vollständig regenerierbarer Index unter
   `/srv/zircula/elasticsearch`
 - kein Kibana, Machine Learning, Watcher oder GeoIP-Downloader
@@ -73,7 +73,7 @@ docker inspect --format \
 ```
 
 Der Knoten muss `healthy` sein, darf keinen veröffentlichten Port besitzen
-und muss ein Speicherlimit von 2147483648 Bytes zeigen. Anschließend wird die
+und muss ein Speicherlimit von 3221225472 Bytes zeigen. Anschließend wird die
 versionierte Einzelknoten-Vorlage idempotent angewendet:
 
 ```bash
@@ -184,8 +184,7 @@ Index darf nicht als einzige Quelle für Dokumentinhalte behandelt werden.
 
 ## Rückbau
 
-Vor dem produktiven Rollout kann der Pilot zurückgebaut werden, ohne
-Originaldateien zu verändern:
+Ein kontrollierter Rückbau verändert keine Originaldateien:
 
 1. laufende Indexierung kontrolliert stoppen,
 2. Full-Text-Search-Apps deaktivieren,
