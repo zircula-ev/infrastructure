@@ -73,7 +73,8 @@ docker inspect --format \
 ```
 
 Der Knoten muss `healthy` sein, darf keinen veröffentlichten Port besitzen
-und muss ein Speicherlimit von 2147483648 Bytes zeigen.
+und muss ein Speicherlimit von 2147483648 Bytes zeigen. Der Hostwert
+`vm.max_map_count` muss mindestens 1048576 betragen.
 
 Interner Test ausschließlich aus dem Suchnetz:
 
