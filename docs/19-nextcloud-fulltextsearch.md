@@ -61,7 +61,7 @@ Der gemeinsame VPS besitzt 8 CPU-Kerne und 15 GiB RAM. Elasticsearch erhält:
 
 - 768 MiB festen JVM-Heap,
 - 2 GiB hartes Containerlimit,
-- maximal 512 Prozesse,
+- maximal 4096 Prozesse beziehungsweise Threads,
 - begrenzte Docker-Logdateien.
 
 Machine Learning, Kibana, Watcher und GeoIP-Downloads bleiben deaktiviert. Die
