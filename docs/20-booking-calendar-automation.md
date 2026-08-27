@@ -22,24 +22,32 @@ Der konkrete CalDAV-Pfad und alle Zugangsdaten bleiben ausschließlich in
 Voraussetzung: Beide Änderungen befinden sich in ihren jeweiligen
 `main`-Branches.
 
-1. Benutzer und Verzeichnisse anlegen:
+1. Python-Unterstützung, Benutzer und Verzeichnisse anlegen:
 
 ```bash
-sudo useradd --system --home-dir /nonexistent --shell /usr/sbin/nologin zircula-booking-importer
+sudo apt-get install -y python3-venv
+
+if ! id zircula-booking-importer >/dev/null 2>&1; then
+  sudo useradd --system --home-dir /nonexistent --shell /usr/sbin/nologin zircula-booking-importer
+fi
+
 sudo install -d -m 755 /opt/zircula/venvs
 sudo install -d -o root -g zircula-booking-importer -m 750 /etc/zircula-booking-importer
 ```
-
-Vor `useradd` wird geprüft, ob der Benutzer bereits existiert.
 
 2. Anwendung installieren:
 
 ```bash
 cd /opt/zircula/git
 git clone https://github.com/zircula-ev/Zircula-Automation.git
-python3 -m venv /opt/zircula/venvs/booking-calendar
-/opt/zircula/venvs/booking-calendar/bin/pip install --requirement /opt/zircula/git/Zircula-Automation/requirements.txt
+sudo python3 -m venv /opt/zircula/venvs/booking-calendar
+sudo /opt/zircula/venvs/booking-calendar/bin/pip install --requirement /opt/zircula/git/Zircula-Automation/requirements.txt
+/opt/zircula/venvs/booking-calendar/bin/python -m unittest discover -s /opt/zircula/git/Zircula-Automation -v
 ```
+
+Das venv wird mit Root-Rechten erstellt, weil `/opt/zircula/venvs` bewusst
+nicht dem anmeldenden Administrationskonto gehört. Der Dienst benötigt
+anschließend ausschließlich Lese- und Ausführungsrechte.
 
 3. `automation/booking-calendar/environment.example` nach
 `/etc/zircula-booking-importer/environment` kopieren, lokal befüllen und
