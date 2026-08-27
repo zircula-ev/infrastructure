@@ -1,0 +1,31 @@
+[Unit]
+Description=Import Zircula booking emails into the Nextcloud calendar
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=zircula-booking-importer
+Group=zircula-booking-importer
+UMask=0077
+WorkingDirectory=/opt/zircula/git/Zircula-Automation
+EnvironmentFile=/etc/zircula-booking-importer/environment
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/zircula/venvs/booking-calendar/bin/python /opt/zircula/git/Zircula-Automation/booking_importer.py
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectClock=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+Nice=5
+TimeoutStartSec=5m
