@@ -139,5 +139,6 @@ Wichtige Dokumente:
 - `docs/17-maintenance-2026-08-24-25.md`
 - `docs/18-nextcloud-memories.md`
 - `docs/19-nextcloud-fulltextsearch.md`
+- `docs/21-nextcloud-intravox.md`
 - `docs/onboarding/README.md`
 
