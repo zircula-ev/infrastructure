@@ -1,0 +1,12 @@
+[Unit]
+Description=Import Zircula booking emails every five minutes
+
+[Timer]
+OnBootSec=3m
+OnUnitInactiveSec=5m
+RandomizedDelaySec=30s
+Persistent=true
+Unit=zircula-booking-calendar.service
+
+[Install]
+WantedBy=timers.target
