@@ -100,10 +100,13 @@ synthetische Personen und Dokumente.
 ## Preflight, Migration und Start
 
 ```bash
-bash scripts/preflight.sh
+# Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
 docker image inspect werkblatt:23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754 \
   --format '{{.Id}}'
+
+# Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
+bash scripts/preflight.sh
 docker compose up -d db
 docker compose run --rm web python manage.py migrate --noinput
 docker compose run --rm web python manage.py bootstrap_organization \

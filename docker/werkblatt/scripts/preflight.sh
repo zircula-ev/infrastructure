@@ -4,6 +4,9 @@ set -Eeuo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
+readonly werkblatt_image="werkblatt:23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754"
+readonly expected_image_id="sha256:27a3e997939d2c40f2a25a310fbe1598755267dfa5323b6c524edcee6720eed3"
+
 if [[ ! -f .env ]]; then
   echo >&2 "FEHLER: docker/werkblatt/.env fehlt."
   exit 1
@@ -69,5 +72,11 @@ done
 
 docker network inspect zircula_frontend >/dev/null
 docker compose config --quiet
+
+actual_image_id="$(docker image inspect "${werkblatt_image}" --format '{{.Id}}')"
+if [[ "${actual_image_id}" != "${expected_image_id}" ]]; then
+  echo >&2 "FEHLER: Werkblatt-Image entspricht nicht dem validierten Phase-4a-Build."
+  exit 1
+fi
 
 echo "Werkblatt-Preflight erfolgreich"
