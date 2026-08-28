@@ -16,6 +16,7 @@ Internet
   │                 ├── monitoring.zircula.org ─► Grafana
   │                 ├── vault.zircula.org ──────► Vaultwarden
   │                 ├── support.zircula.org ────► LibreDesk
+  │                 ├── werkblatt.zircula.org ──► Werkblatt
   │                 └── talk.cloud.zircula.org ─► Talk HPB
   └── :3478 TCP/UDP ─────────────────────────────► Talk TURN/STUN
 
@@ -27,6 +28,9 @@ Grafana ────► Prometheus
 Vaultwarden ─OIDC─► Authentik
 LibreDesk ──► PostgreSQL und eigener Redis
 LibreDesk ─OIDC─► Authentik
+Werkblatt ──► eigener PostgreSQL-Container
+Werkblatt ─OIDC─► Authentik
+Werkblatt ──HTTPS──► Pretix und Nextcloud WebDAV
 nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 VPS ──Restic, verschlüsselt──► lokales Export-Repository
 nctest ──rrsync, nur lesend──► Export-Repository ──► ZFS-Snapshots
@@ -53,6 +57,7 @@ nctest ──rrsync, nur lesend──► Export-Repository ──► ZFS-Snapsho
 | `vaultwarden` | Passwort- und Secret-Verwaltung | Frontend | keine |
 | `libredesk` | produktives IT-Support-Ticketing | Frontend, Backend | keine |
 | `libredesk-redis` | anwendungseigener Cache und Queue | Backend | keine |
+| `werkblatt` | Workshopdokumentation und eigener PostgreSQL-Container | Frontend, eigenes internes Netz | keine |
 
 Hostbezogene Stacks außerhalb des VPS stehen unter `hosts/`. Der derzeit
 dokumentierte Host `nctest` betreibt Uptime Kuma als vorläufige externe
@@ -79,6 +84,7 @@ Jeder produktive Stack besitzt:
 - `zircula_backend`: interne Kommunikation mit PostgreSQL und Redis
 - `zircula_monitoring`: Prometheus, Grafana, Alertmanager und Exporter
 - `zircula_search`: internes, isoliertes Netz ausschließlich für Nextcloud und Elasticsearch
+- `werkblatt_internal`: Compose-internes Netz ausschließlich für Werkblatt und seine Datenbank
 
 Die Netzwerke werden einmalig auf dem Host erstellt und von den Stacks als
 `external: true` referenziert. Gemeinsame Netze sind Vertrauensbereiche und
@@ -100,6 +106,7 @@ ersetzen keine Authentifizierung der darin betriebenen Dienste.
 Netzwerke → PostgreSQL → Redis → Elasticsearch → Nextcloud → Client Push
           → Collabora/Authentik/Talk HPB
           → Vaultwarden → LibreDesk Redis → LibreDesk
+          → Werkblatt-Datenbank → Werkblatt
           → Monitoring-Exporter → Alertmanager → Prometheus → Grafana → Caddy
 ```
 
@@ -140,5 +147,5 @@ Wichtige Dokumente:
 - `docs/18-nextcloud-memories.md`
 - `docs/19-nextcloud-fulltextsearch.md`
 - `docs/21-nextcloud-intravox.md`
+- `docs/22-werkblatt-phase-4a-preflight.md`
 - `docs/onboarding/README.md`
-

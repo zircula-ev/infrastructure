@@ -19,6 +19,7 @@ updates:
       - /docker/redis
       - /docker/talk-hpb
       - /docker/vaultwarden
+      - /docker/werkblatt
       - /hosts/nctest/docker/uptime-kuma
     schedule:
       interval: weekly

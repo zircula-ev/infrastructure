@@ -64,6 +64,11 @@ support.zircula.org {
 	}
 }
 
+werkblatt.zircula.org {
+	import security_headers
+	reverse_proxy werkblatt:8000
+}
+
 talk.cloud.zircula.org {
 	import security_headers
 	reverse_proxy talk-hpb:8081
