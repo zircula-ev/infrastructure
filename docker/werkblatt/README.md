@@ -8,18 +8,23 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`1e5400106fcd72770fe3bff13c2afb9b2b79a0df` festgelegt. Das resultierende lokale
+`23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Vor dem Rollout werden Build, Image-ID und
 CI-Ergebnis dokumentiert. PostgreSQL ist auf den bereits geprüften Image-Digest
 `sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b`
 festgelegt.
 
 Der isolierte VPS-Build dieses Stands ergab Image-ID
-`sha256:fd1464672976ab84e4d03ecc29f1114215b2a398ebcd3fd1aa99fea92ddb08d7`.
+`sha256:27a3e997939d2c40f2a25a310fbe1598755267dfa5323b6c524edcee6720eed3`.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
 - Abschlussbericht: `894ce7bafe95cf4f8c4abb963e815e75d02c50f0774e6794ccf6816785b6d4e5`
+
+Der isolierte Stacktest bestätigte PostgreSQL-Initialisierung unter UID 999 und
+read-only RootFS, alle Migrationen, Organisations-Bootstrap, HTTP-Readiness 200,
+einen logischen Custom-Dump sowie dessen Restore in eine leere Testdatenbank.
+Beide Container hatten keine veröffentlichten Ports.
 
 ## Architektur und Ressourcen
 
@@ -97,7 +102,7 @@ synthetische Personen und Dokumente.
 ```bash
 bash scripts/preflight.sh
 docker compose build --pull web
-docker image inspect werkblatt:1e5400106fcd72770fe3bff13c2afb9b2b79a0df \
+docker image inspect werkblatt:23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754 \
   --format '{{.Id}}'
 docker compose up -d db
 docker compose run --rm web python manage.py migrate --noinput

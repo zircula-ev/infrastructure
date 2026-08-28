@@ -6,13 +6,13 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`1e5400106fcd72770fe3bff13c2afb9b2b79a0df` festgelegt. Ausgangspunkt des
+`23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754` festgelegt. Ausgangspunkt des
 Infrastructure-Branches `agent/add-werkblatt-pilot` ist
 `ab7654e5ce8d5c3fc24ebac52d738610b6721338`. Vor Merge müssen Werkblatt-CI,
 Infrastructure-Diff und Containerbuild vollständig erfolgreich sein.
 
-Werkblatt-CI Run 18 war vollständig erfolgreich. Der isolierte VPS-Build ergab
-Image-ID `sha256:fd1464672976ab84e4d03ecc29f1114215b2a398ebcd3fd1aa99fea92ddb08d7`.
+Werkblatt-CI Run 19 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
+`sha256:27a3e997939d2c40f2a25a310fbe1598755267dfa5323b6c524edcee6720eed3`.
 
 ## 2. Zielarchitektur auf dem VPS
 
@@ -74,8 +74,10 @@ abgewiesen. Werte erscheinen weder in Git, Chat, Screenshots noch Logs.
 Der tägliche Restic-Lauf und externe Spiegel waren beim Preflight gesund. Der
 Branch ergänzt einen PostgreSQL-Custom-Dump der Werkblatt-Datenbank; rohe
 Werkblatt-PostgreSQL-Dateien werden als primäre Restore-Quelle ausgeschlossen.
-Ein tatsächlicher isolierter Restore mit Snapshot-Hash- und PDF-Abrufvergleich
-ist nach erstem synthetischen Backup noch auszuführen.
+Ein logischer Dump und Restore in eine leere isolierte Testdatenbank war
+erfolgreich; die synthetische Organisation war danach vorhanden. Ein
+Restoretest aus dem tatsächlichen Restic-Lauf einschließlich Medien bleibt nach
+dem ersten vollständigen synthetischen Backup auszuführen.
 
 ## 10. Monitoring und Healthchecks
 
@@ -96,7 +98,9 @@ Rollback.
 ## 12. Synthetischer End-to-End-Test
 
 Lokale Fach-, Security-, Static-, PDF- und Storage-Tests sowie Compose-, Caddy-
-und isolierter VPS-Imagebuild sind erfolgreich. Die zwei PDF-Durchläufe waren
+und isolierter VPS-Imagebuild sind erfolgreich. PostgreSQL-Initialisierung,
+Migration, Bootstrap, logischer Dump/Restore und Readiness 200 waren unter den
+vorgesehenen Containerrestriktionen erfolgreich; es gab keine Hostports. Die zwei PDF-Durchläufe waren
 für Teilnahmeliste und Abschlussbericht jeweils byte-identisch. Der reale Weg
 Login → Workshop → Teilnehmende → Vorlage → Dokumentation → Finalisierung →
 WeasyPrint-PDF → WebDAV → Download bleibt bis DNS-Propagation, Authentik-Provider
