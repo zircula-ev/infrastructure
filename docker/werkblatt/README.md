@@ -56,13 +56,21 @@ cp .env.example .env
 chmod 600 .env
 ```
 
-Die fünf Secret-Dateien werden interaktiv erstellt, jeweils mit Modus 600:
+Die sechs gemounteten Secret-Dateien werden interaktiv erstellt, jeweils mit
+Modus 600. Das Datenbankpasswort liegt als identische, aber getrennt
+berechtigte Kopie für beide Container vor:
 
 - `secrets/django_secret_key`
-- `secrets/postgres_password`
+- `secrets/postgres_password_web` (UID 10001)
+- `secrets/postgres_password_db` (UID 999)
 - `secrets/oidc_client_secret`
 - `secrets/pretix_api_token`
 - `secrets/webdav_password`
+
+Alle übrigen Secret-Dateien gehören UID 10001. Die Trennung ist notwendig, da
+Compose dateibasierte Secrets als Bind-Mount mit den Host-Dateirechten
+bereitstellt. Die beiden Passwortdateien sind keine unabhängigen Werte und
+müssen bei einer Rotation atomar aus derselben neuen Quelle ersetzt werden.
 
 Kein Wert wird in Git, Chat, Shell-History oder Logs ausgegeben. `.env` enthält
 nur nicht geheime Werte, bleibt aufgrund der Betriebsinformationen dennoch

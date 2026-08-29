@@ -64,10 +64,13 @@ geprüft. Finalisierung und externer Storage bleiben fachlich getrennt.
 
 ## 8. Secret-Handling
 
-`.env` enthält keine Secrets und hat Modus 600. Fünf einzelne, ignorierte
+`.env` enthält keine Secrets und hat Modus 600. Sechs einzelne, ignorierte
 Secret-Dateien haben ebenfalls Modus 600 und werden als Compose-Secrets
-read-only gemountet. Direkter und `*_FILE`-Wert gleichzeitig wird von Werkblatt
-abgewiesen. Werte erscheinen weder in Git, Chat, Screenshots noch Logs.
+read-only gemountet. Das identische Datenbankpasswort wird wegen der
+dateibasierten Bind-Mount-Rechte getrennt für Web-UID 10001 und DB-UID 999
+bereitgestellt; die übrigen Secrets gehören UID 10001. Direkter und
+`*_FILE`-Wert gleichzeitig wird von Werkblatt abgewiesen. Werte erscheinen
+weder in Git, Chat, Screenshots noch Logs.
 
 ## 9. Backup und Restore
 

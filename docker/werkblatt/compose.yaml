@@ -11,13 +11,13 @@ services:
       POSTGRES_HOST: db
       POSTGRES_PORT: "5432"
       DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret_key
-      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password_web
       OIDC_CLIENT_SECRET_FILE: /run/secrets/oidc_client_secret
       PRETIX_API_TOKEN_FILE: /run/secrets/pretix_api_token
       WEBDAV_PASSWORD_FILE: /run/secrets/webdav_password
     secrets:
       - django_secret_key
-      - postgres_password
+      - postgres_password_web
       - oidc_client_secret
       - pretix_api_token
       - webdav_password
@@ -71,9 +71,9 @@ services:
     environment:
       POSTGRES_DB: werkblatt
       POSTGRES_USER: werkblatt
-      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password_db
     secrets:
-      - postgres_password
+      - postgres_password_db
     read_only: true
     user: "999:999"
     cap_drop:
@@ -110,8 +110,10 @@ services:
 secrets:
   django_secret_key:
     file: ./secrets/django_secret_key
-  postgres_password:
-    file: ./secrets/postgres_password
+  postgres_password_web:
+    file: ./secrets/postgres_password_web
+  postgres_password_db:
+    file: ./secrets/postgres_password_db
   oidc_client_secret:
     file: ./secrets/oidc_client_secret
   pretix_api_token:

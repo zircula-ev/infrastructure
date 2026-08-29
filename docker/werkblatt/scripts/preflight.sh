@@ -19,7 +19,8 @@ fi
 
 required_secrets=(
   django_secret_key
-  postgres_password
+  postgres_password_web
+  postgres_password_db
   oidc_client_secret
   pretix_api_token
   webdav_password
@@ -33,6 +34,14 @@ for name in "${required_secrets[@]}"; do
   fi
   if [[ "$(stat -c '%a' "${path}")" != "600" ]]; then
     echo >&2 "FEHLER: ${path} benötigt Modus 600."
+    exit 1
+  fi
+  expected_uid=10001
+  if [[ "${name}" == postgres_password_db ]]; then
+    expected_uid=999
+  fi
+  if [[ "$(stat -c '%u' "${path}")" != "${expected_uid}" ]]; then
+    echo >&2 "FEHLER: ${path} benötigt Eigentümer-UID ${expected_uid}."
     exit 1
   fi
 done
