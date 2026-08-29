@@ -4,8 +4,8 @@ set -Eeuo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-readonly werkblatt_image="werkblatt:1e0b8552fd1b76a1686fa74b3f53149d7b2c557f"
-readonly expected_image_id="sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f"
+readonly werkblatt_image="werkblatt:5ab93a4546ac74bcaa68c889f180f2d40373dc0d"
+readonly expected_image_id="sha256:2ef6f18be634e0a9ed85e4c27d6c45549ba34222edf58ddaa86d7a49f1c52938"
 
 if [[ ! -f .env ]]; then
   echo >&2 "FEHLER: docker/werkblatt/.env fehlt."
@@ -82,6 +82,8 @@ required_configuration=(
   OIDC_ISSUER
   OIDC_CLIENT_ID
   OIDC_ALLOWED_GROUPS
+  OIDC_ADMIN_GROUPS
+  OIDC_EDITOR_GROUPS
   PRETIX_ORGANIZER
   WEBDAV_BASE_URL
   WEBDAV_USERNAME
