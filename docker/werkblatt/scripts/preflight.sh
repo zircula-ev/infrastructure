@@ -37,9 +37,32 @@ for name in "${required_secrets[@]}"; do
   fi
 done
 
-set -a
-source .env
-set +a
+env_value() {
+  local name="$1" line value="" first last
+  local matches=0
+
+  while IFS= read -r line || [[ -n "${line}" ]]; do
+    line="${line%$'\r'}"
+    if [[ "${line}" == "${name}="* ]]; then
+      matches="$((matches + 1))"
+      value="${line#*=}"
+    fi
+  done <.env
+
+  if [[ "${matches}" -ne 1 ]]; then
+    return 1
+  fi
+
+  if [[ -n "${value}" ]]; then
+    first="${value:0:1}"
+    last="${value: -1}"
+    if [[ "${#value}" -ge 2 && "${first}" == "${last}" && ( "${first}" == '"' || "${first}" == "'" ) ]]; then
+      value="${value:1:${#value}-2}"
+    fi
+  fi
+
+  printf '%s' "${value}"
+}
 
 required_configuration=(
   DJANGO_ALLOWED_HOSTS
@@ -56,7 +79,10 @@ required_configuration=(
 )
 
 for name in "${required_configuration[@]}"; do
-  value="${!name:-}"
+  if ! value="$(env_value "${name}")"; then
+    echo >&2 "FEHLER: ${name} fehlt oder ist mehrfach gesetzt."
+    exit 1
+  fi
   if [[ -z "${value}" || "${value}" == *CHANGE_ME* ]]; then
     echo >&2 "FEHLER: ${name} fehlt oder enthält noch einen Platzhalter."
     exit 1
