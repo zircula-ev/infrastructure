@@ -1,6 +1,6 @@
 # 04 – Aktueller Stand
 
-Stand: 26.08.2026
+Stand: 29.08.2026
 
 ## Ziel
 
@@ -97,6 +97,25 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Backup-Smoke-Test mit lesbarem PostgreSQL-Dump, Uploadarchiv und
   SHA-256-Prüfsummen erfolgreich; isolierter Restore und Aufbewahrungsregeln
   bleiben regelmäßige Betriebsaufgaben gemäß `docs/13-libredesk.md`
+
+### Werkblatt (Phase-4a-Preflight, noch kein Phase-4b-Rollout)
+
+- isolierter Web- und PostgreSQL-17-Container ohne Hostports
+- Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
+  im internen `werkblatt_internal`-Netz
+- geprüftes Werkblatt-Image `b0618d34ac97f2384bac59ef632cbaa4e7746429`
+  mit Image-ID
+  `sha256:a01cd9ddc1f72b7bc4347047005a1c597b4af609e745cb6a039a6fee94bf0012`
+- interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
+  unter `werkblatt.zircula.org` erfolgreich
+- Authentik-Application/-Provider und getrennte Gruppen `Werkblatt Admins` und
+  `Werkblatt Users` additiv angelegt; reale Login-/Ablehnungstests noch offen
+- explizit begrenzter Pretix-Testmode-Import für Event `blanko` mit einem
+  synthetischen Workshop und einer synthetischen Anmeldung erfolgreich
+- dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
+  Lesen und idempotentes Überschreiben einer synthetischen Probe erfolgreich
+- Phase 4b bleibt bis zum vollständigen E2E- und Restore-Nachweis ausdrücklich
+  nicht freigegeben; Details stehen in `docs/22-werkblatt-phase-4a-preflight.md`
 
 ### Backup nach nctest (produktiv)
 
