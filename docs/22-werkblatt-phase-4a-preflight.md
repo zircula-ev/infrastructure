@@ -6,13 +6,13 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754` festgelegt. Ausgangspunkt des
+`ca956da5a5b087b1c52e5fa7646978d9ec51e760` festgelegt. Ausgangspunkt des
 Infrastructure-Branches `agent/add-werkblatt-pilot` ist
 `ab7654e5ce8d5c3fc24ebac52d738610b6721338`. Vor Merge müssen Werkblatt-CI,
 Infrastructure-Diff und Containerbuild vollständig erfolgreich sein.
 
-Werkblatt-CI Run 19 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
-`sha256:27a3e997939d2c40f2a25a310fbe1598755267dfa5323b6c524edcee6720eed3`.
+Werkblatt-CI Run 21 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
+`sha256:2b06a4375bd57cabc73128ac3866a9daba7069cffec6789db9bb3a12b3aba592`.
 
 ## 2. Zielarchitektur auf dem VPS
 
@@ -49,7 +49,7 @@ sind Pflichtprüfungen.
 
 ## 6. Pretix
 
-Verwendet werden `https://www.pretix.eu`, Organizer `WERK`, ein eigener
+Verwendet werden der kanonische Ursprung `https://pretix.eu`, Organizer `werk`, ein eigener
 read-only Token und ein explizit benanntes synthetisches Testmode-Event. Ein in
 anderen Anwendungen vorhandenes Credential wird weder gelesen noch
 wiederverwendet. Testmode-Import ohne explizite Referenz wird von Werkblatt

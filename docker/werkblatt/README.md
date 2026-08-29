@@ -8,14 +8,14 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754` festgelegt. Das resultierende lokale
+`ca956da5a5b087b1c52e5fa7646978d9ec51e760` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Vor dem Rollout werden Build, Image-ID und
 CI-Ergebnis dokumentiert. PostgreSQL ist auf den bereits geprüften Image-Digest
 `sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b`
 festgelegt.
 
 Der isolierte VPS-Build dieses Stands ergab Image-ID
-`sha256:27a3e997939d2c40f2a25a310fbe1598755267dfa5323b6c524edcee6720eed3`.
+`sha256:2b06a4375bd57cabc73128ac3866a9daba7069cffec6789db9bb3a12b3aba592`.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
@@ -85,7 +85,9 @@ wird direkt in die lokale Secret-Datei übernommen.
 
 ## Pretix und Nextcloud
 
-Pretix erhält einen dedizierten read-only Token für Organizer `WERK`. Ein
+Pretix erhält einen dedizierten read-only Token für Organizer `werk`. Der
+kanonische API-Ursprung ist `https://pretix.eu`; die umleitende www-Variante
+wird nicht verwendet. Ein
 Testmode-Event wird ausschließlich mit expliziter Referenz importiert:
 
 ```bash
@@ -102,7 +104,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754 \
+docker image inspect werkblatt:ca956da5a5b087b1c52e5fa7646978d9ec51e760 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
