@@ -1,8 +1,8 @@
 services:
   web:
     build:
-      context: https://github.com/IndieStu/Werkblatt.git#ca956da5a5b087b1c52e5fa7646978d9ec51e760
-    image: werkblatt:ca956da5a5b087b1c52e5fa7646978d9ec51e760
+      context: https://github.com/IndieStu/Werkblatt.git#b0618d34ac97f2384bac59ef632cbaa4e7746429
+    image: werkblatt:b0618d34ac97f2384bac59ef632cbaa4e7746429
     container_name: werkblatt
     restart: unless-stopped
     env_file:
@@ -53,7 +53,7 @@ services:
           import urllib.request;
           urllib.request.urlopen(
           urllib.request.Request('http://127.0.0.1:8000/ready/',
-          headers={'Host':'werkblatt.zircula.org'}), timeout=2)
+          headers={'Host':'werkblatt.zircula.org','X-Forwarded-Proto':'https'}), timeout=2)
       interval: 30s
       timeout: 5s
       retries: 5
