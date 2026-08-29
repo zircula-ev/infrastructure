@@ -6,22 +6,19 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` festgelegt. Der aktuell auf dem VPS
+`6340eba2bfe505d753d34c033a9eb04feedc44d4` festgelegt. Der aktuell auf dem VPS
 geprüfte Ausgangsstand des Infrastructure-Repositories ist
-`246535b9048c8e6ee87147300616a08f2bbee996`.
+`f9b81bf20b395f6285a0b4369dc4c2b8b2d45b39`.
 
-Der isolierte VPS-Build mit Image-ID
-`sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`
-und Werkblatt-CI Run 26 beziehen sich auf den zuvor geprüften Commit
-`1e0b8552fd1b76a1686fa74b3f53149d7b2c557f`. Build, Image-ID, CI und E2E werden
-für den neuen Pin vor Phase 4b erneut verifiziert. Das geplante Pilotupdate führt
-zusätzlich die additive Migration `identities.0003_membership_editor_role` aus.
-Vor Migration und Containerwechsel sind
-ein logischer Datenbankdump, ein Medien-Checkpoint und der bisherige Image-Pin
-`b0618d34ac97f2384bac59ef632cbaa4e7746429` als Rollbackstand festzuhalten.
+Der unmittelbar vorherige Pilotstand ist
+`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
+`sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
+Der neue Pin behebt die Übergabe der ausgewählten Dokumentvorlage beim
+Finalisieren und enthält keine neue Migration. Beim Update wird ausschließlich
+der Webcontainer ersetzt; Datenbank, Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
-Image-ID `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
+Image-ID `sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
 Der laufende Pilotcontainer blieb dabei unverändert auf dem Rollbackstand.
 
 ## 2. Zielarchitektur auf dem VPS

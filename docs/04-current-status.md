@@ -104,12 +104,12 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
 - für das nächste kontrollierte Phase-4a-Pilotupdate isoliert gebauter Werkblatt-Pin
-  `cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
+  `6340eba2bfe505d753d34c033a9eb04feedc44d4` mit Image-ID
+  `sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`;
+  der unmittelbar vorherige Pilotstand `cc48e9a83295…` hatte die Image-ID
   `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`;
-  der vorherige Prüfstand `1e0b8552…` hatte die Image-ID
-  `sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`;
-  der laufende Stand bleibt bis zum gemergten Infrastructure-PR und
-  Pre-Update-Backup auf `b0618d34ac97f2384bac59ef632cbaa4e7746429`
+  der neue Stand behebt die Vorlagenauswahl beim Finalisieren, benötigt keine
+  Migration und wird erst nach gemergtem Infrastructure-PR aktiviert
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,
