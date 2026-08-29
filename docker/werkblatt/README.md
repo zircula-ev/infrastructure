@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`5ab93a4546ac74bcaa68c889f180f2d40373dc0d` festgelegt. Das resultierende lokale
+`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build, Image-ID und E2E-Ergebnis dieses
 neuen Stands werden vor Phase 4b erneut dokumentiert. PostgreSQL ist auf den
 bereits geprüften Image-Digest
@@ -18,13 +18,14 @@ festgelegt.
 Der vorherige isoliert geprüfte Stand war Commit
 `1e0b8552fd1b76a1686fa74b3f53149d7b2c557f` mit Image-ID
 `sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`.
-Der neue Stand ergänzt die feste Editor-Rolle und die additive Migration
-`identities.0003_membership_editor_role`. Die nachfolgenden Renderer- und
+Der neue Stand ergänzt die feste Editor-Rolle, die additive Migration
+`identities.0003_membership_editor_role`, das freigegebene Claim-Lockup auf
+öffentlichen Einstiegen und eine geschützte Logout-Aktion. Die nachfolgenden Renderer- und
 Stackergebnisse gehören noch zum vorherigen Prüfstand und werden für den neuen
 Pin erneut erhoben.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:2ef6f18be634e0a9ed85e4c27d6c45549ba34222edf58ddaa86d7a49f1c52938`.
+`sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
@@ -127,7 +128,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:5ab93a4546ac74bcaa68c889f180f2d40373dc0d \
+docker image inspect werkblatt:cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:

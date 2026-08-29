@@ -6,7 +6,7 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`5ab93a4546ac74bcaa68c889f180f2d40373dc0d` festgelegt. Der aktuell auf dem VPS
+`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` festgelegt. Der aktuell auf dem VPS
 geprüfte Ausgangsstand des Infrastructure-Repositories ist
 `246535b9048c8e6ee87147300616a08f2bbee996`.
 
@@ -21,7 +21,7 @@ ein logischer Datenbankdump, ein Medien-Checkpoint und der bisherige Image-Pin
 `b0618d34ac97f2384bac59ef632cbaa4e7746429` als Rollbackstand festzuhalten.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
-Image-ID `sha256:2ef6f18be634e0a9ed85e4c27d6c45549ba34222edf58ddaa86d7a49f1c52938`.
+Image-ID `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
 Der laufende Pilotcontainer blieb dabei unverändert auf dem Rollbackstand.
 
 ## 2. Zielarchitektur auf dem VPS

@@ -104,8 +104,8 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
 - für das nächste kontrollierte Phase-4a-Pilotupdate isoliert gebauter Werkblatt-Pin
-  `5ab93a4546ac74bcaa68c889f180f2d40373dc0d` mit Image-ID
-  `sha256:2ef6f18be634e0a9ed85e4c27d6c45549ba34222edf58ddaa86d7a49f1c52938`;
+  `cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
+  `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`;
   der vorherige Prüfstand `1e0b8552…` hatte die Image-ID
   `sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`;
   der laufende Stand bleibt bis zum gemergten Infrastructure-PR und
