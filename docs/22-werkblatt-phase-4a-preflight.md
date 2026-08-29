@@ -63,8 +63,9 @@ Benötigt werden Application/Provider `Werkblatt`, confidential Authorization
 Code mit PKCE S256, die exakte Callback-URL und ausschließlich die Gruppen
 `Werkblatt Users`, `Werkblatt Editors` und `Werkblatt Admins`. Provider,
 Application, Claim-Mapping, User- und Admin-Gruppe wurden nach geprüftem
-Authentik-Backup additiv angelegt. Die Editor-Gruppe und ihre Zuweisung sind vor
-dem abschließenden OIDC-Rollentest additiv zu ergänzen.
+Authentik-Backup additiv angelegt. Die leere Editor-Gruppe wurde anschließend
+ebenfalls additiv angelegt; bestehende Mitgliedschaften blieben unverändert. Eine
+bewusste Testzuweisung ist erst für den abschließenden OIDC-Rollentest notwendig.
 Discovery bestätigt den anwendungsspezifischen Issuer und PKCE S256. Das Secret
 liegt ausschließlich auf dem Host. User-, Editor-, Admin- und Ablehnungsfall
 bleiben als Browserprüfungen offen.
@@ -115,6 +116,13 @@ vertrauenswürdigen Reverse Proxy gesetzten HTTPS-Header; Blackbox prüft öffen
 `/health/` ohne Datenbank. Logs rotieren bei 10 MiB mit fünf Dateien;
 Gunicorn-Accesslogs sind deaktiviert. PII, Dokumentinhalte, Tokens und komplette
 WebDAV-Pfade dürfen nicht als Logs oder Labels erscheinen.
+
+Die lokale `.env` wurde nach Merge des Infrastructure-Pins um die nicht geheimen
+Kooperationsangaben sowie `OIDC_EDITOR_GROUPS` ergänzt; `OIDC_ALLOWED_GROUPS`
+enthält nun Admin-, Editor- und Workshop-User-Gruppe. Dabei wurden keine
+Secret-Werte gelesen oder ausgegeben. Der laufende Altcontainer blieb
+unverändert und übernimmt diese Werte erst bei einem ausdrücklich freigegebenen
+kontrollierten Update.
 
 ## 11. Migration und Rollback
 
