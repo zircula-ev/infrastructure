@@ -1,5 +1,6 @@
 # PostgreSQL is restored from the logical pg_dumpall backup.
 /srv/zircula/postgres
+/srv/zircula/werkblatt/postgres
 
 # Redis is cache, locking and queue state, not a primary restore source.
 /srv/zircula/redis

@@ -33,6 +33,7 @@ Gesichert werden insbesondere:
 - Nextcloud HTML, Konfiguration, Apps und Nutzerdaten
 - logische Dumps aller PostgreSQL-Datenbanken, darunter Nextcloud, Authentik und
   LibreDesk
+- eigener logischer Custom-Dump der isolierten Werkblatt-Datenbank
 - Authentik-Daten, Zertifikate und Templates
 - Caddy-Zertifikats- und Laufzeitdaten
 - Grafana über eine konsistente SQLite-Kopie
@@ -112,7 +113,8 @@ quartalsweise in einer isolierten Umgebung geprüft:
 
 1. gewünschten Restic-Snapshot auswählen
 2. Snapshot in ein leeres Restore-Verzeichnis zurückspielen
-3. PostgreSQL aus dem komprimierten logischen Dump rekonstruieren
+3. PostgreSQL aus dem komprimierten logischen Dump und Werkblatt aus seinem
+   separaten Custom-Dump rekonstruieren
 4. Grafana- und Vaultwarden-Kopien auf Integrität prüfen
 5. Nextcloud-Konfiguration, Apps, Daten und Eigentümer wiederherstellen
 6. Nextcloud-Status, Login und Stichproben von Dateien und Team Folders prüfen

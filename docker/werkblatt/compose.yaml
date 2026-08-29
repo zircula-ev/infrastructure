@@ -1,0 +1,128 @@
+services:
+  web:
+    build:
+      context: https://github.com/IndieStu/Werkblatt.git#23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754
+    image: werkblatt:23c6f70f4aeb1ac548918cb2fd0a67af8f6f0754
+    container_name: werkblatt
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret_key
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      OIDC_CLIENT_SECRET_FILE: /run/secrets/oidc_client_secret
+      PRETIX_API_TOKEN_FILE: /run/secrets/pretix_api_token
+      WEBDAV_PASSWORD_FILE: /run/secrets/webdav_password
+    secrets:
+      - django_secret_key
+      - postgres_password
+      - oidc_client_secret
+      - pretix_api_token
+      - webdav_password
+    read_only: true
+    user: "10001:10001"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 1536m
+    cpus: 2.0
+    pids_limit: 256
+    tmpfs:
+      - /tmp/werkblatt:rw,noexec,nosuid,nodev,size=256m,mode=1777
+    volumes:
+      - type: bind
+        source: /srv/zircula/werkblatt/media
+        target: /app/var/media
+        bind:
+          create_host_path: false
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - frontend
+      - internal
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - >-
+          import urllib.request;
+          urllib.request.urlopen(
+          urllib.request.Request('http://127.0.0.1:8000/ready/',
+          headers={'Host':'werkblatt.zircula.org'}), timeout=2)
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "5"
+
+  db:
+    image: postgres@sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b
+    container_name: werkblatt-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: werkblatt
+      POSTGRES_USER: werkblatt
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    read_only: true
+    user: "999:999"
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 1024m
+    cpus: 1.0
+    pids_limit: 256
+    shm_size: 256m
+    tmpfs:
+      - /run/postgresql:rw,nosuid,nodev,size=16m,mode=1777
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+    volumes:
+      - type: bind
+        source: /srv/zircula/werkblatt/postgres
+        target: /var/lib/postgresql/data
+        bind:
+          create_host_path: false
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U werkblatt -d werkblatt"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "5"
+
+secrets:
+  django_secret_key:
+    file: ./secrets/django_secret_key
+  postgres_password:
+    file: ./secrets/postgres_password
+  oidc_client_secret:
+    file: ./secrets/oidc_client_secret
+  pretix_api_token:
+    file: ./secrets/pretix_api_token
+  webdav_password:
+    file: ./secrets/webdav_password
+
+networks:
+  frontend:
+    external: true
+    name: zircula_frontend
+  internal:
+    name: werkblatt_internal
+    internal: true

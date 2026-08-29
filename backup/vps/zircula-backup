@@ -16,6 +16,8 @@ readonly started_at="$(date +%s)"
 
 readonly database_dump="${staging_directory}/postgres-all.sql.zst"
 readonly database_dump_temporary="${database_dump}.tmp"
+readonly werkblatt_database_dump="${staging_directory}/werkblatt.pgdump"
+readonly werkblatt_database_dump_temporary="${werkblatt_database_dump}.tmp"
 readonly grafana_source="/srv/zircula/grafana/data/grafana.db"
 readonly grafana_backup="${staging_directory}/grafana.db"
 readonly grafana_backup_temporary="${grafana_backup}.tmp"
@@ -55,6 +57,14 @@ vaultwarden_compose() {
     --project-directory "${infrastructure_directory}/docker/vaultwarden" \
     --env-file "${infrastructure_directory}/docker/vaultwarden/.env" \
     -f "${infrastructure_directory}/docker/vaultwarden/compose.yaml" \
+    "$@"
+}
+
+werkblatt_compose() {
+  docker compose \
+    --project-directory "${infrastructure_directory}/docker/werkblatt" \
+    --env-file "${infrastructure_directory}/docker/werkblatt/.env" \
+    -f "${infrastructure_directory}/docker/werkblatt/compose.yaml" \
     "$@"
 }
 
@@ -101,6 +111,8 @@ cleanup() {
   rm -f \
     "${database_dump}" \
     "${database_dump_temporary}" \
+    "${werkblatt_database_dump}" \
+    "${werkblatt_database_dump_temporary}" \
     "${grafana_backup}" \
     "${grafana_backup_temporary}" \
     "${vaultwarden_backup}" \
@@ -137,7 +149,9 @@ for path in \
   "${infrastructure_directory}/docker/nextcloud/compose.yaml" \
   "${infrastructure_directory}/docker/nextcloud/.env" \
   "${infrastructure_directory}/docker/vaultwarden/compose.yaml" \
-  "${infrastructure_directory}/docker/vaultwarden/.env"
+  "${infrastructure_directory}/docker/vaultwarden/.env" \
+  "${infrastructure_directory}/docker/werkblatt/compose.yaml" \
+  "${infrastructure_directory}/docker/werkblatt/.env"
 do
   if [[ ! -r "${path}" ]]; then
     printf 'Required path is not readable: %s\n' "${path}" >&2
@@ -180,6 +194,17 @@ postgres_compose exec -T postgres \
       -o "${database_dump_temporary}"
 
 mv -f "${database_dump_temporary}" "${database_dump}"
+
+werkblatt_compose exec -T db \
+  pg_dump --format=custom --username=werkblatt --dbname=werkblatt \
+  >"${werkblatt_database_dump_temporary}"
+
+if [[ ! -s "${werkblatt_database_dump_temporary}" ]]; then
+  printf '%s\n' "Werkblatt database dump is empty" >&2
+  exit 65
+fi
+
+mv -f "${werkblatt_database_dump_temporary}" "${werkblatt_database_dump}"
 
 touch "${vaultwarden_marker}"
 vaultwarden_compose exec -T vaultwarden /vaultwarden backup

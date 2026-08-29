@@ -53,7 +53,8 @@ Gesichert werden insbesondere:
 - Caddy-Zertifikats- und Laufzeitdaten
 - Grafana-Daten über eine konsistente SQLite-Kopie
 - Vaultwarden über die eingebaute SQLite-Sicherung sowie Anhänge und Schlüssel
-- LibreDesk-Uploads und alle PostgreSQL-Datenbanken
+- LibreDesk-Uploads, alle zentralen PostgreSQL-Datenbanken und der separate
+  Werkblatt-Datenbankdump
 - Alertmanager-Zustand
 - produktive lokale `.env`- und Secret-Dateien im Infrastrukturcheckout
 - versionierte Betriebs- und Compose-Konfiguration
