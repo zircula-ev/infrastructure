@@ -8,14 +8,17 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`b0618d34ac97f2384bac59ef632cbaa4e7746429` festgelegt. Das resultierende lokale
+`1e0b8552fd1b76a1686fa74b3f53149d7b2c557f` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Vor dem Rollout werden Build, Image-ID und
 CI-Ergebnis dokumentiert. PostgreSQL ist auf den bereits geprüften Image-Digest
 `sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b`
 festgelegt.
 
 Der isolierte VPS-Build dieses Stands ergab Image-ID
-`sha256:a01cd9ddc1f72b7bc4347047005a1c597b4af609e745cb6a039a6fee94bf0012`.
+`sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`.
+Werkblatt-CI Run 26 war vollständig erfolgreich. Der Stand ergänzt persönliche
+Darstellungseinstellungen und die Migration `identities.0002_user_preferences`;
+organisationsweite Werte bleiben davon unberührt.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
@@ -112,7 +115,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:b0618d34ac97f2384bac59ef632cbaa4e7746429 \
+docker image inspect werkblatt:1e0b8552fd1b76a1686fa74b3f53149d7b2c557f \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
