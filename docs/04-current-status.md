@@ -112,9 +112,13 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   Pre-Update-Backup auf `b0618d34ac97f2384bac59ef632cbaa4e7746429`
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
-- Authentik-Application/-Provider und getrennte Gruppen `Werkblatt Admins` und
-  `Werkblatt Users` additiv angelegt; `Werkblatt Editors` ist vor dem
-  Vier-Fälle-Rollentest additiv zu ergänzen; reale Login-/Ablehnungstests noch offen
+- Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,
+  `Werkblatt Editors` und `Werkblatt Users` additiv angelegt; die Editor-Gruppe
+  ist zunächst leer und verändert keine bestehenden Mitgliedschaften; reale
+  Login-/Ablehnungstests noch offen
+- lokale, weiterhin mit Modus 600 geschützte Werkblatt-Konfiguration enthält
+  Autor, dauerhafte Zircula-Kooperation und alle drei OIDC-Gruppen; der laufende
+  Container hat diese Werte noch nicht geladen
 - explizit begrenzter Pretix-Testmode-Import für Event `blanko` mit einem
   synthetischen Workshop und einer synthetischen Anmeldung erfolgreich
 - dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
