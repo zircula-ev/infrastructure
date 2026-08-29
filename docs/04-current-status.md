@@ -103,9 +103,12 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - isolierter Web- und PostgreSQL-17-Container ohne Hostports
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
-- geprüftes Werkblatt-Image `b0618d34ac97f2384bac59ef632cbaa4e7746429`
+- für das nächste kontrollierte Phase-4a-Pilotupdate geprüftes Werkblatt-Image
+  `1e0b8552fd1b76a1686fa74b3f53149d7b2c557f`
   mit Image-ID
-  `sha256:a01cd9ddc1f72b7bc4347047005a1c597b4af609e745cb6a039a6fee94bf0012`
+  `sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`;
+  der laufende Stand bleibt bis zum gemergten Infrastructure-PR und
+  Pre-Update-Backup auf `b0618d34ac97f2384bac59ef632cbaa4e7746429`
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und getrennte Gruppen `Werkblatt Admins` und

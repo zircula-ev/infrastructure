@@ -6,12 +6,17 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`b0618d34ac97f2384bac59ef632cbaa4e7746429` festgelegt. Der aktuell auf dem VPS
-geprüfte Infrastructure-Commit ist
-`d4913ae2616b2ba74d9a68a9562bcd452680cd2b`.
+`1e0b8552fd1b76a1686fa74b3f53149d7b2c557f` festgelegt. Der aktuell auf dem VPS
+geprüfte Ausgangsstand des Infrastructure-Repositories ist
+`3b67c386ab7827a06fe12f35af95e2e827e145c8`.
 
-Werkblatt-CI Run 22 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
-`sha256:a01cd9ddc1f72b7bc4347047005a1c597b4af609e745cb6a039a6fee94bf0012`.
+Werkblatt-CI Run 26 war für diesen Commit vollständig erfolgreich. Der isolierte
+VPS-Build ergab Image-ID
+`sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`.
+Das geplante Pilotupdate führt ausschließlich die additive Migration
+`identities.0002_user_preferences` aus. Vor Migration und Containerwechsel sind
+ein logischer Datenbankdump, ein Medien-Checkpoint und der bisherige Image-Pin
+`b0618d34ac97f2384bac59ef632cbaa4e7746429` als Rollbackstand festzuhalten.
 
 ## 2. Zielarchitektur auf dem VPS
 
