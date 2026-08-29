@@ -53,8 +53,9 @@ Gesichert werden insbesondere:
 - Caddy-Zertifikats- und Laufzeitdaten
 - Grafana-Daten über eine konsistente SQLite-Kopie
 - Vaultwarden über die eingebaute SQLite-Sicherung sowie Anhänge und Schlüssel
-- LibreDesk-Uploads, alle zentralen PostgreSQL-Datenbanken und der separate
-  Werkblatt-Datenbankdump
+- LibreDesk-Uploads und alle zentralen PostgreSQL-Datenbanken
+- nach Installation (markiert durch `docker/werkblatt/.env`) verpflichtend der
+  separate Werkblatt-Datenbankdump
 - Alertmanager-Zustand
 - produktive lokale `.env`- und Secret-Dateien im Infrastrukturcheckout
 - versionierte Betriebs- und Compose-Konfiguration

@@ -29,6 +29,7 @@ readonly vaultwarden_marker="${staging_directory}/.vaultwarden-backup-marker"
 maintenance_enabled_by_script=false
 backup_success=0
 vaultwarden_generated_backup=""
+werkblatt_enabled=false
 
 exec 9>/run/lock/zircula-backup.lock
 if ! flock -n 9; then
@@ -150,14 +151,21 @@ for path in \
   "${infrastructure_directory}/docker/nextcloud/.env" \
   "${infrastructure_directory}/docker/vaultwarden/compose.yaml" \
   "${infrastructure_directory}/docker/vaultwarden/.env" \
-  "${infrastructure_directory}/docker/werkblatt/compose.yaml" \
-  "${infrastructure_directory}/docker/werkblatt/.env"
+  "${infrastructure_directory}/docker/werkblatt/compose.yaml"
 do
   if [[ ! -r "${path}" ]]; then
     printf 'Required path is not readable: %s\n' "${path}" >&2
     exit 78
   fi
 done
+
+if [[ -e "${infrastructure_directory}/docker/werkblatt/.env" ]]; then
+  if [[ ! -r "${infrastructure_directory}/docker/werkblatt/.env" ]]; then
+    printf '%s\n' "Werkblatt is installed but its .env is not readable" >&2
+    exit 78
+  fi
+  werkblatt_enabled=true
+fi
 
 install -d -o root -g zircula-backup -m 0750 \
   "$(dirname "${repository}")" \
@@ -195,16 +203,18 @@ postgres_compose exec -T postgres \
 
 mv -f "${database_dump_temporary}" "${database_dump}"
 
-werkblatt_compose exec -T db \
-  pg_dump --format=custom --username=werkblatt --dbname=werkblatt \
-  >"${werkblatt_database_dump_temporary}"
+if [[ "${werkblatt_enabled}" == true ]]; then
+  werkblatt_compose exec -T db \
+    pg_dump --format=custom --username=werkblatt --dbname=werkblatt \
+    >"${werkblatt_database_dump_temporary}"
 
-if [[ ! -s "${werkblatt_database_dump_temporary}" ]]; then
-  printf '%s\n' "Werkblatt database dump is empty" >&2
-  exit 65
+  if [[ ! -s "${werkblatt_database_dump_temporary}" ]]; then
+    printf '%s\n' "Werkblatt database dump is empty" >&2
+    exit 65
+  fi
+
+  mv -f "${werkblatt_database_dump_temporary}" "${werkblatt_database_dump}"
 fi
-
-mv -f "${werkblatt_database_dump_temporary}" "${werkblatt_database_dump}"
 
 touch "${vaultwarden_marker}"
 vaultwarden_compose exec -T vaultwarden /vaultwarden backup
