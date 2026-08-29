@@ -15,6 +15,7 @@ flowchart TD
     Caddy --> Grafana
     Caddy --> Vaultwarden
     Caddy --> LibreDesk
+    Caddy --> Werkblatt
     Caddy --> TalkHPB
 
     Nextcloud --> PostgreSQL
@@ -28,6 +29,10 @@ flowchart TD
     Authentik --> PostgreSQL
     LibreDesk --> PostgreSQL
     LibreDesk --> LibreDeskRedis[LibreDesk Redis]
+    Werkblatt --> WerkblattDB[Werkblatt PostgreSQL]
+    Werkblatt -.->|OIDC| Authentik
+    Werkblatt -->|HTTPS API| Pretix
+    Werkblatt -->|HTTPS WebDAV| Nextcloud
     Vaultwarden -.->|OIDC| Authentik
     LibreDesk -.->|OIDC| Authentik
 
@@ -44,7 +49,7 @@ flowchart TD
 ## Frontend-Netz
 
 `zircula_frontend` verbindet Caddy mit Nextcloud, Client Push, Collabora,
-Authentik, Grafana, Vaultwarden, LibreDesk und Talk HPB. Nur Caddy veröffentlicht 80/443; Talk veröffentlicht
+Authentik, Grafana, Vaultwarden, LibreDesk, Werkblatt und Talk HPB. Nur Caddy veröffentlicht 80/443; Talk veröffentlicht
 zusätzlich den für TURN/STUN benötigten Port 3478 über TCP und UDP.
 
 ## Backend-Netz
@@ -61,6 +66,15 @@ ist intern, besitzt keinen Hostport und ist weder mit Caddy noch mit dem
 gemeinsamen Backend-Netz verbunden. Der extrahierte Dokumenttext im Suchindex
 bleibt dadurch außerhalb anderer Anwendungscontainer. Elasticsearch ist eine
 regenerierbare Hilfsplattform und keine Primärdatenquelle.
+
+## Werkblatt-Netz
+
+`werkblatt_internal` verbindet ausschließlich den Werkblatt-Webcontainer mit
+seinem eigenen PostgreSQL-17-Container. Nur der Webcontainer ist zusätzlich an
+`zircula_frontend` angebunden; die Datenbank besitzt weder Hostport noch Zugang
+zum gemeinsamen Backend-Netz. Ausgehende HTTPS-Verbindungen zu Pretix und
+Nextcloud/WebDAV erfolgen aus dem Webcontainer. Diese Aufteilung ist die
+Zircula-Pilotarchitektur und keine Vorgabe für allgemeine Werkblatt-Installationen.
 
 ## Monitoring-Netz
 
@@ -83,6 +97,11 @@ Compose-Dateien, Vorlagen und Betriebsdokumentation liegen im Repository unter
 `/opt/zircula/git/infrastructure`. Der regenerierbare Elasticsearch-Index liegt
 unter `/srv/zircula/elasticsearch` und wird bewusst nicht als primäre
 Wiederherstellungsquelle gesichert.
+
+Werkblatt-Medien liegen unter `/srv/zircula/werkblatt/media`; die Datenbankdateien
+liegen unter `/srv/zircula/werkblatt/postgres`. Wiederherstellungen verwenden
+den logischen Werkblatt-Custom-Dump und den dazugehörigen Medienstand, nicht die
+rohen PostgreSQL-Dateien als primäre Restore-Quelle.
 
 Hostbezogene Stacks außerhalb des VPS werden unter `hosts/<hostname>`
 dokumentiert. Laufzeitdaten und Secrets bleiben auf dem jeweiligen Host.
@@ -120,6 +139,7 @@ Aufbewahrung und Restore-Verfahren stehen in `docs/07-backup-restore.md` und
 | Grafana | `monitoring.zircula.org` |
 | Vaultwarden | `vault.zircula.org` |
 | LibreDesk | `support.zircula.org` |
+| Werkblatt | `werkblatt.zircula.org` |
 | Talk HPB | `talk.cloud.zircula.org` |
 | VPS/SSH | `vps.zircula.org` |
 

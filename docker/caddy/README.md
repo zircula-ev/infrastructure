@@ -14,6 +14,7 @@ Zircula-Infrastruktur bereit.
 | `monitoring.zircula.org` | `grafana:3000` |
 | `vault.zircula.org` | `vaultwarden:8080` |
 | `support.zircula.org` | `libredesk:9000` |
+| `werkblatt.zircula.org` | `werkblatt:8000` |
 | `talk.cloud.zircula.org` | `talk-hpb:8081` |
 
 Die spezifischere Route `/push/*` entfernt das Präfix und leitet HTTP- sowie
@@ -66,6 +67,15 @@ docker compose exec caddy caddy validate --config /etc/caddy/Caddyfile
 docker compose exec caddy caddy fmt --diff /etc/caddy/Caddyfile
 ```
 
+Wurde die Host-Datei durch Git ersetzt, wird vor einem Recreate zusätzlich genau
+diese neue Host-Fassung unabhängig vom laufenden Bind-Mount geprüft:
+
+```bash
+docker run --rm \
+  -v "$PWD/Caddyfile:/etc/caddy/Caddyfile:ro" \
+  caddy:2.11 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+```
+
 Nach erfolgreicher Prüfung:
 
 ```bash
@@ -79,7 +89,7 @@ Container noch die vorherige Fassung sehen. Fehlt eine neue Route trotz
 erfolgreichem Reload in der Container-Datei, wird Caddy kontrolliert neu erstellt:
 
 ```bash
-docker compose up -d --force-recreate caddy
+docker compose up -d --no-deps --force-recreate caddy
 docker compose ps
 docker compose logs --since=2m caddy
 ```
@@ -95,6 +105,11 @@ Rate-Limits und Auditlogs erwarteten, von Caddy überschriebenen Header
 `http://grafana:3000/api/health`, für Vaultwarden `http://vaultwarden:8080/alive`
 und für LibreDesk `http://libredesk:9000/health` aus dem Frontend-Netz geprüft. Caddys Reverse Proxy unterstützt die von
 Vaultwarden verwendeten WebSocket-Verbindungen ohne zusätzliche öffentliche Ports.
+Für Werkblatt wird vor der Veröffentlichung zusätzlich intern `/ready/` mit
+`Host: werkblatt.zircula.org` und `X-Forwarded-Proto: https` geprüft. Nach dem
+Caddy-Recreate muss `https://werkblatt.zircula.org/health/` öffentlich mit 200
+antworten. Der Webcontainer hängt dafür an `zircula_frontend`; die zugehörige
+Datenbank bleibt ausschließlich in `werkblatt_internal`.
 
 ## Sicherheit
 

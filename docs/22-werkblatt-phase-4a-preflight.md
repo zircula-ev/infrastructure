@@ -1,15 +1,14 @@
 # 22 – Werkblatt Phase 4a: VPS-Preflight
 
-Stand: 28. August 2026. Dieser Bericht dokumentiert die Vorbereitung des
+Stand: 29. August 2026. Dieser Bericht dokumentiert die laufende Prüfung des
 isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`b0618d34ac97f2384bac59ef632cbaa4e7746429` festgelegt. Ausgangspunkt des
-Infrastructure-Branches `agent/add-werkblatt-pilot` ist
-`ab7654e5ce8d5c3fc24ebac52d738610b6721338`. Vor Merge müssen Werkblatt-CI,
-Infrastructure-Diff und Containerbuild vollständig erfolgreich sein.
+`b0618d34ac97f2384bac59ef632cbaa4e7746429` festgelegt. Der aktuell auf dem VPS
+geprüfte Infrastructure-Commit ist
+`d4913ae2616b2ba74d9a68a9562bcd452680cd2b`.
 
 Werkblatt-CI Run 22 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
 `sha256:a01cd9ddc1f72b7bc4347047005a1c597b4af609e745cb6a039a6fee94bf0012`.
@@ -35,17 +34,27 @@ Manitu veröffentlicht autoritativ A `195.90.217.88` und AAAA
 beide neuen Werte. Der lokale Resolver hielt die alten Werte noch bis zum
 TTL-Ablauf im Cache. Caddy erhält ausschließlich den Host
 `werkblatt.zircula.org`, die vorhandenen Security-Header und
-`reverse_proxy werkblatt:8000`. TLS und Header werden erst nach öffentlicher
-DNS-Propagation abgenommen.
+`reverse_proxy werkblatt:8000`. A und AAAA zeigen auf den VPS; Caddy stellte nach
+Validierung und kontrolliertem Recreate ein gültiges Zertifikat bereit.
+`https://werkblatt.zircula.org/health/` antwortete mit 200. Nextcloud, Authentik,
+Vaultwarden und LibreDesk antworteten nach dem Caddy-Recreate ebenfalls mit 200.
+
+Der laufende Caddy-Container sah nach dem Git-Fast-forward noch den alten Inode
+der einzeln bind-gemounteten `Caddyfile`. Ein Reload meldete deshalb korrekt
+„config is unchanged“ und kannte die Werkblatt-Route nicht. Host-Datei und
+Container-Datei wurden per SHA-256 und Routenprüfung verglichen. Das in
+`docker/caddy/README.md` dokumentierte kontrollierte Caddy-Recreate übernahm
+anschließend den aktuellen Mount. Persistente ACME-Daten blieben erhalten.
 
 ## 5. Authentik
 
 Benötigt werden Application/Provider `Werkblatt`, confidential Authorization
 Code mit PKCE S256, die exakte Callback-URL und ausschließlich die Gruppen
-`Werkblatt Users` und `Werkblatt Admins`. Provider und Gruppen existieren noch
-nicht. Sie werden erst nach geprüftem Authentik-Backup additiv angelegt; das
-Secret wird direkt auf dem Host gespeichert. User-, Admin- und Ablehnungsfall
-sind Pflichtprüfungen.
+`Werkblatt Users` und `Werkblatt Admins`. Provider, Application, Claim-Mapping
+und beide Gruppen wurden nach geprüftem Authentik-Backup additiv angelegt.
+Discovery bestätigt den anwendungsspezifischen Issuer und PKCE S256. Das Secret
+liegt ausschließlich auf dem Host. User-, Admin- und Ablehnungsfall bleiben als
+Browserprüfungen offen.
 
 ## 6. Pretix
 
@@ -53,14 +62,18 @@ Verwendet werden der kanonische Ursprung `https://pretix.eu`, Organizer `werk`, 
 read-only Token und ein explizit benanntes synthetisches Testmode-Event. Ein in
 anderen Anwendungen vorhandenes Credential wird weder gelesen noch
 wiederverwendet. Testmode-Import ohne explizite Referenz wird von Werkblatt
-abgewiesen.
+abgewiesen. Der begrenzte Import von `blanko` synchronisierte erfolgreich genau
+einen synthetischen Workshop und eine synthetische aktive Anmeldung; Namen
+wurden bei der technischen Verifikation nicht ausgegeben.
 
 ## 7. WebDAV/Nextcloud
 
-Nextcloud ist erreichbar. Offen sind ein eigener technischer Benutzer, ein
-App-Passwort und ein dedizierter Werkblatt-Zielordner. Schreiben, Lesen,
-fehlgeschlagener Upload und idempotenter Retry werden mit synthetischem PDF
-geprüft. Finalisierung und externer Storage bleiben fachlich getrennt.
+Ein eigener technischer Benutzer, ein App-Passwort und der dedizierte Ordner
+`/Werkblatt` wurden angelegt. Schreiben, Lesen und idempotentes Überschreiben
+einer synthetischen Probe waren erfolgreich und byte-identisch. Der vollständige
+PDF-Upload aus Werkblatt und ein absichtlich fehlgeschlagener Upload mit Retry
+bleiben Bestandteil des E2E. Finalisierung und externer Storage bleiben fachlich
+getrennt.
 
 ## 8. Secret-Handling
 
@@ -103,31 +116,33 @@ Rollback.
 
 Lokale Fach-, Security-, Static-, PDF- und Storage-Tests sowie Compose-, Caddy-
 und isolierter VPS-Imagebuild sind erfolgreich. PostgreSQL-Initialisierung,
-Migration, Bootstrap, logischer Dump/Restore und Readiness 200 waren unter den
+Migration, Bootstrap, logischer Dump/Restore, interne Readiness 200, öffentlicher
+HTTPS-Healthcheck 200 und der reale Pretix-Testimport waren unter den
 vorgesehenen Containerrestriktionen erfolgreich; es gab keine Hostports. Die zwei PDF-Durchläufe waren
 für Teilnahmeliste und Abschlussbericht jeweils byte-identisch. Der reale Weg
 Login → Workshop → Teilnehmende → Vorlage → Dokumentation → Finalisierung →
-WeasyPrint-PDF → WebDAV → Download bleibt bis DNS-Propagation, Authentik-Provider
-und dedizierten Pretix-/Nextcloud-Credentials offen. Er wird nicht durch Mocks
+WeasyPrint-PDF → WebDAV → Download bleibt bis zu den Authentik-Browserprüfungen
+und der vollständigen Dokumenterzeugung offen. Er wird nicht durch Mocks
 als Produktions-E2E ersetzt.
 
 ## 13. Verbleibende Risiken
 
-- öffentliche DNS-/TLS-Propagation noch nicht vollständig bestätigt;
-- reale OIDC-, Pretix- und WebDAV-Verträge noch nicht abgenommen;
+- reale OIDC-Rollen- und Ablehnungsfälle noch nicht per Browser abgenommen;
+- WebDAV-Vertrag geprüft, aber vollständiger Werkblatt-PDF-Upload und Fehler-Retry offen;
 - Werkblatt-Restore auf dem VPS noch nicht durchgeführt;
 - kein Swap, daher Ressourcenbeobachtung bei WeasyPrint und Backup;
 - endgültige Open-Source-Lizenzentscheidung weiterhin offen.
 
 ## 14. Schritte bis und für Phase 4b
 
-1. Infrastructure-PR prüfen und mergen; produktiver Checkout bleibt bis dahin
-   auf `main`.
-2. DNS/TLS/Header extern bestätigen.
-3. Persistenz und Secrets vorbereiten, Images bauen und IDs dokumentieren.
-4. Authentik nach Backup additiv konfigurieren; drei Berechtigungsfälle testen.
-5. Dedizierte Pretix-/Nextcloud-Zugänge direkt auf dem Host hinterlegen.
-6. Datenbank starten, Migration und Organisations-Bootstrap ausführen.
+1. Alle weiteren Infrastructure-Änderungen weiterhin ausschließlich per PR
+   mergen; produktiver Checkout bleibt auf `main`.
+2. Öffentliche Security-Header abschließend bestätigen und Monitoringprobe ergänzen.
+3. Persistenz, Secrets, Images und IDs sind vorbereitet; vor jedem Update erneut prüfen.
+4. Vorhandene additive Authentik-Konfiguration mit drei Berechtigungsfällen testen.
+5. Dedizierte Pretix-/Nextcloud-Zugänge sind hinterlegt; nur im E2E verwenden.
+6. Datenbank, Migration und Organisations-Bootstrap sind erfolgt; Zustand vor
+   dem E2E erneut prüfen.
 7. Vollständigen synthetischen E2E durchführen.
 8. Werkblatt-Backup erzeugen und isoliert wiederherstellen.
 9. Den finalen Phase-4a-Bericht vorlegen und stoppen.
