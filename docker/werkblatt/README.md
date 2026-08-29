@@ -9,8 +9,9 @@ Zircula-spezifische Betriebsintegration.
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
 `6340eba2bfe505d753d34c033a9eb04feedc44d4` festgelegt. Das resultierende lokale
-Image erhält denselben Commit als Tag. Build, Image-ID und E2E-Ergebnis dieses
-neuen Stands werden vor Phase 4b erneut dokumentiert. PostgreSQL ist auf den
+Image erhält denselben Commit als Tag. Build und Image-ID sind unten
+dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
+PostgreSQL ist auf den
 bereits geprüften Image-Digest
 `sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b`
 festgelegt.
@@ -20,7 +21,9 @@ Der vorherige Pilotstand war Commit
 `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
 Der neue Stand behebt die Übergabe der ausgewählten Dokumentvorlage beim
 Finalisieren. Er enthält keine neue Migration; Datenbank und Caddy bleiben beim
-Containerwechsel unverändert.
+Containerwechsel unverändert. Der Wechsel wurde am 29. August 2026 mit
+erfolgreichem Preflight, internem Docker-Healthcheck sowie öffentlichen
+`/health/`- und `/ready/`-Prüfungen durchgeführt.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
