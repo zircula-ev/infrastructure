@@ -7,8 +7,8 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 
 Die Anwendung ist auf
 `6340eba2bfe505d753d34c033a9eb04feedc44d4` festgelegt. Der aktuell auf dem VPS
-geprüfte Ausgangsstand des Infrastructure-Repositories ist
-`f9b81bf20b395f6285a0b4369dc4c2b8b2d45b39`.
+ausgerollte Stand des Infrastructure-Repositories ist
+`fd415f6a96b389cce7bf5502ecf876fb2f79fc90`.
 
 Der unmittelbar vorherige Pilotstand ist
 `cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
@@ -19,7 +19,11 @@ der Webcontainer ersetzt; Datenbank, Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
 Image-ID `sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
-Der laufende Pilotcontainer blieb dabei unverändert auf dem Rollbackstand.
+Der Webcontainer wurde am 29. August 2026 ohne Abhängigkeiten auf diese
+Image-ID umgestellt. Der dokumentierte Preflight, Docker-Healthcheck sowie die
+öffentlichen Endpunkte `/health/` und `/ready/` waren erfolgreich. PostgreSQL
+blieb gesund und unverändert; der vorherige Image-Tag bleibt als Rollbackstand
+lokal verfügbar.
 
 ## 2. Zielarchitektur auf dem VPS
 
