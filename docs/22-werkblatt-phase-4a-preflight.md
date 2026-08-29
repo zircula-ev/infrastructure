@@ -6,13 +6,13 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`ca956da5a5b087b1c52e5fa7646978d9ec51e760` festgelegt. Ausgangspunkt des
+`b0618d34ac97f2384bac59ef632cbaa4e7746429` festgelegt. Ausgangspunkt des
 Infrastructure-Branches `agent/add-werkblatt-pilot` ist
 `ab7654e5ce8d5c3fc24ebac52d738610b6721338`. Vor Merge müssen Werkblatt-CI,
 Infrastructure-Diff und Containerbuild vollständig erfolgreich sein.
 
-Werkblatt-CI Run 21 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
-`sha256:2b06a4375bd57cabc73128ac3866a9daba7069cffec6789db9bb3a12b3aba592`.
+Werkblatt-CI Run 22 war für diesen Commit vollständig erfolgreich. Der isolierte VPS-Build ergab Image-ID
+`sha256:a01cd9ddc1f72b7bc4347047005a1c597b4af609e745cb6a039a6fee94bf0012`.
 
 ## 2. Zielarchitektur auf dem VPS
 
@@ -84,7 +84,8 @@ dem ersten vollständigen synthetischen Backup auszuführen.
 
 ## 10. Monitoring und Healthchecks
 
-Docker prüft `/ready/` mit Datenbankzugriff; Blackbox prüft öffentlich
+Docker prüft `/ready/` mit Datenbankzugriff und simuliert dabei den vom
+vertrauenswürdigen Reverse Proxy gesetzten HTTPS-Header; Blackbox prüft öffentlich
 `/health/` ohne Datenbank. Logs rotieren bei 10 MiB mit fünf Dateien;
 Gunicorn-Accesslogs sind deaktiviert. PII, Dokumentinhalte, Tokens und komplette
 WebDAV-Pfade dürfen nicht als Logs oder Labels erscheinen.
