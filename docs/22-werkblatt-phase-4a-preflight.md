@@ -6,17 +6,23 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`1e0b8552fd1b76a1686fa74b3f53149d7b2c557f` festgelegt. Der aktuell auf dem VPS
+`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` festgelegt. Der aktuell auf dem VPS
 geprüfte Ausgangsstand des Infrastructure-Repositories ist
-`3b67c386ab7827a06fe12f35af95e2e827e145c8`.
+`246535b9048c8e6ee87147300616a08f2bbee996`.
 
-Werkblatt-CI Run 26 war für diesen Commit vollständig erfolgreich. Der isolierte
-VPS-Build ergab Image-ID
-`sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`.
-Das geplante Pilotupdate führt ausschließlich die additive Migration
-`identities.0002_user_preferences` aus. Vor Migration und Containerwechsel sind
+Der isolierte VPS-Build mit Image-ID
+`sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`
+und Werkblatt-CI Run 26 beziehen sich auf den zuvor geprüften Commit
+`1e0b8552fd1b76a1686fa74b3f53149d7b2c557f`. Build, Image-ID, CI und E2E werden
+für den neuen Pin vor Phase 4b erneut verifiziert. Das geplante Pilotupdate führt
+zusätzlich die additive Migration `identities.0003_membership_editor_role` aus.
+Vor Migration und Containerwechsel sind
 ein logischer Datenbankdump, ein Medien-Checkpoint und der bisherige Image-Pin
 `b0618d34ac97f2384bac59ef632cbaa4e7746429` als Rollbackstand festzuhalten.
+
+Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
+Image-ID `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
+Der laufende Pilotcontainer blieb dabei unverändert auf dem Rollbackstand.
 
 ## 2. Zielarchitektur auf dem VPS
 
@@ -55,11 +61,13 @@ anschließend den aktuellen Mount. Persistente ACME-Daten blieben erhalten.
 
 Benötigt werden Application/Provider `Werkblatt`, confidential Authorization
 Code mit PKCE S256, die exakte Callback-URL und ausschließlich die Gruppen
-`Werkblatt Users` und `Werkblatt Admins`. Provider, Application, Claim-Mapping
-und beide Gruppen wurden nach geprüftem Authentik-Backup additiv angelegt.
+`Werkblatt Users`, `Werkblatt Editors` und `Werkblatt Admins`. Provider,
+Application, Claim-Mapping, User- und Admin-Gruppe wurden nach geprüftem
+Authentik-Backup additiv angelegt. Die Editor-Gruppe und ihre Zuweisung sind vor
+dem abschließenden OIDC-Rollentest additiv zu ergänzen.
 Discovery bestätigt den anwendungsspezifischen Issuer und PKCE S256. Das Secret
-liegt ausschließlich auf dem Host. User-, Admin- und Ablehnungsfall bleiben als
-Browserprüfungen offen.
+liegt ausschließlich auf dem Host. User-, Editor-, Admin- und Ablehnungsfall
+bleiben als Browserprüfungen offen.
 
 ## 6. Pretix
 
@@ -132,7 +140,8 @@ als Produktions-E2E ersetzt.
 
 ## 13. Verbleibende Risiken
 
-- reale OIDC-Rollen- und Ablehnungsfälle noch nicht per Browser abgenommen;
+- reale OIDC-Rollen einschließlich Editor- und Ablehnungsfall noch nicht
+  vollständig per Browser abgenommen;
 - WebDAV-Vertrag geprüft, aber vollständiger Werkblatt-PDF-Upload und Fehler-Retry offen;
 - Werkblatt-Restore auf dem VPS noch nicht durchgeführt;
 - kein Swap, daher Ressourcenbeobachtung bei WeasyPrint und Backup;

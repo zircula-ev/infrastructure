@@ -1,8 +1,8 @@
 services:
   web:
     build:
-      context: https://github.com/IndieStu/Werkblatt.git#1e0b8552fd1b76a1686fa74b3f53149d7b2c557f
-    image: werkblatt:1e0b8552fd1b76a1686fa74b3f53149d7b2c557f
+      context: https://github.com/IndieStu/Werkblatt.git#cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b
+    image: werkblatt:cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b
     container_name: werkblatt
     restart: unless-stopped
     env_file:

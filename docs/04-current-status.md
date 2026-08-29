@@ -103,16 +103,18 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - isolierter Web- und PostgreSQL-17-Container ohne Hostports
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
-- für das nächste kontrollierte Phase-4a-Pilotupdate geprüftes Werkblatt-Image
-  `1e0b8552fd1b76a1686fa74b3f53149d7b2c557f`
-  mit Image-ID
+- für das nächste kontrollierte Phase-4a-Pilotupdate isoliert gebauter Werkblatt-Pin
+  `cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
+  `sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`;
+  der vorherige Prüfstand `1e0b8552…` hatte die Image-ID
   `sha256:30c79fe923cf952b84ea06f6d70f595df41cfb9ddba92013fd495d00f3ff6c0f`;
   der laufende Stand bleibt bis zum gemergten Infrastructure-PR und
   Pre-Update-Backup auf `b0618d34ac97f2384bac59ef632cbaa4e7746429`
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und getrennte Gruppen `Werkblatt Admins` und
-  `Werkblatt Users` additiv angelegt; reale Login-/Ablehnungstests noch offen
+  `Werkblatt Users` additiv angelegt; `Werkblatt Editors` ist vor dem
+  Vier-Fälle-Rollentest additiv zu ergänzen; reale Login-/Ablehnungstests noch offen
 - explizit begrenzter Pretix-Testmode-Import für Event `blanko` mit einem
   synthetischen Workshop und einer synthetischen Anmeldung erfolgreich
 - dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
