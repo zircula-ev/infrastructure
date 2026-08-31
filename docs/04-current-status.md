@@ -110,8 +110,9 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   `sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`;
   der neue Stand verbessert Auswahloptionen, Dokumentdateinamen sowie das
   einseitige PDF-Layout mit Revisions-Footer und benötigt keine Migration;
-  beim Update wird nur der Webcontainer ersetzt, PostgreSQL und Caddy bleiben
-  unverändert
+  am 31. August 2026 wurde nur der Webcontainer ersetzt, PostgreSQL und Caddy
+  blieben unverändert; Preflight, exakter Image-Abgleich sowie interne und
+  öffentliche Healthchecks waren erfolgreich
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,

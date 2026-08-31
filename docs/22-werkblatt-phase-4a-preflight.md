@@ -20,9 +20,13 @@ Datenbank, Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
 Image-ID `sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
-Die Produktionsumschaltung und ihre Laufzeitprüfungen werden nach Merge dieses
-Infrastructure-Stands ergänzt. Der vorherige Image-Tag bleibt als
-Rollbackstand lokal verfügbar.
+Der Webcontainer wurde am 31. August 2026 ohne Abhängigkeiten auf diese
+Image-ID umgestellt. Der dokumentierte Preflight, der Abgleich aller
+`identities`-Migrationen, der Docker-Healthcheck sowie die öffentlichen
+Endpunkte `/health/` und `/ready/` waren erfolgreich. PostgreSQL blieb gesund
+und unverändert; der vorherige Image-Tag bleibt als Rollbackstand lokal
+verfügbar. Im Startzeitraum wurden keine Fehler, Exceptions oder Tracebacks
+protokolliert.
 
 ## 2. Zielarchitektur auf dem VPS
 
