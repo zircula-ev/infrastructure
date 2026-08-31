@@ -6,24 +6,23 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`6340eba2bfe505d753d34c033a9eb04feedc44d4` festgelegt. Der aktuell auf dem VPS
+`8ac48f88fa5ee508ac3e617a195c82ee254358a4` festgelegt. Der aktuell auf dem VPS
 ausgerollte Stand des Infrastructure-Repositories ist
 `fd415f6a96b389cce7bf5502ecf876fb2f79fc90`.
 
 Der unmittelbar vorherige Pilotstand ist
-`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
-`sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
-Der neue Pin behebt die Übergabe der ausgewählten Dokumentvorlage beim
-Finalisieren und enthält keine neue Migration. Beim Update wird ausschließlich
-der Webcontainer ersetzt; Datenbank, Persistenz und Caddy bleiben unverändert.
+`6340eba2bfe505d753d34c033a9eb04feedc44d4` mit Image-ID
+`sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
+Der neue Pin verbessert mehrzeilige Auswahloptionen, eindeutige Dateinamen und
+das kompakte Abschluss-PDF mit Revisions-Footer. Er enthält keine neue
+Migration. Beim Update wird ausschließlich der Webcontainer ersetzt;
+Datenbank, Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
-Image-ID `sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
-Der Webcontainer wurde am 29. August 2026 ohne Abhängigkeiten auf diese
-Image-ID umgestellt. Der dokumentierte Preflight, Docker-Healthcheck sowie die
-öffentlichen Endpunkte `/health/` und `/ready/` waren erfolgreich. PostgreSQL
-blieb gesund und unverändert; der vorherige Image-Tag bleibt als Rollbackstand
-lokal verfügbar.
+Image-ID `sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
+Die Produktionsumschaltung und ihre Laufzeitprüfungen werden nach Merge dieses
+Infrastructure-Stands ergänzt. Der vorherige Image-Tag bleibt als
+Rollbackstand lokal verfügbar.
 
 ## 2. Zielarchitektur auf dem VPS
 

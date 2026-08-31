@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`6340eba2bfe505d753d34c033a9eb04feedc44d4` festgelegt. Das resultierende lokale
+`8ac48f88fa5ee508ac3e617a195c82ee254358a4` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist auf den
@@ -17,16 +17,16 @@ bereits geprüften Image-Digest
 festgelegt.
 
 Der vorherige Pilotstand war Commit
-`cc48e9a83295e2fa2a31957c3f7eb9ff9b8cf21b` mit Image-ID
-`sha256:8e14f76bfbe38b5f1e7960c7038ddb51e33dc75fc2f6c3eb583c1addd77dfd0a`.
-Der neue Stand behebt die Übergabe der ausgewählten Dokumentvorlage beim
-Finalisieren. Er enthält keine neue Migration; Datenbank und Caddy bleiben beim
-Containerwechsel unverändert. Der Wechsel wurde am 29. August 2026 mit
-erfolgreichem Preflight, internem Docker-Healthcheck sowie öffentlichen
-`/health/`- und `/ready/`-Prüfungen durchgeführt.
+`6340eba2bfe505d753d34c033a9eb04feedc44d4` mit Image-ID
+`sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
+Der neue Stand erlaubt mehrzeilige Auswahloptionen, erzeugt eindeutige
+Workshop-bezogene Dateinamen für Abschlussbericht und Teilnahmeliste und
+verdichtet das Abschluss-PDF einschließlich eines lesbaren Revisions-Footers.
+Er enthält keine neue Migration; Datenbank und Caddy bleiben beim
+Containerwechsel unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
+`sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
@@ -129,7 +129,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:6340eba2bfe505d753d34c033a9eb04feedc44d4 \
+docker image inspect werkblatt:8ac48f88fa5ee508ac3e617a195c82ee254358a4 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
