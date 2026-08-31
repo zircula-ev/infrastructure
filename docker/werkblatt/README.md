@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`8ac48f88fa5ee508ac3e617a195c82ee254358a4` festgelegt. Das resultierende lokale
+`82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist auf den
@@ -17,19 +17,15 @@ bereits geprüften Image-Digest
 festgelegt.
 
 Der vorherige Pilotstand war Commit
-`6340eba2bfe505d753d34c033a9eb04feedc44d4` mit Image-ID
-`sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8`.
-Der neue Stand erlaubt mehrzeilige Auswahloptionen, erzeugt eindeutige
-Workshop-bezogene Dateinamen für Abschlussbericht und Teilnahmeliste und
-verdichtet das Abschluss-PDF einschließlich eines lesbaren Revisions-Footers.
-Er enthält keine neue Migration; Datenbank und Caddy bleiben beim
-Containerwechsel unverändert. Der Wechsel wurde am 31. August 2026 nach
-erfolgreichem Preflight und Migrationsabgleich ausschließlich für den
-Webcontainer durchgeführt. Interner Docker-Healthcheck sowie die öffentlichen
-Endpunkte `/health/` und `/ready/` waren erfolgreich.
+`8ac48f88fa5ee508ac3e617a195c82ee254358a4` mit Image-ID
+`sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
+Der neue Stand ergänzt das freigegebene responsive Werkblatt-Hintergrundasset
+auf der öffentlichen Loginseite einschließlich Dark-Mode-Ableitung. Er enthält
+keine neue Migration; Datenbank und Caddy bleiben beim Containerwechsel
+unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
+`sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
@@ -132,7 +128,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:8ac48f88fa5ee508ac3e617a195c82ee254358a4 \
+docker image inspect werkblatt:82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
