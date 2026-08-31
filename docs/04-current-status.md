@@ -110,17 +110,19 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   `sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`;
   der neue Stand ergänzt Organisationsstatistik, CSV-Export, sichere
   Vorlagenarchivierung und den Login-Hintergrund V1.1 und benötigt keine
-  Migration; beim Update wird nur der Webcontainer ersetzt, PostgreSQL und Caddy
-  bleiben unverändert
+  Migration; am 31. August 2026 wurde nach erfolgreichem zentralem Backup nur
+  der Webcontainer ersetzt, PostgreSQL behielt Container-ID und Startzeit und
+  Caddy blieb unverändert; Preflight, interne und öffentliche Healthchecks,
+  Login, Statistik, CSV-Export und Hintergrundasset waren erfolgreich
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,
   `Werkblatt Editors` und `Werkblatt Users` additiv angelegt; die Editor-Gruppe
-  ist zunächst leer und verändert keine bestehenden Mitgliedschaften; reale
-  Login-/Ablehnungstests noch offen
+  ist zunächst leer und verändert keine bestehenden Mitgliedschaften; realer
+  OIDC-Login wurde erfolgreich geprüft
 - lokale, weiterhin mit Modus 600 geschützte Werkblatt-Konfiguration enthält
   Autor, dauerhafte Zircula-Kooperation und alle drei OIDC-Gruppen; der laufende
-  Container hat diese Werte noch nicht geladen
+  Container verwendet diese Konfiguration
 - explizit begrenzter Pretix-Testmode-Import für Event `blanko` mit einem
   synthetischen Workshop und einer synthetischen Anmeldung erfolgreich
 - dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
