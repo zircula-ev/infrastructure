@@ -109,8 +109,9 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   der unmittelbar vorherige Pilotstand `8ac48f88fa5…` hatte die Image-ID
   `sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`;
   der neue Stand ergänzt den responsiven Werkblatt-Hintergrund der Loginseite
-  und benötigt keine Migration; beim Update wird nur der Webcontainer ersetzt,
-  PostgreSQL und Caddy bleiben unverändert
+  und benötigt keine Migration; am 31. August 2026 wurde nur der Webcontainer
+  ersetzt, PostgreSQL und Caddy blieben unverändert; Preflight, Image-Abgleich,
+  Healthchecks und der Abruf des statischen Assets waren erfolgreich
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,
