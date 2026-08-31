@@ -8,7 +8,7 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 Die Anwendung ist auf
 `7c0f9755c495ac416d76565098292f3999b6bf77` festgelegt. Der aktuell auf dem VPS
 ausgerollte Stand des Infrastructure-Repositories ist
-`fd415f6a96b389cce7bf5502ecf876fb2f79fc90`.
+`2ee35d9f2a3e032af05e640ce1d6657af162542b`.
 
 Der unmittelbar vorherige Pilotstand ist
 `8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID
@@ -20,9 +20,12 @@ Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
 Image-ID `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
-Die Produktionsumschaltung erfolgt erst nach Merge des zugehörigen
-Infrastructure-PRs. Der laufende vorherige Webcontainer und PostgreSQL blieben
-während des parallelen Builds gesund und unverändert;
+Der Webcontainer wurde am 31. August 2026 nach erfolgreichem zentralem Backup,
+Preflight, Compose-Validierung und Migrationscheck umgestellt. PostgreSQL behielt
+dieselbe Container-ID und Startzeit; Caddy, Netzwerke, Volumes und andere Dienste
+blieben unverändert. Interne Readiness, öffentliche Health- und Login-Endpunkte,
+die authentifizierte Statistikansicht, der CSV-Export und das ausgelieferte
+Hintergrundasset wurden erfolgreich geprüft;
 der vorherige Image-Tag bleibt als Rollbackstand lokal verfügbar. Im
 Startzeitraum wurden keine Fehler, Exceptions oder Tracebacks protokolliert.
 

@@ -26,6 +26,11 @@ und Caddy bleiben beim Containerwechsel unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
+Der Webcontainer wurde am 31. August 2026 nach erfolgreichem zentralem Backup,
+Preflight und Migrationscheck auf dieses Image umgestellt. PostgreSQL behielt
+dabei Container-ID und Startzeit; Caddy wurde nicht verändert. Interne
+Readiness, öffentliche Health- und Login-Endpunkte, Statistikansicht,
+CSV-Export und das Login-Hintergrundasset wurden erfolgreich geprüft.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
