@@ -23,7 +23,10 @@ Der neue Stand erlaubt mehrzeilige Auswahloptionen, erzeugt eindeutige
 Workshop-bezogene Dateinamen für Abschlussbericht und Teilnahmeliste und
 verdichtet das Abschluss-PDF einschließlich eines lesbaren Revisions-Footers.
 Er enthält keine neue Migration; Datenbank und Caddy bleiben beim
-Containerwechsel unverändert.
+Containerwechsel unverändert. Der Wechsel wurde am 31. August 2026 nach
+erfolgreichem Preflight und Migrationsabgleich ausschließlich für den
+Webcontainer durchgeführt. Interner Docker-Healthcheck sowie die öffentlichen
+Endpunkte `/health/` und `/ready/` waren erfolgreich.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
