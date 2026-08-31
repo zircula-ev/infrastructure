@@ -104,14 +104,13 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
 - laufender Werkblatt-Pilotstand
-  `82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` mit Image-ID
+  `8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID
+  `sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`;
+  der unmittelbar vorherige Pilotstand `82d9a7a80f2c…` hatte die Image-ID
   `sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`;
-  der unmittelbar vorherige Pilotstand `8ac48f88fa5…` hatte die Image-ID
-  `sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`;
-  der neue Stand ergänzt den responsiven Werkblatt-Hintergrund der Loginseite
-  und benötigt keine Migration; am 31. August 2026 wurde nur der Webcontainer
-  ersetzt, PostgreSQL und Caddy blieben unverändert; Preflight, Image-Abgleich,
-  Healthchecks und der Abruf des statischen Assets waren erfolgreich
+  der neue Stand ergänzt dynamische Zeilen für spontane Teilnehmende und
+  Durchführende und benötigt keine Migration; beim Update wird nur der
+  Webcontainer ersetzt, PostgreSQL und Caddy bleiben unverändert
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,

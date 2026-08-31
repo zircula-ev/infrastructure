@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` festgelegt. Das resultierende lokale
+`8ffc9ce15465b2c7079fcd86b1006036f49e47cc` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist auf den
@@ -17,18 +17,15 @@ bereits geprüften Image-Digest
 festgelegt.
 
 Der vorherige Pilotstand war Commit
-`8ac48f88fa5ee508ac3e617a195c82ee254358a4` mit Image-ID
-`sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
-Der neue Stand ergänzt das freigegebene responsive Werkblatt-Hintergrundasset
-auf der öffentlichen Loginseite einschließlich Dark-Mode-Ableitung. Er enthält
-keine neue Migration; Datenbank und Caddy bleiben beim Containerwechsel
-unverändert. Der Webcontainer wurde am 31. August 2026 nach erfolgreichem
-Preflight und Migrationsabgleich aktualisiert. Interner Healthcheck,
-`/health/`, `/ready/` und der Abruf des neuen statischen Assets waren
-erfolgreich.
+`82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` mit Image-ID
+`sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
+Der neue Stand ergänzt dynamische Hinzufügen-/Entfernen-Zeilen für spontane
+Teilnehmende und Durchführende; importierte Pretix-Einträge bleiben vor dem
+Löschen geschützt. Er enthält keine neue Migration; Datenbank und Caddy bleiben
+beim Containerwechsel unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
+`sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
 Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
@@ -131,7 +128,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6 \
+docker image inspect werkblatt:8ffc9ce15465b2c7079fcd86b1006036f49e47cc \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
