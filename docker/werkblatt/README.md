@@ -22,7 +22,9 @@ Der vorherige Pilotstand war Commit
 Der neue Stand ergänzt dynamische Hinzufügen-/Entfernen-Zeilen für spontane
 Teilnehmende und Durchführende; importierte Pretix-Einträge bleiben vor dem
 Löschen geschützt. Er enthält keine neue Migration; Datenbank und Caddy bleiben
-beim Containerwechsel unverändert.
+beim Containerwechsel unverändert. Der Webcontainer wurde am 31. August 2026
+nach erfolgreichem Preflight und Migrationsabgleich aktualisiert. Interner
+Healthcheck, `/health/`, `/ready/` und das neue Formset-Skript waren erreichbar.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
