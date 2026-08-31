@@ -6,26 +6,22 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` festgelegt. Der aktuell auf dem VPS
+`8ffc9ce15465b2c7079fcd86b1006036f49e47cc` festgelegt. Der aktuell auf dem VPS
 ausgerollte Stand des Infrastructure-Repositories ist
 `fd415f6a96b389cce7bf5502ecf876fb2f79fc90`.
 
 Der unmittelbar vorherige Pilotstand ist
-`8ac48f88fa5ee508ac3e617a195c82ee254358a4` mit Image-ID
-`sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21`.
-Der neue Pin ergänzt das freigegebene responsive Login-Hintergrundasset und
-seine Dark-Mode-Ableitung. Er enthält keine neue Migration. Beim Update wird
-ausschließlich der Webcontainer ersetzt; Datenbank, Persistenz und Caddy
-bleiben unverändert.
+`82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` mit Image-ID
+`sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
+Der neue Pin ergänzt dynamische Zeilen für spontane Teilnehmende und
+Durchführende. Er enthält keine neue Migration. Beim Update wird ausschließlich
+der Webcontainer ersetzt; Datenbank, Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
-Image-ID `sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
-Der Webcontainer wurde am 31. August 2026 ohne Abhängigkeiten auf diese
-Image-ID umgestellt. Preflight, der Abgleich aller `identities`-Migrationen,
-Docker-Healthcheck sowie die öffentlichen Endpunkte `/health/`, `/ready/` und
-das neue Login-Hintergrundasset waren erfolgreich. PostgreSQL blieb gesund und
-unverändert; der vorherige Image-Tag bleibt als Rollbackstand lokal verfügbar.
-Im Startzeitraum wurden keine Fehler, Exceptions oder Tracebacks protokolliert.
+Image-ID `sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
+Die Produktionsumschaltung und ihre Laufzeitprüfungen werden nach Merge dieses
+Infrastructure-Stands ergänzt. Der vorherige Image-Tag bleibt als
+Rollbackstand lokal verfügbar.
 
 ## 2. Zielarchitektur auf dem VPS
 
