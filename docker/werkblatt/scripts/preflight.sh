@@ -4,8 +4,8 @@ set -Eeuo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-readonly werkblatt_image="werkblatt:6340eba2bfe505d753d34c033a9eb04feedc44d4"
-readonly expected_image_id="sha256:14c5fecfc7ba91d805f2634391187991a51317dfa92055f53410eddb8a17f3e8"
+readonly werkblatt_image="werkblatt:8ac48f88fa5ee508ac3e617a195c82ee254358a4"
+readonly expected_image_id="sha256:9d63cbc58ca8cc842f2c7386f59e0f36ecb545caad7ce3fd94294a3e7f69bc21"
 
 if [[ ! -f .env ]]; then
   echo >&2 "FEHLER: docker/werkblatt/.env fehlt."
