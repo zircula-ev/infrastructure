@@ -6,23 +6,23 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 ## 1. Geprüfter Commit
 
 Die Anwendung ist auf
-`8ffc9ce15465b2c7079fcd86b1006036f49e47cc` festgelegt. Der aktuell auf dem VPS
+`7c0f9755c495ac416d76565098292f3999b6bf77` festgelegt. Der aktuell auf dem VPS
 ausgerollte Stand des Infrastructure-Repositories ist
 `fd415f6a96b389cce7bf5502ecf876fb2f79fc90`.
 
 Der unmittelbar vorherige Pilotstand ist
-`82d9a7a80f2c5ca60e395adcdef21d9e62fd13d6` mit Image-ID
-`sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
-Der neue Pin ergänzt dynamische Zeilen für spontane Teilnehmende und
-Durchführende. Er enthält keine neue Migration. Beim Update wird ausschließlich
-der Webcontainer ersetzt; Datenbank, Persistenz und Caddy bleiben unverändert.
+`8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID
+`sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
+Der neue Pin ergänzt Organisationsstatistik, datensparsamen CSV-Export, sichere
+Vorlagenarchivierung und den Login-Hintergrund V1.1. Er enthält keine neue
+Migration. Beim Update wird ausschließlich der Webcontainer ersetzt; Datenbank,
+Persistenz und Caddy bleiben unverändert.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
-Image-ID `sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
-Der Webcontainer wurde am 31. August 2026 ohne Abhängigkeiten auf diese
-Image-ID umgestellt. Preflight, der Abgleich aller `identities`-Migrationen,
-Docker-Healthcheck sowie die öffentlichen Endpunkte `/health/`, `/ready/` und
-das Formset-Skript waren erfolgreich. PostgreSQL blieb gesund und unverändert;
+Image-ID `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
+Die Produktionsumschaltung erfolgt erst nach Merge des zugehörigen
+Infrastructure-PRs. Der laufende vorherige Webcontainer und PostgreSQL blieben
+während des parallelen Builds gesund und unverändert;
 der vorherige Image-Tag bleibt als Rollbackstand lokal verfügbar. Im
 Startzeitraum wurden keine Fehler, Exceptions oder Tracebacks protokolliert.
 
