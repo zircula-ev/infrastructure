@@ -22,7 +22,10 @@ Der vorherige Pilotstand war Commit
 Der neue Stand ergänzt das freigegebene responsive Werkblatt-Hintergrundasset
 auf der öffentlichen Loginseite einschließlich Dark-Mode-Ableitung. Er enthält
 keine neue Migration; Datenbank und Caddy bleiben beim Containerwechsel
-unverändert.
+unverändert. Der Webcontainer wurde am 31. August 2026 nach erfolgreichem
+Preflight und Migrationsabgleich aktualisiert. Interner Healthcheck,
+`/health/`, `/ready/` und der Abruf des neuen statischen Assets waren
+erfolgreich.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:964c51c87236dae8b0a83463e388e17058af8a2fc1696d62a04213433976dca7`.
