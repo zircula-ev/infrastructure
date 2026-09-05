@@ -65,7 +65,7 @@ services:
         max-file: "5"
 
   db:
-    image: postgres@sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b
+    image: postgres:17.11@sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675
     container_name: werkblatt-db
     restart: unless-stopped
     environment:

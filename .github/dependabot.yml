@@ -31,3 +31,6 @@ updates:
       - dependency-name: elasticsearch/elasticsearch
         update-types:
           - version-update:semver-major
+      - dependency-name: postgres
+        update-types:
+          - version-update:semver-major

@@ -11,10 +11,11 @@ Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
 `7c0f9755c495ac416d76565098292f3999b6bf77` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
-PostgreSQL ist auf den
-bereits geprüften Image-Digest
-`sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b`
-festgelegt.
+PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
+geprüften Image-Digest
+`sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`
+festgelegt. Major-Upgrades werden nicht über einen regulären Dependabot-PR
+ausgerollt, sondern benötigen einen eigenen Migrations- und Restoreplan.
 
 Der vorherige Pilotstand war Commit
 `8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID
@@ -173,6 +174,13 @@ Migrationen, Snapshot-Hashes und der Abruf einer synthetischen PDF-Datei.
 Nach einer nicht rückwärtskompatiblen Migration genügt kein Image-Downgrade:
 Datenbank und Medien werden gemeinsam aus demselben Pre-Update-Stand
 wiederhergestellt. Erst danach wird der vorherige Image-Tag gestartet.
+
+PostgreSQL-Minor-Updates innerhalb Version 17 erfolgen erst nach erfolgreichem
+zentralem Backup. Vor dem Austausch werden alter Container, Image-ID und
+Datenbankversion festgehalten. Nach `docker compose up -d --no-deps db` werden
+Container-Health, `SELECT version()`, Werkblatt-Readiness und öffentlicher
+Healthcheck geprüft. Der vorherige Digest bleibt bis zur Abnahme lokal als
+Rollbackstand verfügbar.
 
 ## Phase-4a-Abnahme
 
