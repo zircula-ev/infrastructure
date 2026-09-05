@@ -145,6 +145,16 @@ festgehaltenem vorherigem Digest ausgerollt. Werkblatt verwendet weder
 `btree_gist` noch `ltree` oder GIN-Indizes; die für 17.11 genannten besonderen
 Nacharbeiten treffen diesen Datenbestand daher nicht.
 
+Der Rollout erfolgte am 5. September 2026 nach erfolgreichem zentralem Backup
+und Preflight. Der Datenbankcontainer wurde vom vorherigen Digest
+`sha256:0af65001d05296a2ead57ac4a6412433d8913d1bb5d0c88435a7d1e1ee5cb04b`
+auf PostgreSQL 17.11 mit Digest
+`sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`
+ersetzt. Der Webcontainer behielt ID und Startzeit. Datenbank-Health,
+`SELECT version()`, 30 angewendete Migrationen, Django-Migrationscheck, interne
+Readiness, öffentlicher Healthcheck, authentifizierte Statistik und CSV-Export
+sowie die Logprüfung waren erfolgreich.
+
 ## 12. Synthetischer End-to-End-Test
 
 Lokale Fach-, Security-, Static-, PDF- und Storage-Tests sowie Compose-, Caddy-
