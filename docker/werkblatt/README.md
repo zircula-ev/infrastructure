@@ -16,6 +16,11 @@ geprüften Image-Digest
 `sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`
 festgelegt. Major-Upgrades werden nicht über einen regulären Dependabot-PR
 ausgerollt, sondern benötigen einen eigenen Migrations- und Restoreplan.
+Das Minor-Update von 17.10 wurde am 5. September 2026 nach erfolgreichem
+zentralem Backup und Preflight durch Austausch ausschließlich des
+Datenbankcontainers ausgerollt. Webcontainer, Caddy, Netzwerke und Volumes
+blieben unverändert. PostgreSQL-Version, Migrationen, interne Readiness,
+öffentlicher Healthcheck, Statistik, CSV-Export und Logs wurden geprüft.
 
 Der vorherige Pilotstand war Commit
 `8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID

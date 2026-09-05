@@ -229,7 +229,11 @@ VPS aus. PostgreSQL-Major-Versionen bleiben von automatischen Vorschlägen
 ausgenommen, weil dafür eine geplante Migration erforderlich ist. PostgreSQL-
 Images werden mit sichtbarer Versionsangabe und Digest gepinnt; ein im September
 2026 irrtümlich vorgeschlagenes Werkblatt-Upgrade von 17.10 auf 18.6 wurde vor
-dem Merge erkannt und geschlossen. Das freigegebene Minor-Ziel ist 17.11.
+dem Merge erkannt und geschlossen. Das freigegebene Minor-Update auf 17.11 wurde
+am 5. September 2026 nach Backup und Preflight ausgerollt. Nur `werkblatt-db`
+wurde ersetzt; Webcontainer, Caddy, Netzwerke und Volumes blieben unverändert.
+PostgreSQL- und Container-Health, Migrationen, interne Readiness, öffentlicher
+Healthcheck, Statistik-/CSV-Smoke-Test und Logs waren erfolgreich.
 
 ## Validierung vom 22.07.2026
 
