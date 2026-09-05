@@ -6,6 +6,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 readonly werkblatt_image="werkblatt:7c0f9755c495ac416d76565098292f3999b6bf77"
 readonly expected_image_id="sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e"
+readonly postgres_image="postgres:17.11@sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675"
+readonly expected_postgres_image_id="sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675"
 
 if [[ ! -f .env ]]; then
   echo >&2 "FEHLER: docker/werkblatt/.env fehlt."
@@ -113,6 +115,12 @@ docker compose config --quiet
 actual_image_id="$(docker image inspect "${werkblatt_image}" --format '{{.Id}}')"
 if [[ "${actual_image_id}" != "${expected_image_id}" ]]; then
   echo >&2 "FEHLER: Werkblatt-Image entspricht nicht dem validierten Phase-4a-Build."
+  exit 1
+fi
+
+actual_postgres_image_id="$(docker image inspect "${postgres_image}" --format '{{.Id}}')"
+if [[ "${actual_postgres_image_id}" != "${expected_postgres_image_id}" ]]; then
+  echo >&2 "FEHLER: PostgreSQL-Image entspricht nicht dem freigegebenen 17.11-Build."
   exit 1
 fi
 

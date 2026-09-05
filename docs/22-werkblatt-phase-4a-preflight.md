@@ -138,6 +138,13 @@ Nach nicht rückwärtskompatibler Migration werden Datenbank und Medien gemeinsa
 aus demselben Pre-Update-Stand restauriert; ein Image-Downgrade allein ist kein
 Rollback.
 
+Der Werkblatt-PostgreSQL-Container bleibt innerhalb Major-Version 17. Das
+Minor-Update von 17.10 auf 17.11 benötigt laut Upstream weder `pg_upgrade` noch
+Dump/Restore, wird aber erst nach erfolgreichem zentralem Backup und mit
+festgehaltenem vorherigem Digest ausgerollt. Werkblatt verwendet weder
+`btree_gist` noch `ltree` oder GIN-Indizes; die für 17.11 genannten besonderen
+Nacharbeiten treffen diesen Datenbestand daher nicht.
+
 ## 12. Synthetischer End-to-End-Test
 
 Lokale Fach-, Security-, Static-, PDF- und Storage-Tests sowie Compose-, Caddy-

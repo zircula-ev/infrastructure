@@ -226,7 +226,10 @@ Nach dem Redis- und Nextcloud-Rollout wurden erfolgreich geprüft:
 
 Dependabot erstellt wöchentlich Pull Requests, führt jedoch keine Updates auf dem
 VPS aus. PostgreSQL-Major-Versionen bleiben von automatischen Vorschlägen
-ausgenommen, weil dafür eine geplante Migration erforderlich ist.
+ausgenommen, weil dafür eine geplante Migration erforderlich ist. PostgreSQL-
+Images werden mit sichtbarer Versionsangabe und Digest gepinnt; ein im September
+2026 irrtümlich vorgeschlagenes Werkblatt-Upgrade von 17.10 auf 18.6 wurde vor
+dem Merge erkannt und geschlossen. Das freigegebene Minor-Ziel ist 17.11.
 
 ## Validierung vom 22.07.2026
 
