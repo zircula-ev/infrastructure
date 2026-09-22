@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`7c0f9755c495ac416d76565098292f3999b6bf77` festgelegt. Das resultierende lokale
+`762faba8f4b03d01c5db734250470cf0f19c9b6c` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
@@ -22,22 +22,25 @@ Datenbankcontainers ausgerollt. Webcontainer, Caddy, Netzwerke und Volumes
 blieben unverändert. PostgreSQL-Version, Migrationen, interne Readiness,
 öffentlicher Healthcheck, Statistik, CSV-Export und Logs wurden geprüft.
 
-Der vorherige Pilotstand war Commit
-`8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID
-`sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
-Der neue Stand ergänzt die tenantgebundene Organisationsstatistik mit
-datensparsamem CSV-Export, die sichere Archivierung von Dokumentvorlagen und den
-freigegebenen Login-Hintergrund V1.1. Er enthält keine neue Migration; Datenbank
-und Caddy bleiben beim Containerwechsel unverändert.
+Der laufende vorherige Pilotstand ist Commit
+`7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
+`sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
+Der neue Stand ergänzt einen konfigurierbaren Pretix-Importstichtag,
+tenantgebundene Pretix-Veranstaltungsregeln, Workshopfilter und reversible
+Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
+`CVE-2026-55073` auf WeasyPrint 70. Er enthält die Migrationen `workshops.0003`
+und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
-Der Webcontainer wurde am 31. August 2026 nach erfolgreichem zentralem Backup,
-Preflight und Migrationscheck auf dieses Image umgestellt. PostgreSQL behielt
-dabei Container-ID und Startzeit; Caddy wurde nicht verändert. Interne
-Readiness, öffentliche Health- und Login-Endpunkte, Statistikansicht,
-CSV-Export und das Login-Hintergrundasset wurden erfolgreich geprüft.
-Die synthetischen Renderer-Prüfungen waren zweimal byte-identisch:
+`sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`.
+Er wurde noch nicht gestartet und verändert den laufenden Pilotstand nicht.
+Vor der Umstellung sind zentraler Backup-Lauf, Preflight, bewusste Migration und
+Rollback-Aufzeichnung verpflichtend. Danach werden Readiness, öffentlicher
+Healthcheck, Login, Statistik, Workshopfilter, Serienregeln und PDF-Erzeugung
+synthetisch geprüft. Erst anschließend darf der begrenzte Pretix-Import ab dem
+Zircula-Stichtag `2026-08-25` erfolgen.
+
+Die Renderer-Prüfungen des vorherigen Pilotstands waren zweimal byte-identisch:
 
 - Teilnahmeliste: `e1d49e7a2374a388ddeb5e12504cc24164471d190feb3144f157af5309244b8f`
 - Abschlussbericht: `894ce7bafe95cf4f8c4abb963e815e75d02c50f0774e6794ccf6816785b6d4e5`
@@ -122,7 +125,11 @@ wird direkt in die lokale Secret-Datei übernommen.
 
 Pretix erhält einen dedizierten read-only Token für Organizer `werk`. Der
 kanonische API-Ursprung ist `https://pretix.eu`; die umleitende www-Variante
-wird nicht verwendet. Ein
+wird nicht verwendet. Reguläre Importe sind installationsseitig auf Termine ab
+`2026-08-25` begrenzt. Der Stichtag ist eine Zircula-Betriebseinstellung und
+keine allgemeine Werkblatt-Produktvorgabe. Vor dem ersten regulären Import
+werden die stabilen Pretix-Event-Slugs geprüft und notwendige Reihenregeln in
+Werkblatt angelegt. Ein
 Testmode-Event wird ausschließlich mit expliziter Referenz importiert:
 
 ```bash
@@ -139,7 +146,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:7c0f9755c495ac416d76565098292f3999b6bf77 \
+docker image inspect werkblatt:762faba8f4b03d01c5db734250470cf0f19c9b6c \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:

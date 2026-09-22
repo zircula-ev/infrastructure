@@ -5,29 +5,32 @@ isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
 
 ## 1. Geprüfter Commit
 
-Die Anwendung ist auf
-`7c0f9755c495ac416d76565098292f3999b6bf77` festgelegt. Der aktuell auf dem VPS
-ausgerollte Stand des Infrastructure-Repositories ist
-`2ee35d9f2a3e032af05e640ce1d6657af162542b`.
+Der nächste geprüfte Anwendungspin ist
+`762faba8f4b03d01c5db734250470cf0f19c9b6c`. Der auf dem VPS laufende
+Werkblatt-Stand bleibt bis zum kontrollierten Rollout
+`7c0f9755c495ac416d76565098292f3999b6bf77`. Der produktive
+Infrastructure-Checkout stand bei der Vorbereitung sauber auf
+`d1e09285c4aa7f7259331c34b00ee98cc17a47b7`; GitHub-`main` enthält zusätzlich
+die bereits gemergte Rollout-Dokumentation.
 
-Der unmittelbar vorherige Pilotstand ist
-`8ffc9ce15465b2c7079fcd86b1006036f49e47cc` mit Image-ID
-`sha256:e6af88c51d3c6de515d86ede20a737f699c776a07b5808b2543e112da091d937`.
-Der neue Pin ergänzt Organisationsstatistik, datensparsamen CSV-Export, sichere
-Vorlagenarchivierung und den Login-Hintergrund V1.1. Er enthält keine neue
-Migration. Beim Update wird ausschließlich der Webcontainer ersetzt; Datenbank,
-Persistenz und Caddy bleiben unverändert.
+Der unmittelbar vorherige und weiterhin laufende Pilotstand ist
+`7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
+`sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
+Der neue Pin ergänzt Pretix-Veranstaltungsregeln, Workshopfilter, reversible
+Sichtbarkeit und den installationsbezogenen Importstichtag. Er enthält die
+Migrationen `workshops.0003` und `documents.0004` und aktualisiert WeasyPrint
+wegen `CVE-2026-55073` auf Version 70. Datenbankcontainer, Persistenz, Netzwerke
+und Caddy bleiben unverändert; der Webcontainer wird erst nach Backup und
+erfolgreicher bewusster Migration ersetzt.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
-Image-ID `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
-Der Webcontainer wurde am 31. August 2026 nach erfolgreichem zentralem Backup,
-Preflight, Compose-Validierung und Migrationscheck umgestellt. PostgreSQL behielt
-dieselbe Container-ID und Startzeit; Caddy, Netzwerke, Volumes und andere Dienste
-blieben unverändert. Interne Readiness, öffentliche Health- und Login-Endpunkte,
-die authentifizierte Statistikansicht, der CSV-Export und das ausgelieferte
-Hintergrundasset wurden erfolgreich geprüft;
-der vorherige Image-Tag bleibt als Rollbackstand lokal verfügbar. Im
-Startzeitraum wurden keine Fehler, Exceptions oder Tracebacks protokolliert.
+Image-ID `sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`.
+Das Image wurde noch nicht gestartet. Laufende Container, Datenbank, Caddy und
+andere Dienste blieben während des Builds unverändert. Vor dem Rollout werden
+der vorherige Image-Tag und die Container-IDs festgehalten, ein zentraler Backup-
+Lauf geprüft und die Migration separat ausgeführt. Anschließend folgen interne
+und öffentliche Healthchecks, Login, Statistik, Serienregeln, Workshopfilter,
+zweifache synthetische PDF-Prüfung und erst danach der begrenzte Pretix-Import.
 
 ## 2. Zielarchitektur auf dem VPS
 
