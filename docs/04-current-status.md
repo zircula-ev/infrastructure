@@ -103,7 +103,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - isolierter Web- und PostgreSQL-17-Container ohne Hostports
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
-- laufender Werkblatt-Pilotstand
+- laufender Werkblatt-Pilotstand weiterhin
   `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
   `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`;
   der unmittelbar vorherige Pilotstand `8ffc9ce15465b2c…` hatte die Image-ID
@@ -114,6 +114,13 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   der Webcontainer ersetzt, PostgreSQL behielt Container-ID und Startzeit und
   Caddy blieb unverändert; Preflight, interne und öffentliche Healthchecks,
   Login, Statistik, CSV-Export und Hintergrundasset waren erfolgreich
+- nächster geprüfter, aber noch nicht ausgerollter Werkblatt-Pin
+  `762faba8f4b03d01c5db734250470cf0f19c9b6c` mit Image-ID
+  `sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`;
+  er ergänzt Pretix-Serienregeln, Workshopfilter und den Zircula-spezifischen
+  Importstichtag `2026-08-25`, enthält zwei Migrationen und aktualisiert den
+  PDF-Renderer wegen `CVE-2026-55073` auf WeasyPrint 70; vor Rollout bleiben
+  Backup, Migration, synthetische PDF-QA und kontrollierter Import verpflichtend
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,
