@@ -122,6 +122,12 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   PDF-Renderer wegen `CVE-2026-55073` auf WeasyPrint 70; zentraler Backup-Lauf,
   Preflight und die separaten Migrationen `documents.0004` und `workshops.0003`
   waren erfolgreich, ersetzt wurde ausschließlich der Webcontainer
+- nächster grün geprüfter Pin
+  `20f8bffaf78f33cef58a502d41403508482fe717` mit Image-ID
+  `sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`;
+  er verwendet den organisationsbezogenen WebDAV-Root
+  `ZIRCULA Intern/Workshopdokumentation` und legt Dokumente direkt unter
+  `<Jahr>/<Dateiname>.pdf` ohne sichtbare interne Organisations-UUID ab
 - regulärer Pretix-Sync vom 23. September 2026 ab `2026-08-25` verarbeitete 27
   Workshops und 42 bestätigte Anmeldungen; `Naehwerk` und `zirculalabs` sind durch reversible,
   organisationsgebundene Regeln vom Import ausgeschlossen; kein Workshop vor

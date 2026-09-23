@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`762faba8f4b03d01c5db734250470cf0f19c9b6c` festgelegt. Das resultierende lokale
+`20f8bffaf78f33cef58a502d41403508482fe717` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
@@ -33,7 +33,12 @@ Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
 und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`.
+`sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`.
+Der Pin entfernt die interne Organisations-UUID aus dem menschenlesbaren
+WebDAV-Pfad. Der organisationsbezogene Root ist für den Zircula-Piloten
+`ZIRCULA Intern/Workshopdokumentation`; darunter speichert Werkblatt nach Jahr
+und eindeutigem Dateinamen. Der zuvor laufende Pin bleibt bis zum kontrollierten
+Rollout `762faba8f4b03d01c5db734250470cf0f19c9b6c`.
 Nach erfolgreichem zentralem Backup und Preflight wurden `documents.0004` und
 `workshops.0003` separat angewendet und ausschließlich der Webcontainer ersetzt.
 PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert. Interner und
@@ -150,7 +155,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:762faba8f4b03d01c5db734250470cf0f19c9b6c \
+docker image inspect werkblatt:20f8bffaf78f33cef58a502d41403508482fe717 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
