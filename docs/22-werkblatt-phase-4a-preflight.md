@@ -1,36 +1,35 @@
 # 22 – Werkblatt Phase 4a: VPS-Preflight
 
-Stand: 29. August 2026. Dieser Bericht dokumentiert die laufende Prüfung des
-isolierten Piloten. Er erteilt keine Freigabe für Phase 4b.
+Stand: 22. September 2026. Dieser Bericht dokumentiert Preflight und den
+kontrollierten Rollout des isolierten Zircula-Piloten. Er erteilt keine Freigabe
+für weitere Organisationen oder einen öffentlichen Release.
 
 ## 1. Geprüfter Commit
 
-Der nächste geprüfte Anwendungspin ist
-`762faba8f4b03d01c5db734250470cf0f19c9b6c`. Der auf dem VPS laufende
-Werkblatt-Stand bleibt bis zum kontrollierten Rollout
-`7c0f9755c495ac416d76565098292f3999b6bf77`. Der produktive
-Infrastructure-Checkout stand bei der Vorbereitung sauber auf
-`d1e09285c4aa7f7259331c34b00ee98cc17a47b7`; GitHub-`main` enthält zusätzlich
-die bereits gemergte Rollout-Dokumentation.
+Der ausgerollte Anwendungspin ist
+`762faba8f4b03d01c5db734250470cf0f19c9b6c`; seine Image-ID ist
+`sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`.
+Der produktive Infrastructure-Checkout wurde mit sauberem Arbeitsbaum per
+Fast-forward auf `f13d6e5661b68f5bf5842751b2fc43fc82f2c2d5` aktualisiert.
 
-Der unmittelbar vorherige und weiterhin laufende Pilotstand ist
+Der unmittelbar vorherige Pilotstand war
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
 `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
 Der neue Pin ergänzt Pretix-Veranstaltungsregeln, Workshopfilter, reversible
 Sichtbarkeit und den installationsbezogenen Importstichtag. Er enthält die
 Migrationen `workshops.0003` und `documents.0004` und aktualisiert WeasyPrint
 wegen `CVE-2026-55073` auf Version 70. Datenbankcontainer, Persistenz, Netzwerke
-und Caddy bleiben unverändert; der Webcontainer wird erst nach Backup und
+und Caddy blieben unverändert; der Webcontainer wurde erst nach Backup und
 erfolgreicher bewusster Migration ersetzt.
 
 Der isolierte Build des neuen Pins auf dem VPS war erfolgreich und ergab
 Image-ID `sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`.
-Das Image wurde noch nicht gestartet. Laufende Container, Datenbank, Caddy und
-andere Dienste blieben während des Builds unverändert. Vor dem Rollout werden
-der vorherige Image-Tag und die Container-IDs festgehalten, ein zentraler Backup-
-Lauf geprüft und die Migration separat ausgeführt. Anschließend folgen interne
-und öffentliche Healthchecks, Login, Statistik, Serienregeln, Workshopfilter,
-zweifache synthetische PDF-Prüfung und erst danach der begrenzte Pretix-Import.
+Vor dem Start meldete der zentrale Backup-Service `Result=success`; der
+Repository-Preflight war erfolgreich. `documents.0004` und `workshops.0003`
+wurden separat angewendet, der bestehende Organisations-Bootstrap blieb
+idempotent und ausschließlich der Webcontainer wurde ersetzt. Interner und
+öffentlicher Healthcheck antworteten mit 200, die Login-Weiterleitung war
+korrekt, Restart- und Fehlerzähler blieben bei null.
 
 ## 2. Zielarchitektur auf dem VPS
 
@@ -88,6 +87,15 @@ abgewiesen. Der begrenzte Import von `blanko` synchronisierte erfolgreich genau
 einen synthetischen Workshop und eine synthetische aktive Anmeldung; Namen
 wurden bei der technischen Verifikation nicht ausgegeben.
 
+Vor dem ersten regulären Sync wurden ausschließlich Veranstaltungsmetadaten
+geprüft. Die offenen Reihen `Naehwerk` und `zirculalabs` wurden durch
+organisationsgebundene, reversible Regeln vom Import ausgeschlossen und als
+nicht dokumentationspflichtig markiert. Der anschließend ausdrücklich
+freigegebene Sync vom 23. September 2026 ab `2026-08-25` verarbeitete 27
+Workshops und 42 bestätigte Anmeldungen. Die aggregierte Nachkontrolle ergab
+keine importierte ausgeschlossene Reihe, keinen Workshop vor dem Stichtag und
+keine organisationsfremde Zuordnung.
+
 ## 7. WebDAV/Nextcloud
 
 Ein eigener technischer Benutzer, ein App-Passwort und der dedizierte Ordner
@@ -99,7 +107,8 @@ getrennt.
 
 ## 8. Secret-Handling
 
-`.env` enthält keine Secrets und hat Modus 600. Sechs einzelne, ignorierte
+`.env` enthält keine Secrets, hat Modus 600 und gehört dem dedizierten
+Deploymentbenutzer. Sechs einzelne, ignorierte
 Secret-Dateien haben ebenfalls Modus 600 und werden als Compose-Secrets
 read-only gemountet. Das identische Datenbankpasswort wird wegen der
 dateibasierten Bind-Mount-Rechte getrennt für Web-UID 10001 und DB-UID 999

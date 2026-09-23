@@ -98,12 +98,12 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   SHA-256-Prüfsummen erfolgreich; isolierter Restore und Aufbewahrungsregeln
   bleiben regelmäßige Betriebsaufgaben gemäß `docs/13-libredesk.md`
 
-### Werkblatt (Phase-4a-Preflight, noch kein Phase-4b-Rollout)
+### Werkblatt (isolierter Zircula-Pilot)
 
 - isolierter Web- und PostgreSQL-17-Container ohne Hostports
 - Webcontainer als UID/GID 10001 mit read-only Root-Dateisystem; Datenbank nur
   im internen `werkblatt_internal`-Netz
-- laufender Werkblatt-Pilotstand weiterhin
+- vorheriger Werkblatt-Pilotstand
   `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
   `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`;
   der unmittelbar vorherige Pilotstand `8ffc9ce15465b2c…` hatte die Image-ID
@@ -114,13 +114,19 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   der Webcontainer ersetzt, PostgreSQL behielt Container-ID und Startzeit und
   Caddy blieb unverändert; Preflight, interne und öffentliche Healthchecks,
   Login, Statistik, CSV-Export und Hintergrundasset waren erfolgreich
-- nächster geprüfter, aber noch nicht ausgerollter Werkblatt-Pin
+- seit 22. September 2026 laufender Werkblatt-Pin
   `762faba8f4b03d01c5db734250470cf0f19c9b6c` mit Image-ID
   `sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`;
   er ergänzt Pretix-Serienregeln, Workshopfilter und den Zircula-spezifischen
   Importstichtag `2026-08-25`, enthält zwei Migrationen und aktualisiert den
-  PDF-Renderer wegen `CVE-2026-55073` auf WeasyPrint 70; vor Rollout bleiben
-  Backup, Migration, synthetische PDF-QA und kontrollierter Import verpflichtend
+  PDF-Renderer wegen `CVE-2026-55073` auf WeasyPrint 70; zentraler Backup-Lauf,
+  Preflight und die separaten Migrationen `documents.0004` und `workshops.0003`
+  waren erfolgreich, ersetzt wurde ausschließlich der Webcontainer
+- regulärer Pretix-Sync vom 23. September 2026 ab `2026-08-25` verarbeitete 27
+  Workshops und 42 bestätigte Anmeldungen; `Naehwerk` und `zirculalabs` sind durch reversible,
+  organisationsgebundene Regeln vom Import ausgeschlossen; kein Workshop vor
+  dem Stichtag, kein ausgeschlossener Reihentermin und keine Tenant-Abweichung
+  wurden festgestellt
 - interne Readiness mit Datenbankzugriff und öffentlicher HTTPS-Healthcheck
   unter `werkblatt.zircula.org` erfolgreich
 - Authentik-Application/-Provider und die getrennten Gruppen `Werkblatt Admins`,
@@ -134,8 +140,9 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   synthetischen Workshop und einer synthetischen Anmeldung erfolgreich
 - dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
   Lesen und idempotentes Überschreiben einer synthetischen Probe erfolgreich
-- Phase 4b bleibt bis zum vollständigen E2E- und Restore-Nachweis ausdrücklich
-  nicht freigegeben; Details stehen in `docs/22-werkblatt-phase-4a-preflight.md`
+- Öffnung für weitere Organisationen und öffentlicher Release bleiben bis zu
+  Multi-Tenant-Ausbau, vollständigem E2E-/Restore-Nachweis und Lizenzentscheidung
+  gesperrt; Details stehen in `docs/22-werkblatt-phase-4a-preflight.md`
 
 ### Backup nach nctest (produktiv)
 

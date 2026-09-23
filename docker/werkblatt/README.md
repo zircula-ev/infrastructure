@@ -22,10 +22,11 @@ Datenbankcontainers ausgerollt. Webcontainer, Caddy, Netzwerke und Volumes
 blieben unverändert. PostgreSQL-Version, Migrationen, interne Readiness,
 öffentlicher Healthcheck, Statistik, CSV-Export und Logs wurden geprüft.
 
-Der laufende vorherige Pilotstand ist Commit
+Der vorherige Pilotstand war Commit
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
 `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
-Der neue Stand ergänzt einen konfigurierbaren Pretix-Importstichtag,
+Der am 22. September 2026 ausgerollte Stand ergänzt einen konfigurierbaren
+Pretix-Importstichtag,
 tenantgebundene Pretix-Veranstaltungsregeln, Workshopfilter und reversible
 Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
 `CVE-2026-55073` auf WeasyPrint 70. Er enthält die Migrationen `workshops.0003`
@@ -33,12 +34,14 @@ und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`.
-Er wurde noch nicht gestartet und verändert den laufenden Pilotstand nicht.
-Vor der Umstellung sind zentraler Backup-Lauf, Preflight, bewusste Migration und
-Rollback-Aufzeichnung verpflichtend. Danach werden Readiness, öffentlicher
-Healthcheck, Login, Statistik, Workshopfilter, Serienregeln und PDF-Erzeugung
-synthetisch geprüft. Erst anschließend darf der begrenzte Pretix-Import ab dem
-Zircula-Stichtag `2026-08-25` erfolgen.
+Nach erfolgreichem zentralem Backup und Preflight wurden `documents.0004` und
+`workshops.0003` separat angewendet und ausschließlich der Webcontainer ersetzt.
+PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert. Interner und
+öffentlicher Healthcheck antworteten mit 200; der Container blieb ohne Restart
+und ohne Fehler im Startzeitraum. Der reguläre Pretix-Sync vom 23. September
+2026 ab dem Zircula-Stichtag `2026-08-25` verarbeitete anschließend 27 Workshops
+und 42 bestätigte Anmeldungen. Bereits vorhandene synthetische Pilotdaten blieben
+erhalten.
 
 Die Renderer-Prüfungen des vorherigen Pilotstands waren zweimal byte-identisch:
 
@@ -129,7 +132,8 @@ wird nicht verwendet. Reguläre Importe sind installationsseitig auf Termine ab
 `2026-08-25` begrenzt. Der Stichtag ist eine Zircula-Betriebseinstellung und
 keine allgemeine Werkblatt-Produktvorgabe. Vor dem ersten regulären Import
 werden die stabilen Pretix-Event-Slugs geprüft und notwendige Reihenregeln in
-Werkblatt angelegt. Ein
+Werkblatt angelegt. Für den Pilot sind `Naehwerk` und `zirculalabs` reversibel
+vom Import ausgeschlossen und als nicht dokumentationspflichtig markiert. Ein
 Testmode-Event wird ausschließlich mit expliziter Referenz importiert:
 
 ```bash
