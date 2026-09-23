@@ -4,8 +4,8 @@ set -Eeuo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-readonly werkblatt_image="werkblatt:762faba8f4b03d01c5db734250470cf0f19c9b6c"
-readonly expected_image_id="sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7"
+readonly werkblatt_image="werkblatt:20f8bffaf78f33cef58a502d41403508482fe717"
+readonly expected_image_id="sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6"
 readonly postgres_image="postgres:17.11@sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675"
 readonly expected_postgres_image_id="sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675"
 
@@ -90,6 +90,7 @@ required_configuration=(
   PRETIX_IMPORT_NOT_BEFORE
   WEBDAV_BASE_URL
   WEBDAV_USERNAME
+  WEBDAV_ROOT
 )
 
 for name in "${required_configuration[@]}"; do
@@ -105,6 +106,11 @@ done
 
 if [[ "$(env_value PRETIX_IMPORT_NOT_BEFORE)" != "2026-08-25" ]]; then
   echo >&2 "FEHLER: PRETIX_IMPORT_NOT_BEFORE muss für den Zircula-Piloten 2026-08-25 sein."
+  exit 1
+fi
+
+if [[ "$(env_value WEBDAV_ROOT)" != "ZIRCULA Intern/Workshopdokumentation" ]]; then
+  echo >&2 "FEHLER: WEBDAV_ROOT muss auf den freigegebenen Zircula-Zielordner zeigen."
   exit 1
 fi
 

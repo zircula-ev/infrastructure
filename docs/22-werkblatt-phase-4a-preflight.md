@@ -12,6 +12,15 @@ Der ausgerollte Anwendungspin ist
 Der produktive Infrastructure-Checkout wurde mit sauberem Arbeitsbaum per
 Fast-forward auf `f13d6e5661b68f5bf5842751b2fc43fc82f2c2d5` aktualisiert.
 
+Der nächste grün geprüfte Anwendungspin ist
+`20f8bffaf78f33cef58a502d41403508482fe717` mit isoliert gebauter Image-ID
+`sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`.
+Er behandelt `WEBDAV_ROOT` als organisationsbezogenen Zielordner und entfernt
+die interne Organisations-UUID aus dem sichtbaren Ablagepfad. Für Zircula ist
+`ZIRCULA Intern/Workshopdokumentation/<Jahr>/<Dateiname>.pdf` festgelegt. Das
+Image wurde beim Build noch nicht gestartet; laufende Container blieben
+unverändert.
+
 Der unmittelbar vorherige Pilotstand war
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
 `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
