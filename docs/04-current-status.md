@@ -114,7 +114,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   der Webcontainer ersetzt, PostgreSQL behielt Container-ID und Startzeit und
   Caddy blieb unverändert; Preflight, interne und öffentliche Healthchecks,
   Login, Statistik, CSV-Export und Hintergrundasset waren erfolgreich
-- seit 22. September 2026 laufender Werkblatt-Pin
+- vorheriger Werkblatt-Pin
   `762faba8f4b03d01c5db734250470cf0f19c9b6c` mit Image-ID
   `sha256:76f4406d4ece378c2418a8e17f705808941a86d986d8d9f38b950cf2840b7ed7`;
   er ergänzt Pretix-Serienregeln, Workshopfilter und den Zircula-spezifischen
@@ -122,12 +122,18 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   PDF-Renderer wegen `CVE-2026-55073` auf WeasyPrint 70; zentraler Backup-Lauf,
   Preflight und die separaten Migrationen `documents.0004` und `workshops.0003`
   waren erfolgreich, ersetzt wurde ausschließlich der Webcontainer
-- nächster grün geprüfter Pin
+- seit 23. September 2026 laufender Werkblatt-Pin
   `20f8bffaf78f33cef58a502d41403508482fe717` mit Image-ID
   `sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`;
   er verwendet den organisationsbezogenen WebDAV-Root
   `ZIRCULA Intern/Workshopdokumentation` und legt Dokumente direkt unter
   `<Jahr>/<Dateiname>.pdf` ohne sichtbare interne Organisations-UUID ab
+- Rollout nach erfolgreichem zentralem Backup und Preflight durch Austausch nur
+  des Webcontainers; Datenbank und Caddy unverändert, interner und öffentlicher
+  Healthcheck 200, null Restarts und keine Fehler im geprüften Startzeitraum
+- vorhandenes Pilot-PDF nach Nextcloud
+  `ZIRCULA Intern/Workshopdokumentation/2026/` migriert; Zielgröße 98.921 Byte
+  verifiziert, Datenbank-Key aktualisiert und alte Datei anschließend entfernt
 - regulärer Pretix-Sync vom 23. September 2026 ab `2026-08-25` verarbeitete 27
   Workshops und 42 bestätigte Anmeldungen; `Naehwerk` und `zirculalabs` sind durch reversible,
   organisationsgebundene Regeln vom Import ausgeschlossen; kein Workshop vor
