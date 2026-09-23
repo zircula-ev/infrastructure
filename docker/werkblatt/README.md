@@ -37,8 +37,11 @@ Der isolierte VPS-Build des neuen Pins ergab Image-ID
 Der Pin entfernt die interne Organisations-UUID aus dem menschenlesbaren
 WebDAV-Pfad. Der organisationsbezogene Root ist für den Zircula-Piloten
 `ZIRCULA Intern/Workshopdokumentation`; darunter speichert Werkblatt nach Jahr
-und eindeutigem Dateinamen. Der zuvor laufende Pin bleibt bis zum kontrollierten
-Rollout `762faba8f4b03d01c5db734250470cf0f19c9b6c`.
+und eindeutigem Dateinamen. Der Rollout erfolgte am 23. September 2026 nach
+erfolgreichem zentralem Backup und Preflight durch Austausch ausschließlich des
+Webcontainers. PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert.
+Das vorhandene Pilot-PDF wurde kopiert, anhand seiner Größe verifiziert, auf den
+neuen Storage-Key umgestellt und erst danach am alten Ort entfernt.
 Nach erfolgreichem zentralem Backup und Preflight wurden `documents.0004` und
 `workshops.0003` separat angewendet und ausschließlich der Webcontainer ersetzt.
 PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert. Interner und

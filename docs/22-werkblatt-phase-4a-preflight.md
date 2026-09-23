@@ -12,14 +12,20 @@ Der ausgerollte Anwendungspin ist
 Der produktive Infrastructure-Checkout wurde mit sauberem Arbeitsbaum per
 Fast-forward auf `f13d6e5661b68f5bf5842751b2fc43fc82f2c2d5` aktualisiert.
 
-Der nächste grün geprüfte Anwendungspin ist
+Der seit 23. September 2026 laufende Anwendungspin ist
 `20f8bffaf78f33cef58a502d41403508482fe717` mit isoliert gebauter Image-ID
 `sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`.
 Er behandelt `WEBDAV_ROOT` als organisationsbezogenen Zielordner und entfernt
 die interne Organisations-UUID aus dem sichtbaren Ablagepfad. Für Zircula ist
 `ZIRCULA Intern/Workshopdokumentation/<Jahr>/<Dateiname>.pdf` festgelegt. Das
-Image wurde beim Build noch nicht gestartet; laufende Container blieben
-unverändert.
+Image wurde nach erfolgreichem zentralem Backup und Preflight durch Austausch
+ausschließlich des Webcontainers gestartet. PostgreSQL, Caddy, Netzwerke und
+Persistenz blieben unverändert. Interner und öffentlicher Healthcheck antworteten
+mit 200; Restart- und Fehlerzähler blieben bei null. Das vorhandene Pilot-PDF
+wurde zunächst in den neuen Jahresordner kopiert, mit 98.921 Byte gegen den
+Datensatz verifiziert, auf den neuen Storage-Key umgestellt und erst danach am
+alten Ort entfernt. Ein abschließender WebDAV-HEAD bestätigte das neue Ziel mit
+200 und den alten Pfad mit 404.
 
 Der unmittelbar vorherige Pilotstand war
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
