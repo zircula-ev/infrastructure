@@ -213,7 +213,12 @@ als Produktions-E2E ersetzt.
 - WebDAV-Vertrag geprüft, aber vollständiger Werkblatt-PDF-Upload und Fehler-Retry offen;
 - Werkblatt-Restore auf dem VPS noch nicht durchgeführt;
 - kein Swap, daher Ressourcenbeobachtung bei WeasyPrint und Backup;
-- endgültige Open-Source-Lizenzentscheidung weiterhin offen.
+- Open-Source-Lizenzentscheidung mit Werkblatt-Commit
+  `ed861f38c64f26c2fd3fcbfef71a40be20039629` abgeschlossen:
+  Programmcode `AGPL-3.0-or-later`, Werkblatt Brand System ausdrücklich
+  vorbehalten; vollständiger Lizenztext, Notices, Third-Party-Inventar,
+  Buildversion und exakter Source-Link werden im Image beziehungsweise in der
+  Anwendung ausgeliefert.
 
 ## 14. Schritte bis und für Phase 4b
 

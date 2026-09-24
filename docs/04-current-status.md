@@ -133,6 +133,13 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`;
   ergänzt die organisationsgebundene native Anlage und Bearbeitung von Workshops
   für Workshop User, Editor und Organization Admin und benötigt keine Migration
+- zur kontrollierten Einspielung vorbereiteter Pin
+  `ed861f38c64f26c2fd3fcbfef71a40be20039629` mit Image-ID
+  `sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`;
+  setzt `AGPL-3.0-or-later` für den Programmcode um, hält das Werkblatt Brand
+  System ausdrücklich vorbehalten, liefert Lizenz- und Third-Party-Hinweise im
+  Image aus und verknüpft die Anwendung mit dem exakten Quellstand; keine
+  Migration, keine Caddy-, Netzwerk-, Secret-, Datenbank- oder Persistenzänderung
 - Rollout nach erfolgreichem zentralem Backup und Preflight durch Austausch nur
   des Webcontainers; PostgreSQL behielt Container-ID, Image und Startzeit,
   Caddy blieb unverändert, beide Healthchecks 200, null Restarts und keine
@@ -162,7 +169,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
 - dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
   Lesen und idempotentes Überschreiben einer synthetischen Probe erfolgreich
 - Öffnung für weitere Organisationen und öffentlicher Release bleiben bis zu
-  Multi-Tenant-Ausbau, vollständigem E2E-/Restore-Nachweis und Lizenzentscheidung
+  Multi-Tenant-Ausbau und vollständigem E2E-/Restore-Nachweis
   gesperrt; Details stehen in `docs/22-werkblatt-phase-4a-preflight.md`
 
 ### Backup nach nctest (produktiv)
