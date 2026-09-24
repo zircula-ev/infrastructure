@@ -180,8 +180,9 @@ synthetische Personen und Dokumente.
 
 Der reguläre Pretix-Abgleich läuft nach erfolgreichem RC-Rollout als gehärteter
 systemd-Oneshot alle 15 Minuten mit bis zu zwei Minuten zufälliger Verzögerung.
-Ein nicht blockierender `flock` verhindert überlappende Läufe. Der Dienst
-verwendet ausschließlich den bereits laufenden Webcontainer und dessen
+Ein nicht blockierender `flock` in dem von systemd verwalteten, privaten
+Runtime-Verzeichnis `/run/zircula-werkblatt` verhindert überlappende Läufe. Der
+Dienst verwendet ausschließlich den bereits laufenden Webcontainer und dessen
 geschützte Konfiguration; Secrets werden weder kopiert noch als Argumente
 übergeben.
 

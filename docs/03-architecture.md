@@ -78,10 +78,10 @@ Nextcloud/WebDAV erfolgen aus dem Webcontainer. Diese Aufteilung ist die
 Zircula-Pilotarchitektur und keine Vorgabe für allgemeine Werkblatt-Installationen.
 
 Ein hostseitiger systemd-Timer startet alle 15 Minuten den regulären
-Pretix-Abgleich im laufenden Werkblatt-Webcontainer. Ein Lock verhindert
-überlappende Läufe. Der Timer besitzt keine eigene Secret-Kopie und öffnet
-keinen zusätzlichen Port; Fehler und ausschließlich aggregierte Importzahlen
-landen im systemd-Journal.
+Pretix-Abgleich im laufenden Werkblatt-Webcontainer. Ein Lock im privaten,
+von systemd verwalteten Runtime-Verzeichnis verhindert überlappende Läufe. Der
+Timer besitzt keine eigene Secret-Kopie und öffnet keinen zusätzlichen Port;
+Fehler und ausschließlich aggregierte Importzahlen landen im systemd-Journal.
 
 ## Monitoring-Netz
 
