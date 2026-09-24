@@ -8,9 +8,12 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`4e28a642e2e46df38ad42ffc25d1d7d750d56383` festgelegt. Das resultierende lokale
-Image erhält denselben Commit als Tag. Build und Image-ID sind unten
-dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
+`ed861f38c64f26c2fd3fcbfef71a40be20039629` festgelegt. Das resultierende lokale
+Image erhält denselben Commit als Tag. Die Buildargumente setzen Buildversion
+und Quellcode-URL ebenfalls exakt auf diesen Commit; die Anwendung und die
+OCI-Labels weisen `AGPL-3.0-or-later` sowie den korrespondierenden Quellstand
+aus. Build und Image-ID sind unten dokumentiert; der vollständige synthetische
+E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
 geprüften Image-Digest
 `sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`
@@ -33,10 +36,18 @@ Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
 und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
-`sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
-Der Pin ergänzt die native Anlage und Bearbeitung von Workshops für alle drei
-fachlichen Rollen. Er benötigt keine Migration. Der zuvor laufende Pin bleibt
+`sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`.
+Der Pin lizenziert den Werkblatt-Programmcode unter `AGPL-3.0-or-later`, grenzt
+das vorbehaltene Brand System ab, liefert Lizenz- und Third-Party-Hinweise im
+Image aus und zeigt Lizenz, Buildversion sowie den Quellcode dieses Builds in
+der Anwendung an. Er benötigt keine Migration. Der zuvor laufende Pin bleibt
 als Rollbackgrundlage erhalten:
+`4e28a642e2e46df38ad42ffc25d1d7d750d56383` mit Image-ID
+`sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
+Dieser ergänzte die native Anlage und Bearbeitung von Workshops für alle drei
+fachlichen Rollen und wurde am 24. September 2026 erfolgreich ausgerollt.
+
+Der vorherige WebDAV-Pin war
 `20f8bffaf78f33cef58a502d41403508482fe717` mit Image-ID
 `sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`.
 Dieser entfernte die interne Organisations-UUID aus dem menschenlesbaren
@@ -162,7 +173,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:4e28a642e2e46df38ad42ffc25d1d7d750d56383 \
+docker image inspect werkblatt:ed861f38c64f26c2fd3fcbfef71a40be20039629 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
