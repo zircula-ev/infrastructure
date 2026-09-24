@@ -44,6 +44,23 @@ Pin bleibt bis zur Abnahme als Rollbackgrundlage erhalten:
 `ed861f38c64f26c2fd3fcbfef71a40be20039629` mit Image-ID
 `sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`.
 
+Der RC wurde am 24. September 2026 nach erfolgreichem zentralem Backup und
+Repository-Preflight ausgerollt. Die additive Migration
+`workshops.0004_workshop_lifecycle_status` wurde getrennt angewendet und
+ausschließlich der Webcontainer ersetzt. PostgreSQL behielt Container-ID,
+Image, Startzeit und Restart-Zähler; Caddy, Netzwerke, Secrets und
+Persistenzpfade blieben unverändert. Interne Readiness, öffentlicher
+Healthcheck und Login-Einstieg antworteten mit 200; der Webcontainer blieb
+gesund und ohne Restarts. Der erste reguläre Abgleich meldete 28 aktive und
+3 abgesagte Workshops sowie 47 aktive Anmeldungen.
+
+Der erste Timerstand verwendete irrtümlich `/run/lock` und scheiterte vor
+Docker- und Pretix-Zugriff mit `Permission denied`. Der Timer wurde gestoppt
+und der Lockpfad auf das von systemd verwaltete Runtime-Verzeichnis
+`/run/zircula-werkblatt` umgestellt. Kontrollierter Dienststart und der beim
+erneuten Aktivieren ausgelöste Timerlauf endeten anschließend jeweils mit
+`Result=success` und `ExecMainStatus=0`; der nächste Lauf wurde regulär geplant.
+
 Der AGPL-Pin wurde am 24. September 2026 nach einem erfolgreichen zentralen
 Backup (`Result=success`, `ExecMainStatus=0`) und Repository-Preflight
 ausgerollt. Der getrennte Django-Migrationslauf meldete keine anzuwendenden
@@ -103,8 +120,7 @@ parallele Backup-Lauf werden deshalb beim Pilot beobachtet.
 
 ## Einmalige Vorbereitung
 
-Phase 4b darf erst nach ausdrücklicher Freigabe beginnen. Dann werden die Pfade
-mit den Container-UIDs vorbereitet:
+Bei einer Neuinstallation werden die Pfade mit den Container-UIDs vorbereitet:
 
 ```bash
 sudo install -d -o 10001 -g 10001 -m 700 /srv/zircula/werkblatt/media
