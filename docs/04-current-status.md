@@ -128,6 +128,11 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   er verwendet den organisationsbezogenen WebDAV-Root
   `ZIRCULA Intern/Workshopdokumentation` und legt Dokumente direkt unter
   `<Jahr>/<Dateiname>.pdf` ohne sichtbare interne Organisations-UUID ab
+- nächster grün geprüfter Pin
+  `4e28a642e2e46df38ad42ffc25d1d7d750d56383` mit Image-ID
+  `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`;
+  ergänzt die organisationsgebundene native Anlage und Bearbeitung von Workshops
+  für Workshop User, Editor und Organization Admin und benötigt keine Migration
 - Rollout nach erfolgreichem zentralem Backup und Preflight durch Austausch nur
   des Webcontainers; Datenbank und Caddy unverändert, interner und öffentlicher
   Healthcheck 200, null Restarts und keine Fehler im geprüften Startzeitraum
