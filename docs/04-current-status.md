@@ -133,7 +133,7 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`;
   ergänzt die organisationsgebundene native Anlage und Bearbeitung von Workshops
   für Workshop User, Editor und Organization Admin und benötigt keine Migration
-- seit 24. September 2026 laufender AGPL-Pin
+- vorheriger AGPL-Pin
   `ed861f38c64f26c2fd3fcbfef71a40be20039629` mit Image-ID
   `sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`;
   setzt `AGPL-3.0-or-later` für den Programmcode um, hält das Werkblatt Brand
@@ -145,6 +145,20 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   Netzwerke, Secrets und Persistenz blieben unverändert; interne Readiness,
   öffentlicher Healthcheck und Login-Einstieg 200, null Restarts und keine
   Fehler im geprüften Startzeitraum
+- seit 24. September 2026 laufender Release Candidate `v0.1.0-rc.1`, Commit
+  `884d7e0dfbf6fd9f604a0818f09f5a1f4e2b985f`, mit Image-ID
+  `sha256:edde2bb7f70456dbaac257131dba49e06ac29c45ac0a1bf369859389f7e84e92`;
+  zentraler Backup-Lauf und Repository-Preflight erfolgreich, additive
+  Migration `workshops.0004_workshop_lifecycle_status` separat angewendet und
+  ausschließlich der Webcontainer ersetzt; PostgreSQL, Caddy, Netzwerke,
+  Secrets und Persistenz unverändert; interne Readiness, öffentlicher
+  Healthcheck und Login-Einstieg 200, null Restarts; regulärer Pretix-Abgleich
+  mit 28 aktiven, 3 abgesagten Workshops und 47 aktiven Anmeldungen
+- systemd-Timer für den regulären Pretix-Abgleich alle 15 Minuten aktiviert;
+  der anfängliche Lock unter `/run/lock` scheiterte vor Docker-/Pretix-Zugriff,
+  wurde gestoppt und auf ein privates systemd-`RuntimeDirectory` korrigiert;
+  manueller Diensttest und erster timer-ausgelöster Lauf anschließend jeweils
+  erfolgreich, Folgeausführung regulär geplant, Werkblatt weiter gesund
 - vorhandenes Pilot-PDF nach Nextcloud
   `ZIRCULA Intern/Workshopdokumentation/2026/` migriert; Zielgröße 98.921 Byte
   verifiziert, Datenbank-Key aktualisiert und alte Datei anschließend entfernt
@@ -166,8 +180,8 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   synthetischen Workshop und einer synthetischen Anmeldung erfolgreich
 - dedizierter Nextcloud-Technikbenutzer und WebDAV-Ordner `/Werkblatt`; Schreiben,
   Lesen und idempotentes Überschreiben einer synthetischen Probe erfolgreich
-- Öffnung für weitere Organisationen und öffentlicher Release bleiben bis zu
-  Multi-Tenant-Ausbau und vollständigem E2E-/Restore-Nachweis
+- Öffnung für weitere Organisationen und ein allgemeiner Hosted Release bleiben
+  bis zu Multi-Tenant-Ausbau und vollständigem E2E-/Restore-Nachweis
   gesperrt; Details stehen in `docs/22-werkblatt-phase-4a-preflight.md`
 
 ### Backup nach nctest (produktiv)

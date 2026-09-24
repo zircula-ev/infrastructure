@@ -249,3 +249,31 @@ als Produktions-E2E ersetzt.
 9. Den finalen Phase-4a-Bericht vorlegen und stoppen.
 10. Erst nach erneuter ausdrücklicher Freigabe den Zircula-Pilot als Phase 4b
     produktiv schalten.
+
+## 15. Phase-4b-Rollout von `v0.1.0-rc.1`
+
+Der kontrollierte Zircula-Pilot wurde am 24. September 2026 auf den
+veröffentlichten Werkblatt-Prerelease `v0.1.0-rc.1`, Commit
+`884d7e0dfbf6fd9f604a0818f09f5a1f4e2b985f`, aktualisiert. Vor dem Rollout
+lief der zentrale Backup-Service um 14:56 CEST mit `Result=success` und
+`ExecMainStatus=0`; anschließend bestand der commit- und Image-ID-gebundene
+Repository-Preflight.
+
+Der Migrationsplan enthielt ausschließlich die additive Migration
+`workshops.0004_workshop_lifecycle_status`. Sie wurde separat mit dem neuen
+Image angewendet. Danach wurde nur der Webcontainer ersetzt. Der
+PostgreSQL-Container behielt ID, Image, Startzeit und Restart-Zähler. Caddy,
+Netzwerke, Secrets und Persistenzpfade wurden nicht verändert. Interne
+Readiness, öffentlicher Healthcheck und Login-Einstieg antworteten mit 200;
+Image-ID, Release-/Commitangabe, Source-URL und `AGPL-3.0-or-later`-Label
+stimmten mit dem freigegebenen Stand überein.
+
+Der erste reguläre Pretix-Abgleich synchronisierte 28 aktive und 3 abgesagte
+Workshops sowie 47 aktive Anmeldungen. Der neu installierte 15-Minuten-Timer
+scheiterte zunächst vor Docker- und Pretix-Zugriff an einem nicht
+beschreibbaren Lockpfad unter `/run/lock`. Er wurde gestoppt, per PR auf das
+private systemd-`RuntimeDirectory` `/run/zircula-werkblatt` korrigiert und erst
+danach wieder aktiviert. Kontrollierter Diensttest und erster
+timer-ausgelöster Lauf endeten jeweils erfolgreich; das Runtime-Verzeichnis
+wurde nach dem Oneshot entfernt und der nächste Lauf regulär geplant. Der
+Werkblatt-Webcontainer blieb gesund und ohne Restarts.
