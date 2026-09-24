@@ -1,0 +1,22 @@
+[Unit]
+Description=Synchronize Werkblatt workshops from Pretix
+Wants=network-online.target docker.service
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0077
+ExecStart=/usr/local/sbin/zircula-werkblatt-pretix-sync
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+
+TimeoutStartSec=10m

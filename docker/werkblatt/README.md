@@ -8,12 +8,12 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`ed861f38c64f26c2fd3fcbfef71a40be20039629` festgelegt. Das resultierende lokale
-Image erhält denselben Commit als Tag. Die Buildargumente setzen Buildversion
-und Quellcode-URL ebenfalls exakt auf diesen Commit; die Anwendung und die
-OCI-Labels weisen `AGPL-3.0-or-later` sowie den korrespondierenden Quellstand
-aus. Build, Image-ID und kontrollierter Rollout sind unten dokumentiert; der
-vollständige synthetische E2E bleibt eine gesonderte Betriebsprüfung.
+`884d7e0dfbf6fd9f604a0818f09f5a1f4e2b985f` und damit auf den veröffentlichten
+Prerelease `v0.1.0-rc.1` festgelegt. Das resultierende lokale Image erhält den
+Commit als Tag. Buildversion `v0.1.0-rc.1+884d7e0` und commitgenaue
+Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
+und kontrollierter Rollout sind unten dokumentiert; der vollständige
+synthetische E2E bleibt eine gesonderte Betriebsprüfung.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
 geprüften Image-Digest
 `sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`
@@ -35,17 +35,14 @@ Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
 `CVE-2026-55073` auf WeasyPrint 70. Er enthält die Migrationen `workshops.0003`
 und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
-Der isolierte VPS-Build des neuen Pins ergab Image-ID
+Der isolierte VPS-Build des Release Candidates ergab Image-ID
+`sha256:edde2bb7f70456dbaac257131dba49e06ac29c45ac0a1bf369859389f7e84e92`.
+Der RC ergänzt gegenüber dem laufenden Stand insbesondere reversible
+Pretix-Absagen, Workshopkalender und Supply-Chain-/Lizenzdrift-Gates. Er enthält
+die additive Migration `workshops.0004_workshop_lifecycle_status`. Der laufende
+Pin bleibt bis zur Abnahme als Rollbackgrundlage erhalten:
+`ed861f38c64f26c2fd3fcbfef71a40be20039629` mit Image-ID
 `sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`.
-Der Pin lizenziert den Werkblatt-Programmcode unter `AGPL-3.0-or-later`, grenzt
-das vorbehaltene Brand System ab, liefert Lizenz- und Third-Party-Hinweise im
-Image aus und zeigt Lizenz, Buildversion sowie den Quellcode dieses Builds in
-der Anwendung an. Er benötigt keine Migration. Der zuvor laufende Pin bleibt
-als Rollbackgrundlage erhalten:
-`4e28a642e2e46df38ad42ffc25d1d7d750d56383` mit Image-ID
-`sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
-Dieser ergänzte die native Anlage und Bearbeitung von Workshops für alle drei
-fachlichen Rollen und wurde am 24. September 2026 erfolgreich ausgerollt.
 
 Der AGPL-Pin wurde am 24. September 2026 nach einem erfolgreichen zentralen
 Backup (`Result=success`, `ExecMainStatus=0`) und Repository-Preflight
@@ -179,12 +176,37 @@ Nextcloud erhält einen technischen Werkblatt-Benutzer, ein App-Passwort und
 einen dedizierten Zielordner. Der End-to-End-Test verwendet ausschließlich
 synthetische Personen und Dokumente.
 
+## Periodischer Pretix-Abgleich
+
+Der reguläre Pretix-Abgleich läuft nach erfolgreichem RC-Rollout als gehärteter
+systemd-Oneshot alle 15 Minuten mit bis zu zwei Minuten zufälliger Verzögerung.
+Ein nicht blockierender `flock` verhindert überlappende Läufe. Der Dienst
+verwendet ausschließlich den bereits laufenden Webcontainer und dessen
+geschützte Konfiguration; Secrets werden weder kopiert noch als Argumente
+übergeben.
+
+```bash
+sudo install -o root -g root -m 0755 \
+  scripts/sync-pretix /usr/local/sbin/zircula-werkblatt-pretix-sync
+sudo install -o root -g root -m 0644 \
+  systemd/zircula-werkblatt-pretix-sync.service \
+  systemd/zircula-werkblatt-pretix-sync.timer \
+  /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now zircula-werkblatt-pretix-sync.timer
+```
+
+Vor Aktivierung wird der Dienst einmal manuell gestartet und mit
+`systemctl show`, `journalctl` und der Werkstattliste geprüft. Fehler bleiben
+im Journal sichtbar und werden nicht durch einen erfolgreichen Timerstatus
+verdeckt.
+
 ## Preflight, Migration und Start
 
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:ed861f38c64f26c2fd3fcbfef71a40be20039629 \
+docker image inspect werkblatt:884d7e0dfbf6fd9f604a0818f09f5a1f4e2b985f \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:

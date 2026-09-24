@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+readonly infrastructure_directory="/opt/zircula/git/infrastructure"
+readonly werkblatt_directory="${infrastructure_directory}/docker/werkblatt"
+readonly lock_file="/run/lock/zircula-werkblatt-pretix-sync.lock"
+
+exec 9>"${lock_file}"
+if ! flock --nonblock 9; then
+  echo "Werkblatt Pretix sync is already running; skipping overlapping invocation"
+  exit 0
+fi
+
+docker compose \
+  --project-directory "${werkblatt_directory}" \
+  --env-file "${werkblatt_directory}/.env" \
+  -f "${werkblatt_directory}/compose.yaml" \
+  exec -T web python manage.py sync_pretix
