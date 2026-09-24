@@ -27,13 +27,16 @@ Datensatz verifiziert, auf den neuen Storage-Key umgestellt und erst danach am
 alten Ort entfernt. Ein abschließender WebDAV-HEAD bestätigte das neue Ziel mit
 200 und den alten Pfad mit 404.
 
-Der nächste grün geprüfte Anwendungspin ist
+Der seit 24. September 2026 laufende Anwendungspin ist
 `4e28a642e2e46df38ad42ffc25d1d7d750d56383` mit isoliert gebauter Image-ID
 `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
 Er ergänzt die native Workshopanlage und -bearbeitung für alle Rollen mit
-Dokumentationsrecht und benötigt keine Migration. Das Image wurde noch nicht
-gestartet; der laufende Pilotstand blieb während des Builds unverändert und
-gesund.
+Dokumentationsrecht und benötigt keine Migration. Vor dem Rollout waren
+zentraler Backup-Lauf und Repository-Preflight erfolgreich. Ausschließlich der
+Webcontainer wurde ersetzt; PostgreSQL behielt Container-ID, Image und Startzeit.
+Caddy, Netzwerke, Persistenz und Konfiguration blieben unverändert. Interner und
+öffentlicher Healthcheck antworteten mit 200, Restart- und Fehlerzähler blieben
+bei null.
 
 Der unmittelbar vorherige Pilotstand war
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
