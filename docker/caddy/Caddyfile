@@ -29,6 +29,11 @@ cloud.zircula.org {
 	}
 }
 
+cloud.werk-haus.org {
+	import security_headers
+	redir https://cloud.zircula.org{uri} 308
+}
+
 office.zircula.org {
 	import security_headers
 	reverse_proxy collabora:9980
