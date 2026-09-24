@@ -38,6 +38,20 @@ Caddy, Netzwerke, Persistenz und Konfiguration blieben unverändert. Interner un
 öffentlicher Healthcheck antworteten mit 200, Restart- und Fehlerzähler blieben
 bei null.
 
+Der seit 24. September 2026 laufende AGPL-Anwendungspin ist
+`ed861f38c64f26c2fd3fcbfef71a40be20039629` mit isoliert gebauter Image-ID
+`sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`.
+Er setzt die freigegebene Lizenzierung des Programmcodes unter
+`AGPL-3.0-or-later` um, grenzt das vorbehaltene Brand System ab und liefert
+Lizenz-, Rechte- und Third-Party-Hinweise sowie den commitgenauen Quellcode-Link
+aus. Vor dem Rollout meldeten zentraler Backup-Service und Repository-Preflight
+Erfolg. Der separate Migrationslauf meldete keine anzuwendenden Migrationen.
+Ausschließlich der Webcontainer wurde ersetzt; PostgreSQL behielt Container-ID,
+Image, Startzeit und Restart-Zähler. Caddy, Netzwerke, Secrets und Persistenz
+blieben unverändert. Interne Readiness, öffentlicher Healthcheck und der
+tatsächliche Login-Einstieg antworteten mit 200; Webcontainer und Datenbank
+blieben ohne Restart, die geprüften Startlogs ohne Fehlermuster.
+
 Der unmittelbar vorherige Pilotstand war
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
 `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.

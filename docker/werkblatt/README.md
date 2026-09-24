@@ -12,8 +12,8 @@ Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
 Image erhält denselben Commit als Tag. Die Buildargumente setzen Buildversion
 und Quellcode-URL ebenfalls exakt auf diesen Commit; die Anwendung und die
 OCI-Labels weisen `AGPL-3.0-or-later` sowie den korrespondierenden Quellstand
-aus. Build und Image-ID sind unten dokumentiert; der vollständige synthetische
-E2E bleibt Teil des Phase-4a-Gates.
+aus. Build, Image-ID und kontrollierter Rollout sind unten dokumentiert; der
+vollständige synthetische E2E bleibt eine gesonderte Betriebsprüfung.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
 geprüften Image-Digest
 `sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`
@@ -46,6 +46,17 @@ als Rollbackgrundlage erhalten:
 `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
 Dieser ergänzte die native Anlage und Bearbeitung von Workshops für alle drei
 fachlichen Rollen und wurde am 24. September 2026 erfolgreich ausgerollt.
+
+Der AGPL-Pin wurde am 24. September 2026 nach einem erfolgreichen zentralen
+Backup (`Result=success`, `ExecMainStatus=0`) und Repository-Preflight
+ausgerollt. Der getrennte Django-Migrationslauf meldete keine anzuwendenden
+Migrationen. Ersetzt wurde ausschließlich der Webcontainer; er startete mit
+der dokumentierten Image-ID, meldete interne Readiness 200 und blieb ohne
+Restart oder Fehlermuster. Der öffentliche Healthcheck und der tatsächliche
+Login-Einstieg antworteten mit 200. Der commitgenaue Quellcode-Link wurde auf
+der öffentlichen Loginseite verifiziert. PostgreSQL behielt Container-ID,
+Image, Startzeit und Restart-Zähler; Caddy, Netzwerke, Secrets und Persistenz
+blieben unverändert.
 
 Der vorherige WebDAV-Pin war
 `20f8bffaf78f33cef58a502d41403508482fe717` mit Image-ID

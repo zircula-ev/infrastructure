@@ -133,20 +133,18 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`;
   ergänzt die organisationsgebundene native Anlage und Bearbeitung von Workshops
   für Workshop User, Editor und Organization Admin und benötigt keine Migration
-- zur kontrollierten Einspielung vorbereiteter Pin
+- seit 24. September 2026 laufender AGPL-Pin
   `ed861f38c64f26c2fd3fcbfef71a40be20039629` mit Image-ID
   `sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`;
   setzt `AGPL-3.0-or-later` für den Programmcode um, hält das Werkblatt Brand
   System ausdrücklich vorbehalten, liefert Lizenz- und Third-Party-Hinweise im
-  Image aus und verknüpft die Anwendung mit dem exakten Quellstand; keine
-  Migration, keine Caddy-, Netzwerk-, Secret-, Datenbank- oder Persistenzänderung
-- Rollout nach erfolgreichem zentralem Backup und Preflight durch Austausch nur
-  des Webcontainers; PostgreSQL behielt Container-ID, Image und Startzeit,
-  Caddy blieb unverändert, beide Healthchecks 200, null Restarts und keine
+  Image aus und verknüpft die öffentliche Loginseite mit dem exakten
+  Quellstand; zentraler Backup-Lauf und Preflight erfolgreich, separater
+  Migrationslauf ohne anzuwendende Migrationen, nur der Webcontainer ersetzt;
+  PostgreSQL behielt Container-ID, Image, Startzeit und Restart-Zähler, Caddy,
+  Netzwerke, Secrets und Persistenz blieben unverändert; interne Readiness,
+  öffentlicher Healthcheck und Login-Einstieg 200, null Restarts und keine
   Fehler im geprüften Startzeitraum
-- Rollout nach erfolgreichem zentralem Backup und Preflight durch Austausch nur
-  des Webcontainers; Datenbank und Caddy unverändert, interner und öffentlicher
-  Healthcheck 200, null Restarts und keine Fehler im geprüften Startzeitraum
 - vorhandenes Pilot-PDF nach Nextcloud
   `ZIRCULA Intern/Workshopdokumentation/2026/` migriert; Zielgröße 98.921 Byte
   verifiziert, Datenbank-Key aktualisiert und alte Datei anschließend entfernt
