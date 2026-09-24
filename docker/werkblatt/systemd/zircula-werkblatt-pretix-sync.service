@@ -10,6 +10,8 @@ User=root
 Group=root
 UMask=0077
 ExecStart=/usr/local/sbin/zircula-werkblatt-pretix-sync
+RuntimeDirectory=zircula-werkblatt
+RuntimeDirectoryMode=0700
 
 NoNewPrivileges=true
 PrivateTmp=true

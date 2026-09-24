@@ -4,7 +4,7 @@ set -Eeuo pipefail
 
 readonly infrastructure_directory="/opt/zircula/git/infrastructure"
 readonly werkblatt_directory="${infrastructure_directory}/docker/werkblatt"
-readonly lock_file="/run/lock/zircula-werkblatt-pretix-sync.lock"
+readonly lock_file="/run/zircula-werkblatt/pretix-sync.lock"
 
 exec 9>"${lock_file}"
 if ! flock --nonblock 9; then
