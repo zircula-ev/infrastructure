@@ -36,11 +36,16 @@ Der isolierte VPS-Build des neuen Pins ergab Image-ID
 `sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
 Der Pin ergänzt die native Anlage und Bearbeitung von Workshops für alle drei
 fachlichen Rollen. Er benötigt keine Migration. Der zuvor laufende Pin bleibt
-bis zum kontrollierten Rollout
+als Rollbackgrundlage erhalten:
 `20f8bffaf78f33cef58a502d41403508482fe717` mit Image-ID
 `sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`.
 Dieser entfernte die interne Organisations-UUID aus dem menschenlesbaren
 WebDAV-Pfad und wurde am 23. September 2026 erfolgreich ausgerollt.
+Der neue Pin wurde am 24. September 2026 nach erfolgreichem zentralem Backup
+und Preflight durch Austausch ausschließlich des Webcontainers ausgerollt.
+PostgreSQL behielt Container-ID, Image und Startzeit; Caddy, Netzwerke,
+Persistenz und Konfiguration blieben unverändert. Interner und öffentlicher
+Healthcheck antworteten mit 200, Restart- und Fehlerzähler blieben bei null.
 Nach erfolgreichem zentralem Backup und Preflight wurden `documents.0004` und
 `workshops.0003` separat angewendet und ausschließlich der Webcontainer ersetzt.
 PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert. Interner und
