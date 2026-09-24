@@ -8,7 +8,7 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`20f8bffaf78f33cef58a502d41403508482fe717` festgelegt. Das resultierende lokale
+`4e28a642e2e46df38ad42ffc25d1d7d750d56383` festgelegt. Das resultierende lokale
 Image erhält denselben Commit als Tag. Build und Image-ID sind unten
 dokumentiert; der vollständige synthetische E2E bleibt Teil des Phase-4a-Gates.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
@@ -33,15 +33,14 @@ Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
 und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
 Der isolierte VPS-Build des neuen Pins ergab Image-ID
+`sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
+Der Pin ergänzt die native Anlage und Bearbeitung von Workshops für alle drei
+fachlichen Rollen. Er benötigt keine Migration. Der zuvor laufende Pin bleibt
+bis zum kontrollierten Rollout
+`20f8bffaf78f33cef58a502d41403508482fe717` mit Image-ID
 `sha256:f58d78024cb2c489f8a4c427c9d7a8b4ca7aed4423967a2eeda9e5f2ebe93ee6`.
-Der Pin entfernt die interne Organisations-UUID aus dem menschenlesbaren
-WebDAV-Pfad. Der organisationsbezogene Root ist für den Zircula-Piloten
-`ZIRCULA Intern/Workshopdokumentation`; darunter speichert Werkblatt nach Jahr
-und eindeutigem Dateinamen. Der Rollout erfolgte am 23. September 2026 nach
-erfolgreichem zentralem Backup und Preflight durch Austausch ausschließlich des
-Webcontainers. PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert.
-Das vorhandene Pilot-PDF wurde kopiert, anhand seiner Größe verifiziert, auf den
-neuen Storage-Key umgestellt und erst danach am alten Ort entfernt.
+Dieser entfernte die interne Organisations-UUID aus dem menschenlesbaren
+WebDAV-Pfad und wurde am 23. September 2026 erfolgreich ausgerollt.
 Nach erfolgreichem zentralem Backup und Preflight wurden `documents.0004` und
 `workshops.0003` separat angewendet und ausschließlich der Webcontainer ersetzt.
 PostgreSQL, Caddy, Netzwerke und Persistenz blieben unverändert. Interner und
@@ -158,7 +157,7 @@ synthetische Personen und Dokumente.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:20f8bffaf78f33cef58a502d41403508482fe717 \
+docker image inspect werkblatt:4e28a642e2e46df38ad42ffc25d1d7d750d56383 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:

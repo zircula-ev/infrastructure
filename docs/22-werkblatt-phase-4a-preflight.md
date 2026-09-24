@@ -27,6 +27,14 @@ Datensatz verifiziert, auf den neuen Storage-Key umgestellt und erst danach am
 alten Ort entfernt. Ein abschließender WebDAV-HEAD bestätigte das neue Ziel mit
 200 und den alten Pfad mit 404.
 
+Der nächste grün geprüfte Anwendungspin ist
+`4e28a642e2e46df38ad42ffc25d1d7d750d56383` mit isoliert gebauter Image-ID
+`sha256:7a39c6ac648935ec942459291fe95b71a1184dfefd949eab1a5ac0a98c323261`.
+Er ergänzt die native Workshopanlage und -bearbeitung für alle Rollen mit
+Dokumentationsrecht und benötigt keine Migration. Das Image wurde noch nicht
+gestartet; der laufende Pilotstand blieb während des Builds unverändert und
+gesund.
+
 Der unmittelbar vorherige Pilotstand war
 `7c0f9755c495ac416d76565098292f3999b6bf77` mit Image-ID
 `sha256:8b6c540b855494126bfa0b02c9f1b5065f3e6446d7292062fe93d28efb81f83e`.
