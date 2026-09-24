@@ -31,6 +31,7 @@ LibreDesk ─OIDC─► Authentik
 Werkblatt ──► eigener PostgreSQL-Container
 Werkblatt ─OIDC─► Authentik
 Werkblatt ──HTTPS──► Pretix und Nextcloud WebDAV
+systemd timer ──alle 15 Minuten──► Werkblatt Pretix-Sync
 nctest/Uptime Kuma ──HTTPS──► öffentliche Dienste
 VPS ──Restic, verschlüsselt──► lokales Export-Repository
 nctest ──rrsync, nur lesend──► Export-Repository ──► ZFS-Snapshots

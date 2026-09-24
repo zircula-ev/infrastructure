@@ -33,6 +33,7 @@ flowchart TD
     Werkblatt -.->|OIDC| Authentik
     Werkblatt -->|HTTPS API| Pretix
     Werkblatt -->|HTTPS WebDAV| Nextcloud
+    PretixTimer[Werkblatt Pretix systemd timer] -->|alle 15 Minuten| Werkblatt
     Vaultwarden -.->|OIDC| Authentik
     LibreDesk -.->|OIDC| Authentik
 
@@ -75,6 +76,12 @@ seinem eigenen PostgreSQL-17-Container. Nur der Webcontainer ist zusätzlich an
 zum gemeinsamen Backend-Netz. Ausgehende HTTPS-Verbindungen zu Pretix und
 Nextcloud/WebDAV erfolgen aus dem Webcontainer. Diese Aufteilung ist die
 Zircula-Pilotarchitektur und keine Vorgabe für allgemeine Werkblatt-Installationen.
+
+Ein hostseitiger systemd-Timer startet alle 15 Minuten den regulären
+Pretix-Abgleich im laufenden Werkblatt-Webcontainer. Ein Lock verhindert
+überlappende Läufe. Der Timer besitzt keine eigene Secret-Kopie und öffnet
+keinen zusätzlichen Port; Fehler und ausschließlich aggregierte Importzahlen
+landen im systemd-Journal.
 
 ## Monitoring-Netz
 
