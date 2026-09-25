@@ -270,7 +270,16 @@ freigegeben. Der produktive Stand umfasst:
 - die Rollen `IntraVox Admins`, `IntraVox Editors` und `IntraVox Users`.
 
 Die Gruppenzuordnung erfolgt über gleichnamige Gruppen in Authentik und
-Nextcloud. Konten ohne IntraVox-Gruppe sehen die unkonfigurierte
+Nextcloud. Für jede der drei Rollen existiert an der Authentik-Anwendung
+`Nextcloud` ein gleichnamiges Entitlement, das an die zugehörige Authentik-Gruppe
+gebunden ist. Das OIDC-Scope-Mapping überträgt diese Entitlements im Claim
+`groups`; Nextcloud provisioniert sie beim nächsten OIDC-Login. Die Gruppen müssen
+zusätzlich in der `user_oidc`-Whitelist enthalten sein. Eine gleichnamige Gruppe
+in Authentik allein reicht ausdrücklich nicht aus.
+
+Der grundsätzliche Nextcloud-Zugang wird weiterhin über die organisatorischen
+Entitlements beziehungsweise `admin` erteilt; die IntraVox-Entitlements dienen
+nur der App-Rolle. Konten ohne IntraVox-Gruppe sehen die unkonfigurierte
 Einrichtungsansicht und erhalten damit keinen Inhaltszugriff. Die vorgesehenen
 Nutzerkonten wurden den passenden Gruppen zugeordnet. Timo und Jonas bleiben
 für den aktuellen Betrieb in `IntraVox Admins`.
@@ -287,7 +296,8 @@ Nextcloud-Core- oder IntraVox-Appdateien verändert.
 
 Für den laufenden Betrieb gelten weiterhin:
 
-1. Gruppen und Rollen bei Onboarding und Offboarding konsistent halten,
+1. IntraVox-Rollen ausschließlich in Authentik pflegen und ihre Übernahme nach
+   dem nächsten OIDC-Login mit `occ user:info` kontrollieren,
 2. keine öffentlichen IntraVox-Freigaben ohne Einzelprüfung,
 3. vertrauliche Vorstands-, Personal-, Finanz- und Mitgliederdaten nicht auf
    allgemein sichtbaren Seiten ablegen,
