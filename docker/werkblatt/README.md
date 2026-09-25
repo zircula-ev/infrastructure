@@ -8,9 +8,9 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`ffb675bd6d547d30c3ed729082b0e58e1f60aeb5` und damit auf den veröffentlichten
-Prerelease `v0.1.0-rc.2` festgelegt. Das resultierende lokale Image erhält den
-Commit als Tag. Buildversion `v0.1.0-rc.2+ffb675b` und commitgenaue
+`7bb3eca8a111b083ca2dd4cfd67d069b8f8ef90f` und damit auf den veröffentlichten
+Prerelease `v0.1.0-rc.3` festgelegt. Das resultierende lokale Image erhält den
+Commit als Tag. Buildversion `v0.1.0-rc.3+7bb3eca` und commitgenaue
 Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
 und kontrollierter Rollout sind unten dokumentiert; der vollständige
 synthetische E2E bleibt eine gesonderte Betriebsprüfung.
@@ -51,6 +51,22 @@ manuell erfassten Teilnehmenden spontane Teilnahme von einer Anmeldung
 außerhalb Pretix. Er enthält die additive Migration
 `identities.0004_user_preferred_workshop_view`. Der laufende RC1-Pin bleibt
 bis zur Abnahme die Rollbackgrundlage.
+
+RC2 wurde am 25. September 2026 nach erfolgreichem zentralem Backup und
+Repository-Preflight ausgerollt. Die Migration wurde separat angewendet und
+ausschließlich der Webcontainer ersetzt. PostgreSQL behielt Container-ID,
+Image, Startzeit und Restart-Zähler; Caddy, Netzwerke, Secrets und Persistenz
+blieben unverändert. Interne Readiness, öffentlicher Healthcheck, Login und
+OIDC-Einstieg waren erfolgreich; der Webcontainer blieb gesund und ohne
+Restarts.
+
+Der isolierte VPS-Build von RC3 ergab Image-ID
+`sha256:cbb46e322193625d07f2cc80bc8fab15048ea0efb6dbd8161af8e8ee0e5c6858`.
+Der Hotfix aktualisiert Zusatzfelder unmittelbar nach der Vorlagenauswahl,
+erhält bereits eingegebene Dokumentationsdaten, bietet neuere Vorlagenstände
+bewusst an und ermöglicht dynamisch beliebig viele Zusatzfelder. RC3 enthält
+keine Datenbankmigration. Der laufende RC2-Pin bleibt bis zur Abnahme die
+Rollbackgrundlage.
 
 Der RC wurde am 24. September 2026 nach erfolgreichem zentralem Backup und
 Repository-Preflight ausgerollt. Die additive Migration
@@ -231,7 +247,7 @@ verdeckt.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:ffb675bd6d547d30c3ed729082b0e58e1f60aeb5 \
+docker image inspect werkblatt:7bb3eca8a111b083ca2dd4cfd67d069b8f8ef90f \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:

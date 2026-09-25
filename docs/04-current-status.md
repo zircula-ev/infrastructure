@@ -154,14 +154,24 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   Secrets und Persistenz unverändert; interne Readiness, öffentlicher
   Healthcheck und Login-Einstieg 200, null Restarts; regulärer Pretix-Abgleich
   mit 28 aktiven, 3 abgesagten Workshops und 47 aktiven Anmeldungen
-- Rollout von `v0.1.0-rc.2`, Commit
-  `ffb675bd6d547d30c3ed729082b0e58e1f60aeb5`, vorbereitet; isolierter Build
+- seit 25. September 2026 laufender Release Candidate `v0.1.0-rc.2`, Commit
+  `ffb675bd6d547d30c3ed729082b0e58e1f60aeb5`; isolierter Build
   mit Image-ID
   `sha256:16daa59c54706ca977deee655409e932f835790d23c786d9cda5909033adb134`;
   RC2 ergänzt die persönliche Kalender-/Listenpräferenz und die Herkunft
   manuell erfasster Teilnehmender und benötigt die additive Migration
-  `identities.0004_user_preferred_workshop_view`; der laufende RC1-Container
-  bleibt bis zum kontrollierten Rollout unverändert und gesund
+  `identities.0004_user_preferred_workshop_view`; zentraler Backup-Lauf und
+  Preflight erfolgreich, Migration separat angewendet und ausschließlich der
+  Webcontainer ersetzt; PostgreSQL, Caddy, Netzwerke, Secrets und Persistenz
+  unverändert; Readiness, Healthcheck, Login und OIDC-Einstieg erfolgreich,
+  null Restarts und keine Fehler im geprüften Startzeitraum
+- Rollout von `v0.1.0-rc.3`, Commit
+  `7bb3eca8a111b083ca2dd4cfd67d069b8f8ef90f`, vorbereitet; isolierter Build
+  mit Image-ID
+  `sha256:cbb46e322193625d07f2cc80bc8fab15048ea0efb6dbd8161af8e8ee0e5c6858`;
+  Hotfix für unmittelbare vorlagenabhängige Zusatzfelder, bewusste
+  Vorlagenstandsaktualisierung und dynamische Zusatzfeldzeilen; keine Migration,
+  laufender RC2-Container bis zum kontrollierten Rollout unverändert und gesund
 - systemd-Timer für den regulären Pretix-Abgleich alle 15 Minuten aktiviert;
   der anfängliche Lock unter `/run/lock` scheiterte vor Docker-/Pretix-Zugriff,
   wurde gestoppt und auf ein privates systemd-`RuntimeDirectory` korrigiert;

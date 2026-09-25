@@ -4,8 +4,8 @@ set -Eeuo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
-readonly werkblatt_image="werkblatt:ffb675bd6d547d30c3ed729082b0e58e1f60aeb5"
-readonly expected_image_id="sha256:16daa59c54706ca977deee655409e932f835790d23c786d9cda5909033adb134"
+readonly werkblatt_image="werkblatt:7bb3eca8a111b083ca2dd4cfd67d069b8f8ef90f"
+readonly expected_image_id="sha256:cbb46e322193625d07f2cc80bc8fab15048ea0efb6dbd8161af8e8ee0e5c6858"
 readonly postgres_image="postgres:17.11@sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675"
 readonly expected_postgres_image_id="sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675"
 
