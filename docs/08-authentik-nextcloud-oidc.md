@@ -153,6 +153,13 @@ Das Entitlement `admin` wird ausschließlich an `Nextcloud Admins` gebunden.
 Die Authentik-Gruppen `admin` und `authentik Admins` dürfen keine direkte
 Nextcloud-Administratorzuweisung auslösen.
 
+Die Authentik-Anwendung `Nextcloud` besitzt zusätzlich direkte Zugangsbindungen
+mit Policy Engine Mode `any` für `Nextcloud Admins` und sämtliche in der Tabelle
+aufgeführten Organisationsgruppen. Die IntraVox-Gruppen werden dort ausdrücklich
+nicht gebunden. Dadurch kann ein IntraVox-Entitlement allein keinen Zugang zur
+Nextcloud-Anwendung eröffnen, obwohl es für die Gruppenprovisionierung in der
+Nextcloud-Whitelist enthalten sein muss.
+
 ### Back-Channel-Logout
 
 Der Authentik-Provider verwendet:
