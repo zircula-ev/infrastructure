@@ -316,3 +316,24 @@ der Webcontainer ersetzt. PostgreSQL, Caddy, Netzwerke, Secrets und
 Persistenzpfade bleiben unverändert. Nach dem Start werden Readiness,
 öffentlicher Healthcheck, Login sowie der unmittelbare Vorlagenwechsel mit
 synthetischen Daten geprüft.
+
+## 18. Vorbereiteter Pilotstand mit Pretix-Erstellungsassistent
+
+Werkblatt-Commit `cf1b749899790fc977327609c2703817756b458b` wurde auf dem
+VPS isoliert als Image
+`sha256:29ffbfbf000943a4e517970f2ef81e5d396e1c11ad06e39d6ada08187ba57aaa`
+gebaut. Der zu diesem Zeitpunkt laufende RC3-Webcontainer wurde dabei nicht
+verändert und blieb gesund. Der neue Stand enthält die additive Migration
+`workshops.0005_pretix_event_creation`.
+
+Der reale Test erfolgt erst nach erfolgreichem zentralem Backup, Preflight und
+separatem Migrationslauf. In der Zircula-Organisation wird ein Admin-Preset für
+die verborgene Pretix-Vorlage `blanko` angelegt und vor Nutzung über Werkblatt
+schreibgeschützt verifiziert. Anschließend wird ausschließlich mit eindeutig
+synthetischen Angaben eine Veranstaltung erstellt, veröffentlicht und sowohl in
+Pretix als auch als tenantgebundener Werkblatt-Workshop geprüft. Erweiterte
+Ticketarten, Pflichtfragen und E-Mail-Konfiguration bleiben bewusst im
+Pretix-Control-Interface. Der Test darf keine realen Teilnehmerdaten enthalten.
+
+Bis zur Abnahme bleibt RC3 die Rollbackgrundlage. Caddy, PostgreSQL-Container,
+Netzwerke, Secrets und Persistenzpfade werden für dieses Update nicht verändert.

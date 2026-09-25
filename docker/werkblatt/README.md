@@ -8,9 +8,8 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`7bb3eca8a111b083ca2dd4cfd67d069b8f8ef90f` und damit auf den veröffentlichten
-Prerelease `v0.1.0-rc.3` festgelegt. Das resultierende lokale Image erhält den
-Commit als Tag. Buildversion `v0.1.0-rc.3+7bb3eca` und commitgenaue
+`cf1b749899790fc977327609c2703817756b458b` festgelegt. Das resultierende lokale
+Image erhält den Commit als Tag. Buildversion `0.1.0-dev.cf1b749` und commitgenaue
 Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
 und kontrollierter Rollout sind unten dokumentiert; der vollständige
 synthetische E2E bleibt eine gesonderte Betriebsprüfung.
@@ -66,6 +65,18 @@ Der Hotfix aktualisiert Zusatzfelder unmittelbar nach der Vorlagenauswahl,
 erhält bereits eingegebene Dokumentationsdaten, bietet neuere Vorlagenstände
 bewusst an und ermöglicht dynamisch beliebig viele Zusatzfelder. RC3 enthält
 keine Datenbankmigration. Der laufende RC2-Pin bleibt bis zur Abnahme die
+Rollbackgrundlage.
+
+RC3 wurde anschließend kontrolliert ausgerollt und ist die Rollbackgrundlage
+für den nächsten Pilotstand. Der isolierte Build des neuen Stands ergab
+Image-ID
+`sha256:29ffbfbf000943a4e517970f2ef81e5d396e1c11ad06e39d6ada08187ba57aaa`.
+Er ergänzt die geführte Erstellung und Veröffentlichung einfacher
+Pretix-Veranstaltungen aus Werkblatt. Presets und Fördertexte sind
+organisationsgebunden; die Pretix-Vorlage wird vor Nutzung schreibgeschützt
+geprüft. Der Stand enthält die additive Migration
+`workshops.0005_pretix_event_creation`. Bis Backup, Preflight, Migration und
+synthetischer E2E abgeschlossen sind, bleibt RC3 unverändert laufende
 Rollbackgrundlage.
 
 Der RC wurde am 24. September 2026 nach erfolgreichem zentralem Backup und
