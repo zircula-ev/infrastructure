@@ -52,6 +52,14 @@ außerhalb Pretix. Er enthält die additive Migration
 `identities.0004_user_preferred_workshop_view`. Der laufende RC1-Pin bleibt
 bis zur Abnahme die Rollbackgrundlage.
 
+RC2 wurde am 25. September 2026 nach erfolgreichem zentralem Backup und
+Repository-Preflight ausgerollt. Die Migration wurde separat angewendet und
+ausschließlich der Webcontainer ersetzt. PostgreSQL behielt Container-ID,
+Image, Startzeit und Restart-Zähler; Caddy, Netzwerke, Secrets und Persistenz
+blieben unverändert. Interne Readiness, öffentlicher Healthcheck, Login und
+OIDC-Einstieg waren erfolgreich; der Webcontainer blieb gesund und ohne
+Restarts.
+
 Der RC wurde am 24. September 2026 nach erfolgreichem zentralem Backup und
 Repository-Preflight ausgerollt. Die additive Migration
 `workshops.0004_workshop_lifecycle_status` wurde getrennt angewendet und
