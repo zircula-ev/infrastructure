@@ -154,6 +154,14 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   Secrets und Persistenz unverändert; interne Readiness, öffentlicher
   Healthcheck und Login-Einstieg 200, null Restarts; regulärer Pretix-Abgleich
   mit 28 aktiven, 3 abgesagten Workshops und 47 aktiven Anmeldungen
+- Rollout von `v0.1.0-rc.2`, Commit
+  `ffb675bd6d547d30c3ed729082b0e58e1f60aeb5`, vorbereitet; isolierter Build
+  mit Image-ID
+  `sha256:16daa59c54706ca977deee655409e932f835790d23c786d9cda5909033adb134`;
+  RC2 ergänzt die persönliche Kalender-/Listenpräferenz und die Herkunft
+  manuell erfasster Teilnehmender und benötigt die additive Migration
+  `identities.0004_user_preferred_workshop_view`; der laufende RC1-Container
+  bleibt bis zum kontrollierten Rollout unverändert und gesund
 - systemd-Timer für den regulären Pretix-Abgleich alle 15 Minuten aktiviert;
   der anfängliche Lock unter `/run/lock` scheiterte vor Docker-/Pretix-Zugriff,
   wurde gestoppt und auf ein privates systemd-`RuntimeDirectory` korrigiert;

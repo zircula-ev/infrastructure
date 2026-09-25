@@ -8,9 +8,9 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`884d7e0dfbf6fd9f604a0818f09f5a1f4e2b985f` und damit auf den veröffentlichten
-Prerelease `v0.1.0-rc.1` festgelegt. Das resultierende lokale Image erhält den
-Commit als Tag. Buildversion `v0.1.0-rc.1+884d7e0` und commitgenaue
+`ffb675bd6d547d30c3ed729082b0e58e1f60aeb5` und damit auf den veröffentlichten
+Prerelease `v0.1.0-rc.2` festgelegt. Das resultierende lokale Image erhält den
+Commit als Tag. Buildversion `v0.1.0-rc.2+ffb675b` und commitgenaue
 Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
 und kontrollierter Rollout sind unten dokumentiert; der vollständige
 synthetische E2E bleibt eine gesonderte Betriebsprüfung.
@@ -35,7 +35,7 @@ Sichtbarkeit. Zusätzlich aktualisiert er den PDF-Renderer wegen
 `CVE-2026-55073` auf WeasyPrint 70. Er enthält die Migrationen `workshops.0003`
 und `documents.0004`; Caddy, Netzwerke und Persistenzpfade bleiben unverändert.
 
-Der isolierte VPS-Build des Release Candidates ergab Image-ID
+Der isolierte VPS-Build des vorherigen Release Candidates ergab Image-ID
 `sha256:edde2bb7f70456dbaac257131dba49e06ac29c45ac0a1bf369859389f7e84e92`.
 Der RC ergänzt gegenüber dem laufenden Stand insbesondere reversible
 Pretix-Absagen, Workshopkalender und Supply-Chain-/Lizenzdrift-Gates. Er enthält
@@ -43,6 +43,14 @@ die additive Migration `workshops.0004_workshop_lifecycle_status`. Der laufende
 Pin bleibt bis zur Abnahme als Rollbackgrundlage erhalten:
 `ed861f38c64f26c2fd3fcbfef71a40be20039629` mit Image-ID
 `sha256:e35b1ea14ac6d7be90fb439d720dd33b7fae9813c2fe1da2539917b15f006dd4`.
+
+Der isolierte VPS-Build von RC2 ergab Image-ID
+`sha256:16daa59c54706ca977deee655409e932f835790d23c786d9cda5909033adb134`.
+RC2 ergänzt die persönliche Kalender-/Listenpräferenz und unterscheidet bei
+manuell erfassten Teilnehmenden spontane Teilnahme von einer Anmeldung
+außerhalb Pretix. Er enthält die additive Migration
+`identities.0004_user_preferred_workshop_view`. Der laufende RC1-Pin bleibt
+bis zur Abnahme die Rollbackgrundlage.
 
 Der RC wurde am 24. September 2026 nach erfolgreichem zentralem Backup und
 Repository-Preflight ausgerollt. Die additive Migration
@@ -223,7 +231,7 @@ verdeckt.
 ```bash
 # Bereits in Phase 4a erfolgt und nur bei bewusstem neuen Gate zu wiederholen:
 docker compose build --pull web
-docker image inspect werkblatt:884d7e0dfbf6fd9f604a0818f09f5a1f4e2b985f \
+docker image inspect werkblatt:ffb675bd6d547d30c3ed729082b0e58e1f60aeb5 \
   --format '{{.Id}}'
 
 # Phase 4b muss exakt die dokumentierte Image-ID vorfinden:
