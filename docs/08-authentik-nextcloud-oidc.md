@@ -139,6 +139,13 @@ Die Entitlement-Namen entsprechen exakt den Nextcloud-Gruppennamen:
 | `Werk e.V. Vorstand` | `Werk e.V. Vorstand` |
 | `Werk e.V. Mitglieder:innen` | `Werk e.V. Mitglieder:innen` |
 | `Objekt 218 GmbH` | `Objekt 218 GmbH` |
+| `IntraVox Admins` | `IntraVox Admins` |
+| `IntraVox Editors` | `IntraVox Editors` |
+| `IntraVox Users` | `IntraVox Users` |
+
+Die drei IntraVox-Entitlements steuern ausschließlich die Rollen der App und
+des Team Folders. Der grundsätzliche Nextcloud-Zugang bleibt an eine der
+organisatorischen Gruppen oder an `admin` gebunden.
 
 Für WERK existiert bewusst keine Gruppe `Werk e.V. Angestellte`.
 
@@ -283,7 +290,11 @@ benötigte Vorab-Provisionierung erfolgt ausschließlich über die unterstützte
 ## Gruppenänderungen
 
 Authentik ist die Quelle der Gruppenzugehörigkeit. Änderungen werden beim nächsten
-OIDC-Login in Nextcloud übernommen.
+OIDC-Login in Nextcloud übernommen. Das gilt auch für `IntraVox Admins`,
+`IntraVox Editors` und `IntraVox Users`: Die gleichnamige Authentik-Gruppe wird
+über ein an die Nextcloud-Anwendung gebundenes Entitlement übertragen. Eine bloße
+Authentik-Gruppenmitgliedschaft ohne dieses Entitlement erscheint nicht in
+Nextcloud.
 
 Geprüft wurden:
 
