@@ -79,6 +79,17 @@ geprüft. Der Stand enthält die additive Migration
 synthetischer E2E abgeschlossen sind, bleibt RC3 unverändert laufende
 Rollbackgrundlage.
 
+Der neue Pilotstand wurde am 25. September 2026 nach erfolgreichem zentralem
+Backup und Preflight ausgerollt. Die Migration
+`workshops.0005_pretix_event_creation` wurde separat angewendet und nur der
+Webcontainer ersetzt. PostgreSQL behielt Container-ID, Image, Startzeit und
+Restart-Zähler; Caddy, Netzwerke, Secrets und Persistenz blieben unverändert.
+Readiness, öffentlicher Healthcheck, Login und OIDC-Einstieg waren erfolgreich.
+Der synthetische E2E erstellte `synth-test-1` mit Kapazität 7, aktivem
+Kinderprodukt, Beschreibung und Fördertext, materialisierte den Workshop in
+Werkblatt und bestätigte die öffentliche Pretix-Darstellung. Das Event wurde
+danach wieder auf `live = false` und `is_public = false` gesetzt.
+
 Der RC wurde am 24. September 2026 nach erfolgreichem zentralem Backup und
 Repository-Preflight ausgerollt. Die additive Migration
 `workshops.0004_workshop_lifecycle_status` wurde getrennt angewendet und

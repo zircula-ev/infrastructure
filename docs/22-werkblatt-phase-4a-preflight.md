@@ -337,3 +337,28 @@ Pretix-Control-Interface. Der Test darf keine realen Teilnehmerdaten enthalten.
 
 Bis zur Abnahme bleibt RC3 die Rollbackgrundlage. Caddy, PostgreSQL-Container,
 Netzwerke, Secrets und Persistenzpfade werden für dieses Update nicht verändert.
+
+### Ergebnis vom 25. September 2026
+
+Der zentrale Backup-Lauf endete mit `Result=success` und `ExecMainStatus=0`.
+Repository-Preflight und Image-ID-Prüfung waren erfolgreich. Anschließend wurde
+`workshops.0005_pretix_event_creation` separat angewendet und ausschließlich
+der Webcontainer ersetzt. Der PostgreSQL-Container behielt unverändert ID,
+Image, Startzeit und Restart-Zähler 0. Interne Readiness, öffentlicher
+Healthcheck und Login antworteten mit 200; der OIDC-Einstieg leitete korrekt zu
+Authentik weiter. Der neue Webcontainer meldete `healthy`, null Restarts und
+keine Fehler im geprüften Startzeitraum. Der Pretix-Sync-Timer blieb aktiv.
+
+Für das technische Pretix-Team wurden zusätzlich die minimal erforderlichen
+Rechte zum Erstellen von Veranstaltungen sowie zum Ändern von Veranstaltungs-
+und Produkteinstellungen aktiviert; die bisherigen Leserechte für Import und
+Abgleich blieben erhalten. Der erste abgewiesene Schreibversuch erzeugte kein
+externes Event und wurde nicht automatisch wiederholt.
+
+Der anschließend erfolgreiche synthetische E2E erzeugte `synth-test-1` mit
+Beginn und Ende, Testort, gemeinsamer Kapazität 7 sowie aktivem Standard- und
+Kinderprodukt. Pretix enthielt Beschreibung und ausgewählten Fördertext;
+Werkblatt materialisierte denselben organisationsgebundenen Workshop. Die
+öffentliche Darstellung wurde manuell im Browser bestätigt. Danach wurde das
+synthetische Event verifiziert auf `live = false` und `is_public = false`
+zurückgesetzt. Es wurden keine realen Teilnehmer- oder Bestelldaten verwendet.
