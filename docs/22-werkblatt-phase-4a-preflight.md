@@ -301,3 +301,18 @@ Source-URL und `AGPL-3.0-or-later`-Label stimmten. Der neue Webcontainer war
 gesund, hatte null Restarts und keine Fehlermuster im geprüften Startzeitraum.
 Der Pretix-Timer blieb aktiv. Die beiden vorhandenen User erhielten durch die
 Migration datenschutzneutral den Kalender als Standardansicht.
+
+## 17. Vorbereiteter Hotfix-Rollout von `v0.1.0-rc.3`
+
+Der veröffentlichte Prerelease `v0.1.0-rc.3`, Commit
+`7bb3eca8a111b083ca2dd4cfd67d069b8f8ef90f`, wurde auf dem VPS isoliert als
+Image
+`sha256:cbb46e322193625d07f2cc80bc8fab15048ea0efb6dbd8161af8e8ee0e5c6858`
+gebaut. Der laufende RC2-Container wurde dabei nicht ersetzt und blieb gesund.
+
+RC3 enthält keine Migration. Vor dem Rollout sind zentraler Backup-Lauf und
+Repository-Preflight erneut erfolgreich auszuführen. Danach wird ausschließlich
+der Webcontainer ersetzt. PostgreSQL, Caddy, Netzwerke, Secrets und
+Persistenzpfade bleiben unverändert. Nach dem Start werden Readiness,
+öffentlicher Healthcheck, Login sowie der unmittelbare Vorlagenwechsel mit
+synthetischen Daten geprüft.
