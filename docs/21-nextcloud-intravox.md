@@ -279,7 +279,9 @@ in Authentik allein reicht ausdrücklich nicht aus.
 
 Der grundsätzliche Nextcloud-Zugang wird weiterhin über die organisatorischen
 Entitlements beziehungsweise `admin` erteilt; die IntraVox-Entitlements dienen
-nur der App-Rolle. Konten ohne IntraVox-Gruppe sehen die unkonfigurierte
+nur der App-Rolle. Zusätzlich ist die Authentik-Anwendung `Nextcloud` direkt an
+`Nextcloud Admins` und die zugelassenen Organisationsgruppen gebunden. Die drei
+IntraVox-Gruppen sind keine Anwendungs-Zugangsbindungen. Konten ohne IntraVox-Gruppe sehen die unkonfigurierte
 Einrichtungsansicht und erhalten damit keinen Inhaltszugriff. Die vorgesehenen
 Nutzerkonten wurden den passenden Gruppen zugeordnet. Timo und Jonas bleiben
 für den aktuellen Betrieb in `IntraVox Admins`.
