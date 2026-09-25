@@ -277,3 +277,19 @@ danach wieder aktiviert. Kontrollierter Diensttest und erster
 timer-ausgelöster Lauf endeten jeweils erfolgreich; das Runtime-Verzeichnis
 wurde nach dem Oneshot entfernt und der nächste Lauf regulär geplant. Der
 Werkblatt-Webcontainer blieb gesund und ohne Restarts.
+
+## 16. Vorbereiteter Rollout von `v0.1.0-rc.2`
+
+Der veröffentlichte Prerelease `v0.1.0-rc.2`, Commit
+`ffb675bd6d547d30c3ed729082b0e58e1f60aeb5`, wurde auf dem VPS isoliert als
+Image
+`sha256:16daa59c54706ca977deee655409e932f835790d23c786d9cda5909033adb134`
+gebaut. Der laufende RC1-Container wurde dabei nicht ersetzt und blieb gesund.
+
+Vor dem Rollout sind zentraler Backup-Lauf und Repository-Preflight erneut
+erfolgreich auszuführen. Danach wird die additive Migration
+`identities.0004_user_preferred_workshop_view` separat mit dem neuen Image
+angewendet und ausschließlich der Webcontainer ersetzt. PostgreSQL, Caddy,
+Netzwerke, Secrets und Persistenzpfade bleiben unverändert. Nach dem Start
+werden interne Readiness, öffentlicher Healthcheck, Login, persönlicher
+Ansichtswechsel und die manuelle Teilnehmerherkunft geprüft.
