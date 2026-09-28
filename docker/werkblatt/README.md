@@ -29,6 +29,19 @@ bleibt bis zur Abnahme unveränderte Rollbackgrundlage. Der isolierte Build des
 neuen Stands ergab Image-ID
 `sha256:27ab7e77f563e7110a9505f5871c807b0176b7c6376fa205239a058f06364f0c`.
 PostgreSQL, Caddy, Netzwerke, Secrets und Persistenz werden nicht geändert.
+
+Der Stand wurde am 28. September 2026 nach erfolgreichem zentralem Backup und
+Repository-Preflight kontrolliert ausgerollt. Die Migration
+`workshops.0006_workshop_capacity` wurde separat angewendet und ausschließlich
+der Webcontainer ersetzt. Interne Readiness und öffentlicher Healthcheck
+antworteten mit 200, Loginseite und OIDC-Einstieg waren erreichbar; der neue
+Webcontainer blieb gesund und ohne Restarts. PostgreSQL behielt Container-ID,
+Image, Startzeit und Restart-Zähler. Der anschließende Pretix-Abgleich erfasste
+33 Pretix-Workshops und 54 aktive Anmeldungen. Die bestehenden Zircula-Quoten
+ergaben keine eindeutig zuordenbare endliche Kapazität; die Oberfläche zeigt
+daher bewusst die Anmeldezahl ohne Nenner. Der systemd-Timer wurde nach dem
+Rollout wieder aktiviert; ein anschließender Lauf endete mit
+`Result=success` und `ExecMainStatus=0`.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
 geprüften Image-Digest
 `sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`

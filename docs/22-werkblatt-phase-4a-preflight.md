@@ -250,6 +250,18 @@ aggregierte Ergebnisse geprüft. Der laufende Commit `cf1b749899790fc977327609c2
 und dessen Image-ID bleiben die Rollbackgrundlage. Caddy, PostgreSQL,
 Netzwerke, Secrets und Persistenz sind nicht Teil dieses Rollouts.
 
+Der Rollout erfolgte am 28. September 2026 nach erfolgreichem zentralem Backup
+und Repository-Preflight. `workshops.0006_workshop_capacity` wurde separat
+angewendet und nur der Webcontainer ersetzt. Er lief anschließend mit der
+dokumentierten Image-ID gesund und ohne Restarts. Interne Readiness und
+öffentlicher Healthcheck antworteten mit 200; Login und OIDC-Einstieg waren
+erreichbar. Der PostgreSQL-Container behielt ID, Image, Startzeit und
+Restart-Zähler. Der reguläre Pretix-Abgleich erfasste 33 Workshops und 54
+aktive Anmeldungen. Keine bestehende Quote lieferte eine eindeutig
+zuordenbare endliche Kapazität, weshalb die Anmeldezahl korrekt ohne Nenner
+angezeigt wird. Der periodische Timer wurde wieder aktiviert und sein
+anschließender Lauf endete erfolgreich.
+
 ## 14. Schritte bis und für Phase 4b
 
 1. Alle weiteren Infrastructure-Änderungen weiterhin ausschließlich per PR
