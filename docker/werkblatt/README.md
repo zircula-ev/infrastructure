@@ -8,11 +8,27 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`cf1b749899790fc977327609c2703817756b458b` festgelegt. Das resultierende lokale
-Image erhält den Commit als Tag. Buildversion `0.1.0-dev.cf1b749` und commitgenaue
+`724cef153210f60d7736d4371d0fe3ffb13f50b1` festgelegt. Das resultierende lokale
+Image erhält den Commit als Tag. Buildversion `0.1.0-dev.724cef1` und commitgenaue
 Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
 und kontrollierter Rollout sind unten dokumentiert; der vollständige
 synthetische E2E bleibt eine gesonderte Betriebsprüfung.
+
+Der vorbereitete Stand trennt künftige Workshops von der Arbeitsliste
+zu dokumentierender Termine und stellt beide Bereiche als Liste oder Kalender
+bereit. Der Pretix-Abgleich übernimmt außerdem eine eindeutig bestimmbare,
+endliche Quotenkapazität, sodass anstehende Workshops beispielsweise als
+`4/10 Anmeldungen` erscheinen können. Mehrdeutige Quoten werden bewusst ohne
+Nenner angezeigt. Für die Kapazität enthält der Stand die additive Migration
+`workshops.0006_workshop_capacity`. Nach dem Rollout muss der reguläre
+Pretix-Abgleich einmal kontrolliert ausgeführt werden, um die Kapazitäten
+bestehender Workshops nachzupflegen. Der bisher laufende Commit
+`cf1b749899790fc977327609c2703817756b458b` mit Image-ID
+`sha256:29ffbfbf000943a4e517970f2ef81e5d396e1c11ad06e39d6ada08187ba57aaa`
+bleibt bis zur Abnahme unveränderte Rollbackgrundlage. Der isolierte Build des
+neuen Stands ergab Image-ID
+`sha256:27ab7e77f563e7110a9505f5871c807b0176b7c6376fa205239a058f06364f0c`.
+PostgreSQL, Caddy, Netzwerke, Secrets und Persistenz werden nicht geändert.
 PostgreSQL ist sichtbar auf Version 17.11 und zusätzlich unveränderlich auf den
 geprüften Image-Digest
 `sha256:67f41722b7a8cbdb868a44a4995c846eddfdc2973bccb291ce937dce88ad5675`

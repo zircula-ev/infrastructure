@@ -183,6 +183,16 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   synthetischer E2E mit Kapazität 7, Kinderprodukt, Beschreibung und Fördertext
   erfolgreich und Testevent anschließend wieder verborgen; RC3 bleibt
   Rollbackgrundlage
+- für den nächsten kontrollierten Werkblatt-Rollout vorbereiteter Commit
+  `724cef153210f60d7736d4371d0fe3ffb13f50b1` mit isoliert gebauter Image-ID
+  `sha256:27ab7e77f563e7110a9505f5871c807b0176b7c6376fa205239a058f06364f0c`;
+  trennt anstehende Workshops von heute oder früher zu dokumentierenden
+  Terminen, ergänzt Liste und Kalender sowie Pretix-Kapazitäten und enthält
+  die additive Migration `workshops.0006_workshop_capacity`; nach dem Rollout
+  ist ein kontrollierter Pretix-Abgleich zum Nachpflegen bestehender
+  Kapazitäten erforderlich; der bisherige Pin bleibt bis zur Abnahme
+  Rollbackgrundlage, Infrastrukturkomponenten und Konfiguration bleiben
+  unverändert
 - systemd-Timer für den regulären Pretix-Abgleich alle 15 Minuten aktiviert;
   der anfängliche Lock unter `/run/lock` scheiterte vor Docker-/Pretix-Zugriff,
   wurde gestoppt und auf ein privates systemd-`RuntimeDirectory` korrigiert;
