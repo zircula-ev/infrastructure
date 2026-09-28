@@ -234,6 +234,22 @@ als Produktions-E2E ersetzt.
   Buildversion und exakter Source-Link werden im Image beziehungsweise in der
   Anwendung ausgeliefert.
 
+### Vorbereiteter Workshopansichten-Rollout
+
+Werkblatt-Commit `724cef153210f60d7736d4371d0fe3ffb13f50b1` wurde isoliert
+als `werkblatt:724cef153210f60d7736d4371d0fe3ffb13f50b1` gebaut. Die
+geprüfte Image-ID lautet
+`sha256:27ab7e77f563e7110a9505f5871c807b0176b7c6376fa205239a058f06364f0c`.
+Der Stand trennt künftige Workshops von der Dokumentationsarbeitsliste und
+ergänzt eine optionale, aus eindeutigen Pretix-Quoten synchronisierte
+Kapazität. Er benötigt ausschließlich die additive Migration
+`workshops.0006_workshop_capacity`. Nach separater Migration und Austausch
+nur des Webcontainers muss einmal der reguläre Pretix-Abgleich ausgeführt
+werden, damit bestehende Workshops ihre Kapazität erhalten. Dabei werden nur
+aggregierte Ergebnisse geprüft. Der laufende Commit `cf1b749899790fc977327609c2703817756b458b`
+und dessen Image-ID bleiben die Rollbackgrundlage. Caddy, PostgreSQL,
+Netzwerke, Secrets und Persistenz sind nicht Teil dieses Rollouts.
+
 ## 14. Schritte bis und für Phase 4b
 
 1. Alle weiteren Infrastructure-Änderungen weiterhin ausschließlich per PR
