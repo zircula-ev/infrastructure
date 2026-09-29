@@ -1,9 +1,9 @@
 [Unit]
-Description=Synchronize Werkblatt workshops from Pretix every 15 minutes
+Description=Synchronize Werkblatt workshops from Pretix hourly
 
 [Timer]
-OnCalendar=*:0/15
-RandomizedDelaySec=2m
+OnCalendar=hourly
+RandomizedDelaySec=5m
 Persistent=true
 Unit=zircula-werkblatt-pretix-sync.service
 
