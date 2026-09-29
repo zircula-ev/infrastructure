@@ -454,3 +454,24 @@ dem neuen Image ausgeführt und ausschließlich der Webcontainer ersetzt. Danach
 wird ein einzelner kontrollierter Sync gestartet. Erfolgskriterien sind ein
 erfolgreicher Dienststatus, der als abgesagt übernommene Termin `streuobst-1`,
 ein gesunder Webcontainer sowie ein anschließend aktivierter stündlicher Timer.
+
+### Rolloutergebnis vom 29. September 2026
+
+Das zusätzliche unmittelbar vorgelagerte Backup wurde auf ausdrückliche
+Entscheidung des Betreibers wegen des migrations- und persistenzneutralen
+Hotfixes ausgelassen. Das erfolgreiche Pre-RC4-Backup und das unveränderliche
+RC4-Image bleiben als Rollbackgrundlage erhalten.
+
+Infrastructure-Commit `8ba5d2d` wurde per Fast-forward auf dem sauberen
+Produktionscheckout eingespielt. Preflight und Migrationscheck waren
+erfolgreich; es waren keine Migrationen anzuwenden. Ausschließlich der
+Webcontainer wurde durch das erwartete Hotfix-Image ersetzt. Der
+PostgreSQL-Container behielt ID, Image, Startzeit und Restart-Zähler. Der neue
+Webcontainer war gesund, hatte null Restarts und interner Docker-Healthcheck,
+öffentlicher Healthcheck sowie Login antworteten erfolgreich.
+
+Der anschließende manuelle Pretix-Sync endete mit `Result=success` und
+`ExecMainStatus=0`. Der Einzeltermin `streuobst-1` wurde in Werkblatt mit
+`lifecycle_status=cancelled` bestätigt. Danach wurde die neue systemd-Unit
+geladen und der Timer stündlich mit bis zu fünf Minuten Zufallsverzögerung
+aktiviert. Der erste Folgelauf war regulär geplant.

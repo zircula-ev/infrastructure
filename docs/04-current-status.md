@@ -204,16 +204,22 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   ausgerollt; `workshops.0007` separat angewendet und ausschließlich den
   Webcontainer ersetzt; PostgreSQL unverändert, Readiness, öffentlicher
   Healthcheck und Login 200, null Restarts
-- vorbereiteter Pretix-Rate-Limit-Hotfix, Commit
+- ausgerollter Pretix-Rate-Limit-Hotfix, Commit
   `1449191206b5bbed694cb455019a24fb0094ab12`, isoliert gebaut mit Image-ID
   `sha256:70a15265c39efea1641abdd2b471f41bc8bfd597f4f15bb4a8bbc4766d615de6`;
-  reduziert unnötige Quotenabfragen und behandelt HTTP 429 begrenzt; keine
-  Migration, RC4 bleibt bis zur Abnahme Rollbackgrundlage
+  reduziert unnötige Quotenabfragen und behandelt HTTP 429 begrenzt; am
+  29. September 2026 ohne Migration ausgerollt; das zusätzliche unmittelbar
+  vorgelagerte Backup wurde nach ausdrücklicher Risikofreigabe ausgelassen,
+  das erfolgreiche Pre-RC4-Backup und RC4-Image bleiben Rollbackgrundlage;
+  Preflight und Migrationscheck erfolgreich, ausschließlich Webcontainer
+  ersetzt, PostgreSQL unverändert, Healthchecks 200 und null Restarts;
+  manueller Pretix-Sync erfolgreich und `streuobst-1` als abgesagt bestätigt
 - systemd-Timer für den regulären Pretix-Abgleich stündlich konfiguriert;
   der anfängliche Lock unter `/run/lock` scheiterte vor Docker-/Pretix-Zugriff,
   wurde gestoppt und auf ein privates systemd-`RuntimeDirectory` korrigiert;
   manueller Diensttest und erster timer-ausgelöster Lauf anschließend jeweils
-  erfolgreich, Folgeausführung regulär geplant, Werkblatt weiter gesund
+  erfolgreich; nach dem Hotfix als stündlicher Timer mit bis zu fünf Minuten
+  Zufallsverzögerung neu geladen und aktiv, Werkblatt weiter gesund
 - vorhandenes Pilot-PDF nach Nextcloud
   `ZIRCULA Intern/Workshopdokumentation/2026/` migriert; Zielgröße 98.921 Byte
   verifiziert, Datenbank-Key aktualisiert und alte Datei anschließend entfernt
