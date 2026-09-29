@@ -390,3 +390,31 @@ Werkblatt materialisierte denselben organisationsgebundenen Workshop. Die
 öffentliche Darstellung wurde manuell im Browser bestätigt. Danach wurde das
 synthetische Event verifiziert auf `live = false` und `is_public = false`
 zurückgesetzt. Es wurden keine realen Teilnehmer- oder Bestelldaten verwendet.
+
+## 19. Vorbereiteter Rollout von `v0.1.0-rc.4`
+
+Der veröffentlichte Release Candidate `v0.1.0-rc.4`, Commit
+`8ba47cc1970ae00fccdf3666d02745fc15e0af0c`, wurde auf dem VPS isoliert als
+`werkblatt:8ba47cc1970ae00fccdf3666d02745fc15e0af0c` mit Image-ID
+`sha256:7a75f19ccf9a29a5d2bf7a4f7461daf021ac5977660ff0b7b33b9cbfb530a94b`
+gebaut. Der laufende Webcontainer blieb dabei unverändert gesund auf Commit
+`724cef153210f60d7736d4371d0fe3ffb13f50b1`; PostgreSQL und der Pretix-Timer
+blieben ebenfalls unverändert.
+
+RC4 enthält die additiven Migrationen `workshops.0005` bis `workshops.0007`.
+Die ersten beiden sind auf dem laufenden Pilotstand bereits angewendet. Der
+separate Migrationslauf muss deshalb ausschließlich `workshops.0007` neu
+anwenden. Vorher sind der gemergte Infrastructure-Pin, ein erfolgreicher
+zentraler Backup-Lauf und der commit-/Image-ID-gebundene Preflight zwingend.
+Danach wird ausschließlich der Webcontainer ersetzt. Caddy,
+PostgreSQL-Container, Netzwerke, Secrets und Persistenzpfade werden nicht
+verändert.
+
+Nach dem Start werden interne Readiness, öffentlicher Healthcheck, Login und
+OIDC-Einstieg sowie Pretix-Timer und Logs geprüft. Der fachliche Pilot-Test
+umfasst die vorhandene Pretix-Erstellung, Anmeldeschluss und direkten
+Pretix-Link sowie eine ausschließlich synthetische offene Werkstattreihe mit
+aggregiertem Termin und Statistik. Bis zur Abnahme bleiben der bisherige
+Image-Pin und das gemeinsame Pre-RC4-Backup von Datenbank und privaten Medien
+die Rollbackgrundlage; wegen der Migration genügt ein reiner Image-Downgrade
+nicht.

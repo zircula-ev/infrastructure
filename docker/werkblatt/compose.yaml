@@ -1,11 +1,11 @@
 services:
   web:
     build:
-      context: https://github.com/IndieStu/Werkblatt.git#724cef153210f60d7736d4371d0fe3ffb13f50b1
+      context: https://github.com/IndieStu/Werkblatt.git#8ba47cc1970ae00fccdf3666d02745fc15e0af0c
       args:
-        WERKBLATT_BUILD_VERSION: 0.1.0-dev.724cef1
-        WERKBLATT_SOURCE_CODE_URL: https://github.com/IndieStu/Werkblatt/tree/724cef153210f60d7736d4371d0fe3ffb13f50b1
-    image: werkblatt:724cef153210f60d7736d4371d0fe3ffb13f50b1
+        WERKBLATT_BUILD_VERSION: 0.1.0rc4
+        WERKBLATT_SOURCE_CODE_URL: https://github.com/IndieStu/Werkblatt/tree/8ba47cc1970ae00fccdf3666d02745fc15e0af0c
+    image: werkblatt:8ba47cc1970ae00fccdf3666d02745fc15e0af0c
     container_name: werkblatt
     restart: unless-stopped
     env_file:

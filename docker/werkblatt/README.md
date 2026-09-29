@@ -8,13 +8,28 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`724cef153210f60d7736d4371d0fe3ffb13f50b1` festgelegt. Das resultierende lokale
-Image erhält den Commit als Tag. Buildversion `0.1.0-dev.724cef1` und commitgenaue
+`8ba47cc1970ae00fccdf3666d02745fc15e0af0c` (`v0.1.0-rc.4`) festgelegt. Das
+resultierende lokale Image erhält den Commit als Tag. Buildversion `0.1.0rc4` und commitgenaue
 Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
 und kontrollierter Rollout sind unten dokumentiert; der vollständige
 synthetische E2E bleibt eine gesonderte Betriebsprüfung.
 
-Der vorbereitete Stand trennt künftige Workshops von der Arbeitsliste
+RC4 bündelt die bereits pilotierte Pretix-Erstellung und Ansicht anstehender
+Workshops mit Anmeldeschluss, direkter Pretix-Bestellübersicht sowie der neuen
+aggregierten Erfassung und Statistik offener Werkstätten. Der Stand enthält die
+additiven Migrationen `workshops.0005` bis `workshops.0007`; `0005` und `0006`
+sind auf dem laufenden Pilotstand bereits angewendet, neu auszuführen ist
+`workshops.0007_pretixeventcreation_registration_deadline_and_more`. Der
+isolierte VPS-Build ergab Image-ID
+`sha256:7a75f19ccf9a29a5d2bf7a4f7461daf021ac5977660ff0b7b33b9cbfb530a94b`.
+Der aktuell laufende Commit `724cef153210f60d7736d4371d0fe3ffb13f50b1` mit
+Image-ID
+`sha256:27ab7e77f563e7110a9505f5871c807b0176b7c6376fa205239a058f06364f0c`
+bleibt bis zur Abnahme zusammen mit dem unmittelbar vor RC4 erzeugten
+gemeinsamen Datenbank-/Medienbackup die Rollbackgrundlage. Caddy, PostgreSQL,
+Netzwerke, Secrets und Persistenzpfade werden nicht verändert.
+
+Der vorherige Stand trennt künftige Workshops von der Arbeitsliste
 zu dokumentierender Termine und stellt beide Bereiche als Liste oder Kalender
 bereit. Der Pretix-Abgleich übernimmt außerdem eine eindeutig bestimmbare,
 endliche Quotenkapazität, sodass anstehende Workshops beispielsweise als
