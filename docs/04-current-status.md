@@ -200,11 +200,16 @@ einer einzelnen Nextcloud über Gruppen und anwendungsbezogene Berechtigungen.
   `8ba47cc1970ae00fccdf3666d02745fc15e0af0c`, isoliert gebaut als
   `werkblatt:8ba47cc1970ae00fccdf3666d02745fc15e0af0c` mit Image-ID
   `sha256:7a75f19ccf9a29a5d2bf7a4f7461daf021ac5977660ff0b7b33b9cbfb530a94b`;
-  Rollout erst nach gemergtem Infrastructure-Pin, erfolgreichem zentralem
-  Backup und Preflight; neue additive Migration `workshops.0007`, Austausch
-  ausschließlich des Webcontainers; der laufende Pin und das gemeinsame
-  Pre-RC4-Backup bleiben bis zur Abnahme Rollbackgrundlage
-- systemd-Timer für den regulären Pretix-Abgleich alle 15 Minuten aktiviert;
+  am 29. September 2026 nach erfolgreichem zentralem Backup und Preflight
+  ausgerollt; `workshops.0007` separat angewendet und ausschließlich den
+  Webcontainer ersetzt; PostgreSQL unverändert, Readiness, öffentlicher
+  Healthcheck und Login 200, null Restarts
+- vorbereiteter Pretix-Rate-Limit-Hotfix, Commit
+  `1449191206b5bbed694cb455019a24fb0094ab12`, isoliert gebaut mit Image-ID
+  `sha256:70a15265c39efea1641abdd2b471f41bc8bfd597f4f15bb4a8bbc4766d615de6`;
+  reduziert unnötige Quotenabfragen und behandelt HTTP 429 begrenzt; keine
+  Migration, RC4 bleibt bis zur Abnahme Rollbackgrundlage
+- systemd-Timer für den regulären Pretix-Abgleich stündlich konfiguriert;
   der anfängliche Lock unter `/run/lock` scheiterte vor Docker-/Pretix-Zugriff,
   wurde gestoppt und auf ein privates systemd-`RuntimeDirectory` korrigiert;
   manueller Diensttest und erster timer-ausgelöster Lauf anschließend jeweils

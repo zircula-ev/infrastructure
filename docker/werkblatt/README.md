@@ -8,11 +8,22 @@ Zircula-spezifische Betriebsintegration.
 ## Festgelegter Softwarestand
 
 Der Build-Kontext ist unveränderlich auf Werkblatt-Commit
-`8ba47cc1970ae00fccdf3666d02745fc15e0af0c` (`v0.1.0-rc.4`) festgelegt. Das
-resultierende lokale Image erhält den Commit als Tag. Buildversion `0.1.0rc4` und commitgenaue
+`1449191206b5bbed694cb455019a24fb0094ab12` festgelegt. Das resultierende lokale
+Image erhält den Commit als Tag. Buildversion `0.1.0-dev.1449191` und commitgenaue
 Quellcode-URL werden in Anwendung und OCI-Labels ausgewiesen. Build, Image-ID
 und kontrollierter Rollout sind unten dokumentiert; der vollständige
 synthetische E2E bleibt eine gesonderte Betriebsprüfung.
+
+Der Hotfix reduziert Pretix-API-Aufrufe, indem Quoten erst nach der
+Importstichtagsprüfung geladen werden, taktet eigene Lesezugriffe und respektiert
+den `Retry-After`-Header begrenzt. Schreibzugriffe werden nicht automatisch
+wiederholt. Der isolierte VPS-Build ergab Image-ID
+`sha256:70a15265c39efea1641abdd2b471f41bc8bfd597f4f15bb4a8bbc4766d615de6`.
+Der aktuell laufende RC4-Commit `8ba47cc1970ae00fccdf3666d02745fc15e0af0c`
+mit Image-ID
+`sha256:7a75f19ccf9a29a5d2bf7a4f7461daf021ac5977660ff0b7b33b9cbfb530a94b`
+bleibt bis zur Abnahme Rollbackgrundlage. Der Hotfix enthält keine Migration;
+PostgreSQL, Caddy, Netzwerke, Secrets und Persistenzpfade werden nicht geändert.
 
 RC4 bündelt die bereits pilotierte Pretix-Erstellung und Ansicht anstehender
 Workshops mit Anmeldeschluss, direkter Pretix-Bestellübersicht sowie der neuen
@@ -284,8 +295,8 @@ synthetische Personen und Dokumente.
 
 ## Periodischer Pretix-Abgleich
 
-Der reguläre Pretix-Abgleich läuft nach erfolgreichem RC-Rollout als gehärteter
-systemd-Oneshot alle 15 Minuten mit bis zu zwei Minuten zufälliger Verzögerung.
+Der reguläre Pretix-Abgleich läuft nach erfolgreichem Hotfix-Rollout als gehärteter
+systemd-Oneshot stündlich mit bis zu fünf Minuten zufälliger Verzögerung.
 Ein nicht blockierender `flock` in dem von systemd verwalteten, privaten
 Runtime-Verzeichnis `/run/zircula-werkblatt` verhindert überlappende Läufe. Der
 Dienst verwendet ausschließlich den bereits laufenden Webcontainer und dessen

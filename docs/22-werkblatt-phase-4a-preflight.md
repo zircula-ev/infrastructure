@@ -418,3 +418,39 @@ aggregiertem Termin und Statistik. Bis zur Abnahme bleiben der bisherige
 Image-Pin und das gemeinsame Pre-RC4-Backup von Datenbank und privaten Medien
 die Rollbackgrundlage; wegen der Migration genügt ein reiner Image-Downgrade
 nicht.
+
+### Ergebnis vom 29. September 2026
+
+Der zentrale Backup-Lauf endete mit `Result=success` und `ExecMainStatus=0`.
+Repository-Preflight und Image-ID-Prüfung waren erfolgreich. Die Migration
+`workshops.0007` wurde separat angewendet und ausschließlich der Webcontainer
+ersetzt. PostgreSQL behielt Container-ID, Image, Startzeit und Restart-Zähler.
+Interne Readiness, öffentlicher Healthcheck und Login antworteten mit 200; RC4
+lief gesund und ohne Restarts.
+
+Der anschließend gestartete Pretix-Abgleich wurde zweimal kontrolliert ohne
+Datenbank-Teilstand beendet, weil Pretix HTTP 429 für eine Orders-Abfrage
+lieferte. Der Timer blieb daraufhin gestoppt. Die API bestätigte für den real
+abgesagten Einzeltermin `streuobst-1` den nicht personenbezogenen Status
+`live=false`; Werkblatt wird ihn nach dem nächsten erfolgreichen Abgleich als
+abgesagt markieren.
+
+## 20. Vorbereiteter Pretix-Rate-Limit-Hotfix
+
+Werkblatt-Commit `1449191206b5bbed694cb455019a24fb0094ab12` wurde isoliert als
+`werkblatt:1449191206b5bbed694cb455019a24fb0094ab12` mit Image-ID
+`sha256:70a15265c39efea1641abdd2b471f41bc8bfd597f4f15bb4a8bbc4766d615de6`
+gebaut. Der laufende RC4-Container blieb gesund und unverändert.
+
+Der Hotfix reduziert Quotenabfragen auf Termine im tatsächlichen Importumfang,
+taktet lesende Anfragen und respektiert Pretix `Retry-After` mit festen Grenzen.
+Schreibende Anfragen werden nie automatisch wiederholt; der Import bleibt vor
+dem Datenbankschritt atomar. Er enthält keine Migration. Zusätzlich wird der
+Zircula-spezifische systemd-Timer von 15 Minuten auf stündlich mit bis zu fünf
+Minuten zufälliger Verzögerung reduziert.
+
+Nach gemergtem Infrastructure-Pin werden Preflight und ein Migrationscheck mit
+dem neuen Image ausgeführt und ausschließlich der Webcontainer ersetzt. Danach
+wird ein einzelner kontrollierter Sync gestartet. Erfolgskriterien sind ein
+erfolgreicher Dienststatus, der als abgesagt übernommene Termin `streuobst-1`,
+ein gesunder Webcontainer sowie ein anschließend aktivierter stündlicher Timer.
