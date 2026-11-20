@@ -24,12 +24,6 @@ services:
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
       - type: bind
-        source: ./secrets/slack_webhook_url
-        target: /run/secrets/slack_webhook_url
-        read_only: true
-        bind:
-          create_host_path: false
-      - type: bind
         source: ./secrets/itadmin_smtp_password
         target: /run/secrets/itadmin_smtp_password
         read_only: true
