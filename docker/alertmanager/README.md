@@ -1,9 +1,9 @@
 # Alertmanager
 
 Alertmanager empfängt Prometheus-Alarme, gruppiert und dedupliziert sie und
-verteilt sie nach Schweregrad. Während der Slack-Übergangsphase gehen alle
-Alarme weiterhin an Slack. Kritische Alarme werden zusätzlich per E-Mail an
-LibreDesk und die technische Verteileradresse gesendet.
+verteilt sie nach Schweregrad. Slack-Benachrichtigungen sind deaktiviert.
+Warnungen bleiben in Prometheus und Grafana sichtbar. Kritische Alarme werden
+per E-Mail an LibreDesk und die technische Verteileradresse gesendet.
 
 Der Dienst besitzt keinen öffentlichen Hostport und ist nur im Netz
 `zircula_monitoring` erreichbar.
@@ -12,11 +12,15 @@ Der Dienst besitzt keinen öffentlichen Hostport und ist nur im Netz
 
 | Alarm | Slack | LibreDesk | `itadmin@zircula.org` | Wiederholung |
 |---|---|---|---|---|
-| `severity="warning"` | ja | nein | nein | 4 Stunden |
-| `HostRebootRequired` | ja | nein | nein | 24 Stunden |
-| `severity="critical"` | ja | ja | ja | 12 Stunden |
+| `severity="warning"` | nein | nein | nein | keine Zustellung |
+| `HostRebootRequired` | nein | nein | nein | keine Zustellung |
+| `severity="critical"` | nein | ja | ja | 12 Stunden |
 
-Die E-Mail-Empfänger sind:
+Nicht zugestellte Warnungen werden vom Receiver `discard` angenommen. Dadurch
+bleiben Auswertung, Status, Historie und Dashboards erhalten, ohne Nachrichten
+an externe Kanäle zu senden.
+
+Die E-Mail-Empfänger für kritische Alarme sind:
 
 - `itsupport@zircula.org`: erzeugt beziehungsweise aktualisiert ein
   LibreDesk-Ticket.
@@ -40,14 +44,18 @@ Status steht im Nachrichtentext.
 ## Secrets und Daten
 
 - `/srv/zircula/alertmanager/data` – Silences und Laufzeitdaten
-- `secrets/slack_webhook_url` – lokaler Slack-Webhook
 - `secrets/itadmin_smtp_password` – SMTP-Passwort des technischen Postfachs
 - `alertmanager.yml` – versionierte Routing- und Gruppierungsregeln
 
-Beide Secrets werden nur als read-only Bind-Mounts eingebunden. Fehlende Dateien
-werden durch `create_host_path: false` nicht automatisch als leere Dateien oder
-root-eigene Verzeichnisse erzeugt. Passwörter erscheinen weder in der
+Das SMTP-Secret wird nur als read-only Bind-Mount eingebunden. Eine fehlende
+Datei wird durch `create_host_path: false` nicht automatisch als leere Datei
+oder root-eigenes Verzeichnis erzeugt. Das Passwort erscheint weder in der
 Compose-Datei noch als Umgebungsvariable oder Prozessargument.
+
+Ein eventuell noch vorhandenes `secrets/slack_webhook_url` ist eine ungenutzte
+Rollback-Datei und wird nicht in den Container eingebunden. Es kann nach Ablauf
+der gewünschten Rückfallfrist sicher gelöscht beziehungsweise in Slack
+widerrufen werden.
 
 Nicht geheime SMTP-Werte sind versioniert:
 
@@ -76,23 +84,22 @@ printf '%s' "$SMTP_PASSWORD"   | sudo tee secrets/itadmin_smtp_password   >/dev/
 
 unset SMTP_PASSWORD
 
-sudo chown 65534:65534   secrets   secrets/slack_webhook_url   secrets/itadmin_smtp_password
+sudo chown 65534:65534   secrets   secrets/itadmin_smtp_password
 
 sudo chmod 750 secrets
-sudo chmod 400   secrets/slack_webhook_url   secrets/itadmin_smtp_password
+sudo chmod 400 secrets/itadmin_smtp_password
 ```
 
 Rechte prüfen, ohne Inhalte auszugeben:
 
 ```bash
-sudo stat -c '%U:%G %a %n'   secrets   secrets/slack_webhook_url   secrets/itadmin_smtp_password
+sudo stat -c '%U:%G %a %n'   secrets   secrets/itadmin_smtp_password
 ```
 
 Erwartet:
 
 ```text
 nobody:nogroup 750 secrets
-nobody:nogroup 400 secrets/slack_webhook_url
 nobody:nogroup 400 secrets/itadmin_smtp_password
 ```
 
@@ -103,7 +110,7 @@ Vor jeder Aktivierung:
 ```bash
 cd /opt/zircula/git/infrastructure/docker/alertmanager
 
-docker compose run --rm --no-deps   --entrypoint amtool alertmanager   check-config /etc/alertmanager/alertmanager.yml
+docker compose run --rm --no-deps   --entrypoint amtool   alertmanager   check-config   /etc/alertmanager/alertmanager.yml
 
 docker compose config --quiet
 ```
@@ -114,7 +121,7 @@ Anschließend kontrolliert neu erstellen:
 docker compose up -d --force-recreate
 docker compose ps
 
-docker run --rm --network zircula_monitoring   curlimages/curl:8.16.0   --fail --silent --show-error   http://alertmanager:9093/-/ready
+docker run --rm   --network zircula_monitoring   curlimages/curl:8.16.0   --fail --silent --show-error   http://alertmanager:9093/-/ready
 
 printf '\n'
 ```
@@ -124,7 +131,7 @@ printf '\n'
 Der Test sendet einen befristeten kritischen Alarm direkt an die interne
 Alertmanager-API. Erwartet werden:
 
-- Slack-Alarm,
+- keine Slack-Nachricht,
 - E-Mail an `itadmin@zircula.org`,
 - LibreDesk-Ticket über `itsupport@zircula.org`,
 - nach fünf Minuten eine Entwarnung im selben E-Mail-/Ticketthread.
@@ -135,7 +142,7 @@ cd /opt/zircula/git/infrastructure/docker/alertmanager
 STARTS_AT="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 ENDS_AT="$(date -u -d '+5 minutes' '+%Y-%m-%dT%H:%M:%SZ')"
 
-docker run --rm --network zircula_monitoring   curlimages/curl:8.16.0   --fail --silent --show-error   --header 'Content-Type: application/json'   --data "[{
+docker run --rm   --network zircula_monitoring   curlimages/curl:8.16.0   --fail --silent --show-error   --header 'Content-Type: application/json'   --data "[{
     \"labels\": {
       \"alertname\": \"MonitoringTicketPipelineTest\",
       \"severity\": \"critical\",
@@ -144,7 +151,7 @@ docker run --rm --network zircula_monitoring   curlimages/curl:8.16.0   --fail -
     },
     \"annotations\": {
       \"summary\": \"Manueller kritischer Monitoring-Test\",
-      \"description\": \"Befristeter Test von Slack, E-Mail und LibreDesk-Threading\"
+      \"description\": \"Befristeter Test von E-Mail und LibreDesk-Threading\"
     },
     \"startsAt\": \"$STARTS_AT\",
     \"endsAt\": \"$ENDS_AT\"
@@ -179,7 +186,6 @@ docker compose up -d
 docker compose ps
 ```
 
-Bei SMTP-Problemen wird die kritische Unterroute vorübergehend auf den
-Slack-Empfänger zurückgesetzt oder der vorherige Repository-Commit ausgerollt.
-Die bestehende Slack-Alarmierung bleibt während der Einführung der
-E-Mail-Route vollständig erhalten.
+Bei SMTP-Problemen wird der vorherige Repository-Commit ausgerollt. Die
+Slack-Integration bleibt deaktiviert, bis sie bewusst wieder versioniert,
+validiert und ausgerollt wird.
